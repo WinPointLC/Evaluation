@@ -1,2 +1,2 @@
-# OES
-This is a repository for the online examination system of WinPoint.
+# Evaluation
+This is a repository for the Evaluation systems created by WinPoint.
