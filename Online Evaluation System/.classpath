@@ -8,8 +8,12 @@
 	</classpathentry>
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.web.container"/>
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.module.container"/>
+<<<<<<< HEAD
 	<classpathentry kind="lib" path="C:/ProgramData/Microsoft/Windows/Start Menu/Programs/Microsoft SQL Server 2017/sqljdbc_7.2/enu/mssql-jdbc-7.2.2.jre8.jar"/>
 	<classpathentry kind="lib" path="C:/Users/DELL/Downloads/servlet-1.0.0-v20070606.jar/servlet-1.0.0-v20070606.jar"/>
 	<classpathentry kind="lib" path="C:/Program Files/Apache Software Foundation/Tomcat 8.5/lib/servlet-api.jar"/>
+=======
+	<classpathentry kind="lib" path="G:/sqljdbc_7.2/enu/mssql-jdbc-7.2.2.jre8.jar"/>
+>>>>>>> 2ff192512215ab6f6ab0285414d55a315af225b1
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>
