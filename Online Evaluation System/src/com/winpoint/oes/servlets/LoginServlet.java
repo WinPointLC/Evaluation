@@ -8,28 +8,34 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.winpoint.oes.beans.UserStudent;
+import com.winpoint.oes.helpers.student.LoginHelper;
 
 /**
  * Servlet implementation class Login
  */
 @WebServlet("/Login")
-public class Login extends HttpServlet {
+public class LoginServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
     /**
      * Default constructor. 
      */
-    public Login() {
-        // TODO Auto-generated constructor stub
-    }
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		UserStudent userStudent = new UserStudent(null, null, null, null, null, null, null);
 		response.getWriter().append("Served at: ").append(request.getContextPath());
+		System.out.println("IN servlet"
+				+ "");
+		String email = request.getParameter("email");
+		String password = request.getParameter("Password");
+		LoginHelper loginHelper = new LoginHelper();
+		loginHelper.login(email,password);
+		
+		
+	
+		
 	}
 
 	/**

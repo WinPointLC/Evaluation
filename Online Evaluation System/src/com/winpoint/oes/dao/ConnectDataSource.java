@@ -17,20 +17,20 @@ THE IMPLIED WARRANTIES OF MERCHANTABILITY AND/OR FITNESS FOR A
 PARTICULAR PURPOSE.
 =====================================================================*/
 package com.winpoint.oes.dao;
-import java.sql.CallableStatement;
+//import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import com.microsoft.sqlserver.jdbc.SQLServerDataSource;
+//import com.microsoft.sqlserver.jdbc.SQLServerDataSource;
 
 public class ConnectDataSource {
 
     public static void main(String[] args) {
 
         // Create datasource.
-        SQLServerDataSource ds = new SQLServerDataSource();
+     /*   SQLServerDataSource ds = new SQLServerDataSource();
         ds.setUser("DESKTOP-EKU7G3D\\DELL");
         //ds.setUser("sa");
         ds.setPassword("");
@@ -50,14 +50,15 @@ public class ConnectDataSource {
                 System.out.println("MANAGER: " + rs.getString("ManagerLastName") + ", " + rs.getString("ManagerFirstName"));
                 System.out.println();
             }
-        }*/
+        }
         try {
-        	Connection con = ds.getConnection();
+        //	Connection con = ds.getConnection();
         	System.out.println("Connection obtained");
         }
         // Handle any errors that may have occurred.
         catch (SQLException e) {
             e.printStackTrace();
         }
-    }
+    }*/
+}
 }
