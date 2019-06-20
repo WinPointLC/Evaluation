@@ -23,11 +23,11 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import com.microsoft.sqlserver.jdbc.SQLServerDataSource;
+//import com.microsoft.sqlserver.jdbc.SQLServerDataSource;
 
 public class ConnectDataSource {
 
-    public static void main(String[] args) {
+    /*public static void main(String[] args) {
 
         // Create datasource.
         SQLServerDataSource ds = new SQLServerDataSource();
@@ -51,7 +51,7 @@ public class ConnectDataSource {
                 System.out.println();
             }
         }*/
-        try {
+       /* try {
         	Connection con = ds.getConnection();
         	System.out.println("Connection obtained");
         }
@@ -59,5 +59,5 @@ public class ConnectDataSource {
         catch (SQLException e) {
             e.printStackTrace();
         }
-    }
+    }*/
 }
