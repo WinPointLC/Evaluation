@@ -6,8 +6,6 @@ body{
   background-size: 400%,400%;
   height: 100vh;
   animation: BackgroundGradient 20s ease infinite;
-
-  /* background-image: linear-gradient(to right, rgb(107, 48, 213),rgb(23, 237, 207),rgb(245, 29, 146)); */
 }
 @keyframes BackgroundGradient {
   0%{background-position: 0% 50%;}
@@ -30,15 +28,8 @@ background-color: #fff;
 
 .form-login-heading{
 margin: 10% 0;
-/* padding-bottom: 20%; */
-/* max-width: 200px; */
-/* margin-left: 20%; */
-letter-spacing: 8px;
-/* color:linear-gradient(to right, rgb(107, 48, 213),rgb(23, 237, 207),rgb(245, 29, 146)); */
-/* background-size: 400%,400%; */
-/* animation: BackgroundGradient 20s ease infinite; */
 
-/* border: 1px solid rgba(228, 225, 226, 0.82); */
+letter-spacing: 8px;
 }
 #form-outter input{
   border-top: none;
@@ -49,15 +40,6 @@ letter-spacing: 8px;
   transition-duration: 1s;
   border-bottom:1px solid black;
 }
-
-/* .form-login {
-  max-width: 550px;
-  max-height: 500px;
-
-  background-color: #fff;
-
-} */
-
 #form-outter button{
   margin-top: 8%;
   padding-top: 2%;
@@ -69,18 +51,14 @@ letter-spacing: 8px;
   position: relative;
   border-radius: 15px;
   color: #fff;
-  /* background-image: linear-gradient(to right, rgb(107, 48, 213),rgb(23, 237, 207),rgb(245, 29, 146)); */
   border: 1px solid #fff ;
-  /* padding: 1%; */
-  /* box-shadow: 10% solid #000; */
-
 }
 .loginBtn{
 
   background-image: linear-gradient(132deg,rgb(107, 48, 213),rgb(23, 237, 207),rgb(245, 29, 146));
   background-size: 400%,400%;
   animation: BackgroundGradient 20s ease infinite;
- 
+
 }
 .forget-pass a{
   color: #DD4B39;
@@ -92,6 +70,5 @@ letter-spacing: 8px;
 }
 
 .form-group a{
-/* margin-top: 0%; */
 margin-left: 28%;
 }
