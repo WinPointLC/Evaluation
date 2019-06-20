@@ -40,11 +40,13 @@ letter-spacing: 8px;
 
 /* border: 1px solid rgba(228, 225, 226, 0.82); */
 }
+
 #form-outter input{
   border-top: none;
   border-left:none;
   border-right:none;
 }
+
 #form-outter input:hover{
   transition-duration: 1s;
   border-bottom:1px solid black;
@@ -80,7 +82,7 @@ letter-spacing: 8px;
   background-image: linear-gradient(132deg,rgb(107, 48, 213),rgb(23, 237, 207),rgb(245, 29, 146));
   background-size: 400%,400%;
   animation: BackgroundGradient 20s ease infinite;
- 
+
 }
 .forget-pass a{
   color: #DD4B39;
