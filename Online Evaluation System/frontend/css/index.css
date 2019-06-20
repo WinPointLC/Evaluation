@@ -1,0 +1,424 @@
+*{
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  max-width: 100%;
+  overflow-x: hidden;
+}
+/*------------------- Linear gradient for carousel -------------------------*/
+.img-wrap{
+  position:relative;
+   float: left;
+   height: 100%;
+   width: 100%;
+}
+.img-wrap:before {
+  content: '';
+  position:absolute;
+  top:0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: -webkit-gradient(linear, left top, left bottom, from(rgba(0,0,0,0.3)),to(rgba(0,0,0,0.3)) );
+  background: linear-gradient(to bottom, rgba(0,0,0,0.3),rgba(0,0,0,0.3) );
+  z-index: 1;
+}
+
+/* ---------------------------------- */
+/* SLIDESHOW CAROUSEL */
+/* ---------------------------------- */
+
+.carousel-control-next:link,
+.carousel-control-next:visited,
+.carousel-control-prev:link,
+.carousel-control-prev:visited{
+  background-color: #000;
+  opacity: 0.2;
+  width: 5%;
+  -webkit-transition: opacity 0.5s;
+  transition: opacity 0.5s;
+}
+
+.carousel-control-next:hover,
+.carousel-control-next:active,
+.carousel-control-prev:hover,
+.carousel-control-prev:active{
+  opacity: 0.6;
+}
+
+.carousel-item {
+  width: 100%;
+  height: 100vh;
+}
+
+.carousel-item img{
+  width: 100%;
+  height: 100%;
+}
+
+.carousel-container{
+  width: 100%;
+}
+
+.carousel-caption{
+  padding: 17.5% 0;
+}
+
+.carousel-caption h1 a{
+  text-transform: uppercase;
+  color: #fff;
+  text-decoration: none;
+}
+
+/* ---------------------------------- */
+/* UPCOMING EVENTS SECTION */
+/* ---------------------------------- */
+.section-upcoming-events {
+  padding-top: 50px;
+  background-color: #fff;
+}
+
+.section-upcoming-events .container-fluid .row{
+  height: 100%;
+}
+
+.section-upcoming-events .container-fluid{
+  padding: 0;
+}
+
+.section-upcoming-events .container-fluid .row{
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.section-upcoming-events .container-fluid .row .col-md-6{
+  margin: 0;
+  padding: 0;
+}
+
+.wrapper-container{
+  height: 100%;
+}
+
+#upcoming-events-fsp {
+  width: 100%;
+  height: 100%;
+  border-radius: 5px;
+  cursor: pointer;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+}
+
+#upcoming-events-others {
+  width: 100%;
+  height: 100%;
+  border-radius: 5px;
+  cursor: pointer;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+}
+
+#upcoming-events-fsp:hover {opacity: 0.7;}
+
+#upcoming-events-others:hover {opacity: 0.7;}
+
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  padding-top: 100px;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgb(0,0,0);
+  background-color: rgba(0,0,0,0.9);
+}
+
+.modal-content {
+  margin: auto;
+  display: block;
+  width: 80%;
+  max-width: 700px;
+}
+
+@-webkit-keyframes zoom {
+  from {-webkit-transform:scale(0);transform:scale(0)}
+  to {-webkit-transform:scale(1);transform:scale(1)}
+}
+
+@keyframes zoom {
+  from {-webkit-transform:scale(0);transform:scale(0)}
+  to {-webkit-transform:scale(1);transform:scale(1)}
+}
+
+.close {
+  position: absolute;
+  top: 15px;
+  right: 35px;
+  color: #f1f1f1;
+  font-size: 40px;
+  font-weight: bold;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+}
+
+.close:hover,
+.close:focus {
+  color: #bbb;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.close1 {
+  position: absolute;
+  top: 15px;
+  right: 35px;
+  color: #f1f1f1;
+  font-size: 40px;
+  font-weight: bold;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+}
+
+.close1:hover,
+.close1:focus {
+  color: #bbb;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+@media only screen and (max-width: 700px){
+  .modal-content {
+    width: 100%;
+  }
+}
+
+/* ---------------------------------- */
+/* OUR OFFERINGS */
+/* ---------------------------------- */
+
+.section-our-offerings{
+  background-color: #efefef;
+  padding-top: 50px;
+}
+
+.container-fluid-wrapper{
+  margin: 0;
+}
+
+.container-fluid-wrapper .container-fluid{
+  height: 100%;
+}
+
+.container-fluid-wrapper .container-fluid .row{
+  height: 100%;
+}
+
+.section-our-offerings .container-fluid .row .col-md-6{
+  height: 500px;
+  margin: 0;
+  padding: 0;
+}
+
+.software-skills-offering, .behaviour-skills-offering, .business-management-offering, .finishing-school-program-offering{
+  height: 100%;
+}
+
+.software-skill-offering-container, .behavioral-skill-offering-container,
+.business-management-offering-container, .finishing-school-program-offering-container,
+.online-exam-offering-container{
+  display: none;
+}
+
+.software-skills-offering, .behaviour-skills-offering, .business-management-offering, .finishing-school-program-offering{
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+
+.software-skills-offering{
+  background-image: url(../img/css-img/software-skill-offering.jpg);
+}
+
+.software-skills-offering:hover{
+  background-image:-webkit-gradient(linear, left top, left bottom, from(rgba(0, 0, 0, 0.7)), to(rgba(0, 0, 0, 0.7))), url(../img/css-img/software-skill-offering.jpg);
+  background-image:linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url(../img/css-img/software-skill-offering.jpg);
+}
+
+.software-skills-offering:hover > .software-skill-offering-container{
+  display: block;
+}
+
+.behaviour-skills-offering{
+  background-image: url(../img/css-img/behavioural-skills-offering.jpg);
+}
+
+.behaviour-skills-offering:hover > .behavioral-skill-offering-container{
+  display: block;
+}
+
+.behaviour-skills-offering:hover{
+  background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(0, 0, 0, 0.7)), to(rgba(0, 0, 0, 0.7))), url(../img/css-img/behavioural-skills-offering.jpg);
+  background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url(../img/css-img/behavioural-skills-offering.jpg);
+}
+
+.business-management-offering{
+  background-image: url(../img/css-img/business-management-offering.jpg);
+  background-position: bottom;
+}
+
+.business-management-offering:hover{
+  background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(0, 0, 0, 0.7)), to(rgba(0, 0, 0, 0.7))), url(../img/css-img/business-management-offering.jpg);
+  background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url(../img/css-img/business-management-offering.jpg);
+  background-position: bottom;
+}
+
+.business-management-offering:hover > .business-management-offering-container{
+  display: block;
+}
+
+.finishing-school-program-offering{
+  background-image: url(../img/css-img/finishing-school-program-offering.jpg);
+  background-position: bottom;
+}
+
+.finishing-school-program-offering:hover{
+  background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(0, 0, 0, 0.7)), to(rgba(0, 0, 0, 0.7))), url(../img/css-img/finishing-school-program-offering.jpg);
+  background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url(../img/css-img/finishing-school-program-offering.jpg);
+  background-position: bottom;
+}
+
+.finishing-school-program-offering:hover > .finishing-school-program-offering-container{
+  display: block;
+}
+
+.image-header1{
+  color: #fff;
+  padding-top: 25%;
+}
+
+.image-header2{
+  padding-top: 2%;
+  color: #fff;
+}
+
+.image-header2::after{
+  border-bottom: 0px;
+}
+
+.center-wrapper a{
+  text-decoration: none;
+}
+
+/* ---------------------------------- */
+/* KEY CLIENTS SECTION */
+/* ---------------------------------- */
+.section-clients{
+  padding-top: 50px;
+  background-color: #fff;
+}
+
+.section-clients .container-fluid .row .col-sm-12{
+  height: 25vh;
+}
+
+.marquee-container{
+  position: relative;
+  height: 100%;
+}
+
+.section-clients h2{
+  padding-bottom: 30px;
+}
+
+/* ---------------------------------- */
+/* TESTIMONIALS */
+/* ---------------------------------- */
+
+.section-testimonials{
+  background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(0, 0, 0, 0.7)), to(rgba(0, 0, 0, 0.7))), url(../img/css-img/testimonials-hero-image.jpg);
+  background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url(../img/css-img/testimonials-hero-image.jpg);
+  background-position: center;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+}
+
+ .section-testimonials h2{
+  color: #ffa502;
+  padding: 30px 0;
+}
+
+.section-testimonials h2::after{
+  border-bottom: 2px solid #ffa502;
+}
+
+.section-testimonials .container-fluid .row .col-lg-4{
+  height: 80%;
+  padding-left: 30px;
+  padding-right: 30px;
+  -ms-flex-line-pack: center;
+      align-content: center;
+}
+
+.section-testimonials .container-fluid .row .col-md-6{
+  height: 67.5%;
+  padding-left: 30px;
+  padding-right: 30px;
+  -ms-flex-line-pack: center;
+      align-content: center;
+}
+
+
+.col-lg-4 .corporate-wrapper,
+.col-lg-4 .individual-wrapper,
+.col-lg-4 .institute-wrapper{
+  max-height: 100%;
+}
+
+.institute-wrapper a:link, .institute-wrapper a:active, .institute-wrapper a:hover, .institute-wrapper a:visited,
+.corporate-wrapper a:link, .corporate-wrapper a:active, .corporate-wrapper a:hover, .corporate-wrapper a:visited,
+.individual-wrapper a:link, .individual-wrapper a:active, .individual-wrapper a:hover, .individual-wrapper a:visited{
+  text-decoration: none;
+}
+
+.corporate-wrapper .carousel .carousel-item,
+.individual-wrapper .carousel .carousel-item,
+.institute-wrapper .carousel .carousel-item{
+  max-height: 400px;
+}
+
+.fa-quote-left{
+  margin-left: 10px;
+  color: white;
+  font-size: 120%;
+}
+
+h3{
+  color: #fff;
+  font-size: 110%;
+}
+
+.carousel-item p{
+	color: #fff;
+	text-align: justify;
+	font-style: italic;
+	text-align: center;
+	text-align: justify;
+  font-size: 70%;
+}
+
+h6{
+	color: white;
+	padding-left: 70px;
+  text-decoration: underline;
+  font-size: 90%;
+}
+
+h3::after{
+	border-bottom: 2px solid #fff;
+}

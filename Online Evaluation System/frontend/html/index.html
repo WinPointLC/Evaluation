@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="apple-touch-icon" sizes="180x180" href="/resources/favicons/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/resources/favicons/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/resources/favicons/favicon-16x16.png">
+  <link rel="manifest" href="/resources/favicons/site.webmanifest">
+  <link rel="mask-icon" href="/resources/favicons/safari-pinned-tab.svg" color="#5bbad5">
+  <link rel="shortcut icon" href="/resources/favicons/favicon.ico">
+  <meta name="msapplication-TileColor" content="#ffffff">
+  <meta name="msapplication-config" content="/resources/favicons/browserconfig.xml">
+  <meta name="theme-color" content="#ffffff">
+  <title>WinPoint Learning Center</title><script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script type="text/javascript" src="resources/js/key-clients-marquee.js"></script>
+  <script type="text/javascript" src="resources/js/key-clients-marquee1.js"></script>
+  <script>
+    $(function() {
+      $("#website-header").load("header-home.html");
+      $("#vision-mission").load("vision-mission.html");
+      $("#website-footer").load("footer-home.html");
+    });
+  </script>
+  <script src="resources/js/common.js"></script>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" integrity="sha384-gfdkjb5BdAXd+lj+gudLWI+BXq4IuLW5IT+brZEZsLFm++aCMlF1V92rMkPaX4PP" crossorigin="anonymous">
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+  <link rel="stylesheet" href="../css/animate.css">
+  <link rel="stylesheet" href="../css/common.css">
+  <link rel="stylesheet" href="../css/index.css">
+</head>
+<body>
+
+  <div id="website-header">
+
+	</div>
+
+  <!-- -------------------- SLIDESHOW ---------------------- -->
+  <section class="section-carousel">
+    <div id="carousel-slideshow" class="carousel slide" data-ride="carousel">
+      <ol class="carousel-indicators">
+        <li data-target="#carousel-slideshow" data-slide-to="0" class="active"></li>
+        <li data-target="#carousel-slideshow" data-slide-to="1"></li>
+        <li data-target="#carousel-slideshow" data-slide-to="2"></li>
+      </ol>
+
+      <div class="carousel-inner" role="listbox">
+        <div class="carousel-item active slide-img1">
+          <div class="img-wrap">
+              <img src="resources/img/slideshow-image1.jpg" alt="First slide">
+          </div>
+
+          <div class="carousel-caption">
+            <h1 class="animated zoomIn" style="animation-delay: 0.8s"><a href="resources/html/training-main-page.html">Training</a></h1>
+          </div>
+        </div>
+
+        <div class="carousel-item slide-img1">
+          <div class="img-wrap">
+            <img src="resources/img/slideshow-image2.jpg" alt="Second slide">
+          </div>
+
+          <div class="carousel-caption">
+            <h1 class="animated zoomIn" style="animation-delay: 0.8s"><a href="resources/html/consulting.html">Consulting</a></h1>
+          </div>
+        </div>
+
+        <div class="carousel-item slide-img1">
+          <div class="img-wrap">
+            <img src="resources/img/slideshow-image3.jpg" alt="Third slide">
+          </div>
+
+          <div class="carousel-caption">
+            <h1 class="animated zoomIn" style="animation-delay: 0.8s"><a href="resources/html/open-workshops.html">Business Management</a></h1>
+          </div>
+        </div>
+      </div>
+
+      <a href="#carousel-slideshow" class="carousel-control-prev" data-slide="prev">
+        <span class="carousel-control-prev-icon"></span>
+      </a>
+      <a href="#carousel-slideshow" class="carousel-control-next" data-slide="next">
+        <span class="carousel-control-next-icon"></span>
+      </a>
+    </div>
+  </section>
+
+  <!-- -------------------- UPCOMING EVENTS ---------------------- -->
+  <section class="section-upcoming-events">
+
+    <div class="upcoming-events-header">
+      <h2>our upcoming events</h2>
+    </div>
+
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-6">
+          <div class="wrapper-container">
+            <img id="upcoming-events-fsp" src="resources/img/finishing-school-program.png" alt="fsp image">
+            <div id="upcoming-events-fsp-modal" class="modal">
+              <span class="close">&times;</span>
+              <img class="modal-content" id="img01">
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-6">
+          <div class="wrapper-container">
+            <img id="upcoming-events-others" src="resources/img/upcoming-events-others.png" alt="other events image">
+            <div id="upcoming-events-others-modal" class="modal">
+              <span class="close1">&times;</span>
+              <img class="modal-content" id="img02">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- -------------------- OUR OFFERINGS ---------------------- -->
+  <section class="section-our-offerings">
+    <h2>our offerings</h2>
+    <div class="container-fluid-wrapper">
+      <div class="container-fluid">
+
+        <div class="row">
+          <div class="col-md-6">
+            <div class="software-skills-offering">
+              <div class="software-skill-offering-container">
+                <div class="center-wrapper">
+                  <h1 class="image-header1">software skills</h1>
+                  <a href="resources/html/individual-software-skills.html">
+                    <h3 class="image-header2">Know More</h3>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-6">
+            <div class="behaviour-skills-offering">
+              <div class="behavioral-skill-offering-container">
+                <div class="center-wrapper">
+                  <h1 class="image-header1">behavioral and soft skills</h1>
+                  <a href="resources/html/individual-behavioral-skills.html">
+                    <h3 class="image-header2">Know More</h3>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="container-fluid-wrapper">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-md-6">
+            <div class="business-management-offering">
+              <div class="business-management-offering-container">
+                <div class="center-wrapper">
+                  <h1 class="image-header1">business management skills</h1>
+                  <a href="resources/html/business-communication-workplace.html">
+                    <h3 class="image-header2">Know More</h3>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-6">
+            <div class="finishing-school-program-offering">
+              <div class="finishing-school-program-offering-container">
+                <div class="center-wrapper">
+                  <h1 class="image-header1">finishing school program</h1>
+                  <a href="resources/html/campus-recruitment-training.html">
+                    <h3 class="image-header2">Know More</h3>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- -------------------- CLIENTS ---------------------- -->
+
+  <section class="section-clients">
+    <div class="clients-heading">
+      <h2>Key Clients of WinPoint Learning & Consultancy Venture</h2>
+    </div>
+
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-sm-12">
+          <div class="marquee-container">
+            <div class="outerbox">
+              <div id="m1" class="marquee"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- -------------------- TESTIMONIALS ---------------------- -->
+  <section class="section-testimonials">
+    <h2>testimonials by our key clients</h2>
+    <div class="container-fluid">
+
+      <div class="row">
+        <div class="col-md-6 col-lg-4">
+          <div class="corporate-wrapper">
+            <a class="testimonials-links" href="resources/html/corporate-testimonials.html"><h3>Corporate</h3></a>
+            <div id="demo" class="carousel slide " data-ride="carousel" data-interval="false">
+
+              <ul class="carousel-indicators">
+                <li data-target="#demo" data-slide-to="0" class="active"></li>
+                <li data-target="#demo" data-slide-to="1"></li>
+                <li data-target="#demo" data-slide-to="2"></li>
+              </ul>
+
+              <div class="carousel-inner">
+                <div class="carousel-item active">
+                  <i class="fas fa-quote-left"></i>
+                  <h6>Training Program:English Grammar Foundation</h6>
+                  <p>Client Profile: Varun Nikam-Executive Professional at Mobisoft with 4 years of experience</p>
+                  <p>The experience that I gained at Winpoint was unforgettable. It helped me improve my understanding of English and boosted my confidence
+                    in speaking the language. The cardinal demand of the multinational company's environment is that one should be able to write, understand
+                    and communicate high quality English. To meet this requirement, 'English Grammar Foundation' course at Winpoint was well designed and executed,
+                    covering each and every topic essential for building English Grammar Foundation.
+                  </p>
+                </div>
+                <div class="carousel-item">
+                  <i class="fas fa-quote-left"></i>
+                  <h6>Training Program:Communication Effectiveness</h6>
+                  <p>Client Profile:Punit Sharma-Executive professional at Cognizant with 5 years of experience</p>
+                  <p>This program covered each part of communication strategy that is required to be successful in corporate world.
+                    It is focused on building on your strengths and improving your weaknesses. The program helped me identify my communication
+                    style through a lot of individual attention from Makarand. It was of great help to me as I realized my communication realted
+                    areas of improvement which I need to further devlop.
+                  </p>
+                </div>
+                <div class="carousel-item">
+
+                  <i class="fas fa-quote-left"></i>
+                  <h6>Training Program:Wolters Kluwer Workshop</h6>
+                  <p>Client Profile : Kratika Singh</p>
+                  <p>The techniques which were most useful for me was smart email writing, questioning techniques.
+  I have incorporated the skills learnt for effective email writing and used it for effectively write a mail which is professional, on-point and clear to the other person.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+        <div class="col-md-6 col-lg-4">
+          <div class="individual-wrapper">
+            <a class="testimonials-links" href="resources/html/individual-testimonials.html"><h3>Individual</h3></a>
+            <div id="demo1" class="carousel slide" data-ride="carousel" data-interval="false">
+
+              <ul class="carousel-indicators">
+                <li data-target="#demo1" data-slide-to="0" class="active"></li>
+                <li data-target="#demo1" data-slide-to="1"></li>
+                <li data-target="#demo1" data-slide-to="2"></li>
+              </ul>
+
+              <div class="carousel-inner">
+                <div class="carousel-item">
+                  <i class="fas fa-quote-left"></i>
+                  <h6>Training Program:Campus Recruitment Training</h6>
+                  <p>Client Profile : Final Year
+                    BE(ComputerEngineering)
+                    Student at pict
+                  </p>
+                  <p>The C lectures conducted by Anjali ma'am were really very helful. Also the group activity,HR,
+                    and GD training sessions conducted by Makarand Sir were very interesting and helpful. Makarand Sir
+                    and Ma'am , the way you conduct lectures is really very good and your efforts are visible. The material
+                    given to us was well selected and timely uploading of answers on the google drive came very handy while
+                    preparing.
+                  </p>
+                </div>
+                <div class="carousel-item active">
+                  <i class="fas fa-quote-left"></i>
+                  <h6>Training Program:Behavioral Interview Techniques</h6>
+                  <p>Client Profile:Final year BE(Computer Engineering) Student at VIT</p>
+                  <p>Before taking this training, I lacked confidence and I felt extremely nervous during the interviews as I could not
+                    articulate my thoughts. The training course was properly structured and implemented. Basic goals of structuring an impressive CV, develoment
+                    of self introduction script, articulation of responses to expected questions were achieved. I was able to face the final placement interview
+                    confidently because of strong preparation that we made during the sessions.
+                  </p>
+                </div>
+                <div class="carousel-item">
+                  <i class="fas fa-quote-left"></i>
+                  <h6>Training Program:C Programming</h6>
+                  <p>Client Profile : Esha Thorat(Mechanical Engineering)</p>
+                  <p>The variety of practice problems provided for C Programming enabled me to gain sufficient confidence and practice.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-6 col-lg-4">
+          <div class="institute-wrapper">
+            <a class="testimonials-links" href="resources/html/business-communication-workplace.html"><h3>Open Workshops</h3></a>
+            <div id="demo2" class="carousel slide" data-interval="false">
+
+              <ul class="carousel-indicators">
+                <li data-target="#demo2" data-slide-to="0" class="active"></li>
+                <li data-target="#demo2" data-slide-to="1"></li>
+                <li data-target="#demo2" data-slide-to="2"></li>
+              </ul>
+
+              <div class="carousel-inner">
+                <div class="carousel-item active">
+                  <i class="fas fa-quote-left"></i>
+                  <h6>Training Program:Open Workshops`</h6>
+                  <p>Client Profile:Mugdha mulay</p>
+                  <p>The purpose of attending this workshop was to develop skills on various aspects of communication; the topics covered gave an insight of it. I am sure that, implementing all the learning that I had, I would be able to add value at my workplace and on a personal level.</p>
+                </div>
+                <div class="carousel-item">
+                  <i class="fas fa-quote-left"></i>
+                  <h6>Training Program:Open Workshops`</h6>
+                  <p>Client Profile:Mandar mulay</p>
+                  <p>​The best part of the workshop was that the faculty used the real life emails within discussions. There was a complete practical approach without any compromise on theory/concepts. The level of customization of overall workshop was the best.</p>
+                </div>
+                <div class="carousel-item">
+                  <i class="fas fa-quote-left"></i>
+                  <h6>Training Program:Open Workshops`</h6>
+                  <p>Client Profile:​Supriya Waghmare</p>
+                  <p>Workshop had covered most of the topics like email writing, active listening and verbal which was very much important to me and the expectations which I had from this workshop.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div id="vision-mission">
+
+	</div>
+
+	<div id="website-footer">
+
+	</div>
+
+  <div class="top-button" id="back-to-top">
+   <a id="back2Top" title="Back to top" href="#"><i class="fas fa-angle-up"></i></a>
+  </div>
+
+  <script type="text/javascript" src="resources/js/upcoming-events-fsp.js"></script>
+  <script type="text/javascript" src="resources/js/upcoming-events-others.js"></script>
+  <script type="text/javascript" src="resources/js/key-clients-marquee.js"></script>
+  <script type="text/javascript" src="resources/js/key-clients-marquee1.js"></script>
+</body>
+</html>
