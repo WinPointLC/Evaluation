@@ -26,9 +26,9 @@ public class UserProfile {
 	private String experience;
 	private String createdBy;
 	private String createDate;
-	
-	
-	
+
+
+
 	/**
 	 * @param userID
 	 * @param firstName
@@ -501,13 +501,14 @@ public class UserProfile {
 
 
 /**
- * 
+ *
  * @param email The email from the login page is passed to the function to validate the login.
  * @param password The password from the login page is passed to the function to validate the login.
  */
+
 	public void login(String email, String password) {
 		LoginDao loginDao = new LoginDao();
-		loginDao.login(email, password);
+		return loginDao.login(email, password);
 	}
-		
+
 }

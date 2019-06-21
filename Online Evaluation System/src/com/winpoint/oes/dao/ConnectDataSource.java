@@ -17,26 +17,26 @@ THE IMPLIED WARRANTIES OF MERCHANTABILITY AND/OR FITNESS FOR A
 PARTICULAR PURPOSE.
 =====================================================================*/
 package com.winpoint.oes.dao;
-//import java.sql.CallableStatement;
+import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-//import com.microsoft.sqlserver.jdbc.SQLServerDataSource;
+import com.microsoft.sqlserver.jdbc.SQLServerDataSource;
 
 public class ConnectDataSource {
 
     /*public static void main(String[] args) {
 
         // Create datasource.
-     /*   SQLServerDataSource ds = new SQLServerDataSource();
-        ds.setUser("DESKTOP-EKU7G3D\\DELL");
-        //ds.setUser("sa");
-        ds.setPassword("");
+        SQLServerDataSource ds = new SQLServerDataSource();
+        //ds.setUser("DESKTOP-EKU7G3D\\DELL");
+        ds.setUser("sa");
+        ds.setPassword("winpoint");
         ds.setServerName("DESKTOP-EKU7G3D\\SQLEXPRESS");
         ds.setPortNumber(Integer.parseInt("1433"));
-        ds.setDatabaseName("TSQL");
+        ds.setDatabaseName("website");
 
         /*try (Connection con = ds.getConnection();
                 CallableStatement cstmt = con.prepareCall("{call dbo.uspGetEmployeeManagers(?)}");) {
@@ -51,7 +51,11 @@ public class ConnectDataSource {
                 System.out.println();
             }
         }*/
+<<<<<<< HEAD
+        try {
+=======
        /* try {
+>>>>>>> 88ea3ea2272180b5b615423a371624af91e6c34b
         	Connection con = ds.getConnection();
         	System.out.println("Connection obtained");
         }
@@ -59,5 +63,5 @@ public class ConnectDataSource {
         catch (SQLException e) {
             e.printStackTrace();
         }
-    }*/
+    }
 }
