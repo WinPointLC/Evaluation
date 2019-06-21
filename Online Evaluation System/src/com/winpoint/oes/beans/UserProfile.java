@@ -504,9 +504,10 @@ public class UserProfile {
  *
  * @param email The email from the login page is passed to the function to validate the login.
  * @param password The password from the login page is passed to the function to validate the login.
+ * @return True if the login is successful. False if unsuccessful.
  */
 
-	public void login(String email, String password) {
+	public boolean login(String email, String password) {
 		LoginDao loginDao = new LoginDao();
 		return loginDao.login(email, password);
 	}
