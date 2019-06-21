@@ -25,17 +25,32 @@ public class LoginServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        //boolean flag = false;
 		response.getWriter().append("Served at: ").append(request.getContextPath());
-		System.out.println("IN servlet"
-				+ "");
+		
 		String email = request.getParameter("email");
 		String password = request.getParameter("Password");
+		
+		System.out.println("Email: "+email);
+		System.out.println("Password: "+password);
+		
+		//flag = new LoginHelper().validateLogin(email,password);
+		boolean flag;
 		LoginHelper loginHelper = new LoginHelper();
-		loginHelper.login(email,password);
+		flag = loginHelper.validateLogin("san","123");
+		if(flag==true) {
+			System.out.println("login successful");
+		}
+		else {
+			System.out.println("user not found");
+		}
+		/*if(flag==true) {
+			System.out.println("login successful");
+		}
 		
-		
-	
-		
+		else {
+			System.out.println("user not found");
+		}*/
 	}
 
 	/**
@@ -43,6 +58,7 @@ public class LoginServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		System.out.println("IN servlet"+ "");
 		doGet(request, response);
 	}
 

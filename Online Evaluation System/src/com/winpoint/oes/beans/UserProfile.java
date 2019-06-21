@@ -199,9 +199,10 @@ public class UserProfile {
 	public void setCreateDate(String createDate) {
 		this.createDate = createDate;
 	}
-	public void login(String email, String password) {
+	public boolean login(String email, String password) {
+		System.out.println("in userprofile bean email:" + email );
 		LoginDao loginDao = new LoginDao();
-		loginDao.login(email, password);
+		return loginDao.login(email, password);
 	}
 		
 }
