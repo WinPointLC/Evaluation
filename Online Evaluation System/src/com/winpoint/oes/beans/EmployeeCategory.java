@@ -5,9 +5,6 @@ public class EmployeeCategory {
 	private String empCategoryName;
 	private Integer createdBy;
 	private String createdDate;
-	public String getEmpCategoryID() {
-		return empCategoryID;
-	}
 	
 	public EmployeeCategory(String empCategoryID, String empCategoryName, Integer createdBy, String createdDate) {
 		super();
@@ -15,6 +12,10 @@ public class EmployeeCategory {
 		this.empCategoryName = empCategoryName;
 		this.createdBy = createdBy;
 		this.createdDate = createdDate;
+	}
+	
+	public String getEmpCategoryID() {
+		return empCategoryID;
 	}
 	public void setEmpCategoryID(String empCategoryID) {
 		this.empCategoryID = empCategoryID;

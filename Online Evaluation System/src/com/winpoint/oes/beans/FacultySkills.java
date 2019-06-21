@@ -5,6 +5,7 @@ public class FacultySkills {
 	private String skillSet;
 	private Integer createdBy;
 	private String createdDate;
+	
 	public Integer getUserId() {
 		return userId;
 	}

@@ -2,6 +2,11 @@ package com.winpoint.oes.beans;
 
 public class SecurityQuestions {
 
+	private Integer securityQuestionID;
+	private String question;
+	private Integer createdBy;
+	private String createdDate;
+
 	public SecurityQuestions(String createdDate, Integer securityQuestionID, String question, Integer createdBy) {
 		super();
 		this.createdDate = createdDate;
@@ -9,13 +14,7 @@ public class SecurityQuestions {
 		this.question = question;
 		this.createdBy = createdBy;
 	}
-	
-	private Integer securityQuestionID;
-	private String question;
-	private Integer createdBy;
-	private String createdDate;
-
-	
+		
 	public String getCreatedDate() {
 		return createdDate;
 	}
