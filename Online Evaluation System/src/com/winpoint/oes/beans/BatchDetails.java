@@ -1,5 +1,9 @@
 package com.winpoint.oes.beans;
-
+/**
+ * The class to store the Batch details of each course at WinPoint.
+ * @author Sanika
+ * 
+ */
 public class BatchDetails {
 
 	private String batchID;
@@ -10,6 +14,17 @@ public class BatchDetails {
 	private Integer createdBy;
 	private String createdDate;
 
+	/**
+	 * 
+	 * @param batchID Stores the ID of the batch.
+	 * @param courseID Stores and references the ID of the course.
+	 * @param facultyID ID of the faculty who is conducting the course.
+	 * @param startDate	Stores the Start date of the batch, in the form Java Date.
+	 * @param endDate Stores the end date of the batch, in the form Java Date.
+	 * @param createdBy Name of the person who created the batch.
+	 * @param createdDate Date of creation of batch.
+	 */
+	
 	public BatchDetails(String batchID, String courseID, String facultyID, String startDate, String endDate,
 			Integer createdBy, String createdDate) {
 		super();
