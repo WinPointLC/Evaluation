@@ -1,19 +1,21 @@
 package com.winpoint.oes.beans;
 
 public class Stream {
+	
 	private Integer streamID;
 	private String streamName;
 	private Integer createdBy;
 	private String createdDate;
-	public Integer getStreamID() {
-		return streamID;
-	}
+
 	public Stream(Integer streamID, String streamName, Integer createdBy, String createdDate) {
 		super();
 		this.streamID = streamID;
 		this.streamName = streamName;
 		this.createdBy = createdBy;
 		this.createdDate = createdDate;
+	}
+	public Integer getStreamID() {
+		return streamID;
 	}
 	public void setStreamID(Integer streamID) {
 		this.streamID = streamID;

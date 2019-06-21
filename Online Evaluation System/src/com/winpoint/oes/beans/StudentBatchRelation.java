@@ -10,10 +10,7 @@ public class StudentBatchRelation {
 	private String feeStatus;
 	private Integer createdBy;
 	private String createdDate;
-	public Integer getUserId() {
-		return userId;
-	}
-	
+
 	public StudentBatchRelation(Integer userId, Integer batchId, Boolean feedbackGiven, Boolean certificateGiven,
 			Integer courseAggr, String gradeId, String feeStatus, Integer createdBy, String createdDate) {
 		super();
@@ -27,7 +24,10 @@ public class StudentBatchRelation {
 		this.createdBy = createdBy;
 		this.createdDate = createdDate;
 	}
-	
+
+	public Integer getUserId() {
+		return userId;
+	}
 
 	public void setUserId(Integer userId) {
 		this.userId = userId;

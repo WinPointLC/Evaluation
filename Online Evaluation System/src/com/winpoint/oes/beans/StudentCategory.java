@@ -2,6 +2,11 @@ package com.winpoint.oes.beans;
 
 public class StudentCategory {
 	
+	private String studentCategoryID;
+	private String studentCategoryName;
+	private Integer createdBy;
+	private String createdDate;
+	
 	public StudentCategory(String studentCategoryID, String studentCategoryName, Integer createdBy, String createdDate) {
 		super();
 		this.studentCategoryID = studentCategoryID;
@@ -9,10 +14,6 @@ public class StudentCategory {
 		this.createdBy = createdBy;
 		this.createdDate = createdDate;
 	}
-	private String studentCategoryID;
-	private String studentCategoryName;
-	private Integer createdBy;
-	private String createdDate;
 	
 	public Integer getCreatedBy() {
 		return createdBy;

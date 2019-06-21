@@ -1,6 +1,15 @@
 package com.winpoint.oes.beans;
 
 public class BatchDetails {
+
+	private String batchID;
+	private String courseID;	
+	private String facultyID;
+	private String startDate;
+	private String endDate;
+	private Integer createdBy;
+	private String createdDate;
+
 	public BatchDetails(String batchID, String courseID, String facultyID, String startDate, String endDate,
 			Integer createdBy, String createdDate) {
 		super();
@@ -12,15 +21,6 @@ public class BatchDetails {
 		this.createdBy = createdBy;
 		this.createdDate = createdDate;
 	}
-
-
-	private String batchID;
-	private String courseID;	
-	private String facultyID;
-	private String startDate;
-	private String endDate;
-	private Integer createdBy;
-	private String createdDate;
 	
 		public Integer getCreatedBy() {
 		return createdBy;

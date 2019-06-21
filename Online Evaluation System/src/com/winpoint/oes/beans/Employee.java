@@ -1,6 +1,14 @@
 package com.winpoint.oes.beans;
 
 public class Employee {
+
+
+	private Integer userID;
+	private Double salary;
+	private String dateOfJoining;
+	private String empCategoryID;
+	private Integer createdBy;
+	private String createdDate;
 	
 	public Employee(Integer userID, Double salary, String dateOfJoining, String empCategoryID, Integer createdBy,
 			String createdDate) {
@@ -13,13 +21,6 @@ public class Employee {
 		this.createdDate = createdDate;
 	}
 
-	private Integer userID;
-	private Double salary;
-	private String dateOfJoining;
-	private String empCategoryID;
-	private Integer createdBy;
-	private String createdDate;
-	
 	public Integer getUserID() {
 		return userID;
 	}

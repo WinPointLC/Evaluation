@@ -1,6 +1,14 @@
 package com.winpoint.oes.beans;
 
 public class UserStudent {
+
+	private String studentID;
+	private String userID;
+	private String parentName;
+	private String parentNumber;
+	private String studentCategory;
+	private Integer createdBy;
+	private String createdDate;
 	
 	public UserStudent(String studentID, String userID, String parentName, String parentNumber, String studentCategory,
 			Integer createdBy, String createdDate) {
@@ -14,14 +22,6 @@ public class UserStudent {
 		this.createdDate = createdDate;
 	}
 
-	private String studentID;
-	private String userID;
-	private String parentName;
-	private String parentNumber;
-	private String studentCategory;
-	private Integer createdBy;
-	private String createdDate;
-	
 	public String getStudentID() {
 		return studentID;
 	}
