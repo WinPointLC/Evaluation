@@ -1,0 +1,76 @@
+body{
+  background-image: linear-gradient(132deg,rgb(107, 48, 213),rgb(23, 237, 207),rgb(245, 29, 146));
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-size: 400%,400%;
+  height: 100vh;
+  animation: BackgroundGradient 20s ease infinite;
+}
+@keyframes BackgroundGradient {
+  0%{background-position: 0% 50%;}
+  50%{background-position: 100% 50%}
+  100%{background-position: 0% 50%}
+}
+
+.container{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.col-sm-6{
+border: 1px solid rgba(228, 225, 226, 0.82);
+border-radius: 8px;
+background-color: #fff;
+}
+
+.form-login-heading{
+margin: 10% 0;
+
+letter-spacing: 8px;
+}
+
+#form-outter input{
+  border-top: none;
+  border-left:none;
+  border-right:none;
+}
+
+#form-outter input:hover{
+  transition-duration: 1s;
+  border-bottom:1px solid black;
+}
+#form-outter button{
+  margin-top: 8%;
+  padding-top: 2%;
+}
+
+.loginBtn{
+  width: 80%;
+  margin-left: 10%;
+  position: relative;
+  border-radius: 15px;
+  color: #fff;
+  border: 1px solid #fff ;
+}
+.loginBtn{
+
+  background-image: linear-gradient(132deg,rgb(107, 48, 213),rgb(23, 237, 207),rgb(245, 29, 146));
+  background-size: 400%,400%;
+  animation: BackgroundGradient 20s ease infinite;
+
+}
+.forget-pass a{
+  color: #DD4B39;
+  margin-top: 20%;
+  margin-left:63%;
+}
+.forget-pass a:hover{
+  color: rgb(236, 9, 9);
+}
+
+.form-group a{
+margin-left: 28%;
+}

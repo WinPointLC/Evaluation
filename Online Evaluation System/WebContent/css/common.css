@@ -1,0 +1,400 @@
+/* This is the common css which will be used throughout the website */
+
+* {
+     margin: 0;
+     padding: 0;
+     -webkit-box-sizing: border-box;
+             box-sizing: border-box;
+ }
+
+html{
+  background-color: #fff;
+  color: #080808;
+  font-family: 'Lato', 'Ariel', sans-serif;
+  font-size: 20px;
+  font-weight: 300;
+  text-rendering: optimizeLegibility;
+}
+
+/*--------------------HEADINGS---------------*/
+h1, h2, h3{
+  text-transform: uppercase;
+  text-align: center;
+}
+
+h1{
+  font-size: 200%;
+	margin: 0;
+	padding: 0 25px;
+	width: 100%;
+}
+
+h2{
+  font-size: 175%;
+}
+
+h3{
+  font-size: 150%;
+}
+
+h2::after, h3::after{
+  display: block;
+	content: "";
+	margin: 15px auto;
+	width: 75px;
+	text-align: center;
+	border-bottom: 2px solid #040da5;
+}
+
+.heading-container{
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	-webkit-transform: translate(-50%, -50%);
+	        transform: translate(-50%, -50%);
+}
+
+/*-------------------------IMAGES-------------------*/
+.hero-image{
+	width: 100%;
+	height: 100vh;
+	background-attachment: fixed;
+	background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.image-header{
+  color: #fff;
+}
+
+.section-contents{
+	background-color: #fff;
+	height: 100%;
+	padding-top: 30px;
+  margin-bottom: 10%;
+}
+
+/*-----------------------PARAGRAPHS----------------*/
+
+p, ul, ol{
+  font-size: 90%;
+  text-align: justify;
+}
+
+ul, ol{
+  padding-left: 20px;
+}
+
+/*---------------------BUTTONS-------------------*/
+
+.btn-container{
+  text-align: center;
+}
+
+.btn{
+  color: #3498db;
+  border: 1px solid #3498db;
+  background: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  margin: 10px;
+  -webkit-transition: 0.8s;
+  transition: 0.8s;
+  position: relative;
+  overflow: hidden;
+}
+
+.btn::before{
+  content: "";
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #3498db;
+  z-index: -1;
+  -webkit-transition: 0.8s;
+  transition: 0.8s;
+  bottom: 0;
+  border-radius: 50% 50% 0 0;
+  height: 0%;
+}
+
+.btn:hover{
+  color: #fff;
+  background-color: #020542;
+}
+
+.btn:hover::before{
+  height: 180%;
+}
+
+/*------------------LINKS-------------------*/
+a:link, a:active{
+  text-transform: capitalize;
+  color: #020752;
+  padding-bottom: 5px;
+}
+
+a:hover, a:visited{
+  text-transform: capitalize;
+  color: #3742fa;
+}
+
+/* ---------------------------------- */
+/* NAVBAR */
+/* ---------------------------------- */
+
+nav{
+  background-color: #020542;
+}
+
+.navbar{
+  opacity: 1;
+  width: 100%;
+  height: 125px;
+  position: fixed;
+  top: 0;
+  z-index: 1;
+}
+
+.dropdown-item:active, .dropdown-item:link,
+.dropdown-item:hover, .dropdown-item:visited{
+  text-transform: capitalize;
+  color: #000;
+}
+
+.navigation-left{
+  font-size: 110%;
+}
+
+.navigation-right{
+  margin-left: 20px;
+  font-size: 80%;
+}
+
+.nav-link:link, .nav-link:active{
+  text-transform: uppercase;
+  color: #fff;
+  padding-bottom: 2px;
+  border-bottom: 1px solid transparent;
+  -webkit-transition: 1s all;
+  transition: 1s all;
+}
+
+.nav-link:hover, .nav-link:visited{
+  text-transform: uppercase;
+  color: #fff;
+  border-bottom: 1px solid #fff;
+}
+
+.dropdown:hover>.dropdown-menu{
+  display: block;
+}
+
+.fa-bars{
+  color: #fff;
+  font-size: 150%
+}
+
+.fa-caret-right{
+  float: right;
+  margin-top: 8px;
+}
+
+.individual:hover>.dropdown-menu .individual-dropdown-menu{
+  display: block;
+  background-color: #000;
+}
+
+#navbarMenu{
+  background-color: #020542;
+}
+
+
+/* ---------------------------------- */
+/* VISION MISSION CORE VALUES SECTION */
+/* ---------------------------------- */
+
+.section-vision-mission{
+  padding-top: 40px;
+  background-color: #020542;
+}
+
+.section-vision-mission::after{
+  content: "";
+  display: block;
+  width: 96vw;
+  margin: 0 auto;
+  margin-top: 40px;
+  border-bottom: 1px solid #fff;
+}
+
+.section-vision-mission .container .row .col-md-4{
+  height: 500px;
+}
+
+.section-vision-mission .container .row .col-sm-12 .vision-container,
+.section-vision-mission .container .row .col-sm-12 .mission-container,
+.section-vision-mission .container .row .col-sm-12 .core-values-container{
+  text-align: center;
+}
+
+.vision-container, .mission-container, .core-values-container{
+	text-align: justify;
+  font-size: 85%;
+  height: 100%;
+  margin: 10px 20px;
+}
+
+.vision-container{
+  color: #eccc68;
+}
+
+.vision-container h2::after{
+	border-bottom: 2px solid #eccc68;
+}
+
+.mission-container{
+  color: #ffa502;
+}
+
+.vision-container h2, .core-values-container h2, .mission-container h2{
+  padding: 0;
+  margin: 0;
+}
+
+
+.mission-container h2::after{
+  border-bottom: 2px solid #ffa502;
+}
+
+.core-values-container{
+  color: #28ca6b;
+}
+
+.core-values-container h2::after{
+  border-bottom: 2px solid #28ca6b;
+}
+
+.first-letters{
+  font-size: 200%;
+  text-transform: capitalize;
+}
+
+/* ---------------------------------- */
+/* FOOTER */
+/* ---------------------------------- */
+
+footer{
+  background-color: #020542;
+  padding: 20px;
+  padding-bottom: 15px;
+  font-size: 80%;
+}
+
+.footer-nav{
+  list-style: none;
+  float: left;
+}
+
+.social-links{
+  list-style: none;
+  float: right;
+}
+
+.footer-nav li,
+.social-links li{
+  display: inline-block;
+  margin-right: 20px;
+}
+
+.footer-nav li:last-child,
+.social-links li:last-child{
+  margin-right: 0;
+}
+
+.footer-nav li a:link,
+.footer-nav li a:visited,
+.social-links li a:link,
+.social-links li a:visited{
+  text-decoration: none;
+  border: 0;
+  color: #fff;
+  -webkit-transition: color 0.2s;
+  transition: color 0.2s;
+}
+
+.social-links li a:link,
+.social-links li a:visited{
+  font-size: 160%;
+}
+
+.footer-nav li a:hover,
+.footer-nav li a:active,
+.social-links li a:hover,
+.social-links li a:active{
+  color: #ced6e0;
+}
+
+footer p{
+  color: #fff;
+  text-align: center;
+  margin-bottom: 0;
+  margin-left: 35px;
+}
+
+footer .row{
+  margin: 0 auto;
+}
+
+/* ------------------------------Go-to-top-button-and-reach-to-div-button-css----------------------*/
+
+#back2Top {
+  width: 40px;
+  line-height: 40px;
+  overflow: hidden;
+  z-index: 999;
+  display: none;
+  cursor: pointer;
+  position: fixed;
+  bottom: 170px;
+  right: 0;
+  color: black;
+  text-align: center;
+  font-size: 30px;
+  text-decoration: none;
+  padding-right: 70px;
+}
+
+#back2Top:hover {
+  color: #000;
+}
+
+.img-scroll {
+  animation-duration: 1.5s;
+  position: fixed;
+  left: 45%;
+  width: 50px;
+}
+
+.button-down a {
+  margin: 20px 0 0 60px;
+}
+
+.fas.fa-angle-up {
+  color: #555;
+  border-radius: 50%;
+  border: 4px solid #555;
+  padding: 2px;
+  padding-left: 8px;
+  padding-right: 8px;
+}
+
+/* Make it absolute wrt hero image and not heading container */
+.button-down {
+  position: absolute;
+  bottom: 10%;
+  left: 50%;
+  transform: translate(-75%, -50%);
+}
