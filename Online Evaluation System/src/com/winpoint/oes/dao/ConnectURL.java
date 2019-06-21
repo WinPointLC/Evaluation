@@ -27,7 +27,6 @@ import java.sql.Statement;
 public class ConnectURL {
     public static void main(String[] args) {
 
-        // Create a variable for the connection string.
         String connectionUrl = "jdbc:sqlserver://DESKTOP-EKU7G3D\\SQLEXPRESS:1433;databaseName=TSQL;user=DESKTOP-EKU7G3D\\DELL;password=null";
 
        /* try (Connection con = DriverManager.getConnection(connectionUrl); Statement stmt = con.createStatement();) {
