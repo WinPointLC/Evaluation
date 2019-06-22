@@ -1,84 +1,76 @@
 package com.winpoint.oes.beans;
 
+import java.util.Date;
+
 public class EmployeeCategory {
 	/**
 	 * Stores the Category of the employee, including the ID and Category name.
 	 */
-	private String empCategoryID;
-	private String empCategoryName;
+	private Integer employeeCategoryId;
+	private String employeeCategoryName;
 	private Integer createdBy;
-	private String createdDate;
-	
+	private Date createdDate;
 	/**
-	 * 
-	 * @param empCategoryID ID of the category name stored.
-	 * @param empCategoryName Name of the category, i.e. Administrator, Faculty or Non-teaching staff.
-	 * @param createdBy	Stores the name of the creator of employee category.
-	 * @param createdDate Stored the date of addition of the employee category.
+	 * @param employeeCategoryId
+	 * @param employeeCategoryName
+	 * @param createdBy
+	 * @param createdDate
 	 */
-	public EmployeeCategory(String empCategoryID, String empCategoryName, Integer createdBy, String createdDate) {
+	public EmployeeCategory(Integer employeeCategoryId, String employeeCategoryName, Integer createdBy,
+			Date createdDate) {
 		super();
-		this.empCategoryID = empCategoryID;
-		this.empCategoryName = empCategoryName;
+		this.employeeCategoryId = employeeCategoryId;
+		this.employeeCategoryName = employeeCategoryName;
 		this.createdBy = createdBy;
 		this.createdDate = createdDate;
 	}
-
 	/**
-	 * @return the empCategoryID
+	 * @return the employeeCategoryId
 	 */
-	public String getEmpCategoryID() {
-		return empCategoryID;
+	public Integer getEmployeeCategoryId() {
+		return employeeCategoryId;
 	}
-
 	/**
-	 * @param empCategoryID the empCategoryID to set
+	 * @param employeeCategoryId the employeeCategoryId to set
 	 */
-	public void setEmpCategoryID(String empCategoryID) {
-		this.empCategoryID = empCategoryID;
+	public void setEmployeeCategoryId(Integer employeeCategoryId) {
+		this.employeeCategoryId = employeeCategoryId;
 	}
-
 	/**
-	 * @return the empCategoryName
+	 * @return the employeeCategoryName
 	 */
-	public String getEmpCategoryName() {
-		return empCategoryName;
+	public String getEmployeeCategoryName() {
+		return employeeCategoryName;
 	}
-
 	/**
-	 * @param empCategoryName the empCategoryName to set
+	 * @param employeeCategoryName the employeeCategoryName to set
 	 */
-	public void setEmpCategoryName(String empCategoryName) {
-		this.empCategoryName = empCategoryName;
+	public void setEmployeeCategoryName(String employeeCategoryName) {
+		this.employeeCategoryName = employeeCategoryName;
 	}
-
 	/**
 	 * @return the createdBy
 	 */
 	public Integer getCreatedBy() {
 		return createdBy;
 	}
-
 	/**
 	 * @param createdBy the createdBy to set
 	 */
 	public void setCreatedBy(Integer createdBy) {
 		this.createdBy = createdBy;
 	}
-
 	/**
 	 * @return the createdDate
 	 */
-	public String getCreatedDate() {
+	public Date getCreatedDate() {
 		return createdDate;
 	}
-
 	/**
 	 * @param createdDate the createdDate to set
 	 */
-	public void setCreatedDate(String createdDate) {
+	public void setCreatedDate(Date createdDate) {
 		this.createdDate = createdDate;
 	}
-	
-	
+		
 }

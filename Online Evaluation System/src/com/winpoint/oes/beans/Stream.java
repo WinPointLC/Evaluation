@@ -1,35 +1,37 @@
 package com.winpoint.oes.beans;
 
+import java.util.Date;
+
 public class Stream {
 	
-	private Integer streamID;
+	private Integer streamId;
 	private String streamName;
 	private Integer createdBy;
-	private String createdDate;
+	private Date createdDate;
 	/**
-	 * @param streamID
+	 * @param streamId
 	 * @param streamName
 	 * @param createdBy
 	 * @param createdDate
 	 */
-	public Stream(Integer streamID, String streamName, Integer createdBy, String createdDate) {
+	public Stream(Integer streamId, String streamName, Integer createdBy, Date createdDate) {
 		super();
-		this.streamID = streamID;
+		this.streamId = streamId;
 		this.streamName = streamName;
 		this.createdBy = createdBy;
 		this.createdDate = createdDate;
 	}
 	/**
-	 * @return the streamID
+	 * @return the streamId
 	 */
-	public Integer getStreamID() {
-		return streamID;
+	public Integer getStreamId() {
+		return streamId;
 	}
 	/**
-	 * @param streamID the streamID to set
+	 * @param streamId the streamId to set
 	 */
-	public void setStreamID(Integer streamID) {
-		this.streamID = streamID;
+	public void setStreamId(Integer streamId) {
+		this.streamId = streamId;
 	}
 	/**
 	 * @return the streamName
@@ -58,14 +60,14 @@ public class Stream {
 	/**
 	 * @return the createdDate
 	 */
-	public String getCreatedDate() {
+	public Date getCreatedDate() {
 		return createdDate;
 	}
 	/**
 	 * @param createdDate the createdDate to set
 	 */
-	public void setCreatedDate(String createdDate) {
+	public void setCreatedDate(Date createdDate) {
 		this.createdDate = createdDate;
 	}
-
+	
 }

@@ -1,96 +1,126 @@
 package com.winpoint.oes.beans;
+
+import java.util.Date;
+
 /**
  * The class to store the Batch details of each course at WinPoint.
- * @author Sanika
+ * @author SanikaGandhe
  * 
  */
 public class BatchDetails {
 
-	private String batchID;
-	private String courseID;	
-	private String facultyID;
-	private String startDate;
-	private String endDate;
+	private String batchId;
+	private Integer courseId;	
+	private Integer faculty;
+	private Date beginDate;
+	private Date endDate;
 	private Integer createdBy;
-	private String createdDate;
-
-	/**
-	 * 
-	 * @param batchID Stores the ID of the batch.
-	 * @param courseID Stores and references the ID of the course.
-	 * @param facultyID ID of the faculty who is conducting the course.
-	 * @param startDate	Stores the Start date of the batch, in the form Java Date.
-	 * @param endDate Stores the end date of the batch, in the form Java Date.
-	 * @param createdBy Name of the person who created the batch.
-	 * @param createdDate Date of creation of batch.
-	 */
+	private Date createdDate;
 	
-	public BatchDetails(String batchID, String courseID, String facultyID, String startDate, String endDate,
-			Integer createdBy, String createdDate) {
+	/**
+	 * @param batchId
+	 * @param courseId
+	 * @param faculty
+	 * @param beginDate
+	 * @param endDate
+	 * @param createdBy
+	 * @param createdDate
+	 */
+	public BatchDetails(String batchId, Integer courseId, Integer faculty, Date beginDate, Date endDate,
+			Integer createdBy, Date createdDate) {
 		super();
-		this.batchID = batchID;
-		this.courseID = courseID;
-		this.facultyID = facultyID;
-		this.startDate = startDate;
+		this.batchId = batchId;
+		this.courseId = courseId;
+		this.faculty = faculty;
+		this.beginDate = beginDate;
 		this.endDate = endDate;
 		this.createdBy = createdBy;
 		this.createdDate = createdDate;
 	}
 	
-		public Integer getCreatedBy() {
+	/**
+	 * @return the batchId
+	 */
+	public String getBatchId() {
+		return batchId;
+	}
+	/**
+	 * @param batchId the batchId to set
+	 */
+	public void setBatchId(String batchId) {
+		this.batchId = batchId;
+	}
+	/**
+	 * @return the courseId
+	 */
+	public Integer getCourseId() {
+		return courseId;
+	}
+	/**
+	 * @param courseId the courseId to set
+	 */
+	public void setCourseId(Integer courseId) {
+		this.courseId = courseId;
+	}
+	/**
+	 * @return the faculty
+	 */
+	public Integer getFaculty() {
+		return faculty;
+	}
+	/**
+	 * @param faculty the faculty to set
+	 */
+	public void setFaculty(Integer faculty) {
+		this.faculty = faculty;
+	}
+	/**
+	 * @return the beginDate
+	 */
+	public Date getBeginDate() {
+		return beginDate;
+	}
+	/**
+	 * @param beginDate the beginDate to set
+	 */
+	public void setBeginDate(Date beginDate) {
+		this.beginDate = beginDate;
+	}
+	/**
+	 * @return the endDate
+	 */
+	public Date getEndDate() {
+		return endDate;
+	}
+	/**
+	 * @param endDate the endDate to set
+	 */
+	public void setEndDate(Date endDate) {
+		this.endDate = endDate;
+	}
+	/**
+	 * @return the createdBy
+	 */
+	public Integer getCreatedBy() {
 		return createdBy;
 	}
-
+	/**
+	 * @param createdBy the createdBy to set
+	 */
 	public void setCreatedBy(Integer createdBy) {
 		this.createdBy = createdBy;
 	}
-
-	public String getCreatedDate() {
+	/**
+	 * @return the createdDate
+	 */
+	public Date getCreatedDate() {
 		return createdDate;
 	}
-
-	public void setCreatedDate(String createdDate) {
+	/**
+	 * @param createdDate the createdDate to set
+	 */
+	public void setCreatedDate(Date createdDate) {
 		this.createdDate = createdDate;
-	}
-
-	public String getBatchID() {
-		return batchID;
-	}
-	
-	public void setBatchID(String batchID) {
-		this.batchID = batchID;
-	}
-	
-	public String getCourseID() {
-		return courseID;
-	}
-	
-	public void setCourseID(String courseID) {
-		this.courseID = courseID;
-	}
-	
-	public String getFacultyID() {
-		return facultyID;
-	}
-	
-	public void setFacultyID(String facultyID) {
-		this.facultyID = facultyID;
-	}
-	
-	public String getStartDate() {
-		return startDate;
-	}
-	
-	public void setStartDate(String startDate) {
-		this.startDate = startDate;
-	}
-	
-	public String getEndDate() {
-		return endDate;
-	}
-	
-	public void setEndDate(String endDate) {
-		this.endDate = endDate;
 	}
 
 }

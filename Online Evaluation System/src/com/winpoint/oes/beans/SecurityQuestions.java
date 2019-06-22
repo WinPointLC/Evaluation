@@ -1,47 +1,54 @@
 package com.winpoint.oes.beans;
 
+import java.util.Date;
+
+/**
+ * The class will store the ID of Security Questions already added as well as add them dynamically.
+ * @author krish
+ *
+ */
 public class SecurityQuestions {
 
-	private Integer securityQuestionID;
-	private String question;
+	private Integer securityQuestionId;
+	private String securityQuestion;
 	private Integer createdBy;
-	private String createdDate;
+	private Date createdDate;
 	/**
-	 * @param securityQuestionID
-	 * @param question
+	 * @param securityQuestionId
+	 * @param securityQuestion
 	 * @param createdBy
 	 * @param createdDate
 	 */
-	public SecurityQuestions(Integer securityQuestionID, String question, Integer createdBy, String createdDate) {
+	public SecurityQuestions(Integer securityQuestionId, String securityQuestion, Integer createdBy, Date createdDate) {
 		super();
-		this.securityQuestionID = securityQuestionID;
-		this.question = question;
+		this.securityQuestionId = securityQuestionId;
+		this.securityQuestion = securityQuestion;
 		this.createdBy = createdBy;
 		this.createdDate = createdDate;
 	}
 	/**
-	 * @return the securityQuestionID
+	 * @return the securityQuestionId
 	 */
-	public Integer getSecurityQuestionID() {
-		return securityQuestionID;
+	public Integer getSecurityQuestionId() {
+		return securityQuestionId;
 	}
 	/**
-	 * @param securityQuestionID the securityQuestionID to set
+	 * @param securityQuestionId the securityQuestionId to set
 	 */
-	public void setSecurityQuestionID(Integer securityQuestionID) {
-		this.securityQuestionID = securityQuestionID;
+	public void setSecurityQuestionId(Integer securityQuestionId) {
+		this.securityQuestionId = securityQuestionId;
 	}
 	/**
-	 * @return the question
+	 * @return the securityQuestion
 	 */
-	public String getQuestion() {
-		return question;
+	public String getSecurityQuestion() {
+		return securityQuestion;
 	}
 	/**
-	 * @param question the question to set
+	 * @param securityQuestion the securityQuestion to set
 	 */
-	public void setQuestion(String question) {
-		this.question = question;
+	public void setSecurityQuestion(String securityQuestion) {
+		this.securityQuestion = securityQuestion;
 	}
 	/**
 	 * @return the createdBy
@@ -58,13 +65,14 @@ public class SecurityQuestions {
 	/**
 	 * @return the createdDate
 	 */
-	public String getCreatedDate() {
+	public Date getCreatedDate() {
 		return createdDate;
 	}
 	/**
 	 * @param createdDate the createdDate to set
 	 */
-	public void setCreatedDate(String createdDate) {
+	public void setCreatedDate(Date createdDate) {
 		this.createdDate = createdDate;
 	}
+	
 }

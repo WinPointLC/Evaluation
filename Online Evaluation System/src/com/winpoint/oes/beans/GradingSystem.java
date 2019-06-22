@@ -1,15 +1,16 @@
 package com.winpoint.oes.beans;
 
+import java.util.Date;
+
 public class GradingSystem {
 	/**
 	 * The class for calculating the Grades of the user as per his evaluation test for a course.
 	 */
-	private Integer gradeId;
+	private String gradeId;
 	private Integer marksLowerLimit;
 	private Integer marksHigherLimit;
 	private Integer createdBy;
-	private String createdDate;
-	
+	private Date createdDate;
 	/**
 	 * @param gradeId
 	 * @param marksLowerLimit
@@ -17,9 +18,8 @@ public class GradingSystem {
 	 * @param createdBy
 	 * @param createdDate
 	 */
-	
-	public GradingSystem(Integer gradeId, Integer marksLowerLimit, Integer marksHigherLimit, Integer createdBy,
-			String createdDate) {
+	public GradingSystem(String gradeId, Integer marksLowerLimit, Integer marksHigherLimit, Integer createdBy,
+			Date createdDate) {
 		super();
 		this.gradeId = gradeId;
 		this.marksLowerLimit = marksLowerLimit;
@@ -30,13 +30,13 @@ public class GradingSystem {
 	/**
 	 * @return the gradeId
 	 */
-	public Integer getGradeId() {
+	public String getGradeId() {
 		return gradeId;
 	}
 	/**
 	 * @param gradeId the gradeId to set
 	 */
-	public void setGradeId(Integer gradeId) {
+	public void setGradeId(String gradeId) {
 		this.gradeId = gradeId;
 	}
 	/**
@@ -78,15 +78,14 @@ public class GradingSystem {
 	/**
 	 * @return the createdDate
 	 */
-	public String getCreatedDate() {
+	public Date getCreatedDate() {
 		return createdDate;
 	}
 	/**
 	 * @param createdDate the createdDate to set
 	 */
-	public void setCreatedDate(String createdDate) {
+	public void setCreatedDate(Date createdDate) {
 		this.createdDate = createdDate;
 	}
-	
-	
+
 }

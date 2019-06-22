@@ -1,36 +1,37 @@
 package com.winpoint.oes.beans;
 
+import java.util.Date;
+
 public class StudentCategory {
 	
-	private String studentCategoryID;
+	private String studentCategoryId;
 	private String studentCategoryName;
 	private Integer createdBy;
-	private String createdDate;
+	private Date createdDate;
 	/**
-	 * @param studentCategoryID
+	 * @param studentCategoryId
 	 * @param studentCategoryName
 	 * @param createdBy
 	 * @param createdDate
 	 */
-	public StudentCategory(String studentCategoryID, String studentCategoryName, Integer createdBy,
-			String createdDate) {
+	public StudentCategory(String studentCategoryId, String studentCategoryName, Integer createdBy, Date createdDate) {
 		super();
-		this.studentCategoryID = studentCategoryID;
+		this.studentCategoryId = studentCategoryId;
 		this.studentCategoryName = studentCategoryName;
 		this.createdBy = createdBy;
 		this.createdDate = createdDate;
 	}
 	/**
-	 * @return the studentCategoryID
+	 * @return the studentCategoryId
 	 */
-	public String getStudentCategoryID() {
-		return studentCategoryID;
+	public String getStudentCategoryId() {
+		return studentCategoryId;
 	}
 	/**
-	 * @param studentCategoryID the studentCategoryID to set
+	 * @param studentCategoryId the studentCategoryId to set
 	 */
-	public void setStudentCategoryID(String studentCategoryID) {
-		this.studentCategoryID = studentCategoryID;
+	public void setStudentCategoryId(String studentCategoryId) {
+		this.studentCategoryId = studentCategoryId;
 	}
 	/**
 	 * @return the studentCategoryName
@@ -59,13 +60,13 @@ public class StudentCategory {
 	/**
 	 * @return the createdDate
 	 */
-	public String getCreatedDate() {
+	public Date getCreatedDate() {
 		return createdDate;
 	}
 	/**
 	 * @param createdDate the createdDate to set
 	 */
-	public void setCreatedDate(String createdDate) {
+	public void setCreatedDate(Date createdDate) {
 		this.createdDate = createdDate;
 	}
 	

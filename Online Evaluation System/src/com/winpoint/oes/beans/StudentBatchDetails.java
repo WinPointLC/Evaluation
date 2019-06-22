@@ -1,6 +1,8 @@
 package com.winpoint.oes.beans;
 
-public class StudentBatchRelation {
+import java.util.Date;
+
+public class StudentBatchDetails {
 	private Integer userId;
 	private Integer batchId;
 	private Boolean isFeedbackGiven;
@@ -9,7 +11,7 @@ public class StudentBatchRelation {
 	private String gradeId;
 	private String feeStatus;
 	private Integer createdBy;
-	private String createdDate;
+	private Date createdDate;
 	/**
 	 * @param userId
 	 * @param batchId
@@ -21,8 +23,8 @@ public class StudentBatchRelation {
 	 * @param createdBy
 	 * @param createdDate
 	 */
-	public StudentBatchRelation(Integer userId, Integer batchId, Boolean isFeedbackGiven, Boolean isCertificateGiven,
-			Integer courseAggr, String gradeId, String feeStatus, Integer createdBy, String createdDate) {
+	public StudentBatchDetails(Integer userId, Integer batchId, Boolean isFeedbackGiven, Boolean isCertificateGiven,
+			Integer courseAggr, String gradeId, String feeStatus, Integer createdBy, Date createdDate) {
 		super();
 		this.userId = userId;
 		this.batchId = batchId;
@@ -133,14 +135,14 @@ public class StudentBatchRelation {
 	/**
 	 * @return the createdDate
 	 */
-	public String getCreatedDate() {
+	public Date getCreatedDate() {
 		return createdDate;
 	}
 	/**
 	 * @param createdDate the createdDate to set
 	 */
-	public void setCreatedDate(String createdDate) {
+	public void setCreatedDate(Date createdDate) {
 		this.createdDate = createdDate;
 	}
-
+	
 }

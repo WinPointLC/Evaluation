@@ -2,23 +2,54 @@ package com.winpoint.oes.beans;
 
 import java.util.Date;
 
-public class DifficultyLevel {
+public class TestDifficulty {
+	private String testId;
+	private Integer topicId;
 	private Integer difficultyLevelId;
-	private String difficultyLevelName;
+	private Integer numberOfQuestions;
 	private Integer createdBy;
 	private Date createdDate;
 	/**
+	 * @param testId
+	 * @param topicId
 	 * @param difficultyLevelId
-	 * @param difficultyLevelName
+	 * @param numberOfQuestions
 	 * @param createdBy
 	 * @param createdDate
 	 */
-	public DifficultyLevel(Integer difficultyLevelId, String difficultyLevelName, Integer createdBy, Date createdDate) {
+	public TestDifficulty(String testId, Integer topicId, Integer difficultyLevelId, Integer numberOfQuestions,
+			Integer createdBy, Date createdDate) {
 		super();
+		this.testId = testId;
+		this.topicId = topicId;
 		this.difficultyLevelId = difficultyLevelId;
-		this.difficultyLevelName = difficultyLevelName;
+		this.numberOfQuestions = numberOfQuestions;
 		this.createdBy = createdBy;
 		this.createdDate = createdDate;
+	}
+	/**
+	 * @return the testId
+	 */
+	public String getTestId() {
+		return testId;
+	}
+	/**
+	 * @param testId the testId to set
+	 */
+	public void setTestId(String testId) {
+		this.testId = testId;
+	}
+	/**
+	 * @return the topicId
+	 */
+	public Integer getTopicId() {
+		return topicId;
+	}
+	/**
+	 * @param topicId the topicId to set
+	 */
+	public void setTopicId(Integer topicId) {
+		this.topicId = topicId;
 	}
 	/**
 	 * @return the difficultyLevelId
@@ -33,16 +64,16 @@ public class DifficultyLevel {
 		this.difficultyLevelId = difficultyLevelId;
 	}
 	/**
-	 * @return the difficultyLevelName
+	 * @return the numberOfQuestions
 	 */
-	public String getDifficultyLevelName() {
-		return difficultyLevelName;
+	public Integer getNumberOfQuestions() {
+		return numberOfQuestions;
 	}
 	/**
-	 * @param difficultyLevelName the difficultyLevelName to set
+	 * @param numberOfQuestions the numberOfQuestions to set
 	 */
-	public void setDifficultyLevelName(String difficultyLevelName) {
-		this.difficultyLevelName = difficultyLevelName;
+	public void setNumberOfQuestions(Integer numberOfQuestions) {
+		this.numberOfQuestions = numberOfQuestions;
 	}
 	/**
 	 * @return the createdBy

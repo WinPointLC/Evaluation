@@ -1,53 +1,55 @@
 package com.winpoint.oes.beans;
 
+import java.util.Date;
+
 public class Topic {
-	private Integer courseID;
-	private Integer topicID;
+	private Integer courseId;
+	private Integer topicId;
 	private String topicName;
 	private Integer minNoOfQuestionsForTest;
 	private Integer createdBy;
-	private String createdDate;
+	private Date createdDate;
 	/**
-	 * @param courseID
-	 * @param topicID
+	 * @param courseId
+	 * @param topicId
 	 * @param topicName
 	 * @param minNoOfQuestionsForTest
 	 * @param createdBy
 	 * @param createdDate
 	 */
-	public Topic(Integer courseID, Integer topicID, String topicName, Integer minNoOfQuestionsForTest,
-			Integer createdBy, String createdDate) {
+	public Topic(Integer courseId, Integer topicId, String topicName, Integer minNoOfQuestionsForTest,
+			Integer createdBy, Date createdDate) {
 		super();
-		this.courseID = courseID;
-		this.topicID = topicID;
+		this.courseId = courseId;
+		this.topicId = topicId;
 		this.topicName = topicName;
 		this.minNoOfQuestionsForTest = minNoOfQuestionsForTest;
 		this.createdBy = createdBy;
 		this.createdDate = createdDate;
 	}
 	/**
-	 * @return the courseID
+	 * @return the courseId
 	 */
-	public Integer getCourseID() {
-		return courseID;
+	public Integer getCourseId() {
+		return courseId;
 	}
 	/**
-	 * @param courseID the courseID to set
+	 * @param courseId the courseId to set
 	 */
-	public void setCourseID(Integer courseID) {
-		this.courseID = courseID;
+	public void setCourseId(Integer courseId) {
+		this.courseId = courseId;
 	}
 	/**
-	 * @return the topicID
+	 * @return the topicId
 	 */
-	public Integer getTopicID() {
-		return topicID;
+	public Integer getTopicId() {
+		return topicId;
 	}
 	/**
-	 * @param topicID the topicID to set
+	 * @param topicId the topicId to set
 	 */
-	public void setTopicID(Integer topicID) {
-		this.topicID = topicID;
+	public void setTopicId(Integer topicId) {
+		this.topicId = topicId;
 	}
 	/**
 	 * @return the topicName
@@ -88,13 +90,13 @@ public class Topic {
 	/**
 	 * @return the createdDate
 	 */
-	public String getCreatedDate() {
+	public Date getCreatedDate() {
 		return createdDate;
 	}
 	/**
 	 * @param createdDate the createdDate to set
 	 */
-	public void setCreatedDate(String createdDate) {
+	public void setCreatedDate(Date createdDate) {
 		this.createdDate = createdDate;
 	}
 	

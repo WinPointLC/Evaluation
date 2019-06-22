@@ -1,82 +1,74 @@
 package com.winpoint.oes.beans;
 
+import java.util.Date;
+
 public class EvaluationType {
 	/**
 	 * Stores the information of the evaluation type for a course.
 	 */
-	private Integer evaluationTypeID;
+	private Integer evaluationTypeId;
 	private String evaluationTypeName;
 	private Integer createdBy;
-	private String createdDate;
-	
+	private Date createdDate;
 	/**
-	 * The constructor for the class EvaluationType.
-	 * @param evaluationTypeID Stores the ID of the type of evaluation conducted for a specific course.
-	 * @param evaluationTypeName What kind of the evaluation is to be conducted for the course is given in this field.
-	 * @param createdBy Name of the person who added the specific evaluation test type, like MCQs or Subjective questions. 
-	 * @param createdDate Date of addition of the evaluation type.
+	 * @param evaluationTypeId
+	 * @param evaluationTypeName
+	 * @param createdBy
+	 * @param createdDate
 	 */
-	public EvaluationType(Integer evaluationTypeID, String evaluationTypeName, Integer createdBy, String createdDate) {
+	public EvaluationType(Integer evaluationTypeId, String evaluationTypeName, Integer createdBy, Date createdDate) {
 		super();
-		this.evaluationTypeID = evaluationTypeID;
+		this.evaluationTypeId = evaluationTypeId;
 		this.evaluationTypeName = evaluationTypeName;
 		this.createdBy = createdBy;
 		this.createdDate = createdDate;
 	}
-
 	/**
-	 * @return the evaluationTypeID
+	 * @return the evaluationTypeId
 	 */
-	public Integer getEvaluationTypeID() {
-		return evaluationTypeID;
+	public Integer getEvaluationTypeId() {
+		return evaluationTypeId;
 	}
-
 	/**
-	 * @param evaluationTypeID the evaluationTypeID to set
+	 * @param evaluationTypeId the evaluationTypeId to set
 	 */
-	public void setEvaluationTypeID(Integer evaluationTypeID) {
-		this.evaluationTypeID = evaluationTypeID;
+	public void setEvaluationTypeId(Integer evaluationTypeId) {
+		this.evaluationTypeId = evaluationTypeId;
 	}
-
 	/**
 	 * @return the evaluationTypeName
 	 */
 	public String getEvaluationTypeName() {
 		return evaluationTypeName;
 	}
-
 	/**
 	 * @param evaluationTypeName the evaluationTypeName to set
 	 */
 	public void setEvaluationTypeName(String evaluationTypeName) {
 		this.evaluationTypeName = evaluationTypeName;
 	}
-
 	/**
 	 * @return the createdBy
 	 */
 	public Integer getCreatedBy() {
 		return createdBy;
 	}
-
 	/**
 	 * @param createdBy the createdBy to set
 	 */
 	public void setCreatedBy(Integer createdBy) {
 		this.createdBy = createdBy;
 	}
-
 	/**
 	 * @return the createdDate
 	 */
-	public String getCreatedDate() {
+	public Date getCreatedDate() {
 		return createdDate;
 	}
-
 	/**
 	 * @param createdDate the createdDate to set
 	 */
-	public void setCreatedDate(String createdDate) {
+	public void setCreatedDate(Date createdDate) {
 		this.createdDate = createdDate;
 	}
 	

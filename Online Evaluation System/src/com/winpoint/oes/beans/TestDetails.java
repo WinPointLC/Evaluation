@@ -1,30 +1,32 @@
 package com.winpoint.oes.beans;
 
+import java.util.Date;
+
 public class TestDetails {
-	private String userTestID;
-	private Integer userID;
-	private String testID;
+	private String userTestId;
+	private Integer userId;
+	private String testId;
 	private Integer marksReceived;
 	private Integer noOfRegistration;
 	private String feeStatus;
 	private Integer createdBy;
-	private String createdDate;
+	private Date createdDate;
 	/**
-	 * @param userTestID
-	 * @param userID
-	 * @param testID
+	 * @param userTestId
+	 * @param userId
+	 * @param testId
 	 * @param marksReceived
 	 * @param noOfRegistration
 	 * @param feeStatus
 	 * @param createdBy
 	 * @param createdDate
 	 */
-	public TestDetails(String userTestID, Integer userID, String testID, Integer marksReceived,
-			Integer noOfRegistration, String feeStatus, Integer createdBy, String createdDate) {
+	public TestDetails(String userTestId, Integer userId, String testId, Integer marksReceived,
+			Integer noOfRegistration, String feeStatus, Integer createdBy, Date createdDate) {
 		super();
-		this.userTestID = userTestID;
-		this.userID = userID;
-		this.testID = testID;
+		this.userTestId = userTestId;
+		this.userId = userId;
+		this.testId = testId;
 		this.marksReceived = marksReceived;
 		this.noOfRegistration = noOfRegistration;
 		this.feeStatus = feeStatus;
@@ -32,40 +34,40 @@ public class TestDetails {
 		this.createdDate = createdDate;
 	}
 	/**
-	 * @return the userTestID
+	 * @return the userTestId
 	 */
-	public String getUserTestID() {
-		return userTestID;
+	public String getUserTestId() {
+		return userTestId;
 	}
 	/**
-	 * @param userTestID the userTestID to set
+	 * @param userTestId the userTestId to set
 	 */
-	public void setUserTestID(String userTestID) {
-		this.userTestID = userTestID;
+	public void setUserTestId(String userTestId) {
+		this.userTestId = userTestId;
 	}
 	/**
-	 * @return the userID
+	 * @return the userId
 	 */
-	public Integer getUserID() {
-		return userID;
+	public Integer getUserId() {
+		return userId;
 	}
 	/**
-	 * @param userID the userID to set
+	 * @param userId the userId to set
 	 */
-	public void setUserID(Integer userID) {
-		this.userID = userID;
+	public void setUserId(Integer userId) {
+		this.userId = userId;
 	}
 	/**
-	 * @return the testID
+	 * @return the testId
 	 */
-	public String getTestID() {
-		return testID;
+	public String getTestId() {
+		return testId;
 	}
 	/**
-	 * @param testID the testID to set
+	 * @param testId the testId to set
 	 */
-	public void setTestID(String testID) {
-		this.testID = testID;
+	public void setTestId(String testId) {
+		this.testId = testId;
 	}
 	/**
 	 * @return the marksReceived
@@ -118,14 +120,14 @@ public class TestDetails {
 	/**
 	 * @return the createdDate
 	 */
-	public String getCreatedDate() {
+	public Date getCreatedDate() {
 		return createdDate;
 	}
 	/**
 	 * @param createdDate the createdDate to set
 	 */
-	public void setCreatedDate(String createdDate) {
+	public void setCreatedDate(Date createdDate) {
 		this.createdDate = createdDate;
 	}
-
+	
 }
