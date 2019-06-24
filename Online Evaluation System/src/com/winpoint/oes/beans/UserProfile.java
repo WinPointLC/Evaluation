@@ -29,7 +29,7 @@ public class UserProfile {
 	private String occupation;
 	private String organisation;
 	private String designation;
-	private String Domain;
+	private String domain;
 	private String role;
 	private Integer experience;
 	private Integer createdBy;
@@ -85,299 +85,346 @@ public class UserProfile {
 		this.occupation = occupation;
 		this.organisation = organisation;
 		this.designation = designation;
-		Domain = domain;
+		this.domain = domain;
 		this.role = role;
 		this.experience = experience;
 		this.createdBy = createdBy;
 		this.createDate = createDate;
 	}
+	
 	/**
 	 * @return the userId
 	 */
 	public Integer getUserId() {
 		return userId;
 	}
+	
 	/**
 	 * @param userId the userId to set
 	 */
 	public void setUserId(Integer userId) {
 		this.userId = userId;
 	}
+	
 	/**
 	 * @return the firstName
 	 */
 	public String getFirstName() {
 		return firstName;
 	}
+	
 	/**
 	 * @param firstName the firstName to set
 	 */
 	public void setFirstName(String firstName) {
 		this.firstName = firstName;
 	}
+	
 	/**
 	 * @return the lastName
 	 */
 	public String getLastName() {
 		return lastName;
 	}
+	
 	/**
 	 * @param lastName the lastName to set
 	 */
 	public void setLastName(String lastName) {
 		this.lastName = lastName;
 	}
+	
 	/**
 	 * @return the email
 	 */
 	public String getEmail() {
 		return email;
 	}
+	
 	/**
 	 * @param email the email to set
 	 */
 	public void setEmail(String email) {
 		this.email = email;
 	}
+	
 	/**
 	 * @return the mobileNumber
 	 */
 	public String getMobileNumber() {
 		return mobileNumber;
 	}
+	
 	/**
 	 * @param mobileNumber the mobileNumber to set
 	 */
 	public void setMobileNumber(String mobileNumber) {
 		this.mobileNumber = mobileNumber;
 	}
+	
 	/**
 	 * @return the address
 	 */
 	public String getAddress() {
 		return address;
 	}
+	
 	/**
 	 * @param address the address to set
 	 */
 	public void setAddress(String address) {
 		this.address = address;
 	}
+	
 	/**
 	 * @return the birthDate
 	 */
 	public Date getBirthDate() {
 		return birthDate;
 	}
+	
 	/**
 	 * @param birthDate the birthDate to set
 	 */
 	public void setBirthDate(Date birthDate) {
 		this.birthDate = birthDate;
 	}
+	
 	/**
 	 * @return the college
 	 */
 	public String getCollege() {
 		return college;
 	}
+	
 	/**
 	 * @param college the college to set
 	 */
 	public void setCollege(String college) {
 		this.college = college;
 	}
+	
 	/**
 	 * @return the degree
 	 */
 	public String getDegree() {
 		return degree;
 	}
+	
 	/**
 	 * @param degree the degree to set
 	 */
 	public void setDegree(String degree) {
 		this.degree = degree;
 	}
+	
 	/**
 	 * @return the branch
 	 */
 	public String getBranch() {
 		return branch;
 	}
+	
 	/**
 	 * @param branch the branch to set
 	 */
 	public void setBranch(String branch) {
 		this.branch = branch;
 	}
+	
 	/**
 	 * @return the yearOfGraduation
 	 */
 	public Date getYearOfGraduation() {
 		return yearOfGraduation;
 	}
+	
 	/**
 	 * @param yearOfGraduation the yearOfGraduation to set
 	 */
 	public void setYearOfGraduation(Date yearOfGraduation) {
 		this.yearOfGraduation = yearOfGraduation;
 	}
+	
 	/**
 	 * @return the photo
 	 */
 	public Image getPhoto() {
 		return photo;
 	}
+	
 	/**
 	 * @param photo the photo to set
 	 */
 	public void setPhoto(Image photo) {
 		this.photo = photo;
 	}
+	
 	/**
 	 * @return the password
 	 */
 	public String getPassword() {
 		return password;
 	}
+	
 	/**
 	 * @param password the password to set
 	 */
 	public void setPassword(String password) {
 		this.password = password;
 	}
+	
 	/**
 	 * @return the securityQuestionId
 	 */
 	public Integer getSecurityQuestionId() {
 		return securityQuestionId;
 	}
+	
 	/**
 	 * @param securityQuestionId the securityQuestionId to set
 	 */
 	public void setSecurityQuestionId(Integer securityQuestionId) {
 		this.securityQuestionId = securityQuestionId;
 	}
+	
 	/**
 	 * @return the securityAnswer
 	 */
 	public String getSecurityAnswer() {
 		return securityAnswer;
 	}
+	
 	/**
 	 * @param securityAnswer the securityAnswer to set
 	 */
 	public void setSecurityAnswer(String securityAnswer) {
 		this.securityAnswer = securityAnswer;
 	}
+	
 	/**
 	 * @return the userCategoryId
 	 */
 	public Integer getUserCategoryId() {
 		return userCategoryId;
 	}
+	
 	/**
 	 * @param userCategoryId the userCategoryId to set
 	 */
 	public void setUserCategoryId(Integer userCategoryId) {
 		this.userCategoryId = userCategoryId;
 	}
+	
 	/**
 	 * @return the occupation
 	 */
 	public String getOccupation() {
 		return occupation;
 	}
+	
 	/**
 	 * @param occupation the occupation to set
 	 */
 	public void setOccupation(String occupation) {
 		this.occupation = occupation;
 	}
+	
 	/**
 	 * @return the organisation
 	 */
 	public String getOrganisation() {
 		return organisation;
 	}
+	
 	/**
 	 * @param organisation the organisation to set
 	 */
 	public void setOrganisation(String organisation) {
 		this.organisation = organisation;
 	}
+	
 	/**
 	 * @return the designation
 	 */
 	public String getDesignation() {
 		return designation;
 	}
+	
 	/**
 	 * @param designation the designation to set
 	 */
 	public void setDesignation(String designation) {
 		this.designation = designation;
 	}
+	
 	/**
 	 * @return the domain
 	 */
 	public String getDomain() {
-		return Domain;
+		return domain;
 	}
+	
 	/**
 	 * @param domain the domain to set
 	 */
 	public void setDomain(String domain) {
-		Domain = domain;
+		this.domain = domain;
 	}
+	
 	/**
 	 * @return the role
 	 */
 	public String getRole() {
 		return role;
 	}
+	
 	/**
 	 * @param role the role to set
 	 */
 	public void setRole(String role) {
 		this.role = role;
 	}
+	
 	/**
 	 * @return the experience
 	 */
 	public Integer getExperience() {
 		return experience;
 	}
+	
 	/**
 	 * @param experience the experience to set
 	 */
 	public void setExperience(Integer experience) {
 		this.experience = experience;
 	}
+	
 	/**
 	 * @return the createdBy
 	 */
 	public Integer getCreatedBy() {
 		return createdBy;
 	}
+	
 	/**
 	 * @param createdBy the createdBy to set
 	 */
 	public void setCreatedBy(Integer createdBy) {
 		this.createdBy = createdBy;
 	}
+	
 	/**
 	 * @return the createDate
 	 */
 	public Date getCreateDate() {
 		return createDate;
 	}
+	
 	/**
 	 * @param createDate the createDate to set
 	 */
 	public void setCreateDate(Date createDate) {
 		this.createDate = createDate;
 	}
-
 }

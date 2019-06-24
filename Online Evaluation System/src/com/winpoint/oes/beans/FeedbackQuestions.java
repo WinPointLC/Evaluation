@@ -7,6 +7,7 @@ public class FeedbackQuestions {
 	private String feedbackQuestion;
 	private Integer createdBy;
 	private Date createdDate;
+	
 	/**
 	 * @param feedbackQuestionId
 	 * @param feedbackQuestion
@@ -20,53 +21,60 @@ public class FeedbackQuestions {
 		this.createdBy = createdBy;
 		this.createdDate = createdDate;
 	}
+	
 	/**
 	 * @return the feedbackQuestionId
 	 */
 	public Integer getFeedbackQuestionId() {
 		return feedbackQuestionId;
 	}
+	
 	/**
 	 * @param feedbackQuestionId the feedbackQuestionId to set
 	 */
 	public void setFeedbackQuestionId(Integer feedbackQuestionId) {
 		this.feedbackQuestionId = feedbackQuestionId;
 	}
+	
 	/**
 	 * @return the feedbackQuestion
 	 */
 	public String getFeedbackQuestion() {
 		return feedbackQuestion;
 	}
+	
 	/**
 	 * @param feedbackQuestion the feedbackQuestion to set
 	 */
 	public void setFeedbackQuestion(String feedbackQuestion) {
 		this.feedbackQuestion = feedbackQuestion;
 	}
+	
 	/**
 	 * @return the createdBy
 	 */
 	public Integer getCreatedBy() {
 		return createdBy;
 	}
+	
 	/**
 	 * @param createdBy the createdBy to set
 	 */
 	public void setCreatedBy(Integer createdBy) {
 		this.createdBy = createdBy;
 	}
+	
 	/**
 	 * @return the createdDate
 	 */
 	public Date getCreatedDate() {
 		return createdDate;
 	}
+	
 	/**
 	 * @param createdDate the createdDate to set
 	 */
 	public void setCreatedDate(Date createdDate) {
 		this.createdDate = createdDate;
 	}
-	
 }
