@@ -1,0 +1,13 @@
+USE [OES_TESTING]
+GO
+
+UPDATE [dbo].[TEST_DIFFICULTY]
+   SET [TEST_ID] = <TEST_ID, varchar(20),>
+      ,[TOPIC_ID] = <TOPIC_ID, smallint,>
+      ,[DIFFICULTY_LEVEL_ID] = <DIFFICULTY_LEVEL_ID, tinyint,>
+      ,[NO_OF_QUESTIONS] = <NO_OF_QUESTIONS, smallint,>
+      ,[CREATED_BY] = <CREATED_BY, int,>
+      ,[CREATED_DATE] = <CREATED_DATE, datetime,>
+ WHERE <Search Conditions,,>
+GO
+

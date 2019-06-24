@@ -1,0 +1,12 @@
+USE [OES_TESTING]
+GO
+
+UPDATE [dbo].[TOPICS]
+   SET [COURSE_ID] = <COURSE_ID, smallint,>
+      ,[TOPIC_NAME] = <TOPIC_NAME, varchar(50),>
+      ,[MIN_NO_OF_QUESTIONS_FOR_TEST] = <MIN_NO_OF_QUESTIONS_FOR_TEST, tinyint,>
+      ,[CREATED_BY] = <CREATED_BY, int,>
+      ,[CREATED_DATE] = <CREATED_DATE, datetime,>
+ WHERE <Search Conditions,,>
+GO
+
