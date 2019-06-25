@@ -1,0 +1,10 @@
+USE [OES_TESTING]
+GO
+
+UPDATE [dbo].[EMPLOYEE_CATEGORY]
+   SET [EMP_CATEGORY_NAME] = <EMP_CATEGORY_NAME, varchar(20),>
+      ,[CREATED_BY] = <CREATED_BY, int,>
+      ,[CREATED_DATE] = <CREATED_DATE, datetime,>
+ WHERE <Search Conditions,,>
+GO
+

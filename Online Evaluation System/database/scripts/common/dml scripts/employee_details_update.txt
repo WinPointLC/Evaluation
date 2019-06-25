@@ -1,0 +1,13 @@
+USE [OES_TESTING]
+GO
+
+UPDATE [dbo].[EMPLOYEE_DETAILS]
+   SET [USERID] = <USERID, int,>
+      ,[SALARY] = <SALARY, decimal(8,2),>
+      ,[DATE_OF_JOINING] = <DATE_OF_JOINING, date,>
+      ,[EMP_CATEGORY_ID] = <EMP_CATEGORY_ID, tinyint,>
+      ,[CREATED_BY] = <CREATED_BY, int,>
+      ,[CREATED_DATE] = <CREATED_DATE, datetime,>
+ WHERE <Search Conditions,,>
+GO
+

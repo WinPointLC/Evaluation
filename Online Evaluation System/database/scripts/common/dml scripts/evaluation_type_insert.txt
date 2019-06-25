@@ -1,0 +1,15 @@
+USE [OES_TESTING]
+GO
+
+INSERT INTO [dbo].[EVALUATION_TYPE]
+           ([EVALUATION_TYPE_NAME]
+           ,[OFFLINE_CHECK]
+           ,[CREATED_BY]
+           ,[CREATED_DATE])
+     VALUES
+           (<EVALUATION_TYPE_NAME, varchar(15),>
+           ,<OFFLINE_CHECK, varchar(3),>
+           ,<CREATED_BY, int,>
+           ,<CREATED_DATE, datetime,>)
+GO
+

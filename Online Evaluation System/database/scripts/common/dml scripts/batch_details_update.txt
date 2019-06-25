@@ -1,0 +1,14 @@
+USE [OES_TESTING]
+GO
+
+UPDATE [dbo].[BATCH_DETAILS]
+   SET [BATCH_ID] = <BATCH_ID, varchar(10),>
+      ,[COURSE_ID] = <COURSE_ID, smallint,>
+      ,[USERID] = <USERID, int,>
+      ,[BEGIN_DATE] = <BEGIN_DATE, date,>
+      ,[END_DATE] = <END_DATE, date,>
+      ,[CREATED_BY] = <CREATED_BY, int,>
+      ,[CREATED_DATE] = <CREATED_DATE, datetime,>
+ WHERE <Search Conditions,,>
+GO
+

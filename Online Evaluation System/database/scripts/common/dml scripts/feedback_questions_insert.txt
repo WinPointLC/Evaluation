@@ -1,0 +1,13 @@
+USE [OES_TESTING]
+GO
+
+INSERT INTO [dbo].[FEEDBACK_QUESTIONS]
+           ([FB_Q]
+           ,[CREATED_BY]
+           ,[CREATED_DATE])
+     VALUES
+           (<FB_Q, varchar(200),>
+           ,<CREATED_BY, int,>
+           ,<CREATED_DATE, datetime,>)
+GO
+

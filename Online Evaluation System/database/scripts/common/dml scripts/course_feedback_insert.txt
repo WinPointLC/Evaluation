@@ -1,0 +1,21 @@
+USE [OES_TESTING]
+GO
+
+INSERT INTO [dbo].[COURSE_FEEDBACK]
+           ([USERID]
+           ,[COURSE_ID]
+           ,[FBQ_ID]
+           ,[RESPONSE]
+           ,[MARK_FOR_REVIEW]
+           ,[CREATED_BY]
+           ,[CREATED_DATE])
+     VALUES
+           (<USERID, int,>
+           ,<COURSE_ID, smallint,>
+           ,<FBQ_ID, tinyint,>
+           ,<RESPONSE, varchar(150),>
+           ,<MARK_FOR_REVIEW, varchar(3),>
+           ,<CREATED_BY, int,>
+           ,<CREATED_DATE, datetime,>)
+GO
+
