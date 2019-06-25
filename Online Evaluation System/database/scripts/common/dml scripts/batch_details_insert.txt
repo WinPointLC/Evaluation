@@ -4,7 +4,7 @@ GO
 INSERT INTO [dbo].[BATCH_DETAILS]
            ([BATCH_ID]
            ,[COURSE_ID]
-           ,[USERID]
+           ,[FACULTY]
            ,[BEGIN_DATE]
            ,[END_DATE]
            ,[CREATED_BY]
@@ -12,7 +12,7 @@ INSERT INTO [dbo].[BATCH_DETAILS]
      VALUES
            (<BATCH_ID, varchar(10),>
            ,<COURSE_ID, smallint,>
-           ,<USERID, int,>
+           ,<FACULTY, int,>
            ,<BEGIN_DATE, date,>
            ,<END_DATE, date,>
            ,<CREATED_BY, int,>

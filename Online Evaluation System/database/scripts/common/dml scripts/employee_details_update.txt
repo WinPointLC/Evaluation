@@ -5,7 +5,7 @@ UPDATE [dbo].[EMPLOYEE_DETAILS]
    SET [USERID] = <USERID, int,>
       ,[SALARY] = <SALARY, decimal(8,2),>
       ,[DATE_OF_JOINING] = <DATE_OF_JOINING, date,>
-      ,[EMP_CATEGORY_ID] = <EMP_CATEGORY_ID, tinyint,>
+      ,[EMPLOYEE_CATEGORY_ID] = <EMPLOYEE_CATEGORY_ID, tinyint,>
       ,[CREATED_BY] = <CREATED_BY, int,>
       ,[CREATED_DATE] = <CREATED_DATE, datetime,>
  WHERE <Search Conditions,,>
