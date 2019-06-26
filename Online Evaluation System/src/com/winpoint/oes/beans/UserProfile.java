@@ -1,7 +1,5 @@
 package com.winpoint.oes.beans;
 
-import com.winpoint.oes.dao.LoginDao;
-
 public class UserProfile {
 	private String userID;
 	private String fName;
@@ -198,10 +196,5 @@ public class UserProfile {
 	}
 	public void setCreateDate(String createDate) {
 		this.createDate = createDate;
-	}
-	public void login(String email, String password) {
-		LoginDao loginDao = new LoginDao();
-		loginDao.login(email, password);
-	}
-		
+	}	
 }
