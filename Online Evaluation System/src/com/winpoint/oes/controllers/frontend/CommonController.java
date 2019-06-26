@@ -15,6 +15,7 @@ import com.winpoint.oes.controllers.student.LoginServlet;
  */
 @WebServlet("/CommonController")
 public class CommonController extends HttpServlet {
+	private HttpSession session;
 	private static final long serialVersionUID = 1L;
 
     /**
@@ -37,10 +38,13 @@ public class CommonController extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		System.out.println("IN servlet"+ "");
 		doGet(request, response);
-
-		LoginServlet loginServlet = new LoginServlet(request, response, request.getSession());
+		
+		session =  request.getSession();
+		
+		getServletContext().getRequestDispatcher("/LoginServet").forward(request, response);
+		
+		//LoginServlet loginServlet = new LoginServlet(request, response);
 	}
 
 }

@@ -24,10 +24,8 @@ public class LoginServlet extends HttpServlet {
      * @throws ServletException 
      * @see HttpServlet#HttpServlet()
      */
-    public LoginServlet(HttpServletRequest request, HttpServletResponse response, HttpSession session) throws ServletException, IOException {
+    public LoginServlet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         super();
-        // TODO Auto-generated constructor stub
-        this.session = session;
         doPost(request, response);
     }
 
@@ -51,6 +49,7 @@ public class LoginServlet extends HttpServlet {
 		
 		//passing parameters to helper.
 		if(new LoginHelper().validateLogin(email, password)) {
+			
 			//add data to the session.
 			session.setAttribute("email", email);
 			session.setAttribute("password", password);

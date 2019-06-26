@@ -428,5 +428,4 @@ public class UserProfile {
 		this.createDate = createDate;
 	}
 }
-}
->>>>>>> 349c3f32bd7c0d8ba82412522deedcf28636cee0
+

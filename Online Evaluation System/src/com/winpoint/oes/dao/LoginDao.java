@@ -8,7 +8,9 @@ import java.sql.Statement;
 import com.microsoft.sqlserver.jdbc.SQLServerDataSource;
 
 public class LoginDao {
-	public  void login(String email,String password) {
+	public boolean login(String email, String password) {
+		boolean flag = false;
+		
 		SQLServerDataSource dataSource = new SQLServerDataSource();
 		dataSource.setUser("sa");
 		dataSource.setPassword("winpoint");
@@ -17,12 +19,20 @@ public class LoginDao {
 		dataSource.setDatabaseName("website");
 		
 		try(Connection connection = dataSource.getConnection()){
-			System.out.println("Success");	
-			Statement 
+			Statement statement = connection.createStatement();
 			
+			String query = "select * from emp where ename = '" + email + "';";
+			
+			ResultSet resultSet = statement.executeQuery(query);
+			
+			while(resultSet.next()) {
+				flag = true;
+			}
 		}
 		catch (Exception e) {
+			
 		}
-	
+	    
+		return flag;
 	}
 }
