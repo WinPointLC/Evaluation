@@ -1,0 +1,23 @@
+USE [OES_TESTING]
+GO
+
+INSERT INTO [dbo].[USER_TEST_DETAILS]
+           ([USER_TEST_ID]
+           ,[USERID]
+           ,[TEST_ID]
+           ,[MARKS_RECEIVED]
+           ,[NO_OF_REGISTRATION]
+           ,[FEE_STATUS]
+           ,[CREATED_BY]
+           ,[CREATED_DATE])
+     VALUES
+           (<USER_TEST_ID, varchar(50),>
+           ,<USERID, int,>
+           ,<TEST_ID, varchar(20),>
+           ,<MARKS_RECEIVED, smallint,>
+           ,<NO_OF_REGISTRATION, tinyint,>
+           ,<FEE_STATUS, varchar(10),>
+           ,<CREATED_BY, int,>
+           ,<CREATED_DATE, datetime,>)
+GO
+

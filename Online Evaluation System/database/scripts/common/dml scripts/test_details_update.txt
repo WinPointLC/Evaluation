@@ -1,0 +1,17 @@
+USE [OES_TESTING]
+GO
+
+UPDATE [dbo].[TEST_DETAILS]
+   SET [TEST_ID] = <TEST_ID, varchar(20),>
+      ,[COURSE_ID] = <COURSE_ID, smallint,>
+      ,[TEST_NO] = <TEST_NO, tinyint,>
+      ,[TOTAL_QUESTIONS] = <TOTAL_QUESTIONS, tinyint,>
+      ,[TEST_FEES] = <TEST_FEES, decimal(6,2),>
+      ,[NEGATIVE_MARKING] = <NEGATIVE_MARKING, varchar(3),>
+      ,[RULES] = <RULES, varchar(50),>
+      ,[EVALUATION_TYPE_ID] = <EVALUATION_TYPE_ID, tinyint,>
+      ,[CREATED_BY] = <CREATED_BY, int,>
+      ,[CREATED_DATE] = <CREATED_DATE, datetime,>
+ WHERE <Search Conditions,,>
+GO
+

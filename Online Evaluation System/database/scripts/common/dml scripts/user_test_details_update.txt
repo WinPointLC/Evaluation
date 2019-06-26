@@ -1,0 +1,15 @@
+USE [OES_TESTING]
+GO
+
+UPDATE [dbo].[USER_TEST_DETAILS]
+   SET [USER_TEST_ID] = <USER_TEST_ID, varchar(50),>
+      ,[USERID] = <USERID, int,>
+      ,[TEST_ID] = <TEST_ID, varchar(20),>
+      ,[MARKS_RECEIVED] = <MARKS_RECEIVED, smallint,>
+      ,[NO_OF_REGISTRATION] = <NO_OF_REGISTRATION, tinyint,>
+      ,[FEE_STATUS] = <FEE_STATUS, varchar(10),>
+      ,[CREATED_BY] = <CREATED_BY, int,>
+      ,[CREATED_DATE] = <CREATED_DATE, datetime,>
+ WHERE <Search Conditions,,>
+GO
+

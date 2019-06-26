@@ -1,0 +1,13 @@
+USE [OES_TESTING]
+GO
+
+INSERT INTO [dbo].[CLIENT_CATEGORY]
+           ([CLIENT_CATEGORY_NAME]
+           ,[CREATED_BY]
+           ,[CREATED_DATE])
+     VALUES
+           (<CLIENT_CATEGORY_NAME, varchar(20),>
+           ,<CREATED_BY, int,>
+           ,<CREATED_DATE, datetime,>)
+GO
+

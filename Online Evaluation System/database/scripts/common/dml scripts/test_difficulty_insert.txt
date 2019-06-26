@@ -1,0 +1,19 @@
+USE [OES_TESTING]
+GO
+
+INSERT INTO [dbo].[TEST_DIFFICULTY]
+           ([TEST_ID]
+           ,[TOPIC_ID]
+           ,[DIFFICULTY_LEVEL_ID]
+           ,[NO_OF_QUESTIONS]
+           ,[CREATED_BY]
+           ,[CREATED_DATE])
+     VALUES
+           (<TEST_ID, varchar(20),>
+           ,<TOPIC_ID, smallint,>
+           ,<DIFFICULTY_LEVEL_ID, tinyint,>
+           ,<NO_OF_QUESTIONS, smallint,>
+           ,<CREATED_BY, int,>
+           ,<CREATED_DATE, datetime,>)
+GO
+

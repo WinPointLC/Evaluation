@@ -1,0 +1,13 @@
+USE [OES_TESTING]
+GO
+
+INSERT INTO [dbo].[STREAM]
+           ([STREAM_NAME]
+           ,[CREATED_BY]
+           ,[CREATED_DATE])
+     VALUES
+           (<STREAM_NAME, varchar(20),>
+           ,<CREATED_BY, int,>
+           ,<CREATED_DATE, datetime,>)
+GO
+

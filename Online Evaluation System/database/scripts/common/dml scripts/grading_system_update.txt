@@ -1,0 +1,12 @@
+USE [OES_TESTING]
+GO
+
+UPDATE [dbo].[GRADING_SYSTEM]
+   SET [GRADE_ID] = <GRADE_ID, varchar(2),>
+      ,[MARKS_LOWER_LIMIT] = <MARKS_LOWER_LIMIT, smallint,>
+      ,[MARKS_HIGHER_LIMIT] = <MARKS_HIGHER_LIMIT, smallint,>
+      ,[CREATED_BY] = <CREATED_BY, int,>
+      ,[CREATED_DATE] = <CREATED_DATE, datetime,>
+ WHERE <Search Conditions,,>
+GO
+

@@ -1,0 +1,13 @@
+USE [OES_TESTING]
+GO
+
+INSERT INTO [dbo].[RULES]
+           ([RULE_DESCRIPTION]
+           ,[CREATED_BY]
+           ,[CREATED_DATE])
+     VALUES
+           (<RULE_DESCRIPTION, varchar(200),>
+           ,<CREATED_BY, int,>
+           ,<CREATED_DATE, datetime,>)
+GO
+

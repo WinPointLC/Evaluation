@@ -1,0 +1,15 @@
+USE [OES_TESTING]
+GO
+
+INSERT INTO [dbo].[FACULTY_SKILLS]
+           ([USERID]
+           ,[SKILL_SET]
+           ,[CREATED_BY]
+           ,[CREATED_DATE])
+     VALUES
+           (<USERID, int,>
+           ,<SKILL_SET, varchar(50),>
+           ,<CREATED_BY, int,>
+           ,<CREATED_DATE, datetime,>)
+GO
+

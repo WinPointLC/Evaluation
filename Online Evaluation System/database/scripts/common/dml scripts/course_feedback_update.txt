@@ -1,0 +1,14 @@
+USE [OES_TESTING]
+GO
+
+UPDATE [dbo].[COURSE_FEEDBACK]
+   SET [USERID] = <USERID, int,>
+      ,[COURSE_ID] = <COURSE_ID, smallint,>
+      ,[FBQ_ID] = <FBQ_ID, tinyint,>
+      ,[RESPONSE] = <RESPONSE, varchar(150),>
+      ,[MARK_FOR_REVIEW] = <MARK_FOR_REVIEW, varchar(3),>
+      ,[CREATED_BY] = <CREATED_BY, int,>
+      ,[CREATED_DATE] = <CREATED_DATE, datetime,>
+ WHERE <Search Conditions,,>
+GO
+

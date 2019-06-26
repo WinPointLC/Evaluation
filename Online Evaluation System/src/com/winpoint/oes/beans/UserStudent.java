@@ -1,82 +1,116 @@
 package com.winpoint.oes.beans;
 
+import java.util.Date;
+
 public class UserStudent {
 
-	private String studentID;
-	private String userID;
+	private Integer userId;
 	private String parentName;
-	private String parentNumber;
-	private String studentCategory;
+	private String parentMobileNumber;
+	private Integer clientCategoryId;
 	private Integer createdBy;
-	private String createdDate;
+	private Date createdDate;
 	
-	public UserStudent(String studentID, String userID, String parentName, String parentNumber, String studentCategory,
-			Integer createdBy, String createdDate) {
+	/**
+	 * @param userId
+	 * @param parentName
+	 * @param parentMobileNumber
+	 * @param clientCategoryId
+	 * @param createdBy
+	 * @param createdDate
+	 */
+	public UserStudent(Integer userId, String parentName, String parentMobileNumber, Integer clientCategoryId,
+			Integer createdBy, Date createdDate) {
 		super();
-		this.studentID = studentID;
-		this.userID = userID;
+		this.userId = userId;
 		this.parentName = parentName;
-		this.parentNumber = parentNumber;
-		this.studentCategory = studentCategory;
+		this.parentMobileNumber = parentMobileNumber;
+		this.clientCategoryId = clientCategoryId;
 		this.createdBy = createdBy;
 		this.createdDate = createdDate;
 	}
-
-	public String getStudentID() {
-		return studentID;
+	
+	/**
+	 * @return the userId
+	 */
+	public Integer getUserId() {
+		return userId;
 	}
 	
-	public void setStudentID(String studentID) {
-		this.studentID = studentID;
+	/**
+	 * @param userId the userId to set
+	 */
+	public void setUserId(Integer userId) {
+		this.userId = userId;
 	}
 	
-	public String getUserID() {
-		return userID;
-	}
-	
-	public void setUserID(String userID) {
-		this.userID = userID;
-	}
-	
+	/**
+	 * @return the parentName
+	 */
 	public String getParentName() {
 		return parentName;
 	}
 	
+	/**
+	 * @param parentName the parentName to set
+	 */
 	public void setParentName(String parentName) {
 		this.parentName = parentName;
 	}
 	
-	public String getParentNumber() {
-		return parentNumber;
+	/**
+	 * @return the parentMobileNumber
+	 */
+	public String getParentMobileNumber() {
+		return parentMobileNumber;
 	}
 	
-	public void setParentNumber(String parentNumber) {
-		this.parentNumber = parentNumber;
+	/**
+	 * @param parentMobileNumber the parentMobileNumber to set
+	 */
+	public void setParentMobileNumber(String parentMobileNumber) {
+		this.parentMobileNumber = parentMobileNumber;
 	}
 	
-	public String getStudentCategory() {
-		return studentCategory;
+	/**
+	 * @return the clientCategoryId
+	 */
+	public Integer getClientCategoryId() {
+		return clientCategoryId;
 	}
 	
-	public void setStudentCategory(String studentCategory) {
-		this.studentCategory = studentCategory;
+	/**
+	 * @param clientCategoryId the clientCategoryId to set
+	 */
+	public void setClientCategoryId(Integer clientCategoryId) {
+		this.clientCategoryId = clientCategoryId;
 	}
-
+	
+	/**
+	 * @return the createdBy
+	 */
 	public Integer getCreatedBy() {
 		return createdBy;
 	}
-
+	
+	/**
+	 * @param createdBy the createdBy to set
+	 */
 	public void setCreatedBy(Integer createdBy) {
 		this.createdBy = createdBy;
 	}
-
-	public String getCreatedDate() {
+	
+	/**
+	 * @return the createdDate
+	 */
+	public Date getCreatedDate() {
 		return createdDate;
 	}
-
-	public void setCreatedDate(String createdDate) {
-		this.createdDate = createdDate;
-	}
 	
-
+	/**
+	 * @param createdDate the createdDate to set
+	 */
+	public void setCreatedDate(Date createdDate) {
+		this.createdDate = createdDate;
+	}S
 }
