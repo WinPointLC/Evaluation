@@ -1,0 +1,17 @@
+USE [OES_TESTING]
+GO
+
+UPDATE [dbo].[COURSES]
+   SET [COURSE_NAME] = <COURSE_NAME, varchar(20),>
+      ,[DURATION] = <DURATION, smallint,>
+      ,[FEES] = <FEES, decimal(7,2),>
+      ,[STREAM_ID] = <STREAM_ID, tinyint,>
+      ,[COURSE_TYPE_ID] = <COURSE_TYPE_ID, tinyint,>
+      ,[COURSEWARE_EXIST] = <COURSEWARE_EXIST, varchar(3),>
+      ,[EVALUATION_TYPE_ID] = <EVALUATION_TYPE_ID, tinyint,>
+      ,[TOTAL_TESTS] = <TOTAL_TESTS, tinyint,>
+      ,[CREATED_BY] = <CREATED_BY, int,>
+      ,[CREATED_DATE] = <CREATED_DATE, datetime,>
+ WHERE <Search Conditions,,>
+GO
+

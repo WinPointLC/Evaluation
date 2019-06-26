@@ -1,42 +1,84 @@
 package com.winpoint.oes.beans;
 
+import java.util.Date;
+
+/**
+ * Stores the Category of the employee, including the ID and Category name.
+ */
 public class EmployeeCategory {
-	private String empCategoryID;
-	private String empCategoryName;
+	private Integer employeeCategoryId;
+	private String employeeCategoryName;
 	private Integer createdBy;
-	private String createdDate;
-	public String getEmpCategoryID() {
-		return empCategoryID;
-	}
+	private Date createdDate;
 	
-	public EmployeeCategory(String empCategoryID, String empCategoryName, Integer createdBy, String createdDate) {
+	/**
+	 * @param employeeCategoryId
+	 * @param employeeCategoryName
+	 * @param createdBy
+	 * @param createdDate
+	 */
+	public EmployeeCategory(Integer employeeCategoryId, String employeeCategoryName, Integer createdBy,
+			Date createdDate) {
 		super();
-		this.empCategoryID = empCategoryID;
-		this.empCategoryName = empCategoryName;
+		this.employeeCategoryId = employeeCategoryId;
+		this.employeeCategoryName = employeeCategoryName;
 		this.createdBy = createdBy;
 		this.createdDate = createdDate;
 	}
-	public void setEmpCategoryID(String empCategoryID) {
-		this.empCategoryID = empCategoryID;
+	
+	/**
+	 * @return the employeeCategoryId
+	 */
+	public Integer getEmployeeCategoryId() {
+		return employeeCategoryId;
 	}
-	public String getEmpCategoryName() {
-		return empCategoryName;
+	
+	/**
+	 * @param employeeCategoryId the employeeCategoryId to set
+	 */
+	public void setEmployeeCategoryId(Integer employeeCategoryId) {
+		this.employeeCategoryId = employeeCategoryId;
 	}
-	public void setEmpCategoryName(String empCategoryName) {
-		this.empCategoryName = empCategoryName;
+	
+	/**
+	 * @return the employeeCategoryName
+	 */
+	public String getEmployeeCategoryName() {
+		return employeeCategoryName;
 	}
+	
+	/**
+	 * @param employeeCategoryName the employeeCategoryName to set
+	 */
+	public void setEmployeeCategoryName(String employeeCategoryName) {
+		this.employeeCategoryName = employeeCategoryName;
+	}
+	
+	/**
+	 * @return the createdBy
+	 */
 	public Integer getCreatedBy() {
 		return createdBy;
 	}
+	
+	/**
+	 * @param createdBy the createdBy to set
+	 */
 	public void setCreatedBy(Integer createdBy) {
 		this.createdBy = createdBy;
 	}
-	public String getCreatedDate() {
+	
+	/**
+	 * @return the createdDate
+	 */
+	public Date getCreatedDate() {
 		return createdDate;
 	}
-	public void setCreatedDate(String createdDate) {
-		this.createdDate = createdDate;
-	}
 	
-
+	/**
+	 * @param createdDate the createdDate to set
+	 */
+	public void setCreatedDate(Date createdDate) {
+		this.createdDate = createdDate;
+	}	
 }

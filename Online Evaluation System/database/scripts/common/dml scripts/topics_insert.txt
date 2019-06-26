@@ -1,0 +1,17 @@
+USE [OES_TESTING]
+GO
+
+INSERT INTO [dbo].[TOPICS]
+           ([COURSE_ID]
+           ,[TOPIC_NAME]
+           ,[MIN_NO_OF_QUESTIONS_FOR_TEST]
+           ,[CREATED_BY]
+           ,[CREATED_DATE])
+     VALUES
+           (<COURSE_ID, smallint,>
+           ,<TOPIC_NAME, varchar(50),>
+           ,<MIN_NO_OF_QUESTIONS_FOR_TEST, tinyint,>
+           ,<CREATED_BY, int,>
+           ,<CREATED_DATE, datetime,>)
+GO
+

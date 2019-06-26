@@ -1,0 +1,15 @@
+USE [OES_TESTING]
+GO
+
+INSERT INTO [dbo].[TOOL_TIPS]
+           ([COURSE_TYPE_ID]
+           ,[TOOL_TIP_DESCRIPTION]
+           ,[CREATED_BY]
+           ,[CREATED_DATE])
+     VALUES
+           (<COURSE_TYPE_ID, tinyint,>
+           ,<TOOL_TIP_DESCRIPTION, varchar(200),>
+           ,<CREATED_BY, int,>
+           ,<CREATED_DATE, datetime,>)
+GO
+

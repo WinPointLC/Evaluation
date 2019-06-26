@@ -29,8 +29,37 @@ public class CommonController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+<<<<<<< HEAD:Online Evaluation System/src/com/winpoint/oes/controllers/frontend/CommonController.java
 		// TODO Auto-generated method stub
 		response.getWriter().append("Served at: ").append(request.getContextPath());
+=======
+        //boolean flag = false;
+		response.getWriter().append("Served at: ").append(request.getContextPath());
+		
+		String email = request.getParameter("email");
+		String password = request.getParameter("Password");
+		
+		System.out.println("Email: "+email);
+		System.out.println("Password: "+password);
+		
+		//flag = new LoginHelper().validateLogin(email,password);
+		boolean flag;
+		LoginHelper loginHelper = new LoginHelper();
+		flag = loginHelper.validateLogin("san","123");
+		if(flag==true) {
+			System.out.println("login successful");
+		}
+		else {
+			System.out.println("user not found");
+		}
+		/*if(flag==true) {
+			System.out.println("login successful");
+		}
+		
+		else {
+			System.out.println("user not found");
+		}*/
+>>>>>>> 349c3f32bd7c0d8ba82412522deedcf28636cee0:Online Evaluation System/src/com/winpoint/oes/servlets/LoginServlet.java
 	}
 
 	/**
@@ -38,6 +67,7 @@ public class CommonController extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		System.out.println("IN servlet"+ "");
 		doGet(request, response);
 		
 		LoginServlet loginServlet = new LoginServlet(request, response, request.getSession());

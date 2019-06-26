@@ -1,0 +1,25 @@
+USE [OES_TESTING]
+GO
+
+INSERT INTO [dbo].[STUDENT_BATCH_DETAILS]
+           ([USERID]
+           ,[BATCH_ID]
+           ,[FEEDBACK_GIVEN]
+           ,[CERTIFICATE_GIVEN]
+           ,[COURSE_AGGR]
+           ,[GRADE_ID]
+           ,[FEE_STATUS]
+           ,[CREATED_BY]
+           ,[CREATED_DATE])
+     VALUES
+           (<USERID, int,>
+           ,<BATCH_ID, varchar(10),>
+           ,<FEEDBACK_GIVEN, varchar(3),>
+           ,<CERTIFICATE_GIVEN, varchar(3),>
+           ,<COURSE_AGGR, smallint,>
+           ,<GRADE_ID, varchar(2),>
+           ,<FEE_STATUS, varchar(10),>
+           ,<CREATED_BY, int,>
+           ,<CREATED_DATE, datetime,>)
+GO
+

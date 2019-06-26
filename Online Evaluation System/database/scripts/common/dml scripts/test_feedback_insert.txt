@@ -1,0 +1,17 @@
+USE [OES_TESTING]
+GO
+
+INSERT INTO [dbo].[TEST_FEEDBACK]
+           ([USER_TEST_ID]
+           ,[FBQ_ID]
+           ,[RESPONSE]
+           ,[CREATED_BY]
+           ,[CREATED_DATE])
+     VALUES
+           (<USER_TEST_ID, varchar(50),>
+           ,<FBQ_ID, tinyint,>
+           ,<RESPONSE, varchar(100),>
+           ,<CREATED_BY, int,>
+           ,<CREATED_DATE, datetime,>)
+GO
+

@@ -1,200 +1,438 @@
 package com.winpoint.oes.beans;
 
+<<<<<<< HEAD
+=======
+import java.awt.Image;
+import java.util.Date;
+
+import com.winpoint.oes.dao.LoginDao;
+/**
+ * The class stores the Profile details of user.
+ * @author krish
+ *
+ */
+>>>>>>> 349c3f32bd7c0d8ba82412522deedcf28636cee0
 public class UserProfile {
-	private String userID;
-	private String fName;
-	private String lName;
+	private Integer userId;
+	private String firstName;
+	private String lastName;
 	private String email;
-	private String mobNo;
+	private String mobileNumber;
 	private String address;
-	private String bday;
-	private String college;
-	private String yearOfGrad;
+	private Date birthDate;
+	private String college;	
 	private String degree;
 	private String branch;
+	private Date yearOfGraduation;
+	private Image photo;
 	private String password;
-	private String securityQuestionID;
+	private Integer securityQuestionId;
 	private String securityAnswer;
-	private String userCategoryID;
+	private Integer userCategoryId;
 	private String occupation;
 	private String organisation;
 	private String designation;
-	private String function;
+	private String domain;
 	private String role;
-	private String experience;
-	private String createdBy;
-	private String createDate;
-	
-	
-
-	
-	public UserProfile(String userID, String fName, String lName, String email, String mobNo, String address,
-			String bday, String college, String yearOfGrad, String degree, String branch, String password,
-			String securityQuestionID, String securityAnswer, String userCategoryID, String occupation,
-			String organisation, String designation, String function, String role, String experience, String createdBy,
-			String createDate) {
+	private Integer experience;
+	private Integer createdBy;
+	private Date createDate;
+	/**
+	 * @param userId
+	 * @param firstName
+	 * @param lastName
+	 * @param email
+	 * @param mobileNumber
+	 * @param address
+	 * @param birthDate
+	 * @param college
+	 * @param degree
+	 * @param branch
+	 * @param yearOfGraduation
+	 * @param photo
+	 * @param password
+	 * @param securityQuestionId
+	 * @param securityAnswer
+	 * @param userCategoryId
+	 * @param occupation
+	 * @param organisation
+	 * @param designation
+	 * @param domain
+	 * @param role
+	 * @param experience
+	 * @param createdBy
+	 * @param createDate
+	 */
+	public UserProfile(Integer userId, String firstName, String lastName, String email, String mobileNumber,
+			String address, Date birthDate, String college, String degree, String branch, Date yearOfGraduation,
+			Image photo, String password, Integer securityQuestionId, String securityAnswer, Integer userCategoryId,
+			String occupation, String organisation, String designation, String domain, String role, Integer experience,
+			Integer createdBy, Date createDate) {
 		super();
-		this.userID = userID;
-		this.fName = fName;
-		this.lName = lName;
+		this.userId = userId;
+		this.firstName = firstName;
+		this.lastName = lastName;
 		this.email = email;
-		this.mobNo = mobNo;
+		this.mobileNumber = mobileNumber;
 		this.address = address;
-		this.bday = bday;
+		this.birthDate = birthDate;
 		this.college = college;
-		this.yearOfGrad = yearOfGrad;
 		this.degree = degree;
 		this.branch = branch;
+		this.yearOfGraduation = yearOfGraduation;
+		this.photo = photo;
 		this.password = password;
-		this.securityQuestionID = securityQuestionID;
+		this.securityQuestionId = securityQuestionId;
 		this.securityAnswer = securityAnswer;
-		this.userCategoryID = userCategoryID;
+		this.userCategoryId = userCategoryId;
 		this.occupation = occupation;
 		this.organisation = organisation;
 		this.designation = designation;
-		this.function = function;
+		this.domain = domain;
 		this.role = role;
 		this.experience = experience;
 		this.createdBy = createdBy;
 		this.createDate = createDate;
-		
 	}
-	public String getUserID() {
-		return userID;
+	
+	/**
+	 * @return the userId
+	 */
+	public Integer getUserId() {
+		return userId;
 	}
-	public void setUserID(String userID) {
-		this.userID = userID;
+	
+	/**
+	 * @param userId the userId to set
+	 */
+	public void setUserId(Integer userId) {
+		this.userId = userId;
 	}
-	public String getfName() {
-		return fName;
+	
+	/**
+	 * @return the firstName
+	 */
+	public String getFirstName() {
+		return firstName;
 	}
-	public void setfName(String fName) {
-		this.fName = fName;
+	
+	/**
+	 * @param firstName the firstName to set
+	 */
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
 	}
-	public String getlName() {
-		return lName;
+	
+	/**
+	 * @return the lastName
+	 */
+	public String getLastName() {
+		return lastName;
 	}
-	public void setlName(String lName) {
-		this.lName = lName;
+	
+	/**
+	 * @param lastName the lastName to set
+	 */
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
 	}
+	
+	/**
+	 * @return the email
+	 */
 	public String getEmail() {
 		return email;
 	}
+	
+	/**
+	 * @param email the email to set
+	 */
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	public String getMobNo() {
-		return mobNo;
+	
+	/**
+	 * @return the mobileNumber
+	 */
+	public String getMobileNumber() {
+		return mobileNumber;
 	}
-	public void setMobNo(String mobNo) {
-		this.mobNo = mobNo;
+	
+	/**
+	 * @param mobileNumber the mobileNumber to set
+	 */
+	public void setMobileNumber(String mobileNumber) {
+		this.mobileNumber = mobileNumber;
 	}
+	
+	/**
+	 * @return the address
+	 */
 	public String getAddress() {
 		return address;
 	}
+	
+	/**
+	 * @param address the address to set
+	 */
 	public void setAddress(String address) {
 		this.address = address;
 	}
-	public String getBday() {
-		return bday;
+	
+	/**
+	 * @return the birthDate
+	 */
+	public Date getBirthDate() {
+		return birthDate;
 	}
-	public void setBday(String bday) {
-		this.bday = bday;
+	
+	/**
+	 * @param birthDate the birthDate to set
+	 */
+	public void setBirthDate(Date birthDate) {
+		this.birthDate = birthDate;
 	}
+	
+	/**
+	 * @return the college
+	 */
 	public String getCollege() {
 		return college;
 	}
+	
+	/**
+	 * @param college the college to set
+	 */
 	public void setCollege(String college) {
 		this.college = college;
 	}
-	public String getYearOfGrad() {
-		return yearOfGrad;
-	}
-	public void setYearOfGrad(String yearOfGrad) {
-		this.yearOfGrad = yearOfGrad;
-	}
+	
+	/**
+	 * @return the degree
+	 */
 	public String getDegree() {
 		return degree;
 	}
+	
+	/**
+	 * @param degree the degree to set
+	 */
 	public void setDegree(String degree) {
 		this.degree = degree;
 	}
+	
+	/**
+	 * @return the branch
+	 */
 	public String getBranch() {
 		return branch;
 	}
+	
+	/**
+	 * @param branch the branch to set
+	 */
 	public void setBranch(String branch) {
 		this.branch = branch;
 	}
+	
+	/**
+	 * @return the yearOfGraduation
+	 */
+	public Date getYearOfGraduation() {
+		return yearOfGraduation;
+	}
+	
+	/**
+	 * @param yearOfGraduation the yearOfGraduation to set
+	 */
+	public void setYearOfGraduation(Date yearOfGraduation) {
+		this.yearOfGraduation = yearOfGraduation;
+	}
+	
+	/**
+	 * @return the photo
+	 */
+	public Image getPhoto() {
+		return photo;
+	}
+	
+	/**
+	 * @param photo the photo to set
+	 */
+	public void setPhoto(Image photo) {
+		this.photo = photo;
+	}
+	
+	/**
+	 * @return the password
+	 */
 	public String getPassword() {
 		return password;
 	}
+	
+	/**
+	 * @param password the password to set
+	 */
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	public String getSecurityQuestionID() {
-		return securityQuestionID;
+	
+	/**
+	 * @return the securityQuestionId
+	 */
+	public Integer getSecurityQuestionId() {
+		return securityQuestionId;
 	}
-	public void setSecurityQuestionID(String securityQuestionID) {
-		this.securityQuestionID = securityQuestionID;
+	
+	/**
+	 * @param securityQuestionId the securityQuestionId to set
+	 */
+	public void setSecurityQuestionId(Integer securityQuestionId) {
+		this.securityQuestionId = securityQuestionId;
 	}
+	
+	/**
+	 * @return the securityAnswer
+	 */
 	public String getSecurityAnswer() {
 		return securityAnswer;
 	}
+	
+	/**
+	 * @param securityAnswer the securityAnswer to set
+	 */
 	public void setSecurityAnswer(String securityAnswer) {
 		this.securityAnswer = securityAnswer;
 	}
-	public String getUserCategoryID() {
-		return userCategoryID;
+	
+	/**
+	 * @return the userCategoryId
+	 */
+	public Integer getUserCategoryId() {
+		return userCategoryId;
 	}
-	public void setUserCategoryID(String userCategoryID) {
-		this.userCategoryID = userCategoryID;
+	
+	/**
+	 * @param userCategoryId the userCategoryId to set
+	 */
+	public void setUserCategoryId(Integer userCategoryId) {
+		this.userCategoryId = userCategoryId;
 	}
+	
+	/**
+	 * @return the occupation
+	 */
 	public String getOccupation() {
 		return occupation;
 	}
+	
+	/**
+	 * @param occupation the occupation to set
+	 */
 	public void setOccupation(String occupation) {
 		this.occupation = occupation;
 	}
+	
+	/**
+	 * @return the organisation
+	 */
 	public String getOrganisation() {
 		return organisation;
 	}
+	
+	/**
+	 * @param organisation the organisation to set
+	 */
 	public void setOrganisation(String organisation) {
 		this.organisation = organisation;
 	}
+	
+	/**
+	 * @return the designation
+	 */
 	public String getDesignation() {
 		return designation;
 	}
+	
+	/**
+	 * @param designation the designation to set
+	 */
 	public void setDesignation(String designation) {
 		this.designation = designation;
 	}
-	public String getFunction() {
-		return function;
+	
+	/**
+	 * @return the domain
+	 */
+	public String getDomain() {
+		return domain;
 	}
-	public void setFunction(String function) {
-		this.function = function;
+	
+	/**
+	 * @param domain the domain to set
+	 */
+	public void setDomain(String domain) {
+		this.domain = domain;
 	}
+	
+	/**
+	 * @return the role
+	 */
 	public String getRole() {
 		return role;
 	}
+	
+	/**
+	 * @param role the role to set
+	 */
 	public void setRole(String role) {
 		this.role = role;
 	}
-	public String getExperience() {
+	
+	/**
+	 * @return the experience
+	 */
+	public Integer getExperience() {
 		return experience;
 	}
-	public void setExperience(String experience) {
+	
+	/**
+	 * @param experience the experience to set
+	 */
+	public void setExperience(Integer experience) {
 		this.experience = experience;
 	}
-	public String getCreatedBy() {
+	
+	/**
+	 * @return the createdBy
+	 */
+	public Integer getCreatedBy() {
 		return createdBy;
 	}
-	public void setCreatedBy(String createdBy) {
+	
+	/**
+	 * @param createdBy the createdBy to set
+	 */
+	public void setCreatedBy(Integer createdBy) {
 		this.createdBy = createdBy;
 	}
-	public String getCreateDate() {
+	
+	/**
+	 * @return the createDate
+	 */
+	public Date getCreateDate() {
 		return createDate;
 	}
-	public void setCreateDate(String createDate) {
+	
+	/**
+	 * @param createDate the createDate to set
+	 */
+	public void setCreateDate(Date createDate) {
 		this.createDate = createDate;
+<<<<<<< HEAD
 	}	
 }
+=======
+	}
+}
+>>>>>>> 349c3f32bd7c0d8ba82412522deedcf28636cee0

@@ -1,0 +1,19 @@
+USE [OES_TESTING]
+GO
+
+INSERT INTO [dbo].[USER_STUDENT]
+           ([USERID]
+           ,[PARENT_NAME]
+           ,[PARENT_MOB]
+           ,[CLIENT_CATEGORY_ID]
+           ,[CREATED_BY]
+           ,[CREATED_DATE])
+     VALUES
+           (<USERID, int,>
+           ,<PARENT_NAME, varchar(20),>
+           ,<PARENT_MOB, varchar(15),>
+           ,<CLIENT_CATEGORY_ID, tinyint,>
+           ,<CREATED_BY, int,>
+           ,<CREATED_DATE, datetime,>)
+GO
+

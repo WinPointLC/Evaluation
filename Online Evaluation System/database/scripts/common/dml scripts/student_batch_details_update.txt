@@ -1,0 +1,16 @@
+USE [OES_TESTING]
+GO
+
+UPDATE [dbo].[STUDENT_BATCH_DETAILS]
+   SET [USERID] = <USERID, int,>
+      ,[BATCH_ID] = <BATCH_ID, varchar(10),>
+      ,[FEEDBACK_GIVEN] = <FEEDBACK_GIVEN, varchar(3),>
+      ,[CERTIFICATE_GIVEN] = <CERTIFICATE_GIVEN, varchar(3),>
+      ,[COURSE_AGGR] = <COURSE_AGGR, smallint,>
+      ,[GRADE_ID] = <GRADE_ID, varchar(2),>
+      ,[FEE_STATUS] = <FEE_STATUS, varchar(10),>
+      ,[CREATED_BY] = <CREATED_BY, int,>
+      ,[CREATED_DATE] = <CREATED_DATE, datetime,>
+ WHERE <Search Conditions,,>
+GO
+

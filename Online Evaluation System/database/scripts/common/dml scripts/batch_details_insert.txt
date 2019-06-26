@@ -1,0 +1,21 @@
+USE [OES_TESTING]
+GO
+
+INSERT INTO [dbo].[BATCH_DETAILS]
+           ([BATCH_ID]
+           ,[COURSE_ID]
+           ,[FACULTY]
+           ,[BEGIN_DATE]
+           ,[END_DATE]
+           ,[CREATED_BY]
+           ,[CREATED_DATE])
+     VALUES
+           (<BATCH_ID, varchar(10),>
+           ,<COURSE_ID, smallint,>
+           ,<FACULTY, int,>
+           ,<BEGIN_DATE, date,>
+           ,<END_DATE, date,>
+           ,<CREATED_BY, int,>
+           ,<CREATED_DATE, datetime,>)
+GO
+

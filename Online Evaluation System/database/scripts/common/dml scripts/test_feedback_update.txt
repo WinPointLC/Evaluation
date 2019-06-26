@@ -1,0 +1,12 @@
+USE [OES_TESTING]
+GO
+
+UPDATE [dbo].[TEST_FEEDBACK]
+   SET [USER_TEST_ID] = <USER_TEST_ID, varchar(50),>
+      ,[FBQ_ID] = <FBQ_ID, tinyint,>
+      ,[RESPONSE] = <RESPONSE, varchar(100),>
+      ,[CREATED_BY] = <CREATED_BY, int,>
+      ,[CREATED_DATE] = <CREATED_DATE, datetime,>
+ WHERE <Search Conditions,,>
+GO
+

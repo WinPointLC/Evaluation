@@ -1,0 +1,13 @@
+USE [OES_TESTING]
+GO
+
+UPDATE [dbo].[USER_STUDENT]
+   SET [USERID] = <USERID, int,>
+      ,[PARENT_NAME] = <PARENT_NAME, varchar(20),>
+      ,[PARENT_MOB] = <PARENT_MOB, varchar(15),>
+      ,[CLIENT_CATEGORY_ID] = <CLIENT_CATEGORY_ID, tinyint,>
+      ,[CREATED_BY] = <CREATED_BY, int,>
+      ,[CREATED_DATE] = <CREATED_DATE, datetime,>
+ WHERE <Search Conditions,,>
+GO
+

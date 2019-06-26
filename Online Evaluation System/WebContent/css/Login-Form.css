@@ -5,6 +5,7 @@ body{
   background-size: 400%,400%;
   height: 100vh;
   animation: BackgroundGradient 20s ease infinite;
+  font-family: cursive;
 }
 @keyframes BackgroundGradient {
   0%{background-position: 0% 50%;}
@@ -24,7 +25,6 @@ border: 1px solid rgba(228, 225, 226, 0.82);
 border-radius: 8px;
 background-color: #fff;
 }
-
 .form-login-heading{
 margin: 10% 0;
 letter-spacing: 8px;

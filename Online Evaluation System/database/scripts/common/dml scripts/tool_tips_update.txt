@@ -1,0 +1,11 @@
+USE [OES_TESTING]
+GO
+
+UPDATE [dbo].[TOOL_TIPS]
+   SET [COURSE_TYPE_ID] = <COURSE_TYPE_ID, tinyint,>
+      ,[TOOL_TIP_DESCRIPTION] = <TOOL_TIP_DESCRIPTION, varchar(200),>
+      ,[CREATED_BY] = <CREATED_BY, int,>
+      ,[CREATED_DATE] = <CREATED_DATE, datetime,>
+ WHERE <Search Conditions,,>
+GO
+
