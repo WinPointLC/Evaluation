@@ -1,0 +1,56 @@
+body{
+  height: 100vh;
+}
+
+.container-fluid{
+  height: inherit;
+  padding: 0;
+}
+
+#vertcol{
+  height: 100%;
+  border: 1px solid black;
+  background-image: linear-gradient(to right,rgb(73, 48, 232) ,rgb(14, 103, 207));
+}
+.vertic{
+margin-top: 10%;
+}
+#Tabs li,a{
+  color: rgba(244, 244, 244, 0.93) !important;
+}
+#Tabs a:hover{
+  color: rgb(22, 57, 236) !important;
+}
+
+
+.main-tabs{
+  float: left;
+}
+#OES-outter{
+  float: left;
+}
+
+#Tabs {
+  max-width: 350%;
+  width: 250%;
+  float: left;
+}
+#Tech {
+  width: 290%;
+  margin-left: 20%;
+}
+#Soft {
+  width: 310%;
+  margin-left: 220%;
+}
+#GA {
+  width: 350%;
+  margin-left:300%;
+}
+.drop-heading{
+  margin-top: 10%;
+  margin-left: 30%;
+}
+.stream{
+    margin-left: 40%;
+}

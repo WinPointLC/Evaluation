@@ -1,0 +1,37 @@
+body{
+  height: 100vh;
+}
+
+.container-fluid{
+  height: inherit;
+  padding: 0;
+}
+.Avtar-caption{
+margin-left: 58px;
+}
+.Avtar-logo{
+  height: 180px;
+  width: 150px;
+  background-color: #555;
+  border-radius: 20%;
+  margin-bottom: 30%;
+  margin-left: 10%;
+
+}
+.Avtar h3{
+margin-top: 20%;
+}
+#vertcol{
+  height: 100%;
+  border: 1px solid black;
+  background-image: linear-gradient(to right,rgb(73, 48, 232) ,rgb(14, 103, 207));
+}
+.vertic{
+margin-top: 10%;
+}
+#Tabs li,a{
+  color: rgba(244, 244, 244, 0.93) !important;
+}
+#Tabs a:hover{
+  color: rgb(22, 57, 236) !important;
+}
