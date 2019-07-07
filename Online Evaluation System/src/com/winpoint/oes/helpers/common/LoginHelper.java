@@ -1,5 +1,6 @@
 package com.winpoint.oes.helpers.common;
 
+import com.winpoint.oes.dao.Dummy;
 import com.winpoint.oes.dao.LoginDao;
 
 public class LoginHelper {

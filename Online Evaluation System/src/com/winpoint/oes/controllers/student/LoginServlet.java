@@ -1,6 +1,8 @@
 package com.winpoint.oes.controllers.student;
 
 import java.io.IOException;
+
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -58,6 +60,10 @@ public class LoginServlet extends HttpServlet {
 			System.out.println("login success");
 			System.out.println("email = " + email);
 			System.out.println("password = " + password);
+			
+			RequestDispatcher rd = request.getRequestDispatcher("/welcome.html");
+			rd.include(request, response);
+			//response.sendRedirect("CommonController");
+			}
 		}
 	}
-}

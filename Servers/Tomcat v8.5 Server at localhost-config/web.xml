@@ -401,7 +401,7 @@
     </servlet>
 -->
 
-
+	
   <!-- ================ Built In Servlet Mappings ========================= -->
 
 
@@ -416,9 +416,10 @@
         <url-pattern>/</url-pattern>
     </servlet-mapping>
 
+
+
     <!-- The mappings for the JSP servlet -->
-    <servlet-mapping>
-        <servlet-name>jsp</servlet-name>
+    <servlet-mapping>        <servlet-name>jsp</servlet-name>
         <url-pattern>*.jsp</url-pattern>
         <url-pattern>*.jspx</url-pattern>
     </servlet-mapping>
