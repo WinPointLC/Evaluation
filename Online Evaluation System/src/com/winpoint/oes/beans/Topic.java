@@ -1,60 +1,115 @@
 package com.winpoint.oes.beans;
 
+import java.util.Date;
+
 public class Topic {
-	private Integer topicID;
-	private Integer courseID;
+	private Integer courseId;
+	private Integer topicId;
 	private String topicName;
-	private Integer minNoOfQuestionsForTest;
+	private Integer minimumNoOfQuestionsForTest;
 	private Integer createdBy;
-	private String createdDate;
+	private Date createdDate;
 	
-	
-	public Topic(Integer topicID, Integer courseID, String topicName, Integer minNoOfQuestionsForTest,
-			Integer createdBy, String createdDate) {
+	/**
+	 * @param courseId
+	 * @param topicId
+	 * @param topicName
+	 * @param minimumNoOfQuestionsForTest
+	 * @param createdBy
+	 * @param createdDate
+	 */
+	public Topic(Integer courseId, Integer topicId, String topicName, Integer minimumNoOfQuestionsForTest,
+			Integer createdBy, Date createdDate) {
 		super();
-		this.topicID = topicID;
-		this.courseID = courseID;
+		this.courseId = courseId;
+		this.topicId = topicId;
 		this.topicName = topicName;
-		this.minNoOfQuestionsForTest = minNoOfQuestionsForTest;
+		this.minimumNoOfQuestionsForTest = minimumNoOfQuestionsForTest;
 		this.createdBy = createdBy;
 		this.createdDate = createdDate;
 	}
-	public Integer getTopicID() {
-		return topicID;
+	
+	/**
+	 * @return the courseId
+	 */
+	public Integer getCourseId() {
+		return courseId;
 	}
-	public void setTopicID(Integer topicID) {
-		this.topicID = topicID;
+	
+	/**
+	 * @param courseId the courseId to set
+	 */
+	public void setCourseId(Integer courseId) {
+		this.courseId = courseId;
 	}
-	public Integer getCourseID() {
-		return courseID;
+	
+	/**
+	 * @return the topicId
+	 */
+	public Integer getTopicId() {
+		return topicId;
 	}
-	public void setCourseID(Integer courseID) {
-		this.courseID = courseID;
+	
+	/**
+	 * @param topicId the topicId to set
+	 */
+	public void setTopicId(Integer topicId) {
+		this.topicId = topicId;
 	}
+	
+	/**
+	 * @return the topicName
+	 */
 	public String getTopicName() {
 		return topicName;
 	}
+	
+	/**
+	 * @param topicName the topicName to set
+	 */
 	public void setTopicName(String topicName) {
 		this.topicName = topicName;
 	}
-	public Integer getMinNoOfQuestionsForTest() {
-		return minNoOfQuestionsForTest;
+	
+	/**
+	 * @return the minNoOfQuestionsForTest
+	 */
+	public Integer getMinimumNoOfQuestionsForTest() {
+		return minimumNoOfQuestionsForTest;
 	}
-	public void setMinNoOfQuestionsForTest(Integer minNoOfQuestionsForTest) {
-		this.minNoOfQuestionsForTest = minNoOfQuestionsForTest;
+	
+	/**
+	 * @param minNoOfQuestionsForTest the minNoOfQuestionsForTest to set
+	 */
+	public void setMinimumNoOfQuestionsForTest(Integer minimumNoOfQuestionsForTest) {
+		this.minimumNoOfQuestionsForTest = minimumNoOfQuestionsForTest;
 	}
+	
+	/**
+	 * @return the createdBy
+	 */
 	public Integer getCreatedBy() {
 		return createdBy;
 	}
+	
+	/**
+	 * @param createdBy the createdBy to set
+	 */
 	public void setCreatedBy(Integer createdBy) {
 		this.createdBy = createdBy;
 	}
-	public String getCreatedDate() {
+	
+	/**
+	 * @return the createdDate
+	 */
+	public Date getCreatedDate() {
 		return createdDate;
 	}
-	public void setCreatedDate(String createdDate) {
+	
+	/**
+	 * @param createdDate the createdDate to set
+	 */
+	public void setCreatedDate(Date createdDate) {
 		this.createdDate = createdDate;
 	}
-	
-
 }

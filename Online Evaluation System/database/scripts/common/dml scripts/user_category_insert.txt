@@ -1,0 +1,13 @@
+USE [OES_TESTING]
+GO
+
+INSERT INTO [dbo].[USER_CATEGORY]
+           ([USER_CATEGORY_NAME]
+           ,[CREATED_BY]
+           ,[CREATED_DATE])
+     VALUES
+           (<USER_CATEGORY_NAME, varchar(10),>
+           ,<CREATED_BY, int,>
+           ,<CREATED_DATE, datetime,>)
+GO
+

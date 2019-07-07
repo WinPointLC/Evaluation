@@ -1,0 +1,27 @@
+USE [OES_TESTING]
+GO
+
+INSERT INTO [dbo].[TEST_DETAILS]
+           ([TEST_ID]
+           ,[COURSE_ID]
+           ,[TEST_NO]
+           ,[TOTAL_QUESTIONS]
+           ,[TEST_FEES]
+           ,[NEGATIVE_MARKING]
+           ,[RULES]
+           ,[EVALUATION_TYPE_ID]
+           ,[CREATED_BY]
+           ,[CREATED_DATE])
+     VALUES
+           (<TEST_ID, varchar(20),>
+           ,<COURSE_ID, smallint,>
+           ,<TEST_NO, tinyint,>
+           ,<TOTAL_QUESTIONS, tinyint,>
+           ,<TEST_FEES, decimal(6,2),>
+           ,<NEGATIVE_MARKING, varchar(3),>
+           ,<RULES, varchar(50),>
+           ,<EVALUATION_TYPE_ID, tinyint,>
+           ,<CREATED_BY, int,>
+           ,<CREATED_DATE, datetime,>)
+GO
+

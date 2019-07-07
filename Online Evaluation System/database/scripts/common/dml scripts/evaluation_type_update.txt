@@ -1,0 +1,11 @@
+USE [OES_TESTING]
+GO
+
+UPDATE [dbo].[EVALUATION_TYPE]
+   SET [EVALUATION_TYPE_NAME] = <EVALUATION_TYPE_NAME, varchar(15),>
+      ,[OFFLINE_CHECK] = <OFFLINE_CHECK, varchar(3),>
+      ,[CREATED_BY] = <CREATED_BY, int,>
+      ,[CREATED_DATE] = <CREATED_DATE, datetime,>
+ WHERE <Search Conditions,,>
+GO
+

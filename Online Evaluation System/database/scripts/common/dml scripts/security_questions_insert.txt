@@ -1,0 +1,13 @@
+USE [OES_TESTING]
+GO
+
+INSERT INTO [dbo].[SECURITY_QUESTIONS]
+           ([SECURITY_QUESTION]
+           ,[CREATED_BY]
+           ,[CREATED_DATE])
+     VALUES
+           (<SECURITY_QUESTION, varchar(50),>
+           ,<CREATED_BY, int,>
+           ,<CREATED_DATE, datetime,>)
+GO
+

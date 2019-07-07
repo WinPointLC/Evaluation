@@ -1,41 +1,81 @@
 package com.winpoint.oes.beans;
 
+import java.util.Date;
+
 public class Stream {
-	private Integer streamID;
+	
+	private Integer streamId;
 	private String streamName;
 	private Integer createdBy;
-	private String createdDate;
-	public Integer getStreamID() {
-		return streamID;
-	}
-	public Stream(Integer streamID, String streamName, Integer createdBy, String createdDate) {
+	private Date createdDate;
+	
+	/**
+	 * @param streamId
+	 * @param streamName
+	 * @param createdBy
+	 * @param createdDate
+	 */
+	public Stream(Integer streamId, String streamName, Integer createdBy, Date createdDate) {
 		super();
-		this.streamID = streamID;
+		this.streamId = streamId;
 		this.streamName = streamName;
 		this.createdBy = createdBy;
-		this.createdDate = createdDate;
-	}
-	public void setStreamID(Integer streamID) {
-		this.streamID = streamID;
-	}
-	public String getStreamName() {
-		return streamName;
-	}
-	public void setStreamName(String streamName) {
-		this.streamName = streamName;
-	}
-	public Integer getCreatedBy() {
-		return createdBy;
-	}
-	public void setCreatedBy(Integer createdBy) {
-		this.createdBy = createdBy;
-	}
-	public String getCreatedDate() {
-		return createdDate;
-	}
-	public void setCreatedDate(String createdDate) {
 		this.createdDate = createdDate;
 	}
 	
-
+	/**
+	 * @return the streamId
+	 */
+	public Integer getStreamId() {
+		return streamId;
+	}
+	
+	/**
+	 * @param streamId the streamId to set
+	 */
+	public void setStreamId(Integer streamId) {
+		this.streamId = streamId;
+	}
+	
+	/**
+	 * @return the streamName
+	 */
+	public String getStreamName() {
+		return streamName;
+	}
+	
+	/**
+	 * @param streamName the streamName to set
+	 */
+	public void setStreamName(String streamName) {
+		this.streamName = streamName;
+	}
+	
+	/**
+	 * @return the createdBy
+	 */
+	public Integer getCreatedBy() {
+		return createdBy;
+	}
+	
+	/**
+	 * @param createdBy the createdBy to set
+	 */
+	public void setCreatedBy(Integer createdBy) {
+		this.createdBy = createdBy;
+	}
+	
+	/**
+	 * @return the createdDate
+	 */
+	public Date getCreatedDate() {
+		return createdDate;
+	}
+	
+	/**
+	 * @param createdDate the createdDate to set
+	 */
+	public void setCreatedDate(Date createdDate) {
+		this.createdDate = createdDate;
+	}
 }

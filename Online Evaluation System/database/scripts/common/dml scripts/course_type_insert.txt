@@ -1,0 +1,13 @@
+USE [OES_TESTING]
+GO
+
+INSERT INTO [dbo].[COURSE_TYPE]
+           ([COURSE_TYPE_NAME]
+           ,[CREATED_BY]
+           ,[CREATED_DATE])
+     VALUES
+           (<COURSE_TYPE_NAME, varchar(10),>
+           ,<CREATED_BY, int,>
+           ,<CREATED_DATE, datetime,>)
+GO
+

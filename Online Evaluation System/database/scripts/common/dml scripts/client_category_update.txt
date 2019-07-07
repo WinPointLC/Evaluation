@@ -1,0 +1,10 @@
+USE [OES_TESTING]
+GO
+
+UPDATE [dbo].[CLIENT_CATEGORY]
+   SET [CLIENT_CATEGORY_NAME] = <CLIENT_CATEGORY_NAME, varchar(20),>
+      ,[CREATED_BY] = <CREATED_BY, int,>
+      ,[CREATED_DATE] = <CREATED_DATE, datetime,>
+ WHERE <Search Conditions,,>
+GO
+

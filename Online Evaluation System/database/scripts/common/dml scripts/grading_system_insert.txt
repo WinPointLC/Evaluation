@@ -1,0 +1,17 @@
+USE [OES_TESTING]
+GO
+
+INSERT INTO [dbo].[GRADING_SYSTEM]
+           ([GRADE_ID]
+           ,[MARKS_LOWER_LIMIT]
+           ,[MARKS_HIGHER_LIMIT]
+           ,[CREATED_BY]
+           ,[CREATED_DATE])
+     VALUES
+           (<GRADE_ID, varchar(2),>
+           ,<MARKS_LOWER_LIMIT, smallint,>
+           ,<MARKS_HIGHER_LIMIT, smallint,>
+           ,<CREATED_BY, int,>
+           ,<CREATED_DATE, datetime,>)
+GO
+

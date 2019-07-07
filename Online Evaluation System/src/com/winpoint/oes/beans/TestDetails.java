@@ -1,77 +1,149 @@
 package com.winpoint.oes.beans;
 
+import java.util.Date;
+
 public class TestDetails {
-	private String userTestID;
-	private Integer userID;
-	private String testID;
+	private String userTestId;
+	private Integer userId;
+	private String testId;
 	private Integer marksReceived;
 	private Integer noOfRegistration;
 	private String feeStatus;
 	private Integer createdBy;
-	private String createdDate;
+	private Date createdDate;
 	
-	
-	public TestDetails(String userTestID, Integer userID, String testID, Integer marksReceived,
-			Integer noOfRegistration, String feeStatus, Integer createdBy, String createdDate) {
+	/**
+	 * @param userTestId
+	 * @param userId
+	 * @param testId
+	 * @param marksReceived
+	 * @param noOfRegistration
+	 * @param feeStatus
+	 * @param createdBy
+	 * @param createdDate
+	 */
+	public TestDetails(String userTestId, Integer userId, String testId, Integer marksReceived,
+			Integer noOfRegistration, String feeStatus, Integer createdBy, Date createdDate) {
 		super();
-		this.userTestID = userTestID;
-		this.userID = userID;
-		this.testID = testID;
+		this.userTestId = userTestId;
+		this.userId = userId;
+		this.testId = testId;
 		this.marksReceived = marksReceived;
 		this.noOfRegistration = noOfRegistration;
 		this.feeStatus = feeStatus;
 		this.createdBy = createdBy;
 		this.createdDate = createdDate;
 	}
-	public String getUserTestID() {
-		return userTestID;
+	
+	/**
+	 * @return the userTestId
+	 */
+	public String getUserTestId() {
+		return userTestId;
 	}
-	public void setUserTestID(String userTestID) {
-		this.userTestID = userTestID;
+	
+	/**
+	 * @param userTestId the userTestId to set
+	 */
+	public void setUserTestId(String userTestId) {
+		this.userTestId = userTestId;
 	}
-	public Integer getUserID() {
-		return userID;
+	
+	/**
+	 * @return the userId
+	 */
+	public Integer getUserId() {
+		return userId;
 	}
-	public void setUserID(Integer userID) {
-		this.userID = userID;
+	
+	/**
+	 * @param userId the userId to set
+	 */
+	public void setUserId(Integer userId) {
+		this.userId = userId;
 	}
-	public String getTestID() {
-		return testID;
+	
+	/**
+	 * @return the testId
+	 */
+	public String getTestId() {
+		return testId;
 	}
-	public void setTestID(String testID) {
-		this.testID = testID;
+	
+	/**
+	 * @param testId the testId to set
+	 */
+	public void setTestId(String testId) {
+		this.testId = testId;
 	}
+	
+	/**
+	 * @return the marksReceived
+	 */
 	public Integer getMarksReceived() {
 		return marksReceived;
 	}
+	
+	/**
+	 * @param marksReceived the marksReceived to set
+	 */
 	public void setMarksReceived(Integer marksReceived) {
 		this.marksReceived = marksReceived;
 	}
+	
+	/**
+	 * @return the noOfRegistration
+	 */
 	public Integer getNoOfRegistration() {
 		return noOfRegistration;
 	}
+	
+	/**
+	 * @param noOfRegistration the noOfRegistration to set
+	 */
 	public void setNoOfRegistration(Integer noOfRegistration) {
 		this.noOfRegistration = noOfRegistration;
 	}
+	
+	/**
+	 * @return the feeStatus
+	 */
 	public String getFeeStatus() {
 		return feeStatus;
 	}
+	
+	/**
+	 * @param feeStatus the feeStatus to set
+	 */
 	public void setFeeStatus(String feeStatus) {
 		this.feeStatus = feeStatus;
 	}
+	
+	/**
+	 * @return the createdBy
+	 */
 	public Integer getCreatedBy() {
 		return createdBy;
 	}
+	
+	/**
+	 * @param createdBy the createdBy to set
+	 */
 	public void setCreatedBy(Integer createdBy) {
 		this.createdBy = createdBy;
 	}
-	public String getCreatedDate() {
+	
+	/**
+	 * @return the createdDate
+	 */
+	public Date getCreatedDate() {
 		return createdDate;
 	}
-	public void setCreatedDate(String createdDate) {
+	
+	/**
+	 * @param createdDate the createdDate to set
+	 */
+	public void setCreatedDate(Date createdDate) {
 		this.createdDate = createdDate;
 	}
-	
-	
-
 }

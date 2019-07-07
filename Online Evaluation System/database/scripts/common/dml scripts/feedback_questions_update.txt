@@ -1,0 +1,10 @@
+USE [OES_TESTING]
+GO
+
+UPDATE [dbo].[FEEDBACK_QUESTIONS]
+   SET [FB_Q] = <FB_Q, varchar(200),>
+      ,[CREATED_BY] = <CREATED_BY, int,>
+      ,[CREATED_DATE] = <CREATED_DATE, datetime,>
+ WHERE <Search Conditions,,>
+GO
+

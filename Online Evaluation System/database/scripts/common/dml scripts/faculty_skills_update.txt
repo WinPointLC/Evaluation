@@ -1,0 +1,11 @@
+USE [OES_TESTING]
+GO
+
+UPDATE [dbo].[FACULTY_SKILLS]
+   SET [USERID] = <USERID, int,>
+      ,[SKILL_SET] = <SKILL_SET, varchar(50),>
+      ,[CREATED_BY] = <CREATED_BY, int,>
+      ,[CREATED_DATE] = <CREATED_DATE, datetime,>
+ WHERE <Search Conditions,,>
+GO
+

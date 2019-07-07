@@ -1,48 +1,81 @@
 package com.winpoint.oes.beans;
 
+import java.util.Date;
+
 public class StudentCategory {
 	
-	public StudentCategory(String studentCategoryID, String studentCategoryName, Integer createdBy, String createdDate) {
+	private String studentCategoryId;
+	private String studentCategoryName;
+	private Integer createdBy;
+	private Date createdDate;
+	
+	/**
+	 * @param studentCategoryId
+	 * @param studentCategoryName
+	 * @param createdBy
+	 * @param createdDate
+	 */
+	public StudentCategory(String studentCategoryId, String studentCategoryName, Integer createdBy, Date createdDate) {
 		super();
-		this.studentCategoryID = studentCategoryID;
+		this.studentCategoryId = studentCategoryId;
 		this.studentCategoryName = studentCategoryName;
 		this.createdBy = createdBy;
 		this.createdDate = createdDate;
 	}
-	private String studentCategoryID;
-	private String studentCategoryName;
-	private Integer createdBy;
-	private String createdDate;
 	
-	public Integer getCreatedBy() {
-		return createdBy;
-	}
-
-	public void setCreatedBy(Integer createdBy) {
-		this.createdBy = createdBy;
-	}
-
-	public String getCreatedDate() {
-		return createdDate;
-	}
-
-	public void setCreatedDate(String createdDate) {
-		this.createdDate = createdDate;
+	/**
+	 * @return the studentCategoryId
+	 */
+	public String getStudentCategoryId() {
+		return studentCategoryId;
 	}
 	
-	public String getStudentCategoryID() {
-		return studentCategoryID;
+	/**
+	 * @param studentCategoryId the studentCategoryId to set
+	 */
+	public void setStudentCategoryId(String studentCategoryId) {
+		this.studentCategoryId = studentCategoryId;
 	}
 	
-	public void setStudentCategoryID(String studentCategoryID) {
-		this.studentCategoryID = studentCategoryID;
-	}
-	
+	/**
+	 * @return the studentCategoryName
+	 */
 	public String getStudentCategoryName() {
 		return studentCategoryName;
 	}
 	
+	/**
+	 * @param studentCategoryName the studentCategoryName to set
+	 */
 	public void setStudentCategoryName(String studentCategoryName) {
 		this.studentCategoryName = studentCategoryName;
+	}
+	
+	/**
+	 * @return the createdBy
+	 */
+	public Integer getCreatedBy() {
+		return createdBy;
+	}
+	
+	/**
+	 * @param createdBy the createdBy to set
+	 */
+	public void setCreatedBy(Integer createdBy) {
+		this.createdBy = createdBy;
+	}
+	
+	/**
+	 * @return the createdDate
+	 */
+	public Date getCreatedDate() {
+		return createdDate;
+	}
+	
+	/**
+	 * @param createdDate the createdDate to set
+	 */
+	public void setCreatedDate(Date createdDate) {
+		this.createdDate = createdDate;
 	}
 }

@@ -1,0 +1,53 @@
+USE [OES_TESTING]
+GO
+
+INSERT INTO [dbo].[USER_PROFILE]
+           ([FIRST_NAME]
+           ,[LAST_NAME]
+           ,[EMAIL]
+           ,[MOBILE_NUMBER]
+           ,[ADDRESS]
+           ,[BIRTHDATE]
+           ,[COLLEGE]
+           ,[DEGREE]
+           ,[BRANCH]
+           ,[YEAR_OF_GRADUATION]
+           ,[PHOTO]
+           ,[PASSWORD]
+           ,[SECURITY_QUESTION_ID]
+           ,[SECURITY_ANSWER]
+           ,[USER_CATEGORY_ID]
+           ,[OCCUPATION]
+           ,[ORGANIZATION]
+           ,[DESIGNATION]
+           ,[DOMAIN]
+           ,[ROLE]
+           ,[EXPERIENCE]
+           ,[CREATED_BY]
+           ,[CREATED_DATE])
+     VALUES
+           (<FIRST_NAME, varchar(20),>
+           ,<LAST_NAME, varchar(20),>
+           ,<EMAIL, varchar(100),>
+           ,<MOBILE_NUMBER, varchar(15),>
+           ,<ADDRESS, varchar(200),>
+           ,<BIRTHDATE, date,>
+           ,<COLLEGE, varchar(50),>
+           ,<DEGREE, varchar(10),>
+           ,<BRANCH, varchar(10),>
+           ,<YEAR_OF_GRADUATION, date,>
+           ,<PHOTO, image,>
+           ,<PASSWORD, varchar(32),>
+           ,<SECURITY_QUESTION_ID, tinyint,>
+           ,<SECURITY_ANSWER, varchar(20),>
+           ,<USER_CATEGORY_ID, tinyint,>
+           ,<OCCUPATION, varchar(20),>
+           ,<ORGANIZATION, varchar(100),>
+           ,<DESIGNATION, varchar(20),>
+           ,<DOMAIN, varchar(20),>
+           ,<ROLE, varchar(20),>
+           ,<EXPERIENCE, tinyint,>
+           ,<CREATED_BY, int,>
+           ,<CREATED_DATE, datetime,>)
+GO
+
