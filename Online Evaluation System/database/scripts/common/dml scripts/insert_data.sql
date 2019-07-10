@@ -71,15 +71,37 @@ values('cpp', 60, 4000, 1, 1, 'yes', 2, 2)
 insert into courses(COURSE_NAME, duration, fees, STREAM_ID, COURSE_TYPE_ID, COURSEWARE_EXIST, EVALUATION_TYPE_ID, TOTAL_TESTS)
 values('java', 80, 12000, 1, 1, 'yes', 2, 3)
 go
-insert into BATCH_DETAILS(batch_id, course_id, faculty, BEGIN_DATE, END_DATE) values('CJan19', 1, 3,  '1-Jan-2019', '31-Jan-2019')
-go
+
 insert into topics(course_id, topic_name, MIN_NO_OF_QUESTIONS_FOR_TEST) values(1, 'operators', 2)
 insert into topics(course_id, topic_name, MIN_NO_OF_QUESTIONS_FOR_TEST) values(1, 'functions', 5)
 insert into topics(course_id, topic_name, MIN_NO_OF_QUESTIONS_FOR_TEST) values(1, 'pointers', 8)
 insert into topics(course_id, topic_name, MIN_NO_OF_QUESTIONS_FOR_TEST) values(1, 'structures', 4)
 insert into topics(course_id, topic_name, MIN_NO_OF_QUESTIONS_FOR_TEST) values(1, 'files', 5)
 go
+
 insert into user_student(userid, parent_name, parent_mob, CLIENT_CATEGORY_ID) values(1, 'haresh advani', '9881711465', 1)
 insert into user_student(userid, parent_name, parent_mob, CLIENT_CATEGORY_ID) values(2, 'jignyasa chaudhary', '9403149112', 1)
+go
+
+insert into USER_TEST_DETAILS
+(userid, TEST_DETAIL_ID, MARKS_RECEIVED, NO_OF_REGISTRATION, FEE_STATUS)
+values(1, 1, 21, 1, 'PAID')
+insert into USER_TEST_DETAILS
+(userid, TEST_DETAIL_ID, MARKS_RECEIVED, NO_OF_REGISTRATION, FEE_STATUS)
+values(2, 1, 20, 1, 'PAID')
+go
+
+insert into USER_TEST_DETAILS
+(userid, TEST_DETAIL_ID, NO_OF_REGISTRATION, FEE_STATUS)
+values(2, 1, 2, 'PAID')
+go
+
+insert into TEST_DIFFICULTY
+(TEST_DETAIL_ID, TOPIC_ID, DIFFICULTY_LEVEL_ID, NO_OF_QUESTIONS)
+values(1, 1, 1, 2) 
+go
+
+insert into TEST_DETAILS(COURSE_ID, TEST_NO, TOTAL_QUESTIONS, EVALUATION_TYPE_ID)
+values(2, 1, 30, 1)
 go
 
