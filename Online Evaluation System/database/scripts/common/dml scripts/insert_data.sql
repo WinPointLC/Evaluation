@@ -72,6 +72,11 @@ insert into courses(COURSE_NAME, duration, fees, STREAM_ID, COURSE_TYPE_ID, COUR
 values('java', 80, 12000, 1, 1, 'yes', 2, 3)
 go
 
+insert into BATCH_DETAILS(batch_id, course_id, faculty, BEGIN_DATE, END_DATE) values(1, 1, 3,  '1-Jan-2019', '31-Jan-2019')
+insert into BATCH_DETAILS(batch_id, course_id, faculty, BEGIN_DATE, END_DATE) values(2,2,3, '20-oct-2018','28-dec-2018')
+insert into BATCH_DETAILS(batch_id, course_id, faculty, BEGIN_DATE) values(3,3,3,'8-jul-2019')
+go
+
 insert into topics(course_id, topic_name, MIN_NO_OF_QUESTIONS_FOR_TEST) values(1, 'operators', 2)
 insert into topics(course_id, topic_name, MIN_NO_OF_QUESTIONS_FOR_TEST) values(1, 'functions', 5)
 insert into topics(course_id, topic_name, MIN_NO_OF_QUESTIONS_FOR_TEST) values(1, 'pointers', 8)
@@ -83,17 +88,16 @@ insert into user_student(userid, parent_name, parent_mob, CLIENT_CATEGORY_ID) va
 insert into user_student(userid, parent_name, parent_mob, CLIENT_CATEGORY_ID) values(2, 'jignyasa chaudhary', '9403149112', 1)
 go
 
-insert into USER_TEST_DETAILS
-(userid, TEST_DETAIL_ID, MARKS_RECEIVED, NO_OF_REGISTRATION, FEE_STATUS)
-values(1, 1, 21, 1, 'PAID')
-insert into USER_TEST_DETAILS
-(userid, TEST_DETAIL_ID, MARKS_RECEIVED, NO_OF_REGISTRATION, FEE_STATUS)
-values(2, 1, 20, 1, 'PAID')
-go
+insert into STUDENT_COURSE_DETAILS(USERID,COURSE_ID,BATCH_ID,FEEDBACK_GIVEN,CERTIFICATE_GIVEN,COURSE_AGGR,GRADE_ID,FEE_STATUS) values(1,1,1,'YES','YES',21,'D','PAID')
+insert into STUDENT_COURSE_DETAILS(USERID,COURSE_ID,BATCH_ID,FEE_STATUS) values(1,2,2,'PAID')
+insert into STUDENT_COURSE_DETAILS(USERID,COURSE_ID,BATCH_ID,FEE_STATUS) values(2,2,2,'PAID')
 
-insert into USER_TEST_DETAILS
-(userid, TEST_DETAIL_ID, NO_OF_REGISTRATION, FEE_STATUS)
-values(2, 1, 2, 'PAID')
+
+
+insert into TEST_DETAILS(COURSE_ID, TEST_NO, TOTAL_QUESTIONS, EVALUATION_TYPE_ID)
+values(1, 1, 30, 1)
+insert into TEST_DETAILS(COURSE_ID, TEST_NO, TOTAL_QUESTIONS, EVALUATION_TYPE_ID)
+values(2, 1, 30, 1)
 go
 
 insert into TEST_DIFFICULTY
@@ -101,7 +105,18 @@ insert into TEST_DIFFICULTY
 values(1, 1, 1, 2) 
 go
 
-insert into TEST_DETAILS(COURSE_ID, TEST_NO, TOTAL_QUESTIONS, EVALUATION_TYPE_ID)
-values(2, 1, 30, 1)
+
+insert into USER_TEST_DETAILS
+(userid, TEST_DETAIL_ID, MARKS_RECEIVED, NO_OF_REGISTRATION, FEE_STATUS)
+values(1, 1, 21, 1, 'PAID')
+insert into USER_TEST_DETAILS
+(userid, TEST_DETAIL_ID, MARKS_RECEIVED, NO_OF_REGISTRATION, FEE_STATUS)
+values(2, 1, 20, 1, 'PAID')
 go
+insert into USER_TEST_DETAILS
+(userid, TEST_DETAIL_ID, NO_OF_REGISTRATION, FEE_STATUS)
+values(2, 1, 2, 'PAID')
+go
+
+
 
