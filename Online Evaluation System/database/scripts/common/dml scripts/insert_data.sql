@@ -67,7 +67,7 @@ go
 insert into courses(COURSE_NAME, duration, fees, STREAM_ID, COURSE_TYPE_ID, COURSEWARE_EXIST, EVALUATION_TYPE_ID, TOTAL_TESTS)
 values('c', 60, 4000, 1, 1, 'yes', 1, 2)
 insert into courses(COURSE_NAME, duration, fees, STREAM_ID, COURSE_TYPE_ID, COURSEWARE_EXIST, EVALUATION_TYPE_ID, TOTAL_TESTS)
-values('c++', 60, 4000, 1, 1, 'yes', 2, 2)
+values('cpp', 60, 4000, 1, 1, 'yes', 2, 2)
 insert into courses(COURSE_NAME, duration, fees, STREAM_ID, COURSE_TYPE_ID, COURSEWARE_EXIST, EVALUATION_TYPE_ID, TOTAL_TESTS)
 values('java', 80, 12000, 1, 1, 'yes', 2, 3)
 go
