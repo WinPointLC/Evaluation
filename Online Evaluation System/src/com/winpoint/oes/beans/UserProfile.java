@@ -3,12 +3,6 @@ package com.winpoint.oes.beans;
 import java.awt.Image;
 import java.util.Date;
 
-import com.winpoint.oes.dao.LoginDao;
-/**
- * The class stores the Profile details of user.
- * @author krish
- *
- */
 public class UserProfile {
 	private Integer userId;
 	private String firstName;
@@ -428,4 +422,3 @@ public class UserProfile {
 		this.createDate = createDate;
 	}
 }
-

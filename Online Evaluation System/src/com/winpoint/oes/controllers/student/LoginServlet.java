@@ -17,18 +17,15 @@ import com.winpoint.oes.helpers.common.LoginHelper;
  */
 @WebServlet("/LoginServlet")
 public class LoginServlet extends HttpServlet {
-	private HttpSession session;
-	
 	private static final long serialVersionUID = 1L;
-       
+
     /**
-     * @throws IOException 
-     * @throws ServletException 
+     * @throws IOException
+     * @throws ServletException
      * @see HttpServlet#HttpServlet()
      */
-    public LoginServlet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    public LoginServlet() {
         super();
-        doPost(request, response);
     }
 
 	/**
@@ -41,29 +38,37 @@ public class LoginServlet extends HttpServlet {
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		doGet(request, response);
-		
+
 		//extracting the parameters
 		String email = request.getParameter("email");
 		String password = request.getParameter("password");
-		
+
 		//passing parameters to helper.
 		if(new LoginHelper().validateLogin(email, password)) {
-			
+
 			//add data to the session.
 			session.setAttribute("email", email);
 			session.setAttribute("password", password);
-			
+
 			//printing the session data...
 			System.out.println("login success");
 			System.out.println("email = " + email);
 			System.out.println("password = " + password);
-			
+
 			RequestDispatcher rd = request.getRequestDispatcher("/welcome.html");
 			rd.include(request, response);
 			//response.sendRedirect("CommonController");
 			}
 		}
+		else {
+			System.out.println("login failure");
+			System.out.println("email = " + email);
+			System.out.println("password = " + password);
+		}
+
+
 	}
+}
