@@ -1,6 +1,8 @@
 package com.winpoint.oes.controllers.student;
 
 import java.io.IOException;
+
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -14,12 +16,12 @@ import com.winpoint.oes.helpers.common.LoginHelper;
  * Servlet implementation class LoginServlet
  */
 @WebServlet("/LoginServlet")
-public class LoginServlet extends HttpServlet {	
+public class LoginServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
+
     /**
-     * @throws IOException 
-     * @throws ServletException 
+     * @throws IOException
+     * @throws ServletException
      * @see HttpServlet#HttpServlet()
      */
     public LoginServlet() {
@@ -39,23 +41,34 @@ public class LoginServlet extends HttpServlet {
 	public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		doGet(request, response);
-		
+
 		//extracting the parameters
 		String email = request.getParameter("email");
 		String password = request.getParameter("password");
-		
+
 		//passing parameters to helper.
 		if(new LoginHelper().validateLogin(email, password)) {
+
+			//add data to the session.
+			session.setAttribute("email", email);
+			session.setAttribute("password", password);
+
+			//printing the session data...
 			System.out.println("login success");
 			System.out.println("email = " + email);
 			System.out.println("password = " + password);
+
+			RequestDispatcher rd = request.getRequestDispatcher("/welcome.html");
+			rd.include(request, response);
+			//response.sendRedirect("CommonController");
+			}
 		}
 		else {
 			System.out.println("login failure");
 			System.out.println("email = " + email);
 			System.out.println("password = " + password);
 		}
-		
-		
+
+
 	}
 }
