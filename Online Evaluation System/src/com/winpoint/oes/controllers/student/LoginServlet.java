@@ -14,9 +14,7 @@ import com.winpoint.oes.helpers.common.LoginHelper;
  * Servlet implementation class LoginServlet
  */
 @WebServlet("/LoginServlet")
-public class LoginServlet extends HttpServlet {
-	private HttpSession session;
-	
+public class LoginServlet extends HttpServlet {	
 	private static final long serialVersionUID = 1L;
        
     /**
@@ -24,11 +22,8 @@ public class LoginServlet extends HttpServlet {
      * @throws ServletException 
      * @see HttpServlet#HttpServlet()
      */
-    public LoginServlet(HttpServletRequest request, HttpServletResponse response, HttpSession session) throws ServletException, IOException {
+    public LoginServlet() {
         super();
-        // TODO Auto-generated constructor stub
-        this.session = session;
-        doPost(request, response);
     }
 
 	/**
@@ -41,7 +36,7 @@ public class LoginServlet extends HttpServlet {
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		doGet(request, response);
 		
@@ -51,14 +46,16 @@ public class LoginServlet extends HttpServlet {
 		
 		//passing parameters to helper.
 		if(new LoginHelper().validateLogin(email, password)) {
-			//add data to the session.
-			session.setAttribute("email", email);
-			session.setAttribute("password", password);
-			
-			//printing the session data...
 			System.out.println("login success");
 			System.out.println("email = " + email);
 			System.out.println("password = " + password);
 		}
+		else {
+			System.out.println("login failure");
+			System.out.println("email = " + email);
+			System.out.println("password = " + password);
+		}
+		
+		
 	}
 }

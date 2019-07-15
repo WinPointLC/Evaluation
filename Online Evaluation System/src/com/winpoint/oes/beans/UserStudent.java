@@ -112,5 +112,5 @@ public class UserStudent {
 	 */
 	public void setCreatedDate(Date createdDate) {
 		this.createdDate = createdDate;
-	}S
+	}
 }
