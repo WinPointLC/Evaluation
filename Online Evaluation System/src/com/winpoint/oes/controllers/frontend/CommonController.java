@@ -26,7 +26,6 @@ public class CommonController extends HttpServlet {
      */
     public CommonController() {
         super();
-        // TODO Auto-generated constructor stub
     }
 
     /**
@@ -52,14 +51,16 @@ public class CommonController extends HttpServlet {
 		RequestDispatcher rd = request.getRequestDispatcher("/LoginServ");
 		rd.forward(request, response);
 		//session =  request.getSession();
-		
+
 		//getServletContext().getRequestDispatcher("/test").forward(request, response);
-		
-		//handleRequest(request, response);
-	
-		//LoginServlet loginServlet = new LoginServlet(request, response);
+
+		session = request.getSession();
+
+		getServletContext().getRequestDispatcher("/LoginServlet").forward(request, response);
+
+		//session.setAttribute("name", "sanika");
+		//System.out.println(session.getAttribute("name"));
 	}
 
 
 }
- 
