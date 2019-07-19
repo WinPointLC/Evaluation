@@ -9,6 +9,6 @@
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.web.container"/>
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.module.container"/>
 	<classpathentry kind="lib" path="C:/Program Files/Apache Software Foundation/Tomcat 8.5/lib/servlet-api.jar"/>
-	<classpathentry kind="lib" path="C:/Users/DELL/Desktop/sqljdbc_7.2/enu/mssql-jdbc-7.2.2.jre8.jar"/>
+	<classpathentry kind="lib" path="C:/Program Files/gson-2.2.2.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>

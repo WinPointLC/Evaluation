@@ -46,18 +46,14 @@ public class CommonController extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
+		
 		System.out.println("success");
-		RequestDispatcher rd = request.getRequestDispatcher("/LoginServ");
+		String action = request.getParameter("action");
+		System.out.println(action);
+		
+		RequestDispatcher rd = request.getRequestDispatcher("/" + action);
 		rd.forward(request, response);
-		//session =  request.getSession();
 		
-		//getServletContext().getRequestDispatcher("/test").forward(request, response);
-		
-		//handleRequest(request, response);
-	
-		//LoginServlet loginServlet = new LoginServlet(request, response);
 	}
 
 

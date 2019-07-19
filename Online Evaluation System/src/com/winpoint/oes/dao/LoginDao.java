@@ -8,9 +8,9 @@ import java.sql.Statement;
 import com.microsoft.sqlserver.jdbc.SQLServerDataSource;
 
 public class LoginDao {
-	public boolean login(String emailPara, String passwordPara) {
+	public ResultSet login(String emailPara, String passwordPara) {
 		boolean flag = false;
-
+		ResultSet resultSet = null;
 		SQLServerDataSource dataSource = new SQLServerDataSource();
 		dataSource.setUser("sa");
 		dataSource.setPassword("winpoint");
@@ -23,7 +23,7 @@ public class LoginDao {
 
 			String query = "select * from new where email = '" + emailPara + "';";
 
-			ResultSet resultSet = statement.executeQuery(query);
+			resultSet = statement.executeQuery(query);
 			while(resultSet.next()) {
 				//String name = resultSet.getString("email");
 				//String pass = resultSet.getString("password");
@@ -43,7 +43,12 @@ public class LoginDao {
 		}
 		//System.out.println("Password= "+ passwo);
 	    System.out.println("flag =" + flag);
-		return flag;
+		return resultSet;
 
+	}
+
+	public ResultSet getDashboardDetails(int userId) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }

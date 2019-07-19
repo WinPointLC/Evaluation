@@ -86,6 +86,12 @@ public class UserProfile {
 		this.createDate = createDate;
 	}
 
+	public UserProfile(String email, String password) {
+		// TODO Auto-generated constructor stub
+		this.email = email;
+		this.password = password;
+	}
+
 	/**
 	 * @return the userId
 	 */

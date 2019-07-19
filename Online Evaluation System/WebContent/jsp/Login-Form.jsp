@@ -15,19 +15,20 @@
 			  callServlet();
 		 });
 		function callServlet() {
+			alert("From callServlet");
 	        var emailVal = $("#email").val();
 	        var passwordVal = $("#password").val();
-	       // alert("email = " + emailVal + " : passwordVal = " + passwordVal);
+	       alert("email = " + emailVal + " : passwordVal = " + passwordVal);
 	        var myData = {
 
 	                    email: emailVal,
 	                    password: passwordVal
 	            };
-	        //alert("*** " + JSON.stringify(myData));
+	        alert("*** " + JSON.stringify(myData));
 	        //console.log(myData);
 	        $.ajax({
 	            type: 'POST',
-	            url: '/OnlineEvaluationSystem/CommonController?action=LoginServ',
+	            url: '/OnlineEvaluationSystem/CommonController?action=LoginServlet',
 	            data: JSON.stringify(myData),
 	            dataType: 'json',
 	            contentType: 'application/json; charset=utf-8',
