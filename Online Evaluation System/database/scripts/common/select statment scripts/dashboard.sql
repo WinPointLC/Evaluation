@@ -3,10 +3,10 @@ select
 		COURSES.COURSE_NAME,
 		case 
 			when exists (select userid, COURSE_ID from STUDENT_COURSE_DETAILS 
-							   where userid = @userid and course_id = test_details.COURSE_ID )
-			then 'modular'
-			else 'external'
-			end as 'TYPE',
+			where userid = @userid and course_id = test_details.COURSE_ID )
+			then 'yes'
+			else 'no'
+			end as 'IS_MODULAR',
 		TEST_DETAILS.TEST_NO,
 		USER_TEST_DETAILS.NO_OF_REGISTRATION,
 		USER_TEST_DETAILS.MARKS_RECEIVED,
