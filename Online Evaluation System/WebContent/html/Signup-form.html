@@ -17,25 +17,26 @@
       <form action="/OnlineEvaluationSystem/CommonController" method="post">
         <h3 class="form-signup-heading text-center">SignUP Form</h3>
         <div class="form-group">
-          <input class="form-control" type="text" id="name" placeholder="Enter first name">
+          <input class="form-control" type="text" id="name" placeholder="Enter first name" required>
         </div>
         <div class="form-group">
-          <input class="form-control" type="text" id="name" placeholder="Enter last name">
-        </div>
-
-        <div class="form-group">
-          <input class="form-control" type="email" id="email" placeholder="Enter email">
+          <input class="form-control" type="text" id="name" placeholder="Enter last name" required>
         </div>
 
         <div class="form-group">
-          <input class="form-control form-control-sm" type="text" id="username" placeholder="Enter user name">
+          <input class="form-control" type="email" id="email" placeholder="Enter email" required>
         </div>
 
         <div class="form-group">
-          <input class="form-control" type="password" id="password" placeholder="Password">
+          <input class="form-control form-control-sm" type="text" id="username" placeholder="Enter user name" required>
+        </div>
+
+        <div class="form-group">
+          <input class="form-control" type="password" id="password" placeholder="Password" required>
         </div>
         <div class="form-group">
-          <select class="form-control" id="gender">
+          <select class="form-control" id="gender" required>
+            <option value="">None</option>
             <option>Gender:Male</option>
             <option>Gender:Female</option>
           </select>

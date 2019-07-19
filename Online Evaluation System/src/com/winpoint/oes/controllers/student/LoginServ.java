@@ -18,7 +18,7 @@ import com.winpoint.oes.helpers.common.LoginHelper;
 @WebServlet("/LoginServ")
 public class LoginServ extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
+
     /**
      * @see HttpServlet#HttpServlet()
      */
@@ -41,7 +41,7 @@ public class LoginServ extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		//doGet(request, response);
-		
+
 		String email = request.getParameter("email");
 		String password = request.getParameter("password");
 		System.out.println(email);
@@ -50,7 +50,7 @@ public class LoginServ extends HttpServlet {
 		if(flag == true) {
 		RequestDispatcher rd = request.getRequestDispatcher("/html/welcome.html");
 		rd.include(request, response);
-		
+
 	}
 	}
 
