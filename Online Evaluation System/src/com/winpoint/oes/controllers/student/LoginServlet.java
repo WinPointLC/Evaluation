@@ -59,7 +59,7 @@ public class LoginServlet extends HttpServlet {
 		boolean flag = true;// new LoginHelper().validateLogin(email, password);
 		if(flag == true) {
 			PrintWriter writer = response.getWriter();
-			String json1 = gson.toJson("{ 'success': 'true', 'location': '/OnlineEvaluationSystem/jsp/oes-question-page.jsp'}");
+			String json1 = gson.toJson("{ 'success': 'true', 'location': '/OnlineEvaluationSystem/jsp/Dashboard.jsp'}");
 			String json2 = gson.toJson(new UserProfile("anjali.parkhi", "Anjali"));
 			String jsonString = "[" + json1 + "," + json2 + "]";
 			System.out.println("Json string is " + jsonString);
