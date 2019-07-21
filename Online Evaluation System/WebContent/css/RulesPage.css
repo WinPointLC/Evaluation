@@ -1,0 +1,19 @@
+.card-header h3{
+text-transform: uppercase;
+letter-spacing: 5px;
+font-family: monospace;
+font-size: 260%;
+}
+.card-header p{
+text-transform: uppercase;
+}
+.rule-contain{
+  border: 1px solid rgb(196, 188, 188);
+  box-shadow: 2px 2px 8px 3px rgb(196, 188, 188);
+}
+.c2{
+  max-height: 100vh;
+}
+.c3{
+    margin-left: 77%;
+}
