@@ -54,17 +54,29 @@ public class LoginServlet extends HttpServlet {
 		Gson gson = new Gson();
 		UserProfile userProfile = gson.fromJson(json, UserProfile.class);
 		
-		System.out.println("email = " + userProfile.getEmail() + "   password = " + userProfile.getPassword());
+		String email = userProfile.getEmail();
+		String password = userProfile.getPassword();
+		System.out.println("email = " + email + "   password = " + password);
 		
-		boolean flag = true;// new LoginHelper().validateLogin(email, password);
-		if(flag == true) {
+		UserProfile userProfileRecd =  new LoginHelper().validateLogin(email, password);
+		if(userProfileRecd != null) {
+		String json1 = null;
+		int userCategoryId;
+		if(userProfile != null) {
 			PrintWriter writer = response.getWriter();
-			String json1 = gson.toJson("{ 'success': 'true', 'location': '/OnlineEvaluationSystem/jsp/Dashboard.jsp'}");
-			String json2 = gson.toJson(new UserProfile("anjali.parkhi", "Anjali"));
+			userCategoryId =  userProfileRecd.getUserCategoryId();
+			if (userCategoryId == 1)
+			   json1 = gson.toJson("{ 'success': 'true', 'location': '/OnlineEvaluationSystem/jsp/Dashboard.jsp'}");
+			else if(userCategoryId == 2) {
+				json1 = gson.toJson("{ 'success': 'true', 'location': '/OnlineEvaluationSystem/jsp/EmployeeDashboard.jsp'}");
+			}
+			//String json2 = gson.toJson(new UserProfile("anjali.parkhi", "Anjali"));
+			String json2 = gson.toJson(userProfileRecd);
 			String jsonString = "[" + json1 + "," + json2 + "]";
 			System.out.println("Json string is " + jsonString);
 			writer.println(jsonString);
 			writer.flush();
+		}
 		}
 	}
 

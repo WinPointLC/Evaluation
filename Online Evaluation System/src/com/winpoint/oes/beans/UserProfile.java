@@ -92,6 +92,14 @@ public class UserProfile {
 		this.password = password;
 	}
 
+	public UserProfile(int userId, String firstName, String email, int userCategoryId) {
+		// TODO Auto-generated constructor stub
+		this.userId = userId;
+		this.firstName = firstName;
+		this.email = email;
+		this.userCategoryId = userCategoryId;
+	}
+
 	/**
 	 * @return the userId
 	 */

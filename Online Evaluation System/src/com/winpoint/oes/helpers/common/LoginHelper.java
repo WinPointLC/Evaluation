@@ -3,25 +3,32 @@ package com.winpoint.oes.helpers.common;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+import com.winpoint.oes.beans.UserProfile;
 import com.winpoint.oes.dao.Dummy;
 import com.winpoint.oes.dao.LoginDao;
 
 public class LoginHelper {
 
-	public boolean validateLogin(String email, String password) {
+	public UserProfile validateLogin(String email, String password) {
 		//user_id, first_name, mobile_number, email, password, photo, user_category_id, 
 		//user_category_name, employee_category_name
-		ResultSet userProfileDetails = new LoginDao().login(email, password);
+		System.out.println("From Login Helper " + email + password);
+		UserProfile userProfile = new LoginDao().login(email, password);
+		if (userProfile != null)
+		   System.out.println("User is " + userProfile.getUserCategoryId());
+		/*ResultSet userProfileDetails = new LoginDao().login(email, password);
 		int userId = 0;
 		String firstName = null;
 		String courseName = null;
 		if (userProfileDetails!= null){
 			try {
-				userId = userProfileDetails.getInt("user_id");
+				userId = userProfileDetails.getInt("userid");
 				firstName = userProfileDetails.getString("first_name");
+				System.out.println("User Id = " + userId + "First Name = " + firstName);
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
-				e.printStackTrace();
+				System.out.println("Exception from Helper" + e);
+				//e.printStackTrace();
 			}
 			
 		// course_name, test_number, number_of_registration, 
@@ -35,9 +42,9 @@ public class LoginHelper {
 					e.printStackTrace();
 				}
 			}
-			return true;
-		}
+*/		return userProfile;
+/*		}
 		else
-			return true;
-	}
+			return false;
+*/	}
 }

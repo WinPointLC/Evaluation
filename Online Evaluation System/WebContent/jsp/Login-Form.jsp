@@ -15,16 +15,16 @@
 			  callServlet();
 		 });
 		function callServlet() {
-			alert("From callServlet");
+			//alert("From callServlet");
 	        var emailVal = $("#email").val();
 	        var passwordVal = $("#password").val();
-	       alert("email = " + emailVal + " : passwordVal = " + passwordVal);
+	       //alert("email = " + emailVal + " : passwordVal = " + passwordVal);
 	        var myData = {
 
 	                    email: emailVal,
 	                    password: passwordVal
 	            };
-	        alert("*** " + JSON.stringify(myData));
+	        //alert("*** " + JSON.stringify(myData));
 	        //console.log(myData);
 	        $.ajax({
 	            type: 'POST',
@@ -47,7 +47,8 @@
 	            	}
 	            },
 	            error: function(){
-	            	alert("Error");
+	            	//alert("Error");
+	            	document.getElementById("error").innerHTML = "Invalid email or password";
 	            }
 
 	        });
@@ -64,6 +65,9 @@
 	  	<!--  <form class="form-outer" method="post" action="/OnlineEvaluationSystem/CommonController"> -->
 	  		  <form class="form-outer" >
 				<h3 class="form-login-heading text-center">Login Form</h3>
+				<div>
+					<p id="error">  </p>
+				</div>
 				<div class="form-group">
 					<label for="email">Email Id</label>
 					<input class="form-control" id="email" type="text" placeholder="Type your Email ID" name="email" required>
