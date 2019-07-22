@@ -50,15 +50,15 @@ go
 insert into SECURITY_QUESTIONS(SECURITY_QUESTION) values('what is your first pet''s name')
 insert into SECURITY_QUESTIONS(SECURITY_QUESTION) values('what is your mother''s name')
 go
-insert into user_profile(FIRST_NAME, LAST_NAME, EMAIL, MOBILE_NUMBER, ADDRESS, 
+insert into user_profile(FIRST_NAME, LAST_NAME, EMAIL_ID, MOBILE_NUMBER, ADDRESS, 
 birthdate, college, degree, branch, YEAR_OF_GRADUATION, password, SECURITY_QUESTION_ID, SECURITY_ANSWER, USER_CATEGORY_ID) 
 values('dhara', 'advani', 'dharaadvani@gmail.com', '9130983338', 'pune camp', '15-March-1999', 'VIT Pune', 'B.Tech',
 'comp', '20-May-2021', '72951835', 1, 'bubbles', 1)
-insert into user_profile(FIRST_NAME, LAST_NAME, EMAIL, MOBILE_NUMBER, ADDRESS, 
+insert into user_profile(FIRST_NAME, LAST_NAME, EMAIL_ID, MOBILE_NUMBER, ADDRESS, 
 birthdate, college, degree, branch, YEAR_OF_GRADUATION, password, SECURITY_QUESTION_ID, SECURITY_ANSWER, USER_CATEGORY_ID) 
 values('rishabh', 'chaudhary', 'rishabh.rpc@gmail.com', '8847799087', 'nibm', '27-May-1999', 'VIT Pune', 'B.Tech',
 'IT', '20-May-2021', 'rishpro27', 1, 'tuffy', 1)
-insert into user_profile(FIRST_NAME, LAST_NAME, EMAIL, MOBILE_NUMBER, ADDRESS, 
+insert into user_profile(FIRST_NAME, LAST_NAME, EMAIL_ID, MOBILE_NUMBER, ADDRESS, 
 birthdate, college, degree, branch, YEAR_OF_GRADUATION, password, SECURITY_QUESTION_ID, SECURITY_ANSWER, USER_CATEGORY_ID) 
 values('anjali', 'parkhi', 'anjaliparkhi@gmail.com', '9552501273', 'saharkar nagar', '9-August-1973', 'VIT Pune', 'B.Tech',
 'elex', '20-May-1985', '12345', 2, 'mom', 2)
@@ -72,25 +72,25 @@ insert into courses(COURSE_NAME, duration, fees, STREAM_ID, COURSE_TYPE_ID, COUR
 values('java', 80, 12000, 1, 1, 'yes', 2, 3)
 go
 
-insert into BATCH_DETAILS(batch_id, course_id, faculty, BEGIN_DATE, END_DATE) values(1, 1, 3,  '1-Jan-2019', '31-Jan-2019')
-insert into BATCH_DETAILS(batch_id, course_id, faculty, BEGIN_DATE, END_DATE) values(2,2,3, '20-oct-2018','28-dec-2018')
-insert into BATCH_DETAILS(batch_id, course_id, faculty, BEGIN_DATE) values(3,3,3,'8-jul-2019')
+insert into BATCH_DETAILS(course_id, faculty, BEGIN_DATE, END_DATE) values(1, 3,  '1-Jan-2019', '31-Jan-2019')
+insert into BATCH_DETAILS(course_id, faculty, BEGIN_DATE, END_DATE) values(2,3, '20-oct-2018','28-dec-2018')
+insert into BATCH_DETAILS(course_id, faculty, BEGIN_DATE) values(3,3,'8-jul-2019')
 go
 
-insert into topics(course_id, topic_name, MIN_NUMBER_OF_QUESTIONS_FOR_TEST) values(1, 'operators', 2)
-insert into topics(course_id, topic_name, MIN_NUMBER_OF_QUESTIONS_FOR_TEST) values(1, 'functions', 5)
-insert into topics(course_id, topic_name, MIN_NUMBER_OF_QUESTIONS_FOR_TEST) values(1, 'pointers', 8)
-insert into topics(course_id, topic_name, MIN_NUMBER_OF_QUESTIONS_FOR_TEST) values(1, 'structures', 4)
-insert into topics(course_id, topic_name, MIN_NUMBER_OF_QUESTIONS_FOR_TEST) values(1, 'files', 5)
+insert into topics(course_id, topic_name, MINIMUM_NUMBER_OF_QUESTIONS_FOR_TEST) values(1, 'operators', 2)
+insert into topics(course_id, topic_name, MINIMUM_NUMBER_OF_QUESTIONS_FOR_TEST) values(1, 'functions', 5)
+insert into topics(course_id, topic_name, MINIMUM_NUMBER_OF_QUESTIONS_FOR_TEST) values(1, 'pointers', 8)
+insert into topics(course_id, topic_name, MINIMUM_NUMBER_OF_QUESTIONS_FOR_TEST) values(1, 'structures', 4)
+insert into topics(course_id, topic_name, MINIMUM_NUMBER_OF_QUESTIONS_FOR_TEST) values(1, 'files', 5)
 go
 
-insert into user_student(userid, parent_name, parent_mob, CLIENT_CATEGORY_ID) values(1, 'haresh advani', '9881711465', 1)
-insert into user_student(userid, parent_name, parent_mob, CLIENT_CATEGORY_ID) values(2, 'jignyasa chaudhary', '9403149112', 1)
+insert into user_student(USER_ID, parent_name, parent_mobile, CLIENT_CATEGORY_ID) values(1, 'haresh advani', '9881711465', 1)
+insert into user_student(USER_ID, parent_name, parent_mobile, CLIENT_CATEGORY_ID) values(2, 'jignyasa chaudhary', '9403149112', 1)
 go
 
-insert into STUDENT_COURSE_DETAILS(USERID,COURSE_ID,BATCH_ID,FEEDBACK_GIVEN,CERTIFICATE_GIVEN,COURSE_AGGR,GRADE_ID,FEE_STATUS) values(1,1,1,'YES','YES',21,'D','PAID')
-insert into STUDENT_COURSE_DETAILS(USERID,COURSE_ID,BATCH_ID,FEE_STATUS) values(1,2,2,'PAID')
-insert into STUDENT_COURSE_DETAILS(USERID,COURSE_ID,BATCH_ID,FEE_STATUS) values(2,2,2,'PAID')
+insert into STUDENT_COURSE_DETAILS(USER_ID,COURSE_ID,BATCH_ID,FEEDBACK_GIVEN,CERTIFICATE_GIVEN,COURSE_AGGR,GRADE_ID,FEE_STATUS) values(1,1,1,'YES','YES',21,'D','PAID')
+insert into STUDENT_COURSE_DETAILS(USER_ID,COURSE_ID,BATCH_ID,FEE_STATUS) values(1,2,2,'PAID')
+insert into STUDENT_COURSE_DETAILS(USER_ID,COURSE_ID,BATCH_ID,FEE_STATUS) values(2,2,2,'PAID')
 
 
 
@@ -107,14 +107,14 @@ go
 
 
 insert into USER_TEST_DETAILS
-(userid, TEST_DETAIL_ID, MARKS_RECEIVED, NUMBER_OF_REGISTRATION, FEE_STATUS)
+(USER_ID, TEST_DETAIL_ID, MARKS_RECEIVED, NUMBER_OF_REGISTRATION, FEE_STATUS)
 values(1, 1, 21, 1, 'PAID')
 insert into USER_TEST_DETAILS
-(userid, TEST_DETAIL_ID, MARKS_RECEIVED, NUMBER_OF_REGISTRATION, FEE_STATUS)
+(USER_ID, TEST_DETAIL_ID, MARKS_RECEIVED, NUMBER_OF_REGISTRATION, FEE_STATUS)
 values(2, 1, 20, 1, 'PAID')
 go
 insert into USER_TEST_DETAILS
-(userid, TEST_DETAIL_ID, NUMBER_OF_REGISTRATION, FEE_STATUS)
+(USER_ID, TEST_DETAIL_ID, NUMBER_OF_REGISTRATION, FEE_STATUS)
 values(2, 1, 2, 'PAID')
 go
 
