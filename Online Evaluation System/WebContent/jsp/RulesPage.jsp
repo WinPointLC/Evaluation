@@ -50,7 +50,7 @@
       <div class="row">
         <div class="col-sm-2 col-md-2 col-lg-2 c3">
           <div class="start-test-btn">
-            <a href="OesQuestionPage.html"><button class="btn btn-primary btn-block">Start Test</button></a>
+            <a href="OesQuestionPage.jsp"><button class="btn btn-primary btn-block">Start Test</button></a>
           </div>
         </div>
       </div>

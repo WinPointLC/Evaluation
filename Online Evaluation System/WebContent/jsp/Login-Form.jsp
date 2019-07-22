@@ -83,7 +83,7 @@
 					<a href="#">Forgot Password</a>
 				</div>
 				<div class="form-group sign-up ml-auto">
-					<a href="#" id="sign-up">Not a User? SignUP</a>
+					<a href="SignupForm.jsp" id="sign-up">Not a User? SignUP</a>
 				</div>
 	  	</form>
 	  </div>
