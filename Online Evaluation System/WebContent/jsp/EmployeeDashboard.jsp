@@ -36,19 +36,19 @@
       <div class="sidebar-wrapper">
         <ul class="nav">
           <li class="nav-item active  ">
-            <a class="nav-link" href="../html/EmployeeDashboard.html">
+            <a class="nav-link" href="EmployeeDashboard.jsp">
               <i class="material-icons">dashboard</i>
               <p> Employee Dashboard</p>
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="../html/User.html">
+            <a class="nav-link" href="User.jsp">
               <i class="material-icons">person</i>
               <p>User Profile</p>
             </a>
           </li>
           <li>
-          	<a class="nav-link" href="../html/MainCoursePage.html">
+          	<a class="nav-link" href="MainCoursePage.jsp">
           		<i class="material-icons">computer</i>
           		<p>Online Evaluation System</p>
           	</a>
@@ -66,13 +66,13 @@
             </a>
           </li>
           <li>
-            <a class="nav-link" href="../html/Notifications.html">
+            <a class="nav-link" href="Notifications.jsp">
               <i class="material-icons">notifications_none</i>
               <p>Notifications</p>
             </a>
           </li>
           <li>
-            <a class="nav-link" href="../html/Settings.html">
+            <a class="nav-link" href="Settings.jsp">
               <i class="material-icons">settings</i>
               <p>Settings</p>
             </a>
