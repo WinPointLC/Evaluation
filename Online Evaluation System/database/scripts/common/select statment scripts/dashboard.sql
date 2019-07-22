@@ -1,14 +1,14 @@
-declare @userid int
+declare @user_id int
 select	
 		COURSES.COURSE_NAME,
 		case 
-			when exists (select userid, COURSE_ID from STUDENT_COURSE_DETAILS 
-			where userid = @userid and course_id = test_details.COURSE_ID )
+			when exists (select USER_ID, COURSE_ID from STUDENT_COURSE_DETAILS 
+			where user_id = @user_id and course_id = test_details.COURSE_ID )
 			then 'yes'
 			else 'no'
 			end as 'IS_MODULAR',
-		TEST_DETAILS.TEST_NO,
-		USER_TEST_DETAILS.NO_OF_REGISTRATION,
+		TEST_DETAILS.TEST_NUMBER,
+		USER_TEST_DETAILS.NUMBER_OF_REGISTRATION,
 		USER_TEST_DETAILS.MARKS_RECEIVED,
 		case 
 			when USER_TEST_DETAILS.MARKS_RECEIVED >=0
@@ -20,4 +20,4 @@ select
 	ON USER_TEST_DETAILS.TEST_DETAIL_ID = TEST_DETAILS.TEST_DETAIL_ID
 		JOIN COURSES
 		ON TEST_DETAILS.COURSE_ID = COURSES.COURSE_ID
-WHERE USER_TEST_DETAILS.USERID = @userid
+WHERE USER_TEST_DETAILS.USERID = @user_id
