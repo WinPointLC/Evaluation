@@ -17,3 +17,14 @@ text-transform: uppercase;
 .c3{
     margin-left: 77%;
 }
+.RuleIframe{
+	height:70vh;
+	margin-left:5%;
+	
+}
+iframe{
+	width:90%;
+	height:90%;
+	border:1px solid rgb(196, 188, 188);
+	box-shadow: 2px 2px 8px 3px rgb(196, 188, 188); 
+}

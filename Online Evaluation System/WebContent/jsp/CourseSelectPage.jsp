@@ -30,7 +30,7 @@
                   </div>
                 </div>
                 <div class="row R3">
-                  <div class="container">
+                  <div class="container" style="overflow-y: scroll; height:250px;">
                     <table class="table table-hover">
                       <thead>
                         <tr>
@@ -61,6 +61,26 @@
                             </td>
                           </tr>
                           <tr>
+                            <td>3.</td>
+                            <td>Descriptive</td>
+                            <td><a href="#">Register for Descriptive</a></td>
+                            <td>
+                              <div class="col-md-5 ">
+                                <a href="RulesPage.jsp"><button class="btn btn-primary" type="button" name="button">Go to Test</button></a>
+                              </div>
+                            </td>
+                          </tr>
+                           <tr>
+                            <td>3.</td>
+                            <td>Descriptive</td>
+                            <td><a href="#">Register for Descriptive</a></td>
+                            <td>
+                              <div class="col-md-5 ">
+                                <a href="RulesPage.jsp"><button class="btn btn-primary" type="button" name="button">Go to Test</button></a>
+                              </div>
+                            </td>
+                          </tr>
+                           <tr>
                             <td>3.</td>
                             <td>Descriptive</td>
                             <td><a href="#">Register for Descriptive</a></td>
