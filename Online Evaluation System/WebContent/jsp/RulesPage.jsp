@@ -31,7 +31,7 @@
       <div class="row">
         <div class="col-sm-12 col-md-12 col-lg-12">
           <div class="RuleIframe">
-          	<iframe src="../html/RulesIframe.jsp" frameborder="0" ></iframe>
+          	<iframe src="RulesIframe.jsp" frameborder="0" ></iframe>
           </div>
         </div>
       </div>
