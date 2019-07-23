@@ -13,7 +13,7 @@ public class LoginHelper {
 		//user_id, first_name, mobile_number, email, password, photo, user_category_id, 
 		//user_category_name, employee_category_name
 		System.out.println("From Login Helper " + email + password);
-		UserProfile userProfile = new LoginDao().login(email, password);
+		UserProfile userProfile = new UserProfile(1, "Anjali", "Parkhi", "anjali.parkhi@winpointsolutions.com", 1, "/OnlineEvaluationSystem/img/photos/client/Knitting Balls.jpg");//new LoginDao().login(email, password);
 		if (userProfile != null)
 		   System.out.println("User is " + userProfile.getUserCategoryId());
 		/*ResultSet userProfileDetails = new LoginDao().login(email, password);

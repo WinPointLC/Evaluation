@@ -22,6 +22,8 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
   
   <script>
+  var userProfile1;
+  var strResJSON;
     $(document).ready(function(){
 	//alert("Hello");
     var searchString = window.location.search.substring(1);
@@ -29,26 +31,59 @@
    var arr = searchString.split('&');
    // alert("arra = " + arr);
     var data= arr[0].split('=')[1];
-    alert("data = " + data);
+    //alert("data = " + data);
     //var studentJson = eval('(' + data + ')');
     //alert("Student Id = " + studentJson.id);
     var userProfile = decodeURIComponent(data);
    
-    alert("Client is " + userProfile);
+    //alert("Client is " + userProfile);
     //var student1 = new Gson().fromJson(student, Student);
-    var userProfile1 =  eval('(' + userProfile + ')');
-    alert("Client is " + userProfile1.userId + ":" + userProfile1.firstName + " " + userProfile1.lastName);
-    alert("Photo Location is " + userProfile1.photoLocation);
-    document.getElementById("photoId").src = userProfile1.photoLocation;
+    userProfile1 =  eval('(' + userProfile + ')');
+    //alert("Client is " + userProfile1.userId + ":" + userProfile1.firstName + " " + userProfile1.lastName);
+    //alert("Photo Location is " + userProfile1.photoLocation);
+    //document.getElementById("photoId").src = userProfile1.photoLocation;
    //var recieved_json = $.parseJSON(student);
   // alert(received_json);
     //Set session variables
     var username = arr[1].split('=')[1];
     var password = arr[2].split('=')[1];
-    alert("username=" + username + "password = " + password);
+    //alert("username=" + username + "password = " + password);
     //document.getElementById('username').value = username;
     //document.getElementById('password').value = password;
+    strResJSON = JSON.stringify(userProfile1);
 });
+    function sendToUserProfile(){
+    	window.location.href = "/OnlineEvaluationSystem/jsp/User.jsp?varid="+ encodeURIComponent(strResJSON);
+    }
+    function sendToMainCoursePage(){
+    	$.ajax({
+            type: 'POST',
+            url: '/OnlineEvaluationSystem/CommonController?action=OnlineEvaluationServlet',
+            data: JSON.stringify(myData),
+            dataType: 'json',
+            contentType: 'application/json; charset=utf-8',
+            traditional: true,
+            success: function (jsonObj) {
+            	//alert("Success from LoginForm");
+                var responseJson1=jsonObj[0], responseJson2=jsonObj[1];
+                var locationJson = eval('(' + responseJson1 + ')');
+                //var studentJson = eval('(' + responseJson2 + ')');
+               	if (locationJson.success) {
+            		var strResJSON = JSON.stringify(responseJson2);
+            		//alert("studentEmail : " + responseJson2.email);
+                	window.location.href = locationJson.location + "?varid=" + encodeURIComponent(strResJSON) +"&username=" + "Anjali" +"&password=" + "Anjali";
+            	} else {
+                    $('#ajaxGetUserServletResponse').text(responseText);
+            	}
+            },
+            error: function(){
+            	//alert("Error");
+            	document.getElementById("error").innerHTML = "Invalid email or password";
+            }
+
+        });
+    	window.location.href = "/OnlineEvaluationSystem/jsp/MainCoursePage-Anjali.jsp?varid="+ encodeURIComponent(strResJSON);
+    }
 </script>
 </head>
 
@@ -74,13 +109,14 @@
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="User.jsp">
+            <!--  <a class="nav-link" href="User.jsp">  -->
+            <a class="nav-link" href="javascript:sendToUserProfile()">
               <i class="material-icons">person</i>
               <p>User Profile</p>
             </a>
           </li>
           <li>
-          	<a class="nav-link" href="MainCoursePage.jsp">
+          	<a class="nav-link" href="javascript:sendToMainCoursePage()">
           		<i class="material-icons">computer</i>
           		<p>Online Evaluation System</p>
           	</a>
