@@ -31,11 +31,11 @@
       <div class="row">
         <div class="col-sm-12 col-md-12 col-lg-12">
           <div class="RuleIframe">
-          	<iframe src="../html/RulesIframe.html" frameborder="0" ></iframe>
+          	<iframe src="../html/RulesIframe.jsp" frameborder="0" ></iframe>
           </div>
         </div>
       </div>
-      
+
         <div class="row">
         <div class="col-sm-2 col-md-2 col-lg-2 c3">
           <div class="start-test-btn">
