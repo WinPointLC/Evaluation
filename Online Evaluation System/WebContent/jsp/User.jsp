@@ -17,6 +17,7 @@
   <link href="../assets/css/material-dashboard.css?v=2.1.1" rel="stylesheet" />
   <!-- CSS Just for demo purpose, don't include it in your project -->
   <link href="../assets/demo/demo.css" rel="stylesheet" />
+    
 </head>
 
 <body class="">
@@ -165,13 +166,13 @@
                       <div class="col-md-6">
                         <div class="form-group">
                           <label class="bmd-label-floating">Fist Name</label>
-                          <input type="text" class="form-control">
+                          <input type="text" class="form-control" id="firstName">
                         </div>
                       </div>
                       <div class="col-md-6">
                         <div class="form-group">
                           <label class="bmd-label-floating">Last Name</label>
-                          <input type="text" class="form-control">
+                          <input type="text" class="form-control" id="lastName">
                         </div>
                       </div>
                     </div>
@@ -224,7 +225,7 @@
               <div class="card card-profile">
                 <div class="card-avatar">
                   <a href="#pablo">
-                    <img class="img" src="../assets/img/faces/rucha.jpg" />
+                    <img class="img" id="photoId" /> <!-- src="../assets/img/faces/rucha.jpg" /> -->
                   </a>
                 </div>
                 <div class="card-body">
@@ -370,7 +371,18 @@
   <script src="../assets/demo/demo.js"></script>
   <script>
     $(document).ready(function() {
+    	var searchString = window.location.search.substring(1);
+    	var arr = searchString.split('&');
+    	var data= arr[0].split('=')[1];
+    	var userProfile = decodeURIComponent(data);
+    	var userProfile1 =  eval('(' + userProfile + ')');
+	    //alert("Client is " + userProfile1.userId + ":" + userProfile1.firstName + " " + userProfile1.lastName);
+	    document.getElementById("photoId").src = userProfile1.photoLocation;
+	    document.getElementById("firstName").value = userProfile1.firstName;
+	    document.getElementById("lastName").value = userProfile1.lastName;
+    	
       $().ready(function() {
+    	  
         $sidebar = $('.sidebar');
 
         $sidebar_img_container = $sidebar.find('.sidebar-background');
@@ -389,7 +401,7 @@
           }
 
         }
-
+        
         $('.fixed-plugin a').click(function(event) {
           // Alex if we click on switch, stop propagation of the event, so the dropdown will not be hide, otherwise we set the  section active
           if ($(this).hasClass('switch-trigger')) {
@@ -536,6 +548,7 @@
           }, 1000);
 
         });
+        
       });
     });
   </script>
