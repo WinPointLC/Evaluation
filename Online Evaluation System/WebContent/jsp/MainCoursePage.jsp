@@ -14,183 +14,249 @@
             <link rel="stylesheet" href="../css/MainCoursePage.css">
             </head>
             <body>
-              <div class="container-fluid">
-                <div class="row r1">
-                  <div class="col-sm-12 col-md-12 col-lg-12">
-                    <div class="card card-plain">
-                      <div class="card card-header card-header-primary">
-                        <h3 class="card-title text-align mr-auto ml-auto">Courses offered for you by Winpoint</h3>
+              <div class="content">
+                <div class="container-fluid">
+                  <!-- your content here -->
+                  <div class="row">
+                    <div class="col-sm-12 col-md-12 col-lg-12">
+                      <div class="card-header heading">
+                          <h3>Courses Offered</h3>
                       </div>
                     </div>
                   </div>
-                </div>
-                <div class="row r2">
-                  <div class="col-sm-4 col-md-4 col-lg-4 c1">
-                    <button class="btn btn-info btn-block tablinks" onclick="Showdiv1()" >Technical</button>
-                  </div>
-                  <div class="col-sm-4 col-md-4 col-lg-4 c2">
-                    <button class="btn btn-info btn-block tablinks" onclick="Showdiv2()" >SoftSkills</button>
-                  </div>
-                  <div class="col-sm-4 col-md-4 col-lg-4 c3">
-                    <button class="btn btn-info btn-block tablinks" onclick="Showdiv3()" >General Aptitude</button>
-                  </div>
-                </div>
-                <div class="row r3">
-                  <div class="col-sm-12 col-md-12 col-lg-12">
-                    <div id="Technical" class="tabcontent" >
-                      <h3 class="content-header">Technical Section</h3>
-                      <div class="dropdown">
-                        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                          Course Category
-                        </button>
-                        <div class="dropdown-menu"  aria-labelledby="dropdownMenuButton">
-                          <a class="dropdown-item" href="#">Modular</a>
-                          <a class="dropdown-item" href="#">TBC</a>
-                          <a class="dropdown-item" href="#">CRT</a>
-                        </div>
-                      </div><br><br>
-                      <div class="row ">
-                        <div class="col-sm-2 col-md-2 col-lg-2 content-align mr-auto ml-auto">
-                          <div class="course-list-row1">
-                            <a href="CourseSelectPage.jsp"><button type="button" name="button" class="btn btn-danger btn-block">C</button></a>
-                          </div>
-                        </div>
-                        <div class="col-sm-2 col-md-2 col-lg-2 content-align mr-auto ml-auto">
-                          <div class="course-list-row1">
-                            <a href="CourseSelectPage.jsp"><button type="button" name="button" class="btn btn-danger btn-block">Cpp</button></a>
-                          </div>
-                        </div>
-                        <div class="col-sm-2 col-md-2 col-lg-2 content-align mr-auto ml-auto">
-                          <div class="course-list-row1">
-                            <a href="CourseSelectPage.jsp"><button type="button" name="button" class="btn btn-danger btn-block">Java</button></a>
-                          </div>
-                        </div>
-                        <div class="col-sm-2 col-md-2 col-lg-2 content-align mr-auto ml-auto">
-                          <div class="course-list-row1">
-                            <a href="CourseSelectPage.jsp"><button type="button" name="button" class="btn btn-danger btn-block">JavaScript</button></a>
-                          </div>
-                        </div>
-                      </div><br><br>
-                      <div class="row ">
-                        <div class="col-sm-2 col-md-2 col-lg-2 content-align mr-auto ml-auto">
-                          <div class="course-list-row2">
-                            <a href="CourseSelectPage.jsp"><button type="button" name="button" class="btn btn-danger btn-block">Data Structures</button></a>
-                          </div>
-                        </div>
-                        <div class="col-sm-2 col-md-2 col-lg-2 content-align mr-auto ml-auto">
-                          <div class="course-list-row2">
-                            <a href="CourseSelectPage.jsp"><button type="button" name="button" class="btn btn-danger btn-block">Database</button></a>
-                          </div>
-                        </div>
-                        <div class="col-sm-2 col-md-2 col-lg-2 content-align mr-auto ml-auto">
-                          <div class="course-list-row2">
-                            <a href="CourseSelectPage.jsp"><button type="button" name="button" class="btn btn-danger btn-block">Operating System</button></a>
-                          </div>
-                        </div>
-                        <div class="col-sm-2 col-md-2 col-lg-2 content-align mr-auto ml-auto">
-                          <div class="course-list-row2">
-                            <a href="CourseSelectPage.jsp"><button type="button" name="button" class="btn btn-danger btn-block">Computer Networks</button></a>
-                          </div>
-                        </div>
-                      </div><br><br>
 
+                  <div class="row">
+                     <div class="col-md-11 col-lg-11">
+                      <div class="card">
+                        <div class="card-header card-header-tabs card-header" style="background-color:rgb(148, 21, 193);">
+                          <div class="nav-tabs-navigation">
+                            <div class="nav-tabs-wrapper">
+
+                              <ul class="nav nav-tabs" data-tabs="tabs">
+                                <li class="nav-item">
+                                  <a class="nav-link active" href="#profile" data-toggle="tab">
+                                    <i class="material-icons">computer</i>Technical Section
+                                    <div class="ripple-container"></div>
+                                  </a>
+                                </li>
+                                <li class="nav-item">
+                                  <a class="nav-link" href="#messages" data-toggle="tab">
+                                    <i class="material-icons">record_voice_over</i> SoftSkills Section
+                                    <div class="ripple-container"></div>
+                                  </a>
+                                </li>
+                                <li class="nav-item">
+                                  <a class="nav-link" href="#settings" data-toggle="tab">
+                                    <i class="material-icons">wb_incandescent</i> General Aptitude Section
+                                    <div class="ripple-container"></div>
+                                  </a>
+                                </li>
+                              </ul>
+                            </div>
+                          </div>
+                        </div>
+
+                        <div class="card-body">
+                          <div class="tab-content">
+                            <div class="tab-pane active" id="profile"><br><br>
+                              <div class="dropdown drop1">
+                                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                  Course Category
+                                </button>
+                                <div class="dropdown-menu"  aria-labelledby="dropdownMenuButton">
+                                  <a class="dropdown-item" href="#">Modular</a>
+                                  <a class="dropdown-item" href="#">TBC</a>
+                                  <a class="dropdown-item" href="#">CRT</a>
+                                </div>
+                              </div><br><br>
+                              <div class="row">
+                                <div class="col-lg-3 col-md-6 col-sm-6 column1">
+                                  <div class="card card-stats">
+                                    <div class="card-header card-header-icon">
+                                      <div class="card-icon" style="font-size:20px; background-color:rgb(7, 7, 79);" id="row1-card1">
+                                        <i class="fa fa-copyright" style="font-size:70px;"></i>
+                                      </div>
+                                      <a href="CourseSelectPage.jsp" ><p class="card-category">C Language</p></a>
+                                    </div>
+
+                                  </div>
+                                </div>
+                                <div class="col-lg-3 col-md-6 col-sm-6 column2">
+                                  <div class="card card-stats">
+                                    <div class="card-header card-header-icon">
+                                      <div class="card-icon" style="font-size:20px; background-color:rgb(19, 237, 165);">
+                                        <img src="../assets/img/Dashboard-main-page-images/cpp-icon-file-format.svg" alt="java" style=" height: 60px; width: 60px; ">
+                                      </div>
+                                      <a href="CourseSelectPage.jsp" ><p class="card-category">C++ Language</p></a>
+                                    </div>
+
+                                  </div>
+                                </div>
+                                <div class="col-lg-3 col-md-6 col-sm-6 column3">
+                                  <div class="card card-stats">
+                                    <div class="card-header card-header-icon">
+
+                                      <div class="card-icon" style="background-color:rgb(236, 13, 40);">
+                                        <img src="../assets/img/Dashboard-main-page-images/java-brands.svg" alt="java" style=" height: 60px; width: 60px; ">
+                                      </div>
+                                      <a href="CourseSelectPage.jsp" ><p class="card-category">Java Language</p></a>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+
+                              <div class="row ">
+                                <div class="col-lg-3 col-md-6 col-sm-6 column1">
+                                  <div class="card card-stats">
+                                    <div class="card-header card-header-warning card-header-icon">
+
+                                      <div class="card-icon" style="font-size:20px;">
+                                        <i class="fa fa-database" style="font-size:70px;"></i>
+                                      </div>
+                                      <a href="CourseSelectPage.jsp" ><p class="card-category">Database</p></a>
+                                    </div>
+                                  </div>
+                                </div>
+                                <div class="col-lg-3 col-md-6 col-sm-6 column3">
+                                  <div class="card card-stats">
+                                    <div class="card-header card-header-info card-header-icon">
+
+                                      <div class="card-icon" style="font-size:20px;" id="card">
+                                        <i class="fa fa-windows" style="font-size:70px;"></i>
+                                      </div>
+                                      <a href="CourseSelectPage.jsp" ><p class="card-category">Operating System</p></a>
+                                    </div>
+                                  </div>
+                                </div>
+                                <div class="col-lg-3 col-md-6 col-sm-6 column3">
+                                  <div class="card card-stats">
+                                    <div class="card-header  card-header-primary card-header-icon">
+                                      <div class="card-icon">
+                                        <img src="../assets/img/Dashboard-main-page-images/js-brands.svg" alt="java" style=" height: 60px; width: 60px; ">
+                                      </div>
+                                      <a href="CourseSelectPage.jsp" ><p class="card-category">JavaScript language</p></a>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+
+                            <div class="tab-pane" id="messages">
+                              <div class="dropdown drop1">
+                                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                  Course Category
+                                </button>
+                                <div class="dropdown-menu"  aria-labelledby="dropdownMenuButton">
+                                  <a class="dropdown-item" href="#">Modular</a>
+                                  <a class="dropdown-item" href="#">TBC</a>
+                                  <a class="dropdown-item" href="#">CRT</a>
+                                </div>
+                              </div><br>
+                              <div class="row">
+                                <div class="col-lg-3 col-md-6 col-sm-6 column1">
+                                  <div class="card card-stats">
+                                    <div class="card-header card-header-icon">
+                                      <div class="card-icon" style="font-size:20px; background-color:rgb(0, 208, 139);" id="row1-card1">
+                                        <i class="material-icons">sort_by_alpha</i>
+                                      </div>
+                                      <a href="CourseSelectPage.jsp" ><p class="card-category">English Language Skills</p></a>
+                                    </div>
+
+                                  </div>
+                                </div>
+                                <div class="col-lg-3 col-md-6 col-sm-6 column2">
+                                  <div class="card card-stats">
+                                    <div class="card-header card-header-icon">
+                                      <div class="card-icon" style="font-size:20px; background-color:rgb(180, 3, 136);" id="row1-card1">
+                                        <i class="material-icons">record_voice_over</i>
+                                      </div>
+                                      <a href="CourseSelectPage.jsp" ><p class="card-category">Oral Communication</p></a>
+                                    </div>
+
+                                  </div>
+                                </div>
+                                <div class="col-lg-3 col-md-6 col-sm-6 column3">
+                                  <div class="card card-stats">
+                                    <div class="card-header card-header-danger card-header-icon">
+
+                                      <div class="card-icon">
+                                      <i class="material-icons">how_to_reg</i>
+                                      </div>
+                                  <a href="CourseSelectPage.jsp" >    <p class="card-category">Personality Development</p></a>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+
+                            </div>
+                            <div class="tab-pane" id="settings">
+                              <div class="dropdown drop1">
+                                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                  Course Category
+                                </button>
+                                <div class="dropdown-menu"  aria-labelledby="dropdownMenuButton">
+                                  <a class="dropdown-item" href="#">Modular</a>
+                                  <a class="dropdown-item" href="#">TBC</a>
+                                  <a class="dropdown-item" href="#">CRT</a>
+                                </div>
+                              </div><br>
+                              <div class="row">
+                                <div class="col-lg-3 col-md-6 col-sm-6 column1">
+                                  <div class="card card-stats">
+                                    <div class="card-header card-header-icon">
+                                      <div class="card-icon" style="font-size:20px; background-color:rgb(111, 209, 13)" id="row1-card1">
+                                        <i class="material-icons">exposure</i>
+                                      </div>
+                                      <a href="CourseSelectPage.jsp" ><p class="card-category">Quantitative Aptitude</p></a>
+                                    </div>
+
+                                  </div>
+                                </div>
+                                <div class="col-lg-3 col-md-6 col-sm-6 column2">
+                                  <div class="card card-stats">
+                                    <div class="card-header card-header-info card-header-icon">
+                                      <div class="card-icon" style="font-size:20px;">
+                                        <i class="material-icons">extension</i>
+                                      </div>
+                                      <a href="CourseSelectPage.jsp" ><p class="card-category">Logical Reasoning</p></a>
+                                    </div>
+
+                                  </div>
+                                </div>
+                                <div class="col-lg-3 col-md-6 col-sm-6 column3">
+                                  <div class="card card-stats">
+                                    <div class="card-header card-header-icon">
+
+                                      <div class="card-icon" style="background-color:rgb(218, 113, 31);">
+                                        <i class="material-icons">find_in_page</i>
+                                      </div>
+                                      <a href="CourseSelectPage.jsp" ><p class="card-category">Verbal Reasoning</p></a>
+                                    </div>
+                                  </div>
+                                </div>
+                                <div class="col-lg-3 col-md-6 col-sm-6 column4">
+                                  <div class="card card-stats">
+                                    <div class="card-header card-header-icon">
+                                      <div class="card-icon" style="font-size:20px; background-color:rgb(251, 26, 30);">
+                                <i class="material-icons">spellcheck</i>
+                                      </div>
+                                      <a href="CourseSelectPage.jsp" ><p class="card-category">Verbal Ability</p></a>
+                                    </div>
+
+                                  </div>
+
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
                     </div>
-                  </div>
-                  <div class="col-sm-12 col-md-12 col-lg-12">
-                    <div id="SoftSkills" class="tabcontent" style="display:none;">
-                      <h3 class="content-header">Softskills Section</h3>
-                      <div class="dropdown">
-                        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                          Course Category
-                        </button>
-                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                          <a class="dropdown-item" href="#">Modular</a>
-                          <a class="dropdown-item" href="#">TBC</a>
-                          <a class="dropdown-item" href="#">CRT</a>
-                        </div>
-                      </div><br><br>
-                      <div class="row ">
-                        <div class="col-sm-2 col-md-2 col-lg-2 content-align mr-auto ml-auto">
-                          <div class="course-list2-row1">
-                            <a href="CourseSelectPage.jsp"><button type="button" name="button" class="btn btn-block">English language Skills</button></a>
-                          </div>
-                        </div>
-                        <div class="col-sm-2 col-md-2 col-lg-2 content-align mr-auto ml-auto">
-                          <div class="course-list2-row1">
-                            <a href="CourseSelectPage.jsp"><button type="button" name="button" class="btn btn-block">Writing Skills</button></a>
-                          </div>
-                        </div>
-                        <div class="col-sm-2 col-md-2 col-lg-2 content-align mr-auto ml-auto">
-                          <div class="course-list2-row1">
-                            <a href="CourseSelectPage.jsp"><button type="button" name="button" class="btn btn-block">Oral Communication</button></a>
-                          </div>
-                        </div>
-                        <div class="col-sm-2 col-md-2 col-lg-2 content-align mr-auto ml-auto">
-                          <div class="course-list2-row1">
-                            <a href="CourseSelectPage.jsp"><button type="button" name="button" class="btn btn-block">Personality Development</button></a>
-                          </div>
-                        </div>
-                      </div><br><br>
-                    </div>
-                  </div>
-                  <div class="col-sm-12 col-md-12 col-lg-12 content-align mr-auto ml-auto">
-                    <div id="GA" class="tabcontent" style="display:none;">
-                      <h3 class="content-header">General Aptitude</h3>
-                      <div class="dropdown ">
-                        <button class="btn btn-secondary dropdown-toggle " type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"  >
-                          Course Category
-                        </button>
-                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                          <a class="dropdown-item" href="#">Modular</a>
-                          <a class="dropdown-item" href="#">TBC</a>
-                          <a class="dropdown-item" href="#">CRT</a>
-                        </div>
-                      </div><br><br>
-                      <div class="row ">
-                        <div class="col-sm-2 col-md-2 col-lg-2 content-align mr-auto ml-auto">
-                          <div class="course-list3-row1">
-                            <a href="CourseSelectPage.jsp"><button type="button" name="button" class="btn btn-warning btn-block">Quantitative Aptitude</button></a>
-                          </div>
-                        </div>
-                        <div class="col-sm-2 col-md-2 col-lg-2 content-align mr-auto ml-auto">
-                          <div class="course-list3-row1">
-                            <a href="CourseSelectPage.jsp"><button type="button" name="button" class="btn btn-warning btn-block">Logical Reasoning</button></a>
-                          </div>
-                        </div>
-                        <div class="col-sm-2 col-md-2 col-lg-2 content-align mr-auto ml-auto">
-                          <div class="course-list3-row1">
-                            <a href="CourseSelectPage.jsp"><button type="button" name="button" class="btn btn-warning btn-block">Verbal Reasoning</button></a>
-                          </div>
-                        </div>
-                        <div class="col-sm-2 col-md-2 col-lg-2 content-align mr-auto ml-auto">
-                          <div class="course-list3-row1">
-                            <a href="CourseSelectPage.jsp"><button type="button" name="button" class="btn btn-warning btn-block">Verbal Ability</button></a>
-                          </div>
-                        </div>
-                      </div><br><br>
-                    </div>
+
+
                   </div>
                 </div>
+              </div
 
-              </div>
-
-              <script>
-              function Showdiv1() {
-                document.getElementById('Technical').style.display="block";
-                document.getElementById('SoftSkills').style.display="none";
-                document.getElementById('GA').style.display="none";
-              }
-              function Showdiv2() {
-                document.getElementById('SoftSkills').style.display="block";
-                document.getElementById('Technical').style.display="none";
-                document.getElementById('GA').style.display="none";
-              }
-              function Showdiv3() {
-                document.getElementById('GA').style.display="block";
-                document.getElementById('SoftSkills').style.display="none";
-                document.getElementById('Technical').style.display="none";
-              }
-            </script>
             <!--   Core JS Files   -->
             <script src="../assets/js/core/jquery.min.js"></script>
             <script src="../assets/js/core/popper.min.js"></script>
