@@ -66,7 +66,7 @@ public class LoginServlet extends HttpServlet {
 			PrintWriter writer = response.getWriter();
 			userCategoryId =  userProfileRecd.getUserCategoryId();
 			if (userCategoryId == 1)
-			   json1 = gson.toJson("{ 'success': 'true', 'location': '/OnlineEvaluationSystem/jsp/Dashboard.jsp'}");
+			   json1 = gson.toJson("{ 'success': 'true', 'location': '/OnlineEvaluationSystem/jsp/ClientDashboard.jsp'}");
 			else if(userCategoryId == 2) {
 				json1 = gson.toJson("{ 'success': 'true', 'location': '/OnlineEvaluationSystem/jsp/EmployeeDashboard.jsp'}");
 			}

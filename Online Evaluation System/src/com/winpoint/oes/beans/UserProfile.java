@@ -15,7 +15,7 @@ public class UserProfile {
 	private String degree;
 	private String branch;
 	private Date yearOfGraduation;
-	private Image photo;
+	private String photoLocation;
 	private String password;
 	private Integer securityQuestionId;
 	private String securityAnswer;
@@ -40,7 +40,7 @@ public class UserProfile {
 	 * @param degree
 	 * @param branch
 	 * @param yearOfGraduation
-	 * @param photo
+	 * @param photoLocation
 	 * @param password
 	 * @param securityQuestionId
 	 * @param securityAnswer
@@ -53,10 +53,11 @@ public class UserProfile {
 	 * @param experience
 	 * @param createdBy
 	 * @param createDate
+	 * @param photoLocation 
 	 */
 	public UserProfile(Integer userId, String firstName, String lastName, String email, String mobileNumber,
 			String address, Date birthDate, String college, String degree, String branch, Date yearOfGraduation,
-			Image photo, String password, Integer securityQuestionId, String securityAnswer, Integer userCategoryId,
+			String photoLocation, String password, Integer securityQuestionId, String securityAnswer, Integer userCategoryId,
 			String occupation, String organisation, String designation, String domain, String role, Integer experience,
 			Integer createdBy, Date createDate) {
 		super();
@@ -71,7 +72,7 @@ public class UserProfile {
 		this.degree = degree;
 		this.branch = branch;
 		this.yearOfGraduation = yearOfGraduation;
-		this.photo = photo;
+		this.photoLocation = photoLocation;
 		this.password = password;
 		this.securityQuestionId = securityQuestionId;
 		this.securityAnswer = securityAnswer;
@@ -92,12 +93,14 @@ public class UserProfile {
 		this.password = password;
 	}
 
-	public UserProfile(int userId, String firstName, String email, int userCategoryId) {
+	public UserProfile(int userId, String firstName, String lastName, String email, int userCategoryId, String photoLocation) {
 		// TODO Auto-generated constructor stub
 		this.userId = userId;
 		this.firstName = firstName;
+		this.lastName = lastName;
 		this.email = email;
 		this.userCategoryId = userCategoryId;
+		this.photoLocation = photoLocation;
 	}
 
 	/**
@@ -257,15 +260,15 @@ public class UserProfile {
 	/**
 	 * @return the photo
 	 */
-	public Image getPhoto() {
-		return photo;
+	public String getPhotoLocation() {
+		return photoLocation;
 	}
 
 	/**
 	 * @param photo the photo to set
 	 */
-	public void setPhoto(Image photo) {
-		this.photo = photo;
+	public void setPhoto(String photoLocation) {
+		this.photoLocation = photoLocation;
 	}
 
 	/**

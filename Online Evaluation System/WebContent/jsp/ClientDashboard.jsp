@@ -18,6 +18,38 @@
   <link href="../assets/css/material-dashboard.css?v=2.1.1" rel="stylesheet"/>
   <!-- own CSS -->
   <link rel="stylesheet" href="../css/Dashboard.css">
+  
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+  
+  <script>
+    $(document).ready(function(){
+	//alert("Hello");
+    var searchString = window.location.search.substring(1);
+	//alert("SearchString = " + searchString);
+   var arr = searchString.split('&');
+   // alert("arra = " + arr);
+    var data= arr[0].split('=')[1];
+    alert("data = " + data);
+    //var studentJson = eval('(' + data + ')');
+    //alert("Student Id = " + studentJson.id);
+    var userProfile = decodeURIComponent(data);
+   
+    alert("Client is " + userProfile);
+    //var student1 = new Gson().fromJson(student, Student);
+    var userProfile1 =  eval('(' + userProfile + ')');
+    alert("Client is " + userProfile1.userId + ":" + userProfile1.firstName + " " + userProfile1.lastName);
+    alert("Photo Location is " + userProfile1.photoLocation);
+    document.getElementById("photoId").src = userProfile1.photoLocation;
+   //var recieved_json = $.parseJSON(student);
+  // alert(received_json);
+    //Set session variables
+    var username = arr[1].split('=')[1];
+    var password = arr[2].split('=')[1];
+    alert("username=" + username + "password = " + password);
+    //document.getElementById('username').value = username;
+    //document.getElementById('password').value = password;
+});
+</script>
 </head>
 
 <body>
@@ -87,6 +119,7 @@
         <div class="container-fluid">
           <div class="navbar-wrapper">
             <a class="navbar-brand" href="#pablo">Dashboard</a>
+            <img id="photoId" />
           </div>
           <button class="navbar-toggler" type="button" data-toggle="collapse" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
             <span class="sr-only">Toggle navigation</span>
