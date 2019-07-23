@@ -70,6 +70,12 @@ insert into courses(COURSE_NAME, duration, fees, STREAM_ID, COURSE_TYPE_ID, COUR
 values('cpp', 60, 4000, 1, 1, 'yes', 2, 2)
 insert into courses(COURSE_NAME, duration, fees, STREAM_ID, COURSE_TYPE_ID, COURSEWARE_EXIST, EVALUATION_TYPE_ID, TOTAL_TESTS)
 values('java', 80, 12000, 1, 1, 'yes', 2, 3)
+insert into courses(COURSE_NAME, STREAM_ID, COURSE_TYPE_ID) values('english language skills', 2, 1)
+insert into courses(COURSE_NAME, STREAM_ID, COURSE_TYPE_ID) values('writing skills', 2, 1)
+insert into courses(COURSE_NAME, STREAM_ID, COURSE_TYPE_ID) values('oral communication', 2, 1)
+insert into courses(COURSE_NAME, STREAM_ID, COURSE_TYPE_ID) values('logical reasoning', 3, 3)
+insert into courses(COURSE_NAME, STREAM_ID, COURSE_TYPE_ID) values('verbal reasoning', 3, 3)
+
 go
 
 insert into BATCH_DETAILS(course_id, faculty, BEGIN_DATE, END_DATE) values(1, 3,  '1-Jan-2019', '31-Jan-2019')
