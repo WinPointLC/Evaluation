@@ -1,5 +1,4 @@
 DECLARE @email_id VARCHAR(150)
-DECLARE @mobile_number varchar(15)
 DECLARE @password varchar(32)
 
 SELECT	USER_PROFILE.USER_ID,
