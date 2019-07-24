@@ -103,6 +103,10 @@ public class UserProfile {
 		this.photoLocation = photoLocation;
 	}
 
+	public UserProfile() {
+		// TODO Auto-generated constructor stub
+	}
+
 	/**
 	 * @return the userId
 	 */

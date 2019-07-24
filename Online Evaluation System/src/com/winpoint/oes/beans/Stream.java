@@ -23,6 +23,12 @@ public class Stream {
 		this.createdDate = createdDate;
 	}
 	
+	public Stream(int streamId, String streamName) {
+		// TODO Auto-generated constructor stub
+		this.streamId = streamId;
+		this.streamName = streamName;
+	}
+
 	/**
 	 * @return the streamId
 	 */

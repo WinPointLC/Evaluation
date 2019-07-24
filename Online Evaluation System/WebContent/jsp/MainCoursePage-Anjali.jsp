@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html lang="en">
   <head>
     <title>Main Course Page</title>
@@ -11,7 +12,7 @@
           <link rel="stylesheet" href="../assets/css/fontawesome.min.css">
             <!-- Material Kit CSS -->
             <link href="../assets/css/material-dashboard.css?v=2.1.1" rel="stylesheet"/>
-            <link rel="stylesheet" href="../css/MainCoursePage.css">
+            <link rel="stylesheet" href="../css/MainCoursePage.css">            
             </head>
             <body>
               <div class="container-fluid">
@@ -34,6 +35,11 @@
                   <div class="col-sm-4 col-md-4 col-lg-4 c3">
                     <button class="btn btn-info btn-block tablinks" onclick="Showdiv3()" >General Aptitude</button>
                   </div>
+                 <div>
+        			<c:forEach items="${streamList1}"  var="streamItem">
+        			<p><c:out value="${streamItem.firstName}" /></p>
+        			</c:forEach>
+    			  </div>
                 </div>
                 <div class="row r3">
                   <div class="col-sm-12 col-md-12 col-lg-12">
@@ -191,6 +197,34 @@
                 document.getElementById('Technical').style.display="none";
               }
             </script>
+            <script>
+            var searchString = window.location.search.substring(1);
+    	var arr = searchString.split('&');
+    	var data= arr[0].split('=')[1];
+    	var streamList = decodeURIComponent(data);
+    	var streamList1 =  eval('(' + streamList + ')');
+    	alert(streamList1);
+    	<c:forEach items="${streamList1}"  var="streamItem">
+    		alert("1");
+			//alert('<c:out value="${streamItem.firstName}" />');
+		</c:forEach>
+		/* var groupMap = {
+			    <c:forEach items="${configuredGroupMap}" var="groupMap" varStatus="loop">
+		        "${groupMap.key}": "${groupMap.value}"${!loop.last ? ',' : ''}
+		    </c:forEach>
+		};
+		output of this is like
+		var groupMap = {
+			    "key1": "value1",
+			    "key2": "value2",
+			    "key3": "value3"
+			};
+		 */
+	    //alert("Client is " + userProfile1.userId + ":" + userProfile1.firstName + " " + userProfile1.lastName);
+	    /* document.getElementById("photoId").src = stream1.photoLocation;
+	    document.getElementById("firstName").value = stream1.firstName;
+	    document.getElementById("lastName").value = stream1.lastName; */
+	    </script>
             <!--   Core JS Files   -->
             <script src="../assets/js/core/jquery.min.js"></script>
             <script src="../assets/js/core/popper.min.js"></script>

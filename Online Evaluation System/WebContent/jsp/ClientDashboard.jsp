@@ -22,6 +22,7 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
   
   <script>
+  var data;
   var userProfile1;
   var strResJSON;
     $(document).ready(function(){
@@ -30,7 +31,7 @@
 	//alert("SearchString = " + searchString);
    var arr = searchString.split('&');
    // alert("arra = " + arr);
-    var data= arr[0].split('=')[1];
+    data= arr[0].split('=')[1];
     //alert("data = " + data);
     //var studentJson = eval('(' + data + ')');
     //alert("Student Id = " + studentJson.id);
@@ -53,13 +54,14 @@
     strResJSON = JSON.stringify(userProfile1);
 });
     function sendToUserProfile(){
-    	window.location.href = "/OnlineEvaluationSystem/jsp/User.jsp?varid="+ encodeURIComponent(strResJSON);
+    	window.location.href = "/OnlineEvaluationSystem/jsp/User.jsp?varid="+ data; 
+    	//encodeURIComponent(strResJSON);
     }
     function sendToMainCoursePage(){
     	$.ajax({
             type: 'POST',
             url: '/OnlineEvaluationSystem/CommonController?action=OnlineEvaluationServlet',
-            data: JSON.stringify(myData),
+            data: JSON.stringify(userProfile1),
             dataType: 'json',
             contentType: 'application/json; charset=utf-8',
             traditional: true,
