@@ -255,7 +255,7 @@
 
                   </div>
                 </div>
-              </div
+              </div>
 
             <!--   Core JS Files   -->
             <script src="../assets/js/core/jquery.min.js"></script>
