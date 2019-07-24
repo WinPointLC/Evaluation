@@ -2,17 +2,17 @@ USE OES_TESTING
 GO
 
 insert into CLIENT_CATEGORY(client_category_name) values('student')
-insert into CLIENT_CATEGORY(client_category_name) values('working_professional')
+insert into CLIENT_CATEGORY(client_category_name) values('working professional')
 go
 
-insert into COURSE_TYPE(course_type_name) values('modular')
-insert into COURSE_TYPE(course_type_name) values('tbc')
-insert into COURSE_TYPE(course_type_name) values('crt')
+insert into COURSE_TYPE(course_type_name) values('Modular')
+insert into COURSE_TYPE(course_type_name) values('TBC')
+insert into COURSE_TYPE(course_type_name) values('CRT')
 go
 
-insert into stream(STREAM_NAME) values('technical')
-insert into stream(STREAM_NAME) values('soft_skills')
-insert into stream(STREAM_NAME) values('general_aptitude')
+insert into stream(STREAM_NAME) values('Technical')
+insert into stream(STREAM_NAME) values('Soft Skills')
+insert into stream(STREAM_NAME) values('General Aptitude')
 go
 
 insert into DIFFICULTY_LEVEL(DIFFICULTY_LEVEL_NAME) values('easy')
@@ -24,9 +24,10 @@ insert into EMPLOYEE_CATEGORY(EMPLOYEE_CATEGORY_NAME) values('admin')
 insert into EMPLOYEE_CATEGORY(EMPLOYEE_CATEGORY_NAME) values('faculty')
 go
 
-insert into EVALUATION_TYPE(EVALUATION_TYPE_NAME, OFFLINE_CHECK) values('mcq', 'yes')
-insert into EVALUATION_TYPE(EVALUATION_TYPE_NAME, OFFLINE_CHECK) values('project', 'yes')
-insert into EVALUATION_TYPE(EVALUATION_TYPE_NAME, OFFLINE_CHECK) values('coding + project', 'yes')
+insert into EVALUATION_TYPE(EVALUATION_TYPE_NAME, OFFLINE_CHECK) values('MCQ', 'yes')
+insert into EVALUATION_TYPE(EVALUATION_TYPE_NAME, OFFLINE_CHECK) values('Project', 'yes')
+insert into EVALUATION_TYPE(EVALUATION_TYPE_NAME, OFFLINE_CHECK) values('Coding', 'yes')
+insert into EVALUATION_TYPE(EVALUATION_TYPE_NAME, OFFLINE_CHECK) values('Descriptive', 'yes')
 go
 
 insert into GRADING_SYSTEM(GRADE_ID, LOWER_LIMIT, HIGHER_LIMIT) values('a', 91, 100)
@@ -43,12 +44,14 @@ insert into TOOL_TIPS(COURSE_TYPE_ID, TOOL_TIP_DESCRIPTION) values(1, 'modular')
 insert into TOOL_TIPS(COURSE_TYPE_ID, TOOL_TIP_DESCRIPTION) values(2, 'tbc')
 insert into TOOL_TIPS(COURSE_TYPE_ID, TOOL_TIP_DESCRIPTION) values(3, 'crt')
 go
-insert into rules(RULE_DESCRIPTION) values('complete the test within the time limit')
-insert into rules(RULE_DESCRIPTION) values('do not change tabs')
-insert into rules(RULE_DESCRIPTION) values('do not copy')
+insert into rules(RULE_DESCRIPTION) values('Complete the test within time limit.')
+insert into rules(RULE_DESCRIPTION) values('Do not change tabs.')
+insert into rules(RULE_DESCRIPTION) values('Do not copy.')
+insert into rules(RULE_DESCRIPTION) values('Follow the color coding given below:')
+insert into rules(RULE_DESCRIPTION) values('Read the marking scheme carefully:')
 go
-insert into SECURITY_QUESTIONS(SECURITY_QUESTION) values('what is your first pet''s name')
-insert into SECURITY_QUESTIONS(SECURITY_QUESTION) values('what is your mother''s name')
+insert into SECURITY_QUESTIONS(SECURITY_QUESTION) values('What is your pet''s name?')
+insert into SECURITY_QUESTIONS(SECURITY_QUESTION) values('What is your mother''s name?')
 go
 insert into user_profile(FIRST_NAME, LAST_NAME, EMAIL_ID, MOBILE_NUMBER, ADDRESS, 
 birthdate, college, degree, branch, YEAR_OF_GRADUATION, password, SECURITY_QUESTION_ID, SECURITY_ANSWER, USER_CATEGORY_ID) 
@@ -65,16 +68,16 @@ values('anjali', 'parkhi', 'anjaliparkhi@gmail.com', '9552501273', 'saharkar nag
 go
 
 insert into courses(COURSE_NAME, duration, fees, STREAM_ID, COURSE_TYPE_ID, COURSEWARE_EXIST, EVALUATION_TYPE_ID, TOTAL_TESTS)
-values('c', 60, 4000, 1, 1, 'yes', 1, 2)
+values('C', 60, 4000, 1, 1, 'yes', 1, 2)
 insert into courses(COURSE_NAME, duration, fees, STREAM_ID, COURSE_TYPE_ID, COURSEWARE_EXIST, EVALUATION_TYPE_ID, TOTAL_TESTS)
-values('cpp', 60, 4000, 1, 1, 'yes', 2, 2)
+values('C++', 60, 4000, 1, 1, 'yes', 2, 2)
 insert into courses(COURSE_NAME, duration, fees, STREAM_ID, COURSE_TYPE_ID, COURSEWARE_EXIST, EVALUATION_TYPE_ID, TOTAL_TESTS)
-values('java', 80, 12000, 1, 1, 'yes', 2, 3)
-insert into courses(COURSE_NAME, STREAM_ID, COURSE_TYPE_ID) values('english language skills', 2, 1)
-insert into courses(COURSE_NAME, STREAM_ID, COURSE_TYPE_ID) values('writing skills', 2, 1)
-insert into courses(COURSE_NAME, STREAM_ID, COURSE_TYPE_ID) values('oral communication', 2, 1)
-insert into courses(COURSE_NAME, STREAM_ID, COURSE_TYPE_ID) values('logical reasoning', 3, 3)
-insert into courses(COURSE_NAME, STREAM_ID, COURSE_TYPE_ID) values('verbal reasoning', 3, 3)
+values('Java', 80, 12000, 1, 1, 'yes', 2, 3)
+insert into courses(COURSE_NAME, STREAM_ID, COURSE_TYPE_ID) values('English Language Skills', 2, 1)
+insert into courses(COURSE_NAME, STREAM_ID, COURSE_TYPE_ID) values('Writing Skills', 2, 1)
+insert into courses(COURSE_NAME, STREAM_ID, COURSE_TYPE_ID) values('Oral Communication', 2, 1)
+insert into courses(COURSE_NAME, STREAM_ID, COURSE_TYPE_ID) values('Logical Reasoning', 3, 3)
+insert into courses(COURSE_NAME, STREAM_ID, COURSE_TYPE_ID) values('Verbal Reasoning', 3, 3)
 
 go
 

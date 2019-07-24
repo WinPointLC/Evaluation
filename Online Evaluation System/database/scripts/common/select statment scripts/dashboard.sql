@@ -1,15 +1,15 @@
 declare @user_id int
 select	
+		COURSES.COURSE_ID,
 		COURSES.COURSE_NAME,
+		TEST_DETAILS.TEST_NUMBER,
+		USER_TEST_DETAILS.MARKS_RECEIVED
 		/*case 
 			when exists (select USER_ID, COURSE_ID from STUDENT_COURSE_DETAILS 
 			where user_id = @user_id and course_id = test_details.COURSE_ID )
 			then 'yes'
 			else 'no'
-			end as 'IS_MODULAR',*/
-		TEST_DETAILS.TEST_NUMBER,
-		USER_TEST_DETAILS.NUMBER_OF_REGISTRATION,
-		USER_TEST_DETAILS.MARKS_RECEIVED --
+			end as 'IS_MODULAR',  */
 		/*case 
 			when USER_TEST_DETAILS.MARKS_RECEIVED >=0
 			then 'yes'
