@@ -30,19 +30,19 @@ insert into EVALUATION_TYPE(EVALUATION_TYPE_NAME, OFFLINE_CHECK) values('Coding'
 insert into EVALUATION_TYPE(EVALUATION_TYPE_NAME, OFFLINE_CHECK) values('Descriptive', 'yes')
 go
 
-insert into GRADING_SYSTEM(GRADE_ID, LOWER_LIMIT, HIGHER_LIMIT) values('a', 91, 100)
-insert into GRADING_SYSTEM(GRADE_ID, LOWER_LIMIT, HIGHER_LIMIT) values('b', 81, 90)
-insert into GRADING_SYSTEM(GRADE_ID, LOWER_LIMIT, HIGHER_LIMIT) values('c', 71, 80)
-insert into GRADING_SYSTEM(GRADE_ID, LOWER_LIMIT, HIGHER_LIMIT) values('d', 61, 70)
-insert into GRADING_SYSTEM(GRADE_ID, LOWER_LIMIT, HIGHER_LIMIT) values('e', 50, 60)
-insert into GRADING_SYSTEM(GRADE_ID, LOWER_LIMIT, HIGHER_LIMIT) values('f', 0, 49)
+insert into GRADING_SYSTEM(GRADE_ID, LOWER_LIMIT, HIGHER_LIMIT) values('A+', 91, 100)
+insert into GRADING_SYSTEM(GRADE_ID, LOWER_LIMIT, HIGHER_LIMIT) values('B', 81, 90)
+insert into GRADING_SYSTEM(GRADE_ID, LOWER_LIMIT, HIGHER_LIMIT) values('B+', 71, 80)
+insert into GRADING_SYSTEM(GRADE_ID, LOWER_LIMIT, HIGHER_LIMIT) values('C+', 61, 70)
+insert into GRADING_SYSTEM(GRADE_ID, LOWER_LIMIT, HIGHER_LIMIT) values('C', 50, 60)
+insert into GRADING_SYSTEM(GRADE_ID, LOWER_LIMIT, HIGHER_LIMIT) values('F', 0, 49)
 go
 insert into USER_CATEGORY(USER_CATEGORY_NAME) values('client')
 insert into USER_CATEGORY(USER_CATEGORY_NAME) values('employee')
 go
-insert into TOOL_TIPS(COURSE_TYPE_ID, TOOL_TIP_DESCRIPTION) values(1, 'modular')
-insert into TOOL_TIPS(COURSE_TYPE_ID, TOOL_TIP_DESCRIPTION) values(2, 'tbc')
-insert into TOOL_TIPS(COURSE_TYPE_ID, TOOL_TIP_DESCRIPTION) values(3, 'crt')
+insert into TOOL_TIPS(COURSE_TYPE_ID, TOOL_TIP_DESCRIPTION) values(1, 'Modular')
+insert into TOOL_TIPS(COURSE_TYPE_ID, TOOL_TIP_DESCRIPTION) values(2, 'TBC')
+insert into TOOL_TIPS(COURSE_TYPE_ID, TOOL_TIP_DESCRIPTION) values(3, 'CRT')
 go
 insert into rules(RULE_DESCRIPTION) values('Complete the test within time limit.')
 insert into rules(RULE_DESCRIPTION) values('Do not change tabs.')
