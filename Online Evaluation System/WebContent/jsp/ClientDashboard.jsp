@@ -84,7 +84,7 @@
             }
 
         });
-    	window.location.href = "/OnlineEvaluationSystem/jsp/MainCoursePage-Anjali.jsp?varid="+ encodeURIComponent(strResJSON);
+    	//window.location.href = "/OnlineEvaluationSystem/jsp/MainCoursePage.jsp?varid="+ encodeURIComponent(strResJSON);
     }
 </script>
 </head>

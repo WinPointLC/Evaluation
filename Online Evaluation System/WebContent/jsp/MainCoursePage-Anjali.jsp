@@ -203,7 +203,7 @@
     	var data= arr[0].split('=')[1];
     	var streamList = decodeURIComponent(data);
     	var streamList1 =  eval('(' + streamList + ')');
-    	alert(streamList1);
+    	alert("From Anjali *** " + streamList1);
     	<c:forEach items="${streamList1}"  var="streamItem">
     		alert("1");
 			//alert('<c:out value="${streamItem.firstName}" />');

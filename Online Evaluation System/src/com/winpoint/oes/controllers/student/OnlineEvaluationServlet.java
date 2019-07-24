@@ -67,7 +67,7 @@ public class OnlineEvaluationServlet extends HttpServlet {
 		List<Stream> streamList = new StreamHelper().getStreamList();
 		if(streamList != null) {
 		   PrintWriter writer = response.getWriter();
-		   json1 = gson.toJson("{ 'success': 'true', 'location': '/OnlineEvaluationSystem/jsp/MainCoursePage-Anjali.jsp'}");
+		   json1 = gson.toJson("{ 'success': 'true', 'location': '/OnlineEvaluationSystem/jsp/MainCoursePage.jsp'}");
 		   String json2 = gson.toJson(streamList);
 		   String jsonString = "[" + json1 + "," + json2 + "]";
 		   System.out.println("Json string is " + jsonString);

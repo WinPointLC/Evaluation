@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html lang="en">
   <head>
     <title>Main Course Page</title>
@@ -256,7 +257,35 @@
                   </div>
                 </div>
               </div>
-
+		<script>
+            var searchString = window.location.search.substring(1);
+    	var arr = searchString.split('&');
+    	var data= arr[0].split('=')[1];
+    	var streamList = decodeURIComponent(data);
+    	var streamList1 =  eval('(' + streamList + ')');
+    	alert("MainCoursePage *** " + streamList1);
+    	<c:out value="${'Welcome to WinPoint'}"/>
+    	/* <c:forEach items="${streamList1}"  var="streamItem">
+    		alert("1");
+			//alert('<c:out value="${streamItem.firstName}" />');
+		</c:forEach> */
+		/* var groupMap = {
+			    <c:forEach items="${configuredGroupMap}" var="groupMap" varStatus="loop">
+		        "${groupMap.key}": "${groupMap.value}"${!loop.last ? ',' : ''}
+		    </c:forEach>
+		};
+		output of this is like
+		var groupMap = {
+			    "key1": "value1",
+			    "key2": "value2",
+			    "key3": "value3"
+			};
+		 */
+	    //alert("Client is " + userProfile1.userId + ":" + userProfile1.firstName + " " + userProfile1.lastName);
+	    /* document.getElementById("photoId").src = stream1.photoLocation;
+	    document.getElementById("firstName").value = stream1.firstName;
+	    document.getElementById("lastName").value = stream1.lastName; */
+	    </script>
             <!--   Core JS Files   -->
             <script src="../assets/js/core/jquery.min.js"></script>
             <script src="../assets/js/core/popper.min.js"></script>
