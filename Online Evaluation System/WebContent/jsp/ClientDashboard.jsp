@@ -67,13 +67,34 @@
             traditional: true,
             success: function (jsonObj) {
             	//alert("Success from LoginForm");
-                var responseJson1=jsonObj[0], responseJson2=jsonObj[1];
+                var responseJson1 = jsonObj[0]; 
+                var responseJson2 = jsonObj[1];  
+                
+                /* Start- Code for ArrayList from servlet */
+  				/*var streamList = responseJson2[0];
+  				var courseTypeList = responseJson2[1];
+  				for(i=0; i<streamList.length; i++){
+                	alert("streamList = " + streamList[i].streamName);
+  				}
+  				for(i=0; i<courseTypeList.length; i++){
+                	alert("courseTypeList = " + courseTypeList[i].courseTypeName);
+  				} */
+  				/* End- Code for ArrayList from servlet */
+  				
+  			    var streamJson=jsonObj[1];
+                var courseTypeJson=jsonObj[2];
                 var locationJson = eval('(' + responseJson1 + ')');
-                //var studentJson = eval('(' + responseJson2 + ')');
                	if (locationJson.success) {
-            		var strResJSON = JSON.stringify(responseJson2);
+            		var streamJSON = JSON.stringify(streamJson);
+            		alert(streamJSON);
+            		var courseTypeJSON = JSON.stringify(courseTypeJson);
+            		alert(courseTypeJSON);
             		//alert("studentEmail : " + responseJson2.email);
-                	window.location.href = locationJson.location + "?varid=" + encodeURIComponent(strResJSON) +"&username=" + "Anjali" +"&password=" + "Anjali";
+                	window.location.href = locationJson.location + "?varid=" + encodeURIComponent(streamJSON) + encodeURIComponent(courseTypeJSON) +"&username=" + "Anjali" +"&password=" + "Anjali";
+                	//window.location.href = locationJson.location + "?varid=" + streamJSON + courseTypeJSON +"&username=" + "Anjali" +"&password=" + "Anjali";
+            		//window.location.href = locationJson.location + "?varid=" + encodeURIComponent(streamJSON) +"&username=" + "Anjali" +"&password=" + "Anjali";
+            		
+            		
             	} else {
                     $('#ajaxGetUserServletResponse').text(responseText);
             	}

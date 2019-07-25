@@ -3,10 +3,10 @@ package com.winpoint.oes.beans;
 import java.util.Date;
 
 public class CourseType {
-	private Integer CourseTypeId;
-	private String CourseTypeName;
-	private Integer CreatedBy;
-	private Date CreatedDate;
+	private Integer courseTypeId;
+	private String courseTypeName;
+	private Integer createdBy;
+	private Date createddDate;
 	
 	/**
 	 * @param courseTypeId
@@ -16,65 +16,71 @@ public class CourseType {
 	 */
 	public CourseType(Integer courseTypeId, String courseTypeName, Integer createdBy, Date createdDate) {
 		super();
-		CourseTypeId = courseTypeId;
-		CourseTypeName = courseTypeName;
-		CreatedBy = createdBy;
-		CreatedDate = createdDate;
+		this.courseTypeId = courseTypeId;
+		this.courseTypeName = courseTypeName;
+		this.createdBy = createdBy;
+		this.createddDate = createdDate;
 	}
 	
+	public CourseType(int courseTypeId, String courseTypeName) {
+		// TODO Auto-generated constructor stub
+		this.courseTypeId = courseTypeId;
+		this.courseTypeName = courseTypeName;
+	}
+
 	/**
 	 * @return the courseTypeId
 	 */
 	public Integer getCourseTypeId() {
-		return CourseTypeId;
+		return courseTypeId;
 	}
 	
 	/**
 	 * @param courseTypeId the courseTypeId to set
 	 */
 	public void setCourseTypeId(Integer courseTypeId) {
-		CourseTypeId = courseTypeId;
+		courseTypeId = courseTypeId;
 	}
 	
 	/**
 	 * @return the courseTypeName
 	 */
 	public String getCourseTypeName() {
-		return CourseTypeName;
+		return courseTypeName;
 	}
 	
 	/**
 	 * @param courseTypeName the courseTypeName to set
 	 */
 	public void setCourseTypeName(String courseTypeName) {
-		CourseTypeName = courseTypeName;
+		courseTypeName = courseTypeName;
 	}
 	
 	/**
 	 * @return the createdBy
 	 */
 	public Integer getCreatedBy() {
-		return CreatedBy;
+		return createdBy;
 	}
 	
 	/**
 	 * @param createdBy the createdBy to set
 	 */
 	public void setCreatedBy(Integer createdBy) {
-		CreatedBy = createdBy;
+		createdBy = createdBy;
 	}
 	
 	/**
 	 * @return the createdDate
 	 */
 	public Date getCreatedDate() {
-		return CreatedDate;
+		return createddDate;
 	}
 	
 	/**
 	 * @param createdDate the createdDate to set
 	 */
 	public void setCreatedDate(Date createdDate) {
-		CreatedDate = createdDate;
+		createddDate = createdDate;
 	}
 }

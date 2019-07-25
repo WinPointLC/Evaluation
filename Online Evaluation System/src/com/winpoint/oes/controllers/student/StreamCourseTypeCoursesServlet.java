@@ -15,6 +15,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.google.gson.Gson;
+import com.winpoint.oes.beans.Course;
 import com.winpoint.oes.beans.CourseType;
 import com.winpoint.oes.beans.Stream;
 import com.winpoint.oes.beans.UserProfile;
@@ -25,14 +26,14 @@ import com.winpoint.oes.helpers.common.StreamHelper;
 /**
  * Servlet implementation class LoginServ
  */
-@WebServlet("/OnlineEvaluationServlet")
-public class OnlineEvaluationServlet extends HttpServlet {
+@WebServlet("/StreamCourseTypeCoursesServlet")
+public class StreamCourseTypeCoursesServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public OnlineEvaluationServlet() {
+    public StreamCourseTypeCoursesServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -50,17 +51,18 @@ public class OnlineEvaluationServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		System.out.println("From OnlineEvaluationServlet");
+		System.out.println("From StreamCourseTypeCoursesServlet");
 		BufferedReader br = new BufferedReader(new InputStreamReader(request.getInputStream()));
 	    String json = "";
 	    if(br != null){
 	    	json = br.readLine();
 	    }
 	    System.out.println(json);
+	   
 		Gson gson = new Gson();
-		UserProfile userProfile = gson.fromJson(json, UserProfile.class);
-		
-		String email = userProfile.getEmail();
+		Course course = gson.fromJson(json, Course.class);
+		System.out.println("streamId = " + course.getStreamId() + "CourseTypeId = " + course.getCourseTypeId());
+		/*String email = userProfile.getEmail();
 		String password = userProfile.getPassword();
 		System.out.println("email = " + email + "   password = " + password);
 		
@@ -82,8 +84,8 @@ public class OnlineEvaluationServlet extends HttpServlet {
 		   json1 = gson.toJson("{ 'success': 'true', 'location': '/OnlineEvaluationSystem/jsp/MainCoursePage.jsp'}");
 		   String json2 = gson.toJson(streamList);
 		   String json3 = gson.toJson(courseTypeList);
-		   /* Start- Code for ArrayList from servlet */
-		   /*ArrayList<Object> obj_arr = new ArrayList<Object>();
+		    Start- Code for ArrayList from servlet 
+		   ArrayList<Object> obj_arr = new ArrayList<Object>();
 		    obj_arr.add(streamList);
 		    obj_arr.add(courseTypeList);
 		    //Gson gson = new Gson();
@@ -91,15 +93,16 @@ public class OnlineEvaluationServlet extends HttpServlet {
 		    String jsonString = "[" + json1 + "," + tmp  + "]";
 			System.out.println("Json string is " + jsonString);
 			writer.println(jsonString);
-			writer.flush();*/
-			/* End- Code for ArrayList from servlet */
+			writer.flush();
+			 End- Code for ArrayList from servlet 
 		   
 		   String jsonString = "[" + json1 + "," + json2 + "," + json3 + "]";
-		   System.out.println("Json string is " + jsonString);
-		   writer.println(jsonString);
+		   System.out.println("Json string is " + jsonString);*/
+		   PrintWriter writer = response.getWriter();
+		   //writer.println(jsonString);
 		   writer.flush();
 		   
 		   
-		}
+		//}
 	}
 }

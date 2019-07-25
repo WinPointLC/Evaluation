@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html lang="en">
   <head>
     <title>Main Course Page</title>
@@ -65,11 +64,12 @@
                                   Course Category
                                 </button>
                                 <div class="dropdown-menu"  aria-labelledby="dropdownMenuButton">
-                                  <a class="dropdown-item" href="#">Modular</a>
+                                  <a class="dropdown-item" href="#" id = "2" onclick="displayStreamCourses(this.id)">Modular</a>
                                   <a class="dropdown-item" href="#">TBC</a>
                                   <a class="dropdown-item" href="#">CRT</a>
                                 </div>
                               </div><br><br>
+   
                               <div class="row">
                                 <div class="col-lg-3 col-md-6 col-sm-6 column1">
                                   <div class="card card-stats">
@@ -196,7 +196,7 @@
                                   Course Category
                                 </button>
                                 <div class="dropdown-menu"  aria-labelledby="dropdownMenuButton">
-                                  <a class="dropdown-item" href="#">Modular</a>
+                                  <a class="dropdown-item" href="#" >Modular</a>
                                   <a class="dropdown-item" href="#">TBC</a>
                                   <a class="dropdown-item" href="#">CRT</a>
                                 </div>
@@ -258,17 +258,58 @@
                 </div>
               </div>
 		<script>
+		/* &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
             var searchString = window.location.search.substring(1);
-    	var arr = searchString.split('&');
-    	var data= arr[0].split('=')[1];
-    	var streamList = decodeURIComponent(data);
-    	var streamList1 =  eval('(' + streamList + ')');
-    	alert("MainCoursePage *** " + streamList1);
-    	<c:out value="${'Welcome to WinPoint'}"/>
-    	/* <c:forEach items="${streamList1}"  var="streamItem">
+    		var arr = searchString.split('&');
+    		var data= arr[0].split('=')[1];
+    		//var decodedData = decodeURIComponent(data);
+    		//var decodedData1 = eval('(' + decodedData + ')');
+    		var streamList = decodeURIComponent(data);
+    		//alert(decodedData);
+    		var streamList1 =  eval('(' + streamList + ')');
+    		alert("MainCoursePage *** " + streamList1.length);
+    	
+    		for(i=0; i<streamList1.length; i++){
+    			alert(streamList1[i].streamName);
+    		} 
+    		&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&& */
+    		var searchString = window.location.search.substring(1);
+    		var arr = searchString.split('&');
+    		var data= arr[0].split('=')[1];
+    		var decodedData = decodeURIComponent(data);
+    		
+    		//Start- Extract Stream List
+    		var streams = decodedData.substring(0, decodedData.indexOf(']')+1);
+    		var streamList = eval('(' + streams + ')');
+    		/* for(i=0; i<streamList.length; i++){
+    			alert(streamList[i].streamId + ":" + streamList[i].streamName)
+    		} working code*/
+    		//End- Extract Stream List
+    		
+    		//Start- Extract Course Type List
+    		var courseTypes = decodedData.substring(decodedData.indexOf(']')+1, decodedData.length);
+    		var courseTypesList = eval('(' + courseTypes + ')');
+    		/* for(i=0; i<courseTypesList.length; i++){
+    			alert(courseTypesList[i].courseTypeId + ":" + courseTypesList[i].courseTypeName)
+    		} working code*/
+    		//END- Extract Course Type List
+    		
+    		/* data= arr[0].split('=')[2];
+    		var courseTypeList = decodeURIComponent(data);
+    		var courseTypeList1 =  eval('(' + courseTypeList + ')');
+    		alert("MainCoursePage *** " + courseTypeList1.length);
+    	
+    		for(i=0; i<courseTypeList1.length; i++){
+    			alert(courseTypeList1[i].courseTypeName);
+    		}  */
+    	//****************************************************
+     	//var x = 4;
+     	// alert(<c:out value="${x}" />);
+    	/*<c:out value="${'Welcome to WinPoint'}"/>
+    	 <c:forEach items="${streamList1}"  var="streamItem">
     		alert("1");
 			//alert('<c:out value="${streamItem.firstName}" />');
-		</c:forEach> */
+		</c:forEach>  */
 		/* var groupMap = {
 			    <c:forEach items="${configuredGroupMap}" var="groupMap" varStatus="loop">
 		        "${groupMap.key}": "${groupMap.value}"${!loop.last ? ',' : ''}
@@ -285,6 +326,7 @@
 	    /* document.getElementById("photoId").src = stream1.photoLocation;
 	    document.getElementById("firstName").value = stream1.firstName;
 	    document.getElementById("lastName").value = stream1.lastName; */
+	    //***********************************************************************************
 	    </script>
             <!--   Core JS Files   -->
             <script src="../assets/js/core/jquery.min.js"></script>
@@ -329,6 +371,38 @@
             <script src="../assets/js/material-dashboard.js?v=2.1.1" type="text/javascript"></script>
             <!-- Material Dashboard DEMO methods, don't include it in your project! -->
             <script src="../assets/demo/demo.js"></script>
+			
+			<script>
+			
+				 function displayStreamCourses(clicked_id){
+					 var streamId = 1;
+						var courseTypeId = clicked_id;
+						var myData = {
 
+			                    streamId: streamId,
+			                    courseTypeId: courseTypeId
+			            };
+					 
+					$.ajax({
+			            type: 'POST',
+			            url: '/OnlineEvaluationSystem/CommonController?action=StreamCourseTypeCoursesServlet',
+			            data: JSON.stringify(myData),
+			            dataType: 'json',
+			            contentType: 'application/json; charset=utf-8',
+			            traditional: true,
+			            success: function (jsonObj) {
+			            	
+			            
+		            	},
+		            	error: function(){
+		            	//alert("Error");
+		            		document.getElementById("error").innerHTML = "Invalid email or password";
+		            	}
+		
+
+		          });
+				}
+			           				 
+			</script>
           </body>
         </html>
