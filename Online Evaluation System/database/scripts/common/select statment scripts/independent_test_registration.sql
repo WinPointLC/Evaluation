@@ -1,3 +1,6 @@
+USE OES_TESTING
+GO
+
 declare @course_id int
 declare @user_id int
 

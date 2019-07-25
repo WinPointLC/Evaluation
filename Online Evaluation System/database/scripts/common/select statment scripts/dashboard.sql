@@ -1,18 +1,21 @@
+USE OES_TESTING
+GO
+
 declare @user_id int
 SET @user_id = 2
 select	
 		COURSES.LOGO_LOCATION,
-		COURSES.COURSE_NAME,
-		TEST_DETAILS.TEST_DETAIL_ID,
+		COURSES.COURSE_NAME
+		/*TEST_DETAILS.TEST_DETAIL_ID,
 		USER_TEST_DETAILS.MARKS_RECEIVED,
 		EVAL.EVALUATION_TYPE_NAME
-		/*case 
+		case 
 			when exists (select USER_ID, COURSE_ID from STUDENT_COURSE_DETAILS 
 			where user_id = @user_id and course_id = test_details.COURSE_ID )
 			then 'yes'
 			else 'no'
-			end as 'IS_MODULAR',  */
-		/*case 
+			end as 'IS_MODULAR', 
+		case 
 			when USER_TEST_DETAILS.MARKS_RECEIVED >=0
 			then 'yes'
 			ELSE 'no'
