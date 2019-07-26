@@ -22,6 +22,12 @@ public class Rules {
 		this.createdDate = createdDate;
 	}
 	
+	public Rules(int rulesId, String rulesDescription) {
+		// TODO Auto-generated constructor stub
+		this.rulesId = rulesId;
+		this.rulesDescription = rulesDescription;
+	}
+
 	/**
 	 * @return the rulesId
 	 */

@@ -77,7 +77,7 @@
                                       <div class="card-icon" style="font-size:20px; background-color:rgb(7, 7, 79);" id="row1-card1">
                                         <i class="fa fa-copyright" style="font-size:70px;"></i>
                                       </div>
-                                      <a href="CourseSelectPage.jsp" ><p class="card-category">C Language</p></a>
+                                      <a href="#" id = "5" onclick="displayTestSelect(this.id)"><p class="card-category">C Language</p></a>
                                     </div>
 
                                   </div>
@@ -88,7 +88,7 @@
                                       <div class="card-icon" style="font-size:20px; background-color:rgb(19, 237, 165);">
                                         <img src="../assets/img/Dashboard-main-page-images/cpp-icon-file-format.svg" alt="java" style=" height: 60px; width: 60px; ">
                                       </div>
-                                      <a href="CourseSelectPage.jsp" ><p class="card-category">C++ Language</p></a>
+                                      <a href="TestSelectPage.jsp" ><p class="card-category">C++ Language</p></a>
                                     </div>
 
                                   </div>
@@ -100,7 +100,7 @@
                                       <div class="card-icon" style="background-color:rgb(236, 13, 40);">
                                         <img src="../assets/img/Dashboard-main-page-images/java-brands.svg" alt="java" style=" height: 60px; width: 60px; ">
                                       </div>
-                                      <a href="CourseSelectPage.jsp" ><p class="card-category">Java Language</p></a>
+                                      <a href="TestSelectPage.jsp" ><p class="card-category">Java Language</p></a>
                                     </div>
                                   </div>
                                 </div>
@@ -114,7 +114,7 @@
                                       <div class="card-icon" style="font-size:20px;">
                                         <i class="fa fa-database" style="font-size:70px;"></i>
                                       </div>
-                                      <a href="CourseSelectPage.jsp" ><p class="card-category">Database</p></a>
+                                      <a href="TestSelectPage.jsp" ><p class="card-category">Database</p></a>
                                     </div>
                                   </div>
                                 </div>
@@ -125,7 +125,7 @@
                                       <div class="card-icon" style="font-size:20px;" id="card">
                                         <i class="fa fa-windows" style="font-size:70px;"></i>
                                       </div>
-                                      <a href="CourseSelectPage.jsp" ><p class="card-category">Operating System</p></a>
+                                      <a href="TestSelectPage.jsp" ><p class="card-category">Operating System</p></a>
                                     </div>
                                   </div>
                                 </div>
@@ -135,7 +135,7 @@
                                       <div class="card-icon">
                                         <img src="../assets/img/Dashboard-main-page-images/js-brands.svg" alt="java" style=" height: 60px; width: 60px; ">
                                       </div>
-                                      <a href="CourseSelectPage.jsp" ><p class="card-category">JavaScript language</p></a>
+                                      <a href="TestSelectPage.jsp" ><p class="card-category">JavaScript language</p></a>
                                     </div>
                                   </div>
                                 </div>
@@ -160,7 +160,7 @@
                                       <div class="card-icon" style="font-size:20px; background-color:rgb(0, 208, 139);" id="row1-card1">
                                         <i class="material-icons">sort_by_alpha</i>
                                       </div>
-                                      <a href="CourseSelectPage.jsp" ><p class="card-category">English Language Skills</p></a>
+                                      <a href="TestSelectPage.jsp" ><p class="card-category">English Language Skills</p></a>
                                     </div>
 
                                   </div>
@@ -171,7 +171,7 @@
                                       <div class="card-icon" style="font-size:20px; background-color:rgb(180, 3, 136);" id="row1-card1">
                                         <i class="material-icons">record_voice_over</i>
                                       </div>
-                                      <a href="CourseSelectPage.jsp" ><p class="card-category">Oral Communication</p></a>
+                                      <a href="TestSelectPage.jsp" ><p class="card-category">Oral Communication</p></a>
                                     </div>
 
                                   </div>
@@ -183,7 +183,7 @@
                                       <div class="card-icon">
                                       <i class="material-icons">how_to_reg</i>
                                       </div>
-                                  <a href="CourseSelectPage.jsp" >    <p class="card-category">Personality Development</p></a>
+                                  <a href="TestSelectPage.jsp" >    <p class="card-category">Personality Development</p></a>
                                     </div>
                                   </div>
                                 </div>
@@ -208,7 +208,7 @@
                                       <div class="card-icon" style="font-size:20px; background-color:rgb(111, 209, 13)" id="row1-card1">
                                         <i class="material-icons">exposure</i>
                                       </div>
-                                      <a href="CourseSelectPage.jsp" ><p class="card-category">Quantitative Aptitude</p></a>
+                                      <a href="TestSelectPage.jsp" ><p class="card-category">Quantitative Aptitude</p></a>
                                     </div>
 
                                   </div>
@@ -219,7 +219,7 @@
                                       <div class="card-icon" style="font-size:20px;">
                                         <i class="material-icons">extension</i>
                                       </div>
-                                      <a href="CourseSelectPage.jsp" ><p class="card-category">Logical Reasoning</p></a>
+                                      <a href="TestSelectPage.jsp" ><p class="card-category">Logical Reasoning</p></a>
                                     </div>
 
                                   </div>
@@ -231,7 +231,7 @@
                                       <div class="card-icon" style="background-color:rgb(218, 113, 31);">
                                         <i class="material-icons">find_in_page</i>
                                       </div>
-                                      <a href="CourseSelectPage.jsp" ><p class="card-category">Verbal Reasoning</p></a>
+                                      <a href="TestSelectPage.jsp" ><p class="card-category">Verbal Reasoning</p></a>
                                     </div>
                                   </div>
                                 </div>
@@ -241,7 +241,7 @@
                                       <div class="card-icon" style="font-size:20px; background-color:rgb(251, 26, 30);">
                                 <i class="material-icons">spellcheck</i>
                                       </div>
-                                      <a href="CourseSelectPage.jsp" ><p class="card-category">Verbal Ability</p></a>
+                                      <a href="TestSelectPage.jsp" ><p class="card-category">Verbal Ability</p></a>
                                     </div>
 
                                   </div>
@@ -391,8 +391,11 @@
 			            contentType: 'application/json; charset=utf-8',
 			            traditional: true,
 			            success: function (jsonObj) {
-			            	
-			            
+			            	var responseJson=jsonObj[0];
+			               	var strResJSON = JSON.stringify(responseJson);
+			               	for(i=0; i<responseJson.length; i++){
+			            		alert("course : " + responseJson[i].courseId + "," + responseJson[i].courseName);
+			               	}    	
 		            	},
 		            	error: function(){
 		            	//alert("Error");
@@ -402,7 +405,45 @@
 
 		          });
 				}
-			           				 
+				 function displayTestSelect(clicked_id){
+					 alert("displayTestSelect Id = " + clicked_id);
+					 var streamId = 1;
+						var courseTypeId = clicked_id;
+						courseId = 1;
+						var myData = {
+			                    streamId: streamId,
+			                    courseTypeId: courseTypeId,
+			                    courseId: courseId
+			            };
+					 
+					$.ajax({
+			            type: 'POST',
+			            url: '/OnlineEvaluationSystem/CommonController?action=TestSelectServlet',
+			            data: JSON.stringify(myData),
+			            dataType: 'json',
+			            contentType: 'application/json; charset=utf-8',
+			            traditional: true,
+			            success: function (jsonObj) {
+			            	
+			            	var responseJson1 = jsonObj[0]; 
+			            	var locationJson = eval('(' + responseJson1 + ')');
+			            	
+			            	var responseJson2=jsonObj[1];
+			               	var strResJSON = JSON.stringify(responseJson2);
+			            	for(i=0; i<responseJson2.length; i++){
+			            		alert("Test : " + responseJson2[i].evaluationTypeName + "," + responseJson2[i].courseName);
+			               	}  
+			               	//window.location.href = locationJson.location;
+			            	window.location.href = locationJson.location + "?varid=" + encodeURIComponent(strResJSON) + "&username=" + "Anjali" +"&password=" + "Anjali";
+		            	},
+		            	error: function(){
+		            	//alert("Error");
+		            		document.getElementById("error").innerHTML = "Invalid email or password";
+		            	}
+		
+
+		          });
+				}		 
 			</script>
           </body>
         </html>

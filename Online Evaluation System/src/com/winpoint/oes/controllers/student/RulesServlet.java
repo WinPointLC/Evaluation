@@ -17,7 +17,10 @@ import javax.servlet.http.HttpServletResponse;
 import com.google.gson.Gson;
 import com.winpoint.oes.beans.Course;
 import com.winpoint.oes.beans.CourseType;
+import com.winpoint.oes.beans.Rules;
 import com.winpoint.oes.beans.Stream;
+import com.winpoint.oes.beans.Test;
+import com.winpoint.oes.beans.TestDetails;
 import com.winpoint.oes.beans.UserProfile;
 import com.winpoint.oes.dao.Dummy;
 import com.winpoint.oes.helpers.common.CourseHelper;
@@ -27,14 +30,14 @@ import com.winpoint.oes.helpers.common.StreamHelper;
 /**
  * Servlet implementation class LoginServ
  */
-@WebServlet("/StreamCourseTypeCoursesServlet")
-public class StreamCourseTypeCoursesServlet extends HttpServlet {
+@WebServlet("/RulesServlet")
+public class RulesServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public StreamCourseTypeCoursesServlet() {
+    public RulesServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -52,31 +55,31 @@ public class StreamCourseTypeCoursesServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		System.out.println("From StreamCourseTypeCoursesServlet");
+		System.out.println("From RulesServlet");
 		BufferedReader br = new BufferedReader(new InputStreamReader(request.getInputStream()));
 	    String json = "";
 	    if(br != null){
 	    	json = br.readLine();
 	    }
 	    System.out.println(json);
-	   
-		Gson gson = new Gson();
-		Course course = gson.fromJson(json, Course.class);
-		int streamId =  course.getStreamId();
-		int courseTypeId =  course.getCourseTypeId();
-		System.out.println("StreamId = " + course.getStreamId() + "CourseTypeId = " + course.getCourseTypeId());
-		//List<Course> courseList = new CourseHelper().getCourseList(streamId, courseTypeId);
-		List<Course> courseList = new ArrayList<Course>();
-		courseList.add(new Course(1, "C", streamId, courseTypeId, ""));
-		courseList.add(new Course(2, "C++", streamId, courseTypeId, ""));
-		courseList.add(new Course(3, "JAVA 8", streamId, courseTypeId, ""));
+	   	Gson gson = new Gson();
+	   	TestDetails testDetails = gson.fromJson(json, TestDetails.class);
+		int testDetailId =  testDetails.getTestDetailId();
+		System.out.println("TestDetailId = " + testDetailId);
+		int userId = 0;
+		//List<Test> rulesList = new RulesHelper().getRulesList(testDetailId);
+		
+		List<Rules> rulesList = new ArrayList<Rules>();
+		rulesList.add(new Rules(1, "Each question carries one mark"));
+		rulesList.add(new Rules(2, "No negative marking"));
+		rulesList.add(new Rules(3, "Duration is 60 mins"));
 				
-		if(courseList != null) {
-			String json1 = null;
-		   json1 = gson.toJson("{ 'success': 'true', 'location': '/OnlineEvaluationSystem/jsp/MainCoursePage.jsp'}");
-		   String json2 = gson.toJson(courseList);
+		if(rulesList != null) {
+		  
+		   String json1 = gson.toJson("{ 'success': 'true', 'location': '/OnlineEvaluationSystem/jsp/RulesPage.jsp'}");
+		   String json2 = gson.toJson(rulesList);
 		  		   
-		   String jsonString = "[" + json2  + "]";
+		   String jsonString = "[" + json1  + "," + json2 + "]";
 		   System.out.println("Json string is " + jsonString);
 		   PrintWriter writer = response.getWriter();
 		   writer.println(jsonString);

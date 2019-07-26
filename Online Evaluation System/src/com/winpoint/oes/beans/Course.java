@@ -11,6 +11,7 @@ public class Course {
 	private Integer courseTypeId;
 	private String coursewareExist;
 	private Integer evaluationTypeId;
+	private String iconLocation;
 	private Integer totalTests;
 	private Integer createdBy;
 	private Date createdDate;
@@ -45,6 +46,15 @@ public class Course {
 		this.createdDate = createdDate;
 	}
 	
+	public Course(int courseId, String courseName, int streamId, int courseTypeId, String iconLocation) {
+		// TODO Auto-generated constructor stub
+		this.courseId = courseId;
+		this.courseName = courseName;
+		this.streamId = streamId;
+		this.courseTypeId = courseTypeId;
+		this.iconLocation = iconLocation;
+	}
+
 	/**
 	 * @return the courseId
 	 */
@@ -157,6 +167,19 @@ public class Course {
 		this.evaluationTypeId = evaluationTypeId;
 	}
 	
+	/**
+	 * @return the iconLocation
+	 */
+	public String getIconLocation() {
+		return iconLocation;
+	}
+	
+	/**
+	 * @param iconLocation the iconLocation to set
+	 */
+	public void setIconLocation(String iconLocation) {
+		this.iconLocation = iconLocation;
+	}
 	/**
 	 * @return the totalTests
 	 */

@@ -3,9 +3,11 @@ package com.winpoint.oes.beans;
 import java.util.Date;
 
 public class TestDetails {
+	private Integer testDetailId;
 	private String userTestId;
 	private Integer userId;
 	private String testId;
+	private String rulesDescription;
 	private Integer marksReceived;
 	private Integer noOfRegistration;
 	private String feeStatus;
@@ -35,6 +37,27 @@ public class TestDetails {
 		this.createdDate = createdDate;
 	}
 	
+	
+	public Integer getTestDetailId() {
+		return testDetailId;
+	}
+
+
+	public void setTestDetailId(Integer testDetailId) {
+		this.testDetailId = testDetailId;
+	}
+
+
+	public String getRulesDescription() {
+		return rulesDescription;
+	}
+
+
+	public void setRulesDescription(String rulesDescription) {
+		this.rulesDescription = rulesDescription;
+	}
+
+
 	/**
 	 * @return the userTestId
 	 */
