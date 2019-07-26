@@ -33,7 +33,24 @@
                             <div class="nav-tabs-wrapper">
 
                               <ul class="nav nav-tabs" data-tabs="tabs">
-
+                                <li class="nav-item">
+                                  <a class="nav-link active" href="#profile" data-toggle="tab">
+                                    <i class="material-icons">computer</i>Technical Section
+                                    <div class="ripple-container"></div>
+                                  </a>
+                                </li>
+                                <li class="nav-item">
+                                  <a class="nav-link" href="#messages" data-toggle="tab">
+                                    <i class="material-icons">record_voice_over</i> SoftSkills Section
+                                    <div class="ripple-container"></div>
+                                  </a>
+                                </li>
+                                <li class="nav-item">
+                                  <a class="nav-link" href="#settings" data-toggle="tab">
+                                    <i class="material-icons">wb_incandescent</i> General Aptitude Section
+                                    <div class="ripple-container"></div>
+                                  </a>
+                                </li>
                               </ul>
                             </div>
                           </div>
@@ -264,24 +281,6 @@
     		//Start- Extract Stream List
     		var streams = decodedData.substring(0, decodedData.indexOf(']')+1);
     		var streamList = eval('(' + streams + ')');
-        // Inserted code
-        var arr = ['Technical','SoftSkills','General Aptitude'];
-        for (var i = 0; i < arr.length; i++) {
-          var div1 = document.createElement('div');
-          div1.id="tab-div";
-          var li = document.createElement('li');
-          li.className='nav-item';
-          var anchor =document.createElement('a');
-          anchor.setAttribute('href',"#Profile");
-          anchor.setAttribute('data-toggle',"tab");
-          anchor.className='nav-link active';
-          anchor.textContent=arr[i];
-          li.appendChild(anchor);
-          div1.appendChild(li);
-          document.getElementById("nav-tab").appendChild(div1);
-        }
-        // End Inserted Code
-
     		/* for(i=0; i<streamList.length; i++){
     			alert(streamList[i].streamId + ":" + streamList[i].streamName)
     		} working code*/
@@ -392,16 +391,11 @@
 			            contentType: 'application/json; charset=utf-8',
 			            traditional: true,
 			            success: function (jsonObj) {
-<<<<<<< HEAD
 			            	var responseJson=jsonObj[0];
 			               	var strResJSON = JSON.stringify(responseJson);
 			               	for(i=0; i<responseJson.length; i++){
 			            		alert("course : " + responseJson[i].courseId + "," + responseJson[i].courseName);
-			               	}    	
-=======
-
-
->>>>>>> 1aab277584a8e556ccc25f258e8207ab95edd212
+			               	}
 		            	},
 		            	error: function(){
 		            	//alert("Error");
@@ -411,7 +405,6 @@
 
 		          });
 				}
-<<<<<<< HEAD
 				 function displayTestSelect(clicked_id){
 					 alert("displayTestSelect Id = " + clicked_id);
 					 var streamId = 1;
@@ -422,7 +415,7 @@
 			                    courseTypeId: courseTypeId,
 			                    courseId: courseId
 			            };
-					 
+
 					$.ajax({
 			            type: 'POST',
 			            url: '/OnlineEvaluationSystem/CommonController?action=TestSelectServlet',
@@ -431,15 +424,15 @@
 			            contentType: 'application/json; charset=utf-8',
 			            traditional: true,
 			            success: function (jsonObj) {
-			            	
-			            	var responseJson1 = jsonObj[0]; 
+
+			            	var responseJson1 = jsonObj[0];
 			            	var locationJson = eval('(' + responseJson1 + ')');
-			            	
+
 			            	var responseJson2=jsonObj[1];
 			               	var strResJSON = JSON.stringify(responseJson2);
 			            	for(i=0; i<responseJson2.length; i++){
 			            		alert("Test : " + responseJson2[i].evaluationTypeName + "," + responseJson2[i].courseName);
-			               	}  
+			               	}
 			               	//window.location.href = locationJson.location;
 			            	window.location.href = locationJson.location + "?varid=" + encodeURIComponent(strResJSON) + "&username=" + "Anjali" +"&password=" + "Anjali";
 		            	},
@@ -447,13 +440,10 @@
 		            	//alert("Error");
 		            		document.getElementById("error").innerHTML = "Invalid email or password";
 		            	}
-		
+
 
 		          });
-				}		 
-=======
-
->>>>>>> 1aab277584a8e556ccc25f258e8207ab95edd212
+				}
 			</script>
           </body>
         </html>
