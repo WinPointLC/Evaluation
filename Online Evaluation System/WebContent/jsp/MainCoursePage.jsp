@@ -33,24 +33,7 @@
                             <div class="nav-tabs-wrapper">
 
                               <ul class="nav nav-tabs" data-tabs="tabs">
-                                <li class="nav-item">
-                                  <a class="nav-link active" href="#profile" data-toggle="tab">
-                                    <i class="material-icons">computer</i>Technical Section
-                                    <div class="ripple-container"></div>
-                                  </a>
-                                </li>
-                                <li class="nav-item">
-                                  <a class="nav-link" href="#messages" data-toggle="tab">
-                                    <i class="material-icons">record_voice_over</i> SoftSkills Section
-                                    <div class="ripple-container"></div>
-                                  </a>
-                                </li>
-                                <li class="nav-item">
-                                  <a class="nav-link" href="#settings" data-toggle="tab">
-                                    <i class="material-icons">wb_incandescent</i> General Aptitude Section
-                                    <div class="ripple-container"></div>
-                                  </a>
-                                </li>
+
                               </ul>
                             </div>
                           </div>
@@ -69,7 +52,7 @@
                                   <a class="dropdown-item" href="#">CRT</a>
                                 </div>
                               </div><br><br>
-   
+
                               <div class="row">
                                 <div class="col-lg-3 col-md-6 col-sm-6 column1">
                                   <div class="card card-stats">
@@ -268,24 +251,42 @@
     		//alert(decodedData);
     		var streamList1 =  eval('(' + streamList + ')');
     		alert("MainCoursePage *** " + streamList1.length);
-    	
+
     		for(i=0; i<streamList1.length; i++){
     			alert(streamList1[i].streamName);
-    		} 
+    		}
     		&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&& */
     		var searchString = window.location.search.substring(1);
     		var arr = searchString.split('&');
     		var data= arr[0].split('=')[1];
     		var decodedData = decodeURIComponent(data);
-    		
+
     		//Start- Extract Stream List
     		var streams = decodedData.substring(0, decodedData.indexOf(']')+1);
     		var streamList = eval('(' + streams + ')');
+        // Inserted code
+        var arr = ['Technical','SoftSkills','General Aptitude'];
+        for (var i = 0; i < arr.length; i++) {
+          var div1 = document.createElement('div');
+          div1.id="tab-div";
+          var li = document.createElement('li');
+          li.className='nav-item';
+          var anchor =document.createElement('a');
+          anchor.setAttribute('href',"#Profile");
+          anchor.setAttribute('data-toggle',"tab");
+          anchor.className='nav-link active';
+          anchor.textContent=arr[i];
+          li.appendChild(anchor);
+          div1.appendChild(li);
+          document.getElementById("nav-tab").appendChild(div1);
+        }
+        // End Inserted Code
+
     		/* for(i=0; i<streamList.length; i++){
     			alert(streamList[i].streamId + ":" + streamList[i].streamName)
     		} working code*/
     		//End- Extract Stream List
-    		
+
     		//Start- Extract Course Type List
     		var courseTypes = decodedData.substring(decodedData.indexOf(']')+1, decodedData.length);
     		var courseTypesList = eval('(' + courseTypes + ')');
@@ -293,12 +294,12 @@
     			alert(courseTypesList[i].courseTypeId + ":" + courseTypesList[i].courseTypeName)
     		} working code*/
     		//END- Extract Course Type List
-    		
+
     		/* data= arr[0].split('=')[2];
     		var courseTypeList = decodeURIComponent(data);
     		var courseTypeList1 =  eval('(' + courseTypeList + ')');
     		alert("MainCoursePage *** " + courseTypeList1.length);
-    	
+
     		for(i=0; i<courseTypeList1.length; i++){
     			alert(courseTypeList1[i].courseTypeName);
     		}  */
@@ -371,9 +372,9 @@
             <script src="../assets/js/material-dashboard.js?v=2.1.1" type="text/javascript"></script>
             <!-- Material Dashboard DEMO methods, don't include it in your project! -->
             <script src="../assets/demo/demo.js"></script>
-			
+
 			<script>
-			
+
 				 function displayStreamCourses(clicked_id){
 					 var streamId = 1;
 						var courseTypeId = clicked_id;
@@ -382,7 +383,7 @@
 			                    streamId: streamId,
 			                    courseTypeId: courseTypeId
 			            };
-					 
+
 					$.ajax({
 			            type: 'POST',
 			            url: '/OnlineEvaluationSystem/CommonController?action=StreamCourseTypeCoursesServlet',
@@ -391,20 +392,26 @@
 			            contentType: 'application/json; charset=utf-8',
 			            traditional: true,
 			            success: function (jsonObj) {
+<<<<<<< HEAD
 			            	var responseJson=jsonObj[0];
 			               	var strResJSON = JSON.stringify(responseJson);
 			               	for(i=0; i<responseJson.length; i++){
 			            		alert("course : " + responseJson[i].courseId + "," + responseJson[i].courseName);
 			               	}    	
+=======
+
+
+>>>>>>> 1aab277584a8e556ccc25f258e8207ab95edd212
 		            	},
 		            	error: function(){
 		            	//alert("Error");
 		            		document.getElementById("error").innerHTML = "Invalid email or password";
 		            	}
-		
+
 
 		          });
 				}
+<<<<<<< HEAD
 				 function displayTestSelect(clicked_id){
 					 alert("displayTestSelect Id = " + clicked_id);
 					 var streamId = 1;
@@ -444,6 +451,9 @@
 
 		          });
 				}		 
+=======
+
+>>>>>>> 1aab277584a8e556ccc25f258e8207ab95edd212
 			</script>
           </body>
         </html>
