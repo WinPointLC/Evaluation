@@ -14,7 +14,6 @@
             <link rel="stylesheet" href="../css/MainCoursePage.css">
             </head>
             <body>
-              <div class="content">
                 <div class="container-fluid">
                   <!-- your content here -->
                   <div class="row">
@@ -33,24 +32,7 @@
                             <div class="nav-tabs-wrapper">
 
                               <ul class="nav nav-tabs" data-tabs="tabs">
-                                <li class="nav-item">
-                                  <a class="nav-link active" href="#profile" data-toggle="tab">
-                                    <i class="material-icons">computer</i>Technical Section
-                                    <div class="ripple-container"></div>
-                                  </a>
-                                </li>
-                                <li class="nav-item">
-                                  <a class="nav-link" href="#messages" data-toggle="tab">
-                                    <i class="material-icons">record_voice_over</i> SoftSkills Section
-                                    <div class="ripple-container"></div>
-                                  </a>
-                                </li>
-                                <li class="nav-item">
-                                  <a class="nav-link" href="#settings" data-toggle="tab">
-                                    <i class="material-icons">wb_incandescent</i> General Aptitude Section
-                                    <div class="ripple-container"></div>
-                                  </a>
-                                </li>
+
                               </ul>
                             </div>
                           </div>
@@ -281,6 +263,25 @@
     		//Start- Extract Stream List
     		var streams = decodedData.substring(0, decodedData.indexOf(']')+1);
     		var streamList = eval('(' + streams + ')');
+
+        // Inserted code
+        var arr = ['Technical','SoftSkills','General Aptitude'];
+        for (var i = 0; i < arr.length; i++) {
+          var div1 = document.createElement('div');
+          div1.id="tab-div";
+          var li = document.createElement('li');
+          li.className='nav-item';
+          var anchor =document.createElement('a');
+          anchor.setAttribute('href',"#Profile");
+          anchor.setAttribute('data-toggle',"tab");
+          anchor.className='nav-link active';
+          anchor.textContent=arr[i];
+          li.appendChild(anchor);
+          div1.appendChild(li);
+          document.getElementById("nav-tab").appendChild(div1);
+        }
+        // End Inserted Code
+
     		/* for(i=0; i<streamList.length; i++){
     			alert(streamList[i].streamId + ":" + streamList[i].streamName)
     		} working code*/
