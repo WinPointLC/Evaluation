@@ -30,14 +30,14 @@
       <!-- Row 2 -->
       <div class="row">
         <div class="col-sm-12 col-md-12 col-lg-12">
-          <div class="RuleIframe">
-          	<iframe src="RulesIframe.jsp" frameborder="0" ></iframe>
+          <div class="Rule-content-2" id="rules-content">
+
           </div>
         </div>
       </div>
 
         <div class="row">
-        <div class="col-sm-2 col-md-2 col-lg-2 c3">
+        <div class="col-sm-1 col-md-2 col-lg-2 c3">
           <div class="start-test-btn">
             <a href="#" onclick="displayQuestionPage()"><button class="btn btn-primary btn-block">Start Test</button></a>
           </div>
@@ -56,15 +56,22 @@
 	//alert("Rules List = " + rulesList);
     for(i=0; i<rulesList.length; i++){
     	alert("Rules : " + rulesList[i].rulesId + "," + rulesList[i].rulesDescription);
+      var cardbody =document.createElement('div');
+      cardbody.className='card-body';
+      var par = document.createElement('p');
+      par.textContent=i+1". "+ rulesList[i].rulesDescription;
+      cardbody.appendChild(par);
+      document.getElementById('rules-content').appendChild(cardbody);
     }
     var testDetail = decodedData.substring(decodedData.indexOf(']')+1, decodedData.length);
     var testDetail = eval('(' + testDetail + ')');
     alert("*******" + testDetail.testDetailId);
     // var arr2 = ['Modular','TBC','CRT'];
-    
+
     function displayQuestionPage(){
     	window.location.href = "OesQuestionPage.jsp";
     }
+
     </script>
   </body>
 </html>

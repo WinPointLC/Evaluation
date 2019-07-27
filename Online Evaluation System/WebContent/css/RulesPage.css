@@ -15,16 +15,16 @@ text-transform: uppercase;
   max-height: 100vh;
 }
 .c3{
-    margin-left: 77%;
+    margin-left: 42%;
 }
-.RuleIframe{
-	height:70vh;
-	margin-left:5%;
-	
+.Rule-content-2{
+  overflow-y: scroll;
+  width: 70vw;
+	height:60vh;
+	margin-left:15%;
+  border: 1px solid rgb(196, 188, 188);
+  box-shadow: 2px 2px 8px 3px rgb(196, 188, 188);
 }
-iframe{
-	width:90%;
-	height:90%;
-	border:1px solid rgb(196, 188, 188);
-	box-shadow: 2px 2px 8px 3px rgb(196, 188, 188); 
+.start-test-btn button{
+margin-top: 20%;
 }
