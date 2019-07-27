@@ -42,7 +42,7 @@
 
                             </div>
                             </div>
-                            <div class="card" style="display:none;" id="CourseCard" >
+                            <div class="card" style="display:none;" >
                       <div class="card-body">
                         <div class="tab-content">
                           <div class="tab-pane active" id="profile"><br><br>
@@ -395,7 +395,7 @@
         	  alert("clicked_id = " + clicked_id);
             stream_id = clicked_id;
           }
-          
+
           function displayStreamCourses(courseType_id){
             var streamId = stream_id;
             var courseTypeId = courseType_id;
@@ -413,16 +413,14 @@
               contentType: 'application/json; charset=utf-8',
               traditional: true,
               success: function (jsonObj) {
-            	document.getElementById('CourseCard').style.display="block";
                 var responseJson=jsonObj[0];
                 var strResJSON = JSON.stringify(responseJson);
-                
                 for(i=0; i<(responseJson.length); i=i+3){
                 	for(j=i; j<i+3; j++){
                   		alert("course : " + responseJson[j].courseId + "," + responseJson[j].courseName + "," + responseJson[j].iconLocation);
-                  		
+
                 	}
-                  
+
                 }
               },
               error: function(){
