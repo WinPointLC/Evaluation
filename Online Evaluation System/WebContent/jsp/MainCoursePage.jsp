@@ -50,7 +50,7 @@
 
                           </div><br><br> -->
                           <%-- first  row --%>
-                          <div class="row">
+                          <!-- <div class="row">
                             <div class="col-lg-3 col-md-6 col-sm-6 column1">
                               <div class="card card-stats">
                                 <div class="card-header card-header-icon">
@@ -120,7 +120,7 @@
                                       </div>
                                     </div>
                                   </div>
-                                </div>
+                                </div> -->
                                 <%-- End Second Row --%>
                               </div>
 
@@ -429,6 +429,8 @@
             //   </div>
 
             for(i=0; i<(responseJson.length); i=i+3){
+              var row  = document.createElement('div');
+              row.className='row';
               for(j=i; j<i+3; j++){
                 //alert("course : " + responseJson[j].courseId + "," + responseJson[j].courseName + "," + responseJson[j].iconLocation);
                 var column = document.createElement('div');
@@ -443,7 +445,8 @@
                 image.setAttribute('src', responseJson[j].iconLocation);
                 image.setAttribute('style', " height: 60px; width: 60px; ");
                 image.setAttribute('alt',"java");
-
+			    cardicon.appendChild(image);
+				cardheader.appendChild(cardicon);
                 var anchor = document.createElement('a');
                 anchor.setAttribute('href', "TestSelectPage.jsp");
                 var para = document.createElement('p');
@@ -453,9 +456,9 @@
                 cardheader.appendChild(anchor);
                 cardstats.appendChild(cardheader);
                 column.appendChild(cardstats);
-                document.getElementById('tab-content').appendChild(column);
+                row.appendChild(column);
               }
-
+                document.getElementById('tab-content').appendChild(row);
             }
           },
           error: function(){
