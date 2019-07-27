@@ -78,8 +78,8 @@ public class RulesServlet extends HttpServlet {
 		  
 		   String json1 = gson.toJson("{ 'success': 'true', 'location': '/OnlineEvaluationSystem/jsp/RulesPage.jsp'}");
 		   String json2 = gson.toJson(rulesList);
-		  		   
-		   String jsonString = "[" + json1  + "," + json2 + "]";
+		   String json3 = gson.toJson(testDetails);		   
+		   String jsonString = "[" + json1  + "," + json2 + "," + json3 +"]";
 		   System.out.println("Json string is " + jsonString);
 		   PrintWriter writer = response.getWriter();
 		   writer.println(jsonString);

@@ -270,7 +270,7 @@
               //anchor.id = streamList1[i].streamId;
               anchor.textContent=streamList[i].streamName;
               li.id = streamList[i].streamId;
-              alert("Li id = " + li.id);
+             // alert("Li id = " + li.id);
               li.appendChild(anchor);
               li.setAttribute('onclick', "getStreamId(this.id)");
               div1.appendChild(li);
@@ -390,16 +390,17 @@
       <script src="../assets/demo/demo.js"></script>
 
       <script>
-      var stream_id;
-      function getStreamId(clicked_id){
-        alert("clicked_id = " + clicked_id);
-        stream_id = clicked_id;
+      var streamId=1;
+      var courseTypeId;
+      function getStreamId(stream_id){
+        //alert("stream_id = " + stream_id);
+        streamId = stream_id;
       }
 
       function displayStreamCourses(courseType_id){
-        var streamId = stream_id;
-        var courseTypeId = courseType_id;
-        alert("stream_id = " + stream_id + "courseType_id = " + courseType_id);
+        //var streamId = stream_id;
+        courseTypeId = courseType_id;
+        //alert("stream_id = " + streamId + "courseType_id = " + courseType_id);
         var myData = {
           streamId: streamId,
           courseTypeId: courseTypeId
@@ -448,7 +449,9 @@
 			    cardicon.appendChild(image);
 				cardheader.appendChild(cardicon);
                 var anchor = document.createElement('a');
-                anchor.setAttribute('href', "TestSelectPage.jsp");
+                anchor.setAttribute('id', responseJson[j].courseId);
+                anchor.setAttribute('href', "#");
+                anchor.setAttribute('onclick',"displayTestSelect(this.id)");
                 var para = document.createElement('p');
                 para.className='card-category';
                 para.textContent=responseJson[j].courseName;
@@ -469,11 +472,11 @@
 
         });
       }
-      function displayTestSelect(clicked_id){
-        alert("displayTestSelect Id = " + clicked_id);
-        var streamId = 1;
-        var courseTypeId = clicked_id;
-        courseId = 1;
+      function displayTestSelect(courseId){
+        alert("DisplayTestSelect Id = " + courseId);
+        //var streamId = 1;
+        //var courseTypeId = courseTypeId;
+        var courseId = courseId;
         var myData = {
           streamId: streamId,
           courseTypeId: courseTypeId,

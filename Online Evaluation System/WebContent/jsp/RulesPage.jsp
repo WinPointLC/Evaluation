@@ -39,10 +39,32 @@
         <div class="row">
         <div class="col-sm-2 col-md-2 col-lg-2 c3">
           <div class="start-test-btn">
-            <a href="OesQuestionPage.jsp"><button class="btn btn-primary btn-block">Start Test</button></a>
+            <a href="#" onclick="displayQuestionPage()"><button class="btn btn-primary btn-block">Start Test</button></a>
           </div>
         </div>
       </div>
     </div>
+    <script>
+    var searchString = window.location.search.substring(1);
+    var arr = searchString.split('&');
+    var data= arr[0].split('=')[1];
+    var decodedData = decodeURIComponent(data);
+	//alert("decodedData RulesPage = " + decodedData);
+    //Start- Extract Rules List
+    var rules = decodedData.substring(0, decodedData.indexOf(']')+1);
+    var rulesList = eval('(' + rules + ')');
+	//alert("Rules List = " + rulesList);
+    for(i=0; i<rulesList.length; i++){
+    	alert("Rules : " + rulesList[i].rulesId + "," + rulesList[i].rulesDescription);
+    }
+    var testDetail = decodedData.substring(decodedData.indexOf(']')+1, decodedData.length);
+    var testDetail = eval('(' + testDetail + ')');
+    alert("*******" + testDetail.testDetailId);
+    // var arr2 = ['Modular','TBC','CRT'];
+    
+    function displayQuestionPage(){
+    	window.location.href = "OesQuestionPage.jsp";
+    }
+    </script>
   </body>
 </html>

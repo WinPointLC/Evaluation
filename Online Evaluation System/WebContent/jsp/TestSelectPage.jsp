@@ -19,17 +19,7 @@
 
               </div>
               <script>
-              // $(document).ready(function(){
-              var searchString = window.location.search.substring(1);
-              var arr = searchString.split('&');
-              var data= arr[0].split('=')[1];
-              var testList = decodeURIComponent(data);
-
-              //Start- Extract Tests List
-              var tests = testList.substring(0, testList.indexOf(']')+1);
-              var testsList = eval('(' + tests + ')');
-
-              // Code for adding tables dynamically
+           // Code for adding tables dynamically
               var row1 = document.createElement('div');
               row1.className='row R1';
               column1 = document.createElement('div');
@@ -38,11 +28,13 @@
               cardheader1.className='card-header heading';
               cardheader1.setAttribute('style',"background-color:rgb(6, 7, 102)");
               var courseheader = document.createElement('h3');
-              courseheader.setAttribute('style', "#fff");
+              courseheader.setAttribute('style', "margin-left:41%;font-family:sans-serif;text-transform:uppercase;color:#fff;");
+              courseheader.textContent="Course Name";
               cardheader1.appendChild(courseheader);
               column1.appendChild(cardheader1);
               row1.appendChild(column1);
               document.getElementById('main-container').appendChild(row1);
+
               // code for Row2
 
               var row2 = document.createElement('div');
@@ -54,98 +46,104 @@
               selecttest.setAttribute('type', "button");
               selecttest.setAttribute('name', "button");
               selecttest.textContent = 'Select a Test';
+              selecttest.setAttribute('style',"margin-top:10%;");
               column2.appendChild(selecttest);
               row2.appendChild(column2);
               document.getElementById('main-container').appendChild(row2);
 
               //code for row3
-
               var row3 = document.createElement('div');
               row3.className='row R3';
               var tablecontainer = document.createElement('div');
               tablecontainer.className='container';
               tablecontainer.setAttribute('style', "overflow-y: scroll; height:250px;");
-              row3.appendChild(tablecontainer);
               var table = document.createElement('table');
               table.className='table table-hover';
-              tablecontainer.appendChild(table);
-              var thread1 = document.createElement('thread');
-              tablecontainer.appendChild(thread1);
+              var thead = document.createElement('thead');
               var tr = document.createElement('tr');
-              thread1.appendChild(tr);
+              var th1 = document.createElement('th');
 
-              var th = document.createElement('th');
-
-              th.textContent("Test No");
-              th.textContent("Test Name");
-              th.textContent("Register");
-              th.textContent("Start Test");
-              tr.appendChild(th);
-
+              th1.textContent="Test No";
+              var th2 = document.createElement('th');
+              th2.textContent="Test Name";
+              var th3 = document.createElement('th');
+              th3.textContent="Register";
+              var th4 = document.createElement('th');
+              th4.textContent="Start Test";
+              tr.appendChild(th1);
+              tr.appendChild(th2);
+              tr.appendChild(th3);
+              tr.appendChild(th4);
+              thead.appendChild(tr);
+              table.appendChild(thead);
+              //tablecontainer.appendChild(table);
+              //row3.appendChild(tablecontainer);
               // End of table head row of table
 
               // start of table body
+
               var tbody = document.createElement('tbody');
-              tablecontainer.appendChild(tbody);
-              var tr2 = document.createElement('tr');
-              tbody.appendChild(tr2);
+              
 
-              var td1 = document.createElement('td');
-              var td2 = document.createElement('td');
-              var td3 = document.createElement('td');
-              var td4 = document.createElement('td');
+              var searchString = window.location.search.substring(1);
+              var arr = searchString.split('&');
+              var data= arr[0].split('=')[1];
+              var testList = decodeURIComponent(data);
 
-
-              var ancdiv = document.createElement('div');
-              ancdiv.className="col-md-5";
-              var anchort2 = document.createElement('a');
-              anchort2.setAttribute('href',"RulesPage.jsp");
-              var ancbtn = document.createElement('button');
-              ancbtn.setAttribute('style', "background-color: darkslateblue;");
-              ancbtn.className='btn';
-              ancbtn.setAttribute('type', "button");
-              anchort2.appendChild(ancbtn);
-              ancdiv.appendChild(anchort2);
-              td4.appendChild(ancdiv);
-
-              var td4 = document.createElement('td');
-              var anchort = document.createElement('a');
-
-              // var arr3 = ['MCQ','Coding','Descriptive'];
-              // for (var i = 0; i < arr3.length; i++) {
-              // td1.textContent="1";
-              // td2.textContent=arr3[i];
-              //
-              // anchort.setAttribute('href', "#");
-              // anchort.textContent="Register";
-              // td3.appendChild(anchort);
-              //
-              // ancbtn.textContent="Go To Test";
-              // }
-              tr2.appendChild(td1);
-              tr2.appendChild(td2);
-              tr2.appendChild(td3);
-              tr2.appendChild(td4);
-              document.getElementById('main-container').appendChild(row3);
+              //Start- Extract Tests List
+              var tests = testList.substring(0, testList.indexOf(']')+1);
+              var testsList = eval('(' + tests + ')');
 
               for(i=0; i<testsList.length; i++){
-                // alert(testsList[i].evaluationTypeName + ":" + testsList[i].testFees)
-                td1.textContent="1";
-                td2.textContent=arr3[i];
+                // alert(testsList[i].evaluationTypeName + ":" + testsList[i].testFees);
+                var tr2 = document.createElement('tr');
+                var td1 = document.createElement('td');
+                var td2 = document.createElement('td');
+                var td3 = document.createElement('td');
+                var td4 = document.createElement('td');
+                td1.textContent=i+1;
+                td2.textContent=testsList[i].evaluationTypeName;
 
+                var anchort = document.createElement('a');
                 anchort.setAttribute('href', "#");
                 anchort.textContent="Register";
                 td3.appendChild(anchort);
 
+                var ancdiv = document.createElement('div');
+                ancdiv.className="col-md-5";
+                var anchort2 = document.createElement('a');
+                anchort2.setAttribute('href',"#");
+                anchort2.setAttribute('id',testsList[i].testDetailId);
+                anchort2.setAttribute('onclick',"displayRulesPage(this.id)");
+                var ancbtn = document.createElement('button');
+                ancbtn.setAttribute('style', "background-color: darkslateblue;");
+                ancbtn.className='btn';
+                ancbtn.setAttribute('type', "button");
                 ancbtn.textContent="Go To Test";
+                anchort2.appendChild(ancbtn);
+                ancdiv.appendChild(anchort2);
+                td4.appendChild(ancdiv);
+				
+                tr2.appendChild(td1);
+                tr2.appendChild(td2);
+                tr2.appendChild(td3);
+                tr2.appendChild(td4);
 
+                tbody.appendChild(tr2);
               }
+              
+              table.appendChild(tbody);
+              tablecontainer.appendChild(table);
+              row3.appendChild(tablecontainer);
+              // $(document).ready(function(){
+              document.getElementById('main-container').appendChild(row3);
+
               //End- Extract Tests List
               //  });
 
-              function displayRulesPage(clicked_id){
-                alert("displayTestSelect Id = " + clicked_id);
-                var testDetailId = 1;
+              function displayRulesPage(testDetailId){
+                alert("displayTestSelect Id = " + testDetailId);
+               // var testDetailId = 1;
                 var myData = {
                   testDetailId: testDetailId
                 };
@@ -167,8 +165,10 @@
                     for(i=0; i<responseJson2.length; i++){
                       alert("Rules : " + responseJson2[i].rulesId + "," + responseJson2[i].rulesDescription);
                     }
+                    var testDetailsJson = jsonObj[2];
+                    var testDetailsJSON = JSON.stringify(testDetailsJson);
                     //window.location.href = locationJson.location;
-                    window.location.href = locationJson.location + "?varid=" + encodeURIComponent(strResJSON) + "&username=" + "Anjali" +"&password=" + "Anjali";
+                    window.location.href = locationJson.location + "?varid=" + encodeURIComponent(strResJSON) + encodeURIComponent(testDetailsJSON) + "&username=" + "Anjali" +"&password=" + "Anjali";
                   },
                   error: function(){
                     //alert("Error");
