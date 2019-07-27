@@ -30,8 +30,10 @@
       <!-- Row 2 -->
       <div class="row">
         <div class="col-sm-12 col-md-12 col-lg-12">
-          <div class="Rule-content-2" id="rules-content">
-
+          <div class="Rule-content-2">
+			<div class="card-body" id="rules-content">
+			
+			</div>	
           </div>
         </div>
       </div>
@@ -55,13 +57,10 @@
     var rulesList = eval('(' + rules + ')');
 	//alert("Rules List = " + rulesList);
     for(i=0; i<rulesList.length; i++){
-    	alert("Rules : " + rulesList[i].rulesId + "," + rulesList[i].rulesDescription);
-      var cardbody =document.createElement('div');
-      cardbody.className='card-body';
-      var par = document.createElement('p');
-      par.textContent=i+1". "+ rulesList[i].rulesDescription;
-      cardbody.appendChild(par);
-      document.getElementById('rules-content').appendChild(cardbody);
+    	//alert("Rules : " + rulesList[i].rulesId + "," + rulesList[i].rulesDescription);
+    	var par = document.createElement('p');
+        par.textContent=i+1+". "+ rulesList[i].rulesDescription;
+        document.getElementById('rules-content').appendChild(par);
     }
     var testDetail = decodedData.substring(decodedData.indexOf(']')+1, decodedData.length);
     var testDetail = eval('(' + testDetail + ')');
