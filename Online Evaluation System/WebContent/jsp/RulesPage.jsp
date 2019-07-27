@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="../assets/css/fontawesome.min.css">
     <!-- Material Kit CSS -->
     <link href="../assets/css/material-dashboard.css?v=2.1.1" rel="stylesheet"/>
-    <link rel="stylesheet" href="../css/RulesPage.css">
+    <link rel="stylesheet" href="../css/RulesPage2.css">
   </head>
   <body>
     <div class="container-fluid">
