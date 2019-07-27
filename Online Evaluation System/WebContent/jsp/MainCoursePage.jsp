@@ -40,15 +40,9 @@
                       </div>
                       <div id="drop11" class="dropdown drop1">
 
-<<<<<<< HEAD
-                            </div>
-                            </div>
-                            <div class="card" style="display:none;" >
-=======
                       </div>
                     </div>
                     <div class="card" style="display:none;" id="CourseCard" >
->>>>>>> 7eab609bb6887136d647e774b680d268f1a64acc
                       <div class="card-body">
                         <div class="tab-content" id="tab-content">
                           <div class="tab-pane active" id="profile"><br><br>
@@ -225,213 +219,7 @@
                           </div>
                         </div>
                       </div>
-<<<<<<< HEAD
-                    </div>
-                    <script>
-                    /* &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
-                    var searchString = window.location.search.substring(1);
-                    var arr = searchString.split('&');
-                    var data= arr[0].split('=')[1];
-                    //var decodedData = decodeURIComponent(data);
-                    //var decodedData1 = eval('(' + decodedData + ')');
-                    var streamList = decodeURIComponent(data);
-                    //alert(decodedData);
-                    var streamList1 =  eval('(' + streamList + ')');
-                    alert("MainCoursePage *** " + streamList1.length);
-
-                    for(i=0; i<streamList1.length; i++){
-                    alert(streamList1[i].streamName);
-                  }
-                  &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&& */
-                  var searchString = window.location.search.substring(1);
-                  var arr = searchString.split('&');
-                  var data= arr[0].split('=')[1];
-                  var decodedData = decodeURIComponent(data);
-                  //var stream_id = 0;
-
-                  //Start- Extract Stream List
-                  var streams = decodedData.substring(0, decodedData.indexOf(']')+1);
-                  var streamList = eval('(' + streams + ')');
-
-
-
-                  for(i=0; i<streamList.length; i++){
-                    // alert(streamList[i].streamId + ":" + streamList[i].streamName)
-                    // var arr = ['Technical','SoftSkills','General Aptitude'];
-                    // for (var i = 0; i < arr.length; i++) {
-                    // Inserted code
-                    var div1 = document.createElement('div');
-                    div1.id="tab-div";
-                    var li = document.createElement('li');
-                    li.className='nav-item';
-
-                    var anchor =document.createElement('a');
-                    anchor.setAttribute('href',"#Profile");
-                    anchor.setAttribute('data-toggle',"tab");
-                    anchor.className='nav-link active';
-                    //anchor.id = streamList1[i].streamId;
-                    anchor.textContent=streamList[i].streamName;
-                    li.id = streamList[i].streamId;
-                    alert("Li id = " + li.id);
-                    li.appendChild(anchor);
-                    li.setAttribute('onclick', "getStreamId(this.id)");
-                    div1.appendChild(li);
-                    document.getElementById("nav-tab").appendChild(div1);
-                    // End Inserted Code
-                  }
-                  // }
-
-                  //End- Extract Stream List
-                  var drop1 = document.getElementsByClassName('drop1');
-                  var btn = document.createElement('button');
-                  btn.className='btn btn-secondary dropdown-toggle';
-                  btn.id='dropdownMenuButton';
-                  btn.setAttribute('data-toggle', "dropdown");
-                  btn.setAttribute('aria-haspopup', "true");
-                  btn.setAttribute('aria-expanded',"false");
-                  btn.textContent="Course Category";
-                  document.getElementById('drop11').appendChild(btn);
-
-                  var dropdownMenu = document.createElement('div');
-                  dropdownMenu.className='dropdown-menu';
-                  dropdownMenu.setAttribute('aria-labelledby',"dropdownMenuButton");
-                  //Start- Extract Course Type List
-                  var courseTypes = decodedData.substring(decodedData.indexOf(']')+1, decodedData.length);
-                  var courseTypesList = eval('(' + courseTypes + ')');
-                  // var arr2 = ['Modular','TBC','CRT'];
-                  for(i=0; i<courseTypesList.length; i++){
-                    var dropanchor = document.createElement('a');
-                    dropanchor.className='dropdown-item';
-                    dropanchor.setAttribute('href',"#");
-                    dropanchor.id=courseTypesList[i].courseTypeId;
-                    dropanchor.textContent=courseTypesList[i].courseTypeName;
-                    dropanchor.setAttribute('onclick',"displayStreamCourses(this.id)");
-
-                    dropdownMenu.appendChild(dropanchor);
-                  // alert(courseTypesList[i].courseTypeId + ":" + courseTypesList[i].courseTypeName)
-                }
-                document.getElementById('drop11').appendChild(dropdownMenu);
-                //END- Extract Course Type List
-
-                /* data= arr[0].split('=')[2];
-                var courseTypeList = decodeURIComponent(data);
-                var courseTypeList1 =  eval('(' + courseTypeList + ')');
-                alert("MainCoursePage *** " + courseTypeList1.length);
-
-                for(i=0; i<courseTypeList1.length; i++){
-                alert(courseTypeList1[i].courseTypeName);
-              }  */
-              //****************************************************
-              //var x = 4;
-              // alert(<c:out value="${x}" />);
-              /*<c:out value="${'Welcome to WinPoint'}"/>
-              <c:forEach items="${streamList1}"  var="streamItem">
-              alert("1");
-              //alert('<c:out value="${streamItem.firstName}" />');
-              </c:forEach>  */
-              /* var groupMap = {
-              <c:forEach items="${configuredGroupMap}" var="groupMap" varStatus="loop">
-              "${groupMap.key}": "${groupMap.value}"${!loop.last ? ',' : ''}
-              </c:forEach>
-            };
-            output of this is like
-            var groupMap = {
-            "key1": "value1",
-            "key2": "value2",
-            "key3": "value3"
-          };
-          */
-          //alert("Client is " + userProfile1.userId + ":" + userProfile1.firstName + " " + userProfile1.lastName);
-          /* document.getElementById("photoId").src = stream1.photoLocation;
-          document.getElementById("firstName").value = stream1.firstName;
-          document.getElementById("lastName").value = stream1.lastName; */
-          //***********************************************************************************
-          </script>
-          <!--   Core JS Files   -->
-          <script src="../assets/js/core/jquery.min.js"></script>
-          <script src="../assets/js/core/popper.min.js"></script>
-          <script src="../assets/js/core/bootstrap-material-design.min.js"></script>
-          <script src="../assets/js/plugins/perfect-scrollbar.jquery.min.js"></script>
-          <!-- Plugin for the momentJs  -->
-          <script src="../assets/js/plugins/moment.min.js"></script>
-          <!--  Plugin for Sweet Alert -->
-          <script src="../assets/js/plugins/sweetalert2.js"></script>
-          <!-- Forms Validations Plugin -->
-          <script src="../assets/js/plugins/jquery.validate.min.js"></script>
-          <!-- Plugin for the Wizard, full documentation here: https://github.com/VinceG/twitter-bootstrap-wizard -->
-          <script src="../assets/js/plugins/jquery.bootstrap-wizard.js"></script>
-          <!--	Plugin for Select, full documentation here: http://silviomoreto.github.io/bootstrap-select -->
-          <script src="../assets/js/plugins/bootstrap-selectpicker.js"></script>
-          <!--  Plugin for the DateTimePicker, full documentation here: https://eonasdan.github.io/bootstrap-datetimepicker/ -->
-          <script src="../assets/js/plugins/bootstrap-datetimepicker.min.js"></script>
-          <!--  DataTables.net Plugin, full documentation here: https://datatables.net/  -->
-          <script src="../assets/js/plugins/jquery.dataTables.min.js"></script>
-          <!--	Plugin for Tags, full documentation here: https://github.com/bootstrap-tagsinput/bootstrap-tagsinputs  -->
-          <script src="../assets/js/plugins/bootstrap-tagsinput.js"></script>
-          <!-- Plugin for Fileupload, full documentation here: http://www.jasny.net/bootstrap/javascript/#fileinput -->
-          <script src="../assets/js/plugins/jasny-bootstrap.min.js"></script>
-          <!--  Full Calendar Plugin, full documentation here: https://github.com/fullcalendar/fullcalendar    -->
-          <script src="../assets/js/plugins/fullcalendar.min.js"></script>
-          <!-- Vector Map plugin, full documentation here: http://jvectormap.com/documentation/ -->
-          <script src="../assets/js/plugins/jquery-jvectormap.js"></script>
-          <!--  Plugin for the Sliders, full documentation here: http://refreshless.com/nouislider/ -->
-          <script src="../assets/js/plugins/nouislider.min.js"></script>
-          <!-- Include a polyfill for ES6 Promises (optional) for IE11, UC Browser and Android browser support SweetAlert -->
-          <script src="https://cdnjs.cloudflare.com/ajax/libs/core-js/2.4.1/core.js"></script>
-          <!-- Library for adding dinamically elements -->
-          <script src="../assets/js/plugins/arrive.min.js"></script>
-          <!--  Google Maps Plugin    -->
-          <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE"></script>
-          <!-- Chartist JS -->
-          <script src="../assets/js/plugins/chartist.min.js"></script>
-          <!--  Notifications Plugin    -->
-          <script src="../assets/js/plugins/bootstrap-notify.js"></script>
-          <!-- Control Center for Material Dashboard: parallax effects, scripts for the example pages etc -->
-          <script src="../assets/js/material-dashboard.js?v=2.1.1" type="text/javascript"></script>
-          <!-- Material Dashboard DEMO methods, don't include it in your project! -->
-          <script src="../assets/demo/demo.js"></script>
-
-          <script>
-	var stream_id;
-          function getStreamId(clicked_id){
-        	  alert("clicked_id = " + clicked_id);
-            stream_id = clicked_id;
-          }
-
-          function displayStreamCourses(courseType_id){
-            var streamId = stream_id;
-            var courseTypeId = courseType_id;
-            alert("stream_id = " + stream_id + "courseType_id = " + courseType_id);
-            var myData = {
-              streamId: streamId,
-              courseTypeId: courseTypeId
-            };
-
-            $.ajax({
-              type: 'POST',
-              url: '/OnlineEvaluationSystem/CommonController?action=StreamCourseTypeCoursesServlet',
-              data: JSON.stringify(myData),
-              dataType: 'json',
-              contentType: 'application/json; charset=utf-8',
-              traditional: true,
-              success: function (jsonObj) {
-                var responseJson=jsonObj[0];
-                var strResJSON = JSON.stringify(responseJson);
-                for(i=0; i<(responseJson.length); i=i+3){
-                	for(j=i; j<i+3; j++){
-                  		alert("course : " + responseJson[j].courseId + "," + responseJson[j].courseName + "," + responseJson[j].iconLocation);
-
-                	}
-
-                }
-              },
-              error: function(){
-                alert("Error");
-                //document.getElementById("error").innerHTML = "Invalid email or password";
-              }
-=======
                     </div><!-- End card div -->
->>>>>>> 7eab609bb6887136d647e774b680d268f1a64acc
 
 
                   </div>
@@ -570,13 +358,13 @@
       <script src="../assets/js/plugins/jquery.validate.min.js"></script>
       <!-- Plugin for the Wizard, full documentation here: https://github.com/VinceG/twitter-bootstrap-wizard -->
       <script src="../assets/js/plugins/jquery.bootstrap-wizard.js"></script>
-      <!--	Plugin for Select, full documentation here: http://silviomoreto.github.io/bootstrap-select -->
+      <!--  Plugin for Select, full documentation here: http://silviomoreto.github.io/bootstrap-select -->
       <script src="../assets/js/plugins/bootstrap-selectpicker.js"></script>
       <!--  Plugin for the DateTimePicker, full documentation here: https://eonasdan.github.io/bootstrap-datetimepicker/ -->
       <script src="../assets/js/plugins/bootstrap-datetimepicker.min.js"></script>
       <!--  DataTables.net Plugin, full documentation here: https://datatables.net/  -->
       <script src="../assets/js/plugins/jquery.dataTables.min.js"></script>
-      <!--	Plugin for Tags, full documentation here: https://github.com/bootstrap-tagsinput/bootstrap-tagsinputs  -->
+      <!--  Plugin for Tags, full documentation here: https://github.com/bootstrap-tagsinput/bootstrap-tagsinputs  -->
       <script src="../assets/js/plugins/bootstrap-tagsinput.js"></script>
       <!-- Plugin for Fileupload, full documentation here: http://www.jasny.net/bootstrap/javascript/#fileinput -->
       <script src="../assets/js/plugins/jasny-bootstrap.min.js"></script>
