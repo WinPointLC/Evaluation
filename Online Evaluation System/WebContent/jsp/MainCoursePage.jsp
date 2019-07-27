@@ -19,31 +19,36 @@
                 <div class="row">
                   <div class="col-sm-12 col-md-12 col-lg-12">
                     <div class="card-header heading">
-                      <h3>Courses Offered</h3>
+                      <h3>Tests Offered</h3>
                     </div>
                   </div>
                 </div>
 
                 <div class="row">
                   <div class="col-md-11 col-lg-11">
-                    <div class="card">
+                <!--     <div class="card"> -->
+                <div class="card">
                       <div class="card-header card-header-tabs card-header" style="background-color:rgb(148, 21, 193);">
                         <div class="nav-tabs-navigation">
                           <div class="nav-tabs-wrapper">
 
-                            <ul class="nav nav-tabs" data-tabs="tabs">
+                            <ul class="nav nav-tabs" data-tabs="tabs" id="nav-tab">
 
                             </ul>
                           </div>
                         </div>
                       </div>
+<div id="drop11" class="dropdown drop1">
 
+                            </div>
+                            </div>
+                            <div class="card" style="display:none;" id="CourseCard" >
                       <div class="card-body">
                         <div class="tab-content">
                           <div class="tab-pane active" id="profile"><br><br>
-                            <div id="drop11" class="dropdown drop1">
+                         <!--    <div id="drop11" class="dropdown drop1">
 
-                            </div><br><br>
+                            </div><br><br> -->
                             <%-- first  row --%>
                             <div class="row">
                               <div class="col-lg-3 col-md-6 col-sm-6 column1">
@@ -120,9 +125,9 @@
                                 </div>
 
                                 <div class="tab-pane" id="messages">
-                                  <div id="drop11" class="dropdown drop1">
+                               <!--     <div id="drop11" class="dropdown drop1">
 
-                                  </div><br>
+                                  </div><br>-->
                                   <div class="row">
                                     <div class="col-lg-3 col-md-6 col-sm-6 column1">
                                       <div class="card card-stats">
@@ -161,9 +166,9 @@
 
                                 </div>
                                 <div class="tab-pane" id="settings">
-                                  <div id="drop11" class="dropdown drop1">
+                                 <!--  <div id="drop11" class="dropdown drop1">
 
-                                  </div><br>
+                                  </div><br> -->
                                   <div class="row">
                                     <div class="col-lg-3 col-md-6 col-sm-6 column1">
                                       <div class="card card-stats">
@@ -214,7 +219,7 @@
                                 </div>
                               </div>
                             </div>
-                          </div>
+                          </div><!-- End card div -->
 
 
                         </div>
@@ -240,7 +245,7 @@
                   var arr = searchString.split('&');
                   var data= arr[0].split('=')[1];
                   var decodedData = decodeURIComponent(data);
-                  var stream_id;
+                  //var stream_id = 0;
 
                   //Start- Extract Stream List
                   var streams = decodedData.substring(0, decodedData.indexOf(']')+1);
@@ -263,13 +268,13 @@
                     anchor.setAttribute('data-toggle',"tab");
                     anchor.className='nav-link active';
                     //anchor.id = streamList1[i].streamId;
-                    anchor.textContent=streamList1[i].streamName;
-                    li.id = streamList1[i].streamId;
+                    anchor.textContent=streamList[i].streamName;
+                    li.id = streamList[i].streamId;
+                    alert("Li id = " + li.id);
                     li.appendChild(anchor);
                     li.setAttribute('onclick', "getStreamId(this.id)");
                     div1.appendChild(li);
                     document.getElementById("nav-tab").appendChild(div1);
-                    document.getElementById("nav-tab").
                     // End Inserted Code
                   }
                   // }
@@ -296,9 +301,9 @@
                     var dropanchor = document.createElement('a');
                     dropanchor.className='dropdown-item';
                     dropanchor.setAttribute('href',"#");
-                    dropanchor.id=courseTypeList1[i].courseTypeId;
-                    dropanchor.textContent=courseTypeList1[i].courseTypeName;
-                    dropanchor.setAttribute('onclick',"displayStreamCourse(this.id)");
+                    dropanchor.id=courseTypesList[i].courseTypeId;
+                    dropanchor.textContent=courseTypesList[i].courseTypeName;
+                    dropanchor.setAttribute('onclick',"displayStreamCourses(this.id)");
 
                     dropdownMenu.appendChild(dropanchor);
                   // alert(courseTypesList[i].courseTypeId + ":" + courseTypesList[i].courseTypeName)
@@ -385,15 +390,17 @@
           <script src="../assets/demo/demo.js"></script>
 
           <script>
-
+	var stream_id;
           function getStreamId(clicked_id){
+        	  alert("clicked_id = " + clicked_id);
             stream_id = clicked_id;
           }
-          function displayStreamCourses(courseType_id, stream_id{
+          
+          function displayStreamCourses(courseType_id){
             var streamId = stream_id;
             var courseTypeId = courseType_id;
+            alert("stream_id = " + stream_id + "courseType_id = " + courseType_id);
             var myData = {
-
               streamId: streamId,
               courseTypeId: courseTypeId
             };
@@ -406,15 +413,21 @@
               contentType: 'application/json; charset=utf-8',
               traditional: true,
               success: function (jsonObj) {
+            	document.getElementById('CourseCard').style.display="block";
                 var responseJson=jsonObj[0];
                 var strResJSON = JSON.stringify(responseJson);
-                for(i=0; i<responseJson.length; i++){
-                  alert("course : " + responseJson[i].courseId + "," + responseJson[i].courseName);
+                
+                for(i=0; i<(responseJson.length); i=i+3){
+                	for(j=i; j<i+3; j++){
+                  		alert("course : " + responseJson[j].courseId + "," + responseJson[j].courseName + "," + responseJson[j].iconLocation);
+                  		
+                	}
+                  
                 }
               },
               error: function(){
-                //alert("Error");
-                document.getElementById("error").innerHTML = "Invalid email or password";
+                alert("Error");
+                //document.getElementById("error").innerHTML = "Invalid email or password";
               }
 
 
