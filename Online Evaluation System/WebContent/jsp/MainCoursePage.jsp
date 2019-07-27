@@ -44,7 +44,7 @@
                             <div id="drop11" class="dropdown drop1">
 
                             </div><br><br>
-
+                            <%-- first  row --%>
                             <div class="row">
                               <div class="col-lg-3 col-md-6 col-sm-6 column1">
                                 <div class="card card-stats">
@@ -80,7 +80,8 @@
                                     </div>
                                   </div>
                                 </div>
-
+                                <%-- End first row --%>
+                                <%-- Start Second row --%>
                                 <div class="row ">
                                   <div class="col-lg-3 col-md-6 col-sm-6 column1">
                                     <div class="card card-stats">
@@ -115,6 +116,7 @@
                                       </div>
                                     </div>
                                   </div>
+                                  <%-- End Second Row --%>
                                 </div>
 
                                 <div class="tab-pane" id="messages">
@@ -238,6 +240,7 @@
                   var arr = searchString.split('&');
                   var data= arr[0].split('=')[1];
                   var decodedData = decodeURIComponent(data);
+                  var stream_id;
 
                   //Start- Extract Stream List
                   var streams = decodedData.substring(0, decodedData.indexOf(']')+1);
@@ -254,14 +257,19 @@
                     div1.id="tab-div";
                     var li = document.createElement('li');
                     li.className='nav-item';
+
                     var anchor =document.createElement('a');
                     anchor.setAttribute('href',"#Profile");
                     anchor.setAttribute('data-toggle',"tab");
                     anchor.className='nav-link active';
-                    anchor.textContent=arr[i];
+                    //anchor.id = streamList1[i].streamId;
+                    anchor.textContent=streamList1[i].streamName;
+                    li.id = streamList1[i].streamId;
                     li.appendChild(anchor);
+                    li.setAttribute('onclick', "getStreamId(this.id)");
                     div1.appendChild(li);
                     document.getElementById("nav-tab").appendChild(div1);
+                    document.getElementById("nav-tab").
                     // End Inserted Code
                   }
                   // }
@@ -288,9 +296,10 @@
                     var dropanchor = document.createElement('a');
                     dropanchor.className='dropdown-item';
                     dropanchor.setAttribute('href',"#");
-                    dropanchor.id='2';
+                    dropanchor.id=courseTypeList1[i].courseTypeId;
+                    dropanchor.textContent=courseTypeList1[i].courseTypeName;
                     dropanchor.setAttribute('onclick',"displayStreamCourse(this.id)");
-                    dropanchor.textContent=arr2[i];
+
                     dropdownMenu.appendChild(dropanchor);
                   // alert(courseTypesList[i].courseTypeId + ":" + courseTypesList[i].courseTypeName)
                 }
@@ -377,9 +386,12 @@
 
           <script>
 
-          function displayStreamCourses(clicked_id){
-            var streamId = 1;
-            var courseTypeId = clicked_id;
+          function getStreamId(clicked_id){
+            stream_id = clicked_id;
+          }
+          function displayStreamCourses(courseType_id, stream_id{
+            var streamId = stream_id;
+            var courseTypeId = courseType_id;
             var myData = {
 
               streamId: streamId,
