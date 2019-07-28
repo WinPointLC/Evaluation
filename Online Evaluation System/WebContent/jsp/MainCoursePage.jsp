@@ -50,8 +50,8 @@
 
                           </div><br><br> -->
                           <%-- first  row --%>
-                          <!-- <div class="row">
-                            <div class="col-lg-3 col-md-6 col-sm-6 column1">
+                           <div class="row" id='courseList'></div>
+                          <!--  <div class="col-lg-3 col-md-6 col-sm-6 column1">
                               <div class="card card-stats">
                                 <div class="card-header card-header-icon">
                                   <div class="card-icon" style="font-size:20px; background-color:rgb(7, 7, 79);" id="row1-card1">
@@ -428,10 +428,14 @@
             //       </div>
             //     </div>
             //   </div>
+            var elem = document.getElementById('courseList');
+            elem.parentNode.removeChild(elem);
+            //document.getElementById('profile').removeChild(document.getElementById('xyz'));
 
             for(i=0; i<(responseJson.length); i=i+3){
               var row  = document.createElement('div');
               row.className='row';
+              row.id="courseList";
               for(j=i; j<i+3; j++){
                 //alert("course : " + responseJson[j].courseId + "," + responseJson[j].courseName + "," + responseJson[j].iconLocation);
                 var column = document.createElement('div');
@@ -461,7 +465,7 @@
                 column.appendChild(cardstats);
                 row.appendChild(column);
               }
-                document.getElementById('tab-content').appendChild(row);
+                document.getElementById('profile').appendChild(row);
             }
           },
           error: function(){
