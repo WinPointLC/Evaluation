@@ -1,22 +1,30 @@
 body{
   background-color: rgb(27, 56, 133);
-  overflow-y: hidden;
+  margin:0;
+  padding:0;
+  height:100%;
+  overflow-y:scroll;
 }
 .main-frame2{
   /* box-shadow: 2px 4px 13px 14px solid rgb(32, 23, 129); */
 }
 .left-frame{
+
 }
 .inner-frame{
   box-shadow: 0px 5px 15px 5px #0a0d50;
   height:87vh;
 }
 .right-frame{
-  background-color: #fff;
-  right: 15px;
-  height: 87vh;
-  box-shadow: 0px 5px 15px 5px #0a0d50;
+  /* background-color: #fff; */
+  /* width: 95%; */
+  /* margin-top: 10%; */
+  margin-left: -1%;
+  /* right: 15px; */
+  /* height: 87vh; */
+  /* box-shadow: 0px 5px 15px 5px #0a0d50; */
 }
+
 .outter-frame{
   background-color:rgb(27, 58, 219);
   padding: 3px;
@@ -27,9 +35,9 @@ body{
   border: 1px solid rgba(150, 158, 149, 0.5);
 }
 .content-frame2{
-  position: absolute;
   height: 87vh;
   border: 1px solid rgba(150, 158, 149, 0.5);
+  box-sizing: border-box;
 }
 .main-frame{
 padding: 35px;
@@ -47,10 +55,13 @@ padding: 35px;
   border-bottom: 1px solid rgba(150, 158, 149, 0.5);
 }
 .question-frame2{
+  max-height: 150px;
   padding: 10px;
   padding-bottom: 5px;
   border-bottom: 1px solid rgba(150, 158, 149, 0.5);
+  overflow-y: scroll;
 }
+
 .question-frame3{
   padding: 10px;
   padding-top: 34px;
@@ -118,8 +129,11 @@ padding: 35px;
 /* End radio styling */
 
 /* Start Right Side */
+/* code to decrease the width of right frame */
 .content-frame2{
+  margin-left: 1%;
   height: 87vh;
+  width: 100%;
 }
 .clock-header{
   border-bottom: 1px solid rgba(150, 158, 149, 0.5);
@@ -158,10 +172,11 @@ padding: 35px;
   margin: 4%;
   margin-top: 1%;
   border: 1px solid rgba(150, 158, 149, 0.5);
+  overflow-x: scroll;
 }
 .button-list button{
 	width: 35px;
-	border-radius: 50%;
+	/* border-radius: 50%; */
 	text-align: center;
   height: 35px;
 }
@@ -192,24 +207,24 @@ padding: 35px;
 .button-row4 button{
 	margin-left: 4%;
 	margin-top: 6%;
-  margin-bottom: 20%;
+  margin-bottom: 10%;
 }
 
 
 /* End Css for buttons list */
 /* Css for Question info */
+.question-info{
+  margin:4%;
+/* margin-top: 20%; */
+  border:1px solid rgba(150, 158, 149, 0.5);
+}
 .question-info-outter{
   border-bottom: 1px solid rgba(150, 158, 149, 0.5);
 }
+
 .question-info-outter h6{
     margin: 2%;
     margin-left: 40%;
-}
-
-.question-info{
-  margin:4%;
-margin-top: 20%;
-  border:1px solid rgba(150, 158, 149, 0.5);
 }
 .question-info button{
   margin-left: 12%;
@@ -225,16 +240,10 @@ font-family: sans-serif;
 font-size: 13px;
 /* margin-bottom: 15px; */
 }
-.question-submit{
-  margin-top: 20%;
-}
 .question-submit button{
-  top: 55%;
-  position: absolute;
-  margin: 20px;
+  margin-left: 5%;
   width: 90%;
 }
-
 .question-submit i{
   position: absolute;
   left: 10%;
