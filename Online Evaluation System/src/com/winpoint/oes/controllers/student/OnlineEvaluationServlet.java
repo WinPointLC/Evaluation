@@ -65,11 +65,11 @@ public class OnlineEvaluationServlet extends HttpServlet {
 		System.out.println("email = " + email + "   password = " + password);
 		
 		String json1 = null;
-		//List<Stream> streamList = new StreamHelper().getStreamList();
-		List<Stream> streamList = new ArrayList<Stream>();
+		List<Stream> streamList = new StreamHelper().getStreamList();
+		/*List<Stream> streamList = new ArrayList<Stream>();
 		streamList.add(new Stream(1, "ABC"));
 		streamList.add(new Stream(2, "LMN"));
-		streamList.add(new Stream(3, "XYZ"));
+		streamList.add(new Stream(3, "XYZ"));*/
 		
 		//List<Stream> courseTypeList = new CourseTypeHelper().getCourseTypeList();
 		List<CourseType> courseTypeList = new ArrayList<CourseType>();

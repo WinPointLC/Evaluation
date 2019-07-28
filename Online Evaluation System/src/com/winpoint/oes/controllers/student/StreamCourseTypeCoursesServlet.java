@@ -65,8 +65,8 @@ public class StreamCourseTypeCoursesServlet extends HttpServlet {
 		int streamId =  course.getStreamId();
 		int courseTypeId =  course.getCourseTypeId();
 		System.out.println("StreamId = " + course.getStreamId() + "CourseTypeId = " + course.getCourseTypeId());
-		//List<Course> courseList = new CourseHelper().getCourseList(streamId, courseTypeId);
-		List<Course> courseList = new ArrayList<Course>();
+		List<Course> courseList = new CourseHelper().getCourseList(streamId, courseTypeId);
+		/*List<Course> courseList = new ArrayList<Course>();
 		courseList.add(new Course(1, "JS1", streamId, courseTypeId, "/OnlineEvaluationSystem/assets/img/Dashboard-main-page-images/java-brands.svg"));
 		courseList.add(new Course(2, "OS1", streamId, courseTypeId, "/OnlineEvaluationSystem/assets/img/Dashboard-main-page-images/java-brands.svg"));
 		courseList.add(new Course(3, "JAVA 8 1", streamId, courseTypeId, "/OnlineEvaluationSystem/assets/img/Dashboard-main-page-images/java-brands.svg"));
@@ -75,7 +75,7 @@ public class StreamCourseTypeCoursesServlet extends HttpServlet {
 		courseList.add(new Course(3, "JAVA 8 2", streamId, courseTypeId, "/OnlineEvaluationSystem/assets/img/Dashboard-main-page-images/java-brands.svg"));
 		courseList.add(new Course(1, "JS3", streamId, courseTypeId, "/OnlineEvaluationSystem/assets/img/Dashboard-main-page-images/java-brands.svg"));
 		courseList.add(new Course(2, "OS3", streamId, courseTypeId, "/OnlineEvaluationSystem/assets/img/Dashboard-main-page-images/java-brands.svg"));
-		courseList.add(new Course(3, "JAVA 8 3", streamId, courseTypeId, "/OnlineEvaluationSystem/assets/img/Dashboard-main-page-images/java-brands.svg"));
+		courseList.add(new Course(3, "JAVA 8 3", streamId, courseTypeId, "/OnlineEvaluationSystem/assets/img/Dashboard-main-page-images/java-brands.svg"));*/
 				
 		if(courseList != null) {
 			String json1 = null;

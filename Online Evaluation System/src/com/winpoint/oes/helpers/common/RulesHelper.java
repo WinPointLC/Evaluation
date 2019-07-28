@@ -9,12 +9,12 @@ import com.winpoint.oes.dao.RulesDao;
 import com.winpoint.oes.dao.StreamDao;
 
 public class RulesHelper {
-	public List<Rules> getRulesList(){
-		List<Rules> rulesList = new RulesDao().getRulesList();
+	public List<Rules> getRulesList(int testDetailId){
+		List<Rules> rulesList = new RulesDao().getRulesList(testDetailId);
 		Iterator<Rules> rulesIterator = rulesList.iterator();
 		while(rulesIterator.hasNext()) {
 			Rules rule = (Rules)rulesIterator.next();
-			System.out.println("Rules Id = " + rule.getRulesId() + ": Rule Description = " + rule.getRulesDescription());
+			System.out.println("Rule Description = " + rule.getRulesDescription());
 		}
 		return rulesList;
 	}

@@ -14,7 +14,7 @@ import com.winpoint.oes.beans.Stream;
 
 public class RulesDao {
 
-	public List<Rules> getRulesList() {
+	public List<Rules> getRulesList(int testDetailId) {
 		
 		List<Rules> rulesList = new ArrayList<Rules>();
 		
@@ -33,13 +33,13 @@ public class RulesDao {
 					"outer apply string_split(TD.[RULES], ',') s\r\n" + 
 					"JOIN dbo.RULES as R\r\n" + 
 					"on R.RULE_ID = s.value\r\n" + 
-					"where TEST_DETAIL_ID = @test_detail_id";
+					"where TEST_DETAIL_ID = " + testDetailId;
 			resultSet = statement.executeQuery(query);
 			
 			while(resultSet.next()) {
-				int ruleId = resultSet.getInt("rule_id");
+				//int ruleId = resultSet.getInt("rule_id");
 				String ruleDescription = resultSet.getString("rule_description");
-				Rules rule = new Rules(ruleId, ruleDescription);
+				Rules rule = new Rules(ruleDescription);
 				rulesList.add(rule);
 			}
 		} catch (SQLServerException e) {

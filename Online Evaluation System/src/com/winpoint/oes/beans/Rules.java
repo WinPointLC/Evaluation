@@ -28,6 +28,11 @@ public class Rules {
 		this.rulesDescription = rulesDescription;
 	}
 
+	public Rules(String ruleDescription) {
+		// TODO Auto-generated constructor stub
+		this.rulesDescription = ruleDescription;
+	}
+
 	/**
 	 * @return the rulesId
 	 */

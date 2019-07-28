@@ -13,6 +13,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.google.gson.Gson;
 import com.winpoint.oes.beans.Course;
@@ -67,13 +68,14 @@ public class TestSelectServlet extends HttpServlet {
 		int courseTypeId =  course.getCourseTypeId();
 		int courseId = course.getCourseId();
 		System.out.println("StreamId = " + course.getStreamId() + "CourseTypeId = " + course.getCourseTypeId()  + "CourseId = " + course.getCourseId());
-		int userId = 0;
-		//List<Test> testsList = new CourseHelper().getTestsList(userId, streamId, courseTypeId, courseId);
+		HttpSession session = request.getSession(false);
+		int userId = (int) session.getAttribute("userId");
+		List<Test> testsList = new CourseHelper().getTestsList(userId, streamId, courseTypeId, courseId);
 		
-		List<Test> testsList = new ArrayList<Test>();
+		/*List<Test> testsList = new ArrayList<Test>();
 		testsList.add(new Test(1, "C", "Objective", 1, 1000, true, 43));
 		testsList.add(new Test(2, "C", "Coding", 1, 2000, true, 0));
-		testsList.add(new Test(3, "C", "Descriptive", 1, 3000, false, 0));
+		testsList.add(new Test(3, "C", "Descriptive", 1, 3000, false, 0));*/
 				
 		if(testsList != null) {
 		  

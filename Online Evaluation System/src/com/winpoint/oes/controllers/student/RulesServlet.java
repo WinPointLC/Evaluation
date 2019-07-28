@@ -25,6 +25,7 @@ import com.winpoint.oes.beans.UserProfile;
 import com.winpoint.oes.dao.Dummy;
 import com.winpoint.oes.helpers.common.CourseHelper;
 import com.winpoint.oes.helpers.common.LoginHelper;
+import com.winpoint.oes.helpers.common.RulesHelper;
 import com.winpoint.oes.helpers.common.StreamHelper;
 
 /**
@@ -67,12 +68,12 @@ public class RulesServlet extends HttpServlet {
 		int testDetailId =  testDetails.getTestDetailId();
 		System.out.println("TestDetailId = " + testDetailId);
 		int userId = 0;
-		//List<Test> rulesList = new RulesHelper().getRulesList(testDetailId);
+		List<Rules> rulesList = new RulesHelper().getRulesList(testDetailId);
 		
-		List<Rules> rulesList = new ArrayList<Rules>();
+		/*List<Rules> rulesList = new ArrayList<Rules>();
 		rulesList.add(new Rules(1, "Each question carries one mark"));
 		rulesList.add(new Rules(2, "No negative marking"));
-		rulesList.add(new Rules(3, "Duration is 60 mins"));
+		rulesList.add(new Rules(3, "Duration is 60 mins"));*/
 				
 		if(rulesList != null) {
 		  

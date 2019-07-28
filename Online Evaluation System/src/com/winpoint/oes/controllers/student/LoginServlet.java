@@ -11,6 +11,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.google.gson.Gson;
 import com.winpoint.oes.beans.UserProfile;
@@ -53,16 +54,18 @@ public class LoginServlet extends HttpServlet {
 	    System.out.println(json);
 		Gson gson = new Gson();
 		UserProfile userProfile = gson.fromJson(json, UserProfile.class);
-		
+		if(userProfile != null) {
 		String email = userProfile.getEmail();
 		String password = userProfile.getPassword();
 		System.out.println("email = " + email + "   password = " + password);
 		
 		UserProfile userProfileRecd =  new LoginHelper().validateLogin(email, password);
+		HttpSession session = request.getSession();
+		session.setAttribute("userId", userProfileRecd.getUserId());
 		if(userProfileRecd != null) {
 		String json1 = null;
 		int userCategoryId;
-		if(userProfile != null) {
+		
 			PrintWriter writer = response.getWriter();
 			userCategoryId =  userProfileRecd.getUserCategoryId();
 			if (userCategoryId == 1)

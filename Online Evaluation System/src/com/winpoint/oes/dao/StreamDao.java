@@ -28,7 +28,7 @@ public class StreamDao {
 		try(Connection connection = dataSource.getConnection()){
 			Statement statement = connection.createStatement();
 			
-			String query = "SELECT STREAM_ID, STREAM_NAME FROM STREAM";
+			String query = "SELECT STREAM_ID, STREAM_NAME FROM STREAMS";
 			resultSet = statement.executeQuery(query);
 			
 			while(resultSet.next()) {
