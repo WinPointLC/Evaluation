@@ -165,10 +165,15 @@
                     for(i=0; i<responseJson2.length; i++){
                       alert("Rules : " + responseJson2[i].rulesId + "," + responseJson2[i].rulesDescription);
                     }
-                    var testDetailsJson = jsonObj[2];
+                    var questionJson = jsonObj[2];
+                    var questionJSON = JSON.stringify(questionJson);
+                    
+                    var testDetailsJson = jsonObj[3];
                     var testDetailsJSON = JSON.stringify(testDetailsJson);
+                    
+                    
                     //window.location.href = locationJson.location;
-                    window.location.href = locationJson.location + "?varid=" + encodeURIComponent(strResJSON) + encodeURIComponent(testDetailsJSON) + "&username=" + "Anjali" +"&password=" + "Anjali";
+                    window.location.href = locationJson.location + "?varid=" + encodeURIComponent(strResJSON) + encodeURIComponent(questionJSON) + encodeURIComponent(testDetailsJSON) + "&username=" + "Anjali" +"&password=" + "Anjali";
                   },
                   error: function(){
                     //alert("Error");

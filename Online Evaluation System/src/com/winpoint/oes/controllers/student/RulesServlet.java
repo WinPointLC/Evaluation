@@ -17,6 +17,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.google.gson.Gson;
 import com.winpoint.oes.beans.Course;
 import com.winpoint.oes.beans.CourseType;
+import com.winpoint.oes.beans.QuestionBank;
 import com.winpoint.oes.beans.Rules;
 import com.winpoint.oes.beans.Stream;
 import com.winpoint.oes.beans.Test;
@@ -25,6 +26,7 @@ import com.winpoint.oes.beans.UserProfile;
 import com.winpoint.oes.dao.Dummy;
 import com.winpoint.oes.helpers.common.CourseHelper;
 import com.winpoint.oes.helpers.common.LoginHelper;
+import com.winpoint.oes.helpers.common.QuestionBankHelper;
 import com.winpoint.oes.helpers.common.RulesHelper;
 import com.winpoint.oes.helpers.common.StreamHelper;
 
@@ -74,13 +76,22 @@ public class RulesServlet extends HttpServlet {
 		rulesList.add(new Rules(1, "Each question carries one mark"));
 		rulesList.add(new Rules(2, "No negative marking"));
 		rulesList.add(new Rules(3, "Duration is 60 mins"));*/
-				
-		if(rulesList != null) {
+		List<QuestionBank> questionsList = new ArrayList<QuestionBank>();//new QuestionBankHelper().getQuestionsList(testDetailId);
+		questionsList.add(new QuestionBank(1, 1, 1, "What", "A", "B", "C", "D", "A", 12, 1));
+		questionsList.add(new QuestionBank(2, 1, 1, "When", "A", "B", "C", "D", "B", 12, 1));
+		questionsList.add(new QuestionBank(3, 1, 1, "Where", "A", "B", "C", "D", "C", 12, 1));
+		questionsList.add(new QuestionBank(4, 1, 1, "Why", "A", "B", "C", "D", "D", 12, 1));
+		questionsList.add(new QuestionBank(5, 1, 1, "How", "A", "B", "C", "D", "A", 12, 1));
+		
+
+		if(rulesList != null && questionsList != null) {
 		  
 		   String json1 = gson.toJson("{ 'success': 'true', 'location': '/OnlineEvaluationSystem/jsp/RulesPage.jsp'}");
 		   String json2 = gson.toJson(rulesList);
-		   String json3 = gson.toJson(testDetails);		   
-		   String jsonString = "[" + json1  + "," + json2 + "," + json3 +"]";
+		   String json3 = gson.toJson(questionsList);
+		   String json4 = gson.toJson(testDetails);		
+		   
+		   String jsonString = "[" + json1  + "," + json2 + "," + json3 + "," + json4 +"]";
 		   System.out.println("Json string is " + jsonString);
 		   PrintWriter writer = response.getWriter();
 		   writer.println(jsonString);

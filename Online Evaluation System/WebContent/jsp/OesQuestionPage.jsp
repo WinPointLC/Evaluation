@@ -13,10 +13,24 @@
 <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons" />
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
 <link rel="stylesheet" href="../css/OesQuestionPage.css">
-
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script>
+var searchString = window.location.search.substring(1);
+var arr = searchString.split('&');
+alert(arr);
+var data= arr[0].split('=')[1];
+var decodedData = decodeURIComponent(data);
+alert(decodedData);
+var questionsList = eval('(' + decodedData + ')');
+for(i=0; i<questionsList.length; i++){
+	alert("Question : " + questionsList[i].questionId + "," + questionsList[i].question);
+	
+}
+</script>
   <script language="javascript">
 
   $(function () {
+	  
   	 $('#sub-btn').click(function() {
   		 alert("From submit button");
   	        callServlet();

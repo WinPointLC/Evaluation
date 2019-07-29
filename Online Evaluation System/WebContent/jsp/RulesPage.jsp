@@ -49,11 +49,13 @@
     <script>
     var searchString = window.location.search.substring(1);
     var arr = searchString.split('&');
+    alert(arr);
     var data= arr[0].split('=')[1];
     var decodedData = decodeURIComponent(data);
-	//alert("decodedData RulesPage = " + decodedData);
+	alert("decodedData RulesPage = " + decodedData);
     //Start- Extract Rules List
     var rules = decodedData.substring(0, decodedData.indexOf(']')+1);
+    
     var rulesList = eval('(' + rules + ')');
 	//alert("Rules List = " + rulesList);
     for(i=0; i<rulesList.length; i++){
@@ -62,13 +64,57 @@
         par.textContent=i+1+". "+ rulesList[i].rulesDescription;
         document.getElementById('rules-content').appendChild(par);
     }
-    var testDetail = decodedData.substring(decodedData.indexOf(']')+1, decodedData.length);
+  	var questions = decodedData.substring(decodedData.indexOf(']')+1, decodedData.lastIndexOf(']')+1);
+  	var questionsList = eval('(' + questions + ')');
+    for(i=0; i<questionsList.length; i++){
+    	alert("Question : " + questionsList[i].questionId + "," + questionsList[i].question);
+    	
+    }
+    var testDetail = decodedData.substring(decodedData.lastIndexOf(']')+1, decodedData.length);
     var testDetail = eval('(' + testDetail + ')');
     alert("*******" + testDetail.testDetailId);
     // var arr2 = ['Modular','TBC','CRT'];
 
     function displayQuestionPage(){
-    	window.location.href = "OesQuestionPage.jsp";
+    	/* var emailVal = $("#email").val();
+        var passwordVal = $("#password").val();
+       //alert("email = " + emailVal + " : passwordVal = " + passwordVal);
+        var myData = {
+
+                    email: emailVal,
+                    password: passwordVal
+            };
+        //alert("*** " + JSON.stringify(myData));
+        //console.log(myData);
+        $.ajax({
+            type: 'POST',
+            url: '/OnlineEvaluationSystem/CommonController?action=QuestionPaperServlet',
+            data: JSON.stringify(myData),
+            dataType: 'json',
+            contentType: 'application/json; charset=utf-8',
+            traditional: true,
+            success: function (jsonObj) {
+            	//alert("Success from LoginForm");
+                var responseJson1=jsonObj[0], responseJson2=jsonObj[1];
+                var locationJson = eval('(' + responseJson1 + ')');
+                //var studentJson = eval('(' + responseJson2 + ')');
+               	if (locationJson.success) {
+            		var strResJSON = JSON.stringify(responseJson2);
+            		//alert("studentEmail : " + responseJson2.email); */
+            		
+                	//window.location.href = locationJson.location + "?varid=" + encodeURIComponent(strResJSON) +"&username=" + "Anjali" +"&password=" + "Anjali";
+            	/* } else {
+                    $('#ajaxGetUserServletResponse').text(responseText);
+            	}
+            },
+            error: function(){
+            	//alert("Error");
+            	document.getElementById("error").innerHTML = "Invalid email or password";
+            }
+
+        }); */
+        var strResJSON = JSON.stringify(questionsList);
+    	window.location.href = "OesQuestionPage.jsp" + "?varid=" + encodeURIComponent(strResJSON) +"&username=" + "Anjali" +"&password=" + "Anjali";
     }
 
     </script>
