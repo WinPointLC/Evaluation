@@ -11,6 +11,7 @@ import com.microsoft.sqlserver.jdbc.SQLServerDataSource;
 import com.microsoft.sqlserver.jdbc.SQLServerException;
 import com.winpoint.oes.beans.Course;
 import com.winpoint.oes.beans.Test;
+import com.winpoint.oes.util.sql.ConnectionManager;
 
 
 public class CourseDao {
@@ -20,14 +21,14 @@ public class CourseDao {
 		List<Course> courseList = new ArrayList<Course>();
 		
 		ResultSet resultSet = null;
-		SQLServerDataSource dataSource = new SQLServerDataSource();
+		/*SQLServerDataSource dataSource = new SQLServerDataSource();
 		dataSource.setUser("sa");
 		dataSource.setPassword("winpoint");
-		dataSource.setServerName("SHRIRANGMHALGI\\SQLEXPRESS");
+		//dataSource.setServerName("SHRIRANGMHALGI\\SQLEXPRESS");
 		dataSource.setPortNumber(Integer.parseInt("1433"));
-		dataSource.setDatabaseName("OES_TESTING");
+		dataSource.setDatabaseName("OES_TESTING");*/
 
-		try(Connection connection = dataSource.getConnection()){
+		try(Connection connection = ConnectionManager.getConnection()){
 			Statement statement = connection.createStatement();
 
 			String query = "SELECT\r\n" + 

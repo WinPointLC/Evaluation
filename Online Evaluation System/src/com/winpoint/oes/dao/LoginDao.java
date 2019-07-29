@@ -9,20 +9,21 @@ import javax.swing.ImageIcon;
 
 import com.microsoft.sqlserver.jdbc.SQLServerDataSource;
 import com.winpoint.oes.beans.UserProfile;
+import com.winpoint.oes.util.sql.ConnectionManager;
 
 public class LoginDao {
 	UserProfile userProfile = null;
 	public UserProfile login(String emailId, String password) {
 		boolean flag = false;
 		ResultSet resultSet = null;
-		SQLServerDataSource dataSource = new SQLServerDataSource();
+		/*SQLServerDataSource dataSource = new SQLServerDataSource();
 		dataSource.setUser("sa");
 		dataSource.setPassword("winpoint");
 		dataSource.setServerName("SHRIRANGMHALGI\\SQLEXPRESS");
 		dataSource.setPortNumber(Integer.parseInt("1433"));
-		dataSource.setDatabaseName("OES_TESTING");
+		dataSource.setDatabaseName("OES_TESTING");*/
 
-		try(Connection connection = dataSource.getConnection()){
+		try(Connection connection = ConnectionManager.getConnection()){
 			Statement statement = connection.createStatement();
 			
 			String query = "SELECT	USER_PROFILE.USER_ID,\r\n" + 
@@ -38,6 +39,7 @@ public class LoginDao {
 					"				LEFT OUTER JOIN EMPLOYEE_CATEGORY\r\n" + 
 					"				ON D.EMPLOYEE_CATEGORY_ID = EMPLOYEE_CATEGORY.EMPLOYEE_CATEGORY_ID\r\n" + 
 					"	WHERE USER_PROFILE.EMAIL_ID = '" + emailId + "' AND USER_PROFILE.PASSWORD = '" + password + "'";
+			
 			resultSet = statement.executeQuery(query);
 			while(resultSet.next()) {
 				int userId = resultSet.getInt("user_id");

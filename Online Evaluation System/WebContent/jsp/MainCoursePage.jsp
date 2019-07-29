@@ -249,6 +249,7 @@
 
             //Start- Extract Stream List
             var streams = decodedData.substring(0, decodedData.indexOf(']')+1);
+            alert(streams);
             var streamList = eval('(' + streams + ')');
 
 

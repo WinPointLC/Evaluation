@@ -60,9 +60,10 @@ public class LoginServlet extends HttpServlet {
 		System.out.println("email = " + email + "   password = " + password);
 		
 		UserProfile userProfileRecd =  new LoginHelper().validateLogin(email, password);
-		HttpSession session = request.getSession();
-		session.setAttribute("userId", userProfileRecd.getUserId());
+		
 		if(userProfileRecd != null) {
+			HttpSession session = request.getSession();
+			session.setAttribute("userId", userProfileRecd.getUserId());
 		String json1 = null;
 		int userCategoryId;
 		

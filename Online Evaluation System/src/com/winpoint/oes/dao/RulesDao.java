@@ -11,6 +11,7 @@ import com.microsoft.sqlserver.jdbc.SQLServerDataSource;
 import com.microsoft.sqlserver.jdbc.SQLServerException;
 import com.winpoint.oes.beans.Rules;
 import com.winpoint.oes.beans.Stream;
+import com.winpoint.oes.util.sql.ConnectionManager;
 
 public class RulesDao {
 
@@ -19,14 +20,14 @@ public class RulesDao {
 		List<Rules> rulesList = new ArrayList<Rules>();
 		
 		ResultSet resultSet = null;
-		SQLServerDataSource dataSource = new SQLServerDataSource();
+		/*SQLServerDataSource dataSource = new SQLServerDataSource();
 		dataSource.setUser("sa");
 		dataSource.setPassword("winpoint");
-		dataSource.setServerName("SHRIRANGMHALGI\\SQLEXPRESS");
+		//dataSource.setServerName("SHRIRANGMHALGI\\SQLEXPRESS");
 		dataSource.setPortNumber(Integer.parseInt("1433"));
-		dataSource.setDatabaseName("OES_TESTING");
+		dataSource.setDatabaseName("OES_TESTING");*/
 
-		try(Connection connection = dataSource.getConnection()){
+		try(Connection connection = ConnectionManager.getConnection()){
 			Statement statement = connection.createStatement();
 			
 			String query = "select  RULE_DESCRIPTION from TEST_DETAILS as TD\r\n" + 

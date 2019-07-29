@@ -10,6 +10,7 @@ import java.util.List;
 import com.microsoft.sqlserver.jdbc.SQLServerDataSource;
 import com.microsoft.sqlserver.jdbc.SQLServerException;
 import com.winpoint.oes.beans.Stream;
+import com.winpoint.oes.util.sql.ConnectionManager;
 
 public class StreamDao {
 
@@ -18,14 +19,14 @@ public class StreamDao {
 		List<Stream> streamList = new ArrayList<Stream>();
 		
 		ResultSet resultSet = null;
-		SQLServerDataSource dataSource = new SQLServerDataSource();
+		/*SQLServerDataSource dataSource = new SQLServerDataSource();
 		dataSource.setUser("sa");
 		dataSource.setPassword("winpoint");
-		dataSource.setServerName("SHRIRANGMHALGI\\SQLEXPRESS");
+		//dataSource.setServerName("SHRIRANGMHALGI\\SQLEXPRESS");
 		dataSource.setPortNumber(Integer.parseInt("1433"));
-		dataSource.setDatabaseName("OES_TESTING");
+		dataSource.setDatabaseName("OES_TESTING");*/
 
-		try(Connection connection = dataSource.getConnection()){
+		try(Connection connection = ConnectionManager.getConnection()){
 			Statement statement = connection.createStatement();
 			
 			String query = "SELECT STREAM_ID, STREAM_NAME FROM STREAMS";
