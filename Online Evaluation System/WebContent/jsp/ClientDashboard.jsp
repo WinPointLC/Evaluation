@@ -40,7 +40,7 @@
     //alert("Client is " + userProfile);
     //var student1 = new Gson().fromJson(student, Student);
     userProfile1 =  eval('(' + userProfile + ')');
-    document.getElementById('welcome').innerHtml = userProfile1.firstName + userProfile1.lastName;
+    document.getElementById('welcome').textContent = userProfile1.firstName + " " + userProfile1.lastName;
     //alert("Client is " + userProfile1.userId + ":" + userProfile1.firstName + " " + userProfile1.lastName);
     //alert("Photo Location is " + userProfile1.photoLocation);
     //document.getElementById("photoId").src = userProfile1.photoLocation;
@@ -181,7 +181,7 @@
             <a class="navbar-brand" href="#pablo">Dashboard</a>
             <img id="photoId" />
           </div>
-          <p id="welcome"></p>
+          <p id="welcome" style='margin-left:60%;'></p>
           <button class="navbar-toggler" type="button" data-toggle="collapse" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
             <span class="sr-only">Toggle navigation</span>
             <span class="navbar-toggler-icon icon-bar"></span>

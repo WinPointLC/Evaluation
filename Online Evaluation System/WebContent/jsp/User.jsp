@@ -151,14 +151,14 @@
                       </div>
                       <div class="col-md-3">
                         <div class="form-group">
-                          <label class="bmd-label-floating">Username</label>
-                          <input type="text" class="form-control">
+                          <label class="bmd-label-floating">College</label>
+                          <input type="text" class="form-control" id="college">
                         </div>
                       </div>
                       <div class="col-md-4">
                         <div class="form-group">
                           <label class="bmd-label-floating">Email address</label>
-                          <input type="email" class="form-control">
+                          <input type="email" class="form-control" id="email">
                         </div>
                       </div>
                     </div>
@@ -179,28 +179,28 @@
                     <div class="row">
                       <div class="col-md-12">
                         <div class="form-group">
-                          <label class="bmd-label-floating">Adress</label>
-                          <input type="text" class="form-control">
+                          <label class="bmd-label-floating">Address</label>
+                          <input type="text" class="form-control" id="address>
                         </div>
                       </div>
                     </div>
                     <div class="row">
                       <div class="col-md-4">
                         <div class="form-group">
-                          <label class="bmd-label-floating">City</label>
-                          <input type="text" class="form-control">
+                          <label class="bmd-label-floating">Mobile Number</label>
+                          <input type="text" class="form-control" id="mobileNumber">
                         </div>
                       </div>
                       <div class="col-md-4">
                         <div class="form-group">
-                          <label class="bmd-label-floating">Country</label>
-                          <input type="text" class="form-control">
+                          <label class="bmd-label-floating">Photo Location</label>
+                          <input type="text" class="form-control" id="photoLocation">
                         </div>
                       </div>
                       <div class="col-md-4">
                         <div class="form-group">
-                          <label class="bmd-label-floating">Postal Code</label>
-                          <input type="text" class="form-control">
+                          <label class="bmd-label-floating">Password</label>
+                          <input type="text" class="form-control" id="password">
                         </div>
                       </div>
                     </div>
@@ -380,6 +380,10 @@
 	    document.getElementById("photoId").src = userProfile1.photoLocation;
 	    document.getElementById("firstName").value = userProfile1.firstName;
 	    document.getElementById("lastName").value = userProfile1.lastName;
+	    document.getElementById("mobileNumber").value = userProfile1.mobileNumber;
+	    document.getElementById("photoLocation").value = userProfile1.photoLocation;
+	    document.getElementById("password").value = userProfile1.password;
+	    document.getElementById("college").value = userProfile1.college;
     	
       $().ready(function() {
     	  

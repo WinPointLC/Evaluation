@@ -20,6 +20,7 @@
   <script language="javascript">
     var questionsList = null;
     var currentQuestion;
+    var reviewFlag=false;
     $(function () {
       var searchString = window.location.search.substring(1);
       var arr = searchString.split('&');
@@ -89,6 +90,17 @@
       document.getElementById("radio-4").innerHTML = questionsList[currentQuestion].option4;
     })
 
+    $('#rev').click(function() {
+      // alert("From Next button");
+      if(!reviewFlag){
+      		document.getElementById(currentQuestion+1).className = 'btn btn-warning';
+      		reviewFlag = true;
+      }
+      else{
+    	  document.getElementById(currentQuestion+1).className = 'btn btn-outline-dark';
+    	  reviewFlag = false;
+      }
+    })
 
     $('#sub-btn').click(function() {
       alert("From submit button");
