@@ -142,7 +142,7 @@
               //  });
 
               function displayRulesPage(testDetailId){
-                alert("displayTestSelect Id = " + testDetailId);
+               // alert("displayTestSelect Id = " + testDetailId);
                // var testDetailId = 1;
                 var myData = {
                   testDetailId: testDetailId
@@ -162,9 +162,9 @@
 
                     var responseJson2=jsonObj[1];
                     var strResJSON = JSON.stringify(responseJson2);
-                    for(i=0; i<responseJson2.length; i++){
+                    /* for(i=0; i<responseJson2.length; i++){
                       alert("Rules : " + responseJson2[i].rulesId + "," + responseJson2[i].rulesDescription);
-                    }
+                    } */
                     var questionJson = jsonObj[2];
                     var questionJSON = JSON.stringify(questionJson);
                     

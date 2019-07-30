@@ -15,22 +15,56 @@
 <link rel="stylesheet" href="../css/OesQuestionPage.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 <script>
-var searchString = window.location.search.substring(1);
-var arr = searchString.split('&');
-alert(arr);
-var data= arr[0].split('=')[1];
-var decodedData = decodeURIComponent(data);
-alert(decodedData);
-var questionsList = eval('(' + decodedData + ')');
-for(i=0; i<questionsList.length; i++){
-	alert("Question : " + questionsList[i].questionId + "," + questionsList[i].question);
-	
-}
+
 </script>
   <script language="javascript">
-
+  var questionsList = null;
   $(function () {
+	  var searchString = window.location.search.substring(1);
+	  var arr = searchString.split('&');
+	  //alert(arr);
+	  var data= arr[0].split('=')[1];
+	  var decodedData = decodeURIComponent(data);
+	 // alert(decodedData);
+	  questionsList = eval('(' + decodedData + ')');
+	  /* for(i=0; i<questionsList.length; i++){
+	  	alert("Question : " + questionsList[i].questionId + "," + questionsList[i].question);
+	  	
+	  } */
+	  i=0;
+	  document.getElementById("question-no").innerHTML = "Question No: " + (i+1);
+	  document.getElementById("question-content").innerHTML = questionsList[i].question;
+	  document.getElementById("radio-1").innerHTML = questionsList[i].option1;
+	  document.getElementById("radio-2").innerHTML = questionsList[i].option2;
+	  document.getElementById("radio-3").innerHTML = questionsList[i].option3;
+	  document.getElementById("radio-4").innerHTML = questionsList[i].option4;
 	  
+	  $('#next').click(function() {
+	  		// alert("From Next button");
+	  	  if(i < questionsList.length-1){
+	  		 i++;
+	  		document.getElementById("question-no").innerHTML = "Question No: " + (i+1);
+	      }
+	  	  document.getElementById("question-content").innerHTML = questionsList[i].question;
+	  	  document.getElementById("radio-1").innerHTML = questionsList[i].option1;
+	  	  document.getElementById("radio-2").innerHTML = questionsList[i].option2;
+	  	  document.getElementById("radio-3").innerHTML = questionsList[i].option3;
+	  	  document.getElementById("radio-4").innerHTML = questionsList[i].option4;
+	  	  })
+	  	  $('#prev').click(function() {
+	  		// alert("From Next button");
+	  		if(i > 0){
+	  		   i--;
+	  		}
+	  		document.getElementById("question-no").innerHTML = "Question No: " + (i+1);
+	  	  document.getElementById("question-content").innerHTML = questionsList[i].question;
+	  	  document.getElementById("radio-1").innerHTML = questionsList[i].option1;
+	  	  document.getElementById("radio-2").innerHTML = questionsList[i].option2;
+	  	  document.getElementById("radio-3").innerHTML = questionsList[i].option3;
+	  	  document.getElementById("radio-4").innerHTML = questionsList[i].option4;
+	  	  })
+  
+	  	
   	 $('#sub-btn').click(function() {
   		 alert("From submit button");
   	        callServlet();
@@ -119,6 +153,14 @@ for(i=0; i<questionsList.length; i++){
          });
      }
     });
+  function goToQuestion(questionNo){
+	  document.getElementById("question-no").innerHTML = "Question No: " + questionNo;
+  	  document.getElementById("question-content").innerHTML = questionsList[questionNo-1].question;
+  	  document.getElementById("radio-1").innerHTML = questionsList[questionNo-1].option1;
+  	  document.getElementById("radio-2").innerHTML = questionsList[questionNo-1].option2;
+  	  document.getElementById("radio-3").innerHTML = questionsList[questionNo-1].option3;
+  	  document.getElementById("radio-4").innerHTML = questionsList[questionNo-1].option4;
+  }
   </script>
 </head>
 <body>
@@ -196,7 +238,7 @@ for(i=0; i<questionsList.length; i++){
               <h6>Question list</h6>
             </div>
             <div class="button-row1" id="btn-r1" >
-              <button  class="btn btn-success" >1</button><button class="btn btn-primary" >2</button><button class="btn btn-warning" >3</button><button class="btn btn-outline-dark" >4</button><button class="btn btn-outline-dark" >5</button>
+              <button  class="btn btn-success" >1</button><button class="btn btn-primary" >2</button><button class="btn btn-warning" id="3" onclick="goToQuestion(this.id)" >3</button><button class="btn btn-outline-dark" >4</button><button class="btn btn-outline-dark" >5</button>
             </div>
             <div class="button-row2" id="btn-r2">
               <button class="btn btn-outline-dark" >6</button><button class="btn btn-outline-dark" >7</button><button class="btn btn-outline-dark" >8</button><button class="btn btn-outline-dark" >9</button><button class="btn btn-outline-dark" >10</button>

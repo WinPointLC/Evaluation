@@ -9,6 +9,7 @@
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css">
   <link rel="stylesheet" href="../css/Signup-form.css">
   <link rel="stylesheet" href="style1.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 </head>
 
 <body>
@@ -17,10 +18,10 @@
       <form action="/OnlineEvaluationSystem/CommonController" method="post">
         <h3 class="form-signup-heading text-center">SignUP Form</h3>
         <div class="form-group">
-          <input class="form-control" type="text" id="name" placeholder="Enter first name" required>
+          <input class="form-control" type="text" id="firstName" placeholder="Enter first name" required>
         </div>
         <div class="form-group">
-          <input class="form-control" type="text" id="name" placeholder="Enter last name" required>
+          <input class="form-control" type="text" id="lastName" placeholder="Enter last name" required>
         </div>
 
         <div class="form-group">
@@ -28,7 +29,7 @@
         </div>
 
         <div class="form-group">
-          <input class="form-control form-control-sm" type="text" id="username" placeholder="Enter user name" required>
+          <input class="form-control form-control-sm" type="text" id="userName" placeholder="Enter user name" required>
         </div>
 
         <div class="form-group">
@@ -36,16 +37,27 @@
         </div>
         <div class="form-group">
           <select class="form-control" id="gender" required>
-            <option value="">None</option>
-            <option>Gender:Male</option>
-            <option>Gender:Female</option>
+            <option value="">Gender</option>
+            <option>Male</option>
+            <option>Female</option>
           </select>
         </div>
         <br>
-        <a href="ClientDashboard.jsp"><button class="Signbtn" type="submit">Submit</button></a>
+        <a href="ClientDashboard.jsp" onclick="submitSignUpDetails()"><button class="Signbtn" type="submit">Submit</button></a>
       </form>
     </div>
   </div>
+  <script>
+     function submitSignUpDetails(){
+    	 //alert("Submit Sign Up Details");
+    	 var firsttname = $('#firstName').val();
+    	 var lasttname = $('#lastName').val();
+    	 var email = $('#email').val();
+    	 var password = $('#password').val();
+    	 var gender = $('#gender').val();
+    	 //alert(gender);
+     }
+  </script>
 </body>
 
 </html>

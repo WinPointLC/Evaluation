@@ -87,9 +87,9 @@
                 var locationJson = eval('(' + responseJson1 + ')');
                	if (locationJson.success) {
             		var streamJSON = JSON.stringify(streamJson);
-            		alert(streamJSON);
+            		//alert(streamJSON);
             		var courseTypeJSON = JSON.stringify(courseTypeJson);
-            		alert(courseTypeJSON);
+            		//alert(courseTypeJSON);
             		//alert("studentEmail : " + responseJson2.email);
                 	window.location.href = locationJson.location + "?varid=" + encodeURIComponent(streamJSON) + encodeURIComponent(courseTypeJSON) +"&username=" + "Anjali" +"&password=" + "Anjali";
                 	//window.location.href = locationJson.location + "?varid=" + streamJSON + courseTypeJSON +"&username=" + "Anjali" +"&password=" + "Anjali";

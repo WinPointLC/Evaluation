@@ -49,10 +49,10 @@
     <script>
     var searchString = window.location.search.substring(1);
     var arr = searchString.split('&');
-    alert(arr);
+    //alert(arr);
     var data= arr[0].split('=')[1];
     var decodedData = decodeURIComponent(data);
-	alert("decodedData RulesPage = " + decodedData);
+	//alert("decodedData RulesPage = " + decodedData);
     //Start- Extract Rules List
     var rules = decodedData.substring(0, decodedData.indexOf(']')+1);
     
@@ -66,13 +66,13 @@
     }
   	var questions = decodedData.substring(decodedData.indexOf(']')+1, decodedData.lastIndexOf(']')+1);
   	var questionsList = eval('(' + questions + ')');
-    for(i=0; i<questionsList.length; i++){
+    /* for(i=0; i<questionsList.length; i++){
     	alert("Question : " + questionsList[i].questionId + "," + questionsList[i].question);
     	
-    }
+    } */
     var testDetail = decodedData.substring(decodedData.lastIndexOf(']')+1, decodedData.length);
     var testDetail = eval('(' + testDetail + ')');
-    alert("*******" + testDetail.testDetailId);
+    //alert("*******" + testDetail.testDetailId);
     // var arr2 = ['Modular','TBC','CRT'];
 
     function displayQuestionPage(){

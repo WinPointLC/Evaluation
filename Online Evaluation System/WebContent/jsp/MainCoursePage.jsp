@@ -249,7 +249,7 @@
 
             //Start- Extract Stream List
             var streams = decodedData.substring(0, decodedData.indexOf(']')+1);
-            alert(streams);
+            //alert(streams);
             var streamList = eval('(' + streams + ')');
 
 
@@ -478,7 +478,7 @@
         });
       }
       function displayTestSelect(courseId){
-        alert("DisplayTestSelect Id = " + courseId);
+        //alert("DisplayTestSelect Id = " + courseId);
         //var streamId = 1;
         //var courseTypeId = courseTypeId;
         var courseId = courseId;
@@ -503,7 +503,7 @@
             var responseJson2=jsonObj[1];
             var strResJSON = JSON.stringify(responseJson2);
             for(i=0; i<responseJson2.length; i++){
-              alert("Test : " + responseJson2[i].evaluationTypeName + "," + responseJson2[i].courseName);
+              //alert("Test : " + responseJson2[i].evaluationTypeName + "," + responseJson2[i].courseName);
             }
             //window.location.href = locationJson.location;
             window.location.href = locationJson.location + "?varid=" + encodeURIComponent(strResJSON) + "&username=" + "Anjali" +"&password=" + "Anjali";
