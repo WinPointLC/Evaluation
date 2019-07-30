@@ -17,6 +17,7 @@ public class UserProfile {
 	private Date yearOfGraduation;
 	private String photoLocation;
 	private String password;
+	private String gender;
 	private Integer securityQuestionId;
 	private String securityAnswer;
 	private Integer userCategoryId;
@@ -441,5 +442,15 @@ public class UserProfile {
 	 */
 	public void setCreateDate(Date createDate) {
 		this.createDate = createDate;
+	}
+
+	public String getGender() {
+		// TODO Auto-generated method stub
+		return gender;
+		//return null;
+	}
+	public void setGender(String gender) {
+		// TODO Auto-generated method stub
+		this.gender = gender;
 	}
 }

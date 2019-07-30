@@ -39,4 +39,9 @@ public class LoginHelper {
 		}
 		return userProfile;
 	}
+
+	public UserProfile createLogin(UserProfile userProfile) {
+		// TODO Auto-generated method stub
+		return new LoginDao().createlogin(userProfile);
+	}
 }

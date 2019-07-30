@@ -21,14 +21,14 @@ import com.winpoint.oes.helpers.common.LoginHelper;
 /**
  * Servlet implementation class LoginServ
  */
-@WebServlet("/LoginServlet")
-public class LoginServlet extends HttpServlet {
+@WebServlet("/SignUpServlet")
+public class SignUpServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public LoginServlet() {
+    public SignUpServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -55,14 +55,19 @@ public class LoginServlet extends HttpServlet {
 		Gson gson = new Gson();
 		UserProfile userProfile = gson.fromJson(json, UserProfile.class);
 		if(userProfile != null) {
-		String email = userProfile.getEmail();
-		String password = userProfile.getPassword();
-		System.out.println("email = " + email + "   password = " + password);
+			String firstName = userProfile.getFirstName();
+			String lastName = userProfile.getLastName();
+			String email = userProfile.getEmail();
+			String password = userProfile.getPassword();
+			String gender = userProfile.getGender();
+			String mobileNumber = userProfile.getMobileNumber();
+			
+			System.out.println("email = " + email + "   password = " + password);
 		
-		UserProfile userProfileRecd =  new LoginHelper().validateLogin(email, password);
+		UserProfile userProfileRecd =  new LoginHelper().createLogin(userProfile);
 		
 		if(userProfileRecd != null) {
-			HttpSession session = request.getSession();
+			HttpSession session = request.getSession(true);
 			session.setAttribute("userId", userProfileRecd.getUserId());
 			session.setAttribute("firstName", userProfileRecd.getFirstName());
 			session.setAttribute("lastName", userProfileRecd.getLastName());
