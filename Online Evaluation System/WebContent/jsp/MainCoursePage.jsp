@@ -456,7 +456,9 @@
                 var anchor = document.createElement('a');
                 anchor.setAttribute('id', responseJson[j].courseId);
                 anchor.setAttribute('href', "#");
-                anchor.setAttribute('onclick',"displayTestSelect(this.id)");
+                var courseName =responseJson[j].courseName;
+                //alert(courseName);
+                anchor.setAttribute('onclick',"displayTestSelect(this.id,'" +  courseName + "')");
                 var para = document.createElement('p');
                 para.className='card-category';
                 para.textContent=responseJson[j].courseName;
@@ -477,15 +479,17 @@
 
         });
       }
-      function displayTestSelect(courseId){
+      function displayTestSelect(courseId, courseName){
         //alert("DisplayTestSelect Id = " + courseId);
         //var streamId = 1;
         //var courseTypeId = courseTypeId;
         var courseId = courseId;
+        alert(courseName);
         var myData = {
           streamId: streamId,
           courseTypeId: courseTypeId,
-          courseId: courseId
+          courseId: courseId,
+          courseName: courseName
         };
 
         $.ajax({
@@ -509,8 +513,8 @@
             window.location.href = locationJson.location + "?varid=" + encodeURIComponent(strResJSON) + "&username=" + "Anjali" +"&password=" + "Anjali";
           },
           error: function(){
-            //alert("Error");
-            document.getElementById("error").innerHTML = "Invalid email or password";
+            alert("Error");
+           // document.getElementById("error").innerHTML = "Invalid email or password";
           }
 
 

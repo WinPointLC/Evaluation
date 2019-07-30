@@ -20,7 +20,7 @@
           <div class="Rule-content-1">
             <div class="card card-plain">
               <div class="card card-header card-header-primary">
-                <h3 class="card-title text-align mr-auto ml-auto">Rules</h3>
+                <h3 class="card-title text-align mr-auto ml-auto" id="rules">Rules</h3>
                 <p class="card-category text-align mr-auto ml-auto">Read the Rules carefully</p>
               </div>
             </div>
@@ -74,7 +74,8 @@
     var testDetail = eval('(' + testDetail + ')');
     //alert("*******" + testDetail.testDetailId);
     // var arr2 = ['Modular','TBC','CRT'];
-
+	var courseName = arr[1].split('=')[1];
+	document.getElementById("rules").textContent = "Rules: " + courseName;
     function displayQuestionPage(){
     	/* var emailVal = $("#email").val();
         var passwordVal = $("#password").val();
@@ -114,7 +115,7 @@
 
         }); */
         var strResJSON = JSON.stringify(questionsList);
-    	window.location.href = "OesQuestionPage.jsp" + "?varid=" + encodeURIComponent(strResJSON) +"&username=" + "Anjali" +"&password=" + "Anjali";
+    	window.location.href = "OesQuestionPage.jsp" + "?varid=" + encodeURIComponent(strResJSON) + "&courseName=" + courseName + "&username=" + "Anjali" +"&password=" + "Anjali";
     }
 
     </script>

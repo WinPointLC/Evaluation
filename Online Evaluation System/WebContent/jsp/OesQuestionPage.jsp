@@ -19,6 +19,7 @@
   </script>
   <script language="javascript">
     var questionsList = null;
+    var currentQuestion;
     $(function () {
       var searchString = window.location.search.substring(1);
       var arr = searchString.split('&');
@@ -27,58 +28,65 @@
       var decodedData = decodeURIComponent(data);
       // alert(decodedData);
       var questionsList = eval('(' + decodedData + ')');
-      for(i=0; i<questionsList.length; i++){
-      // alert("Question : " + questionsList[i].questionId + "," + questionsList[i].question);
+      /* for(i=0; i<questionsList.length; i++){
+          alert("Question : " + questionsList[i].questionId + "," + questionsList[i].question);
+
+        }  */
+        var courseName = arr[1].split('=')[1];
+        document.getElementById("test-name").textContent = courseName + " Test"
+      for(i=0; i<questionsList.length/5; i++){
+      alert("Question : " + questionsList[i].questionId + "," + questionsList[i].question);
       // creating dynamic button-list
         var btnrow = document.createElement('div');
         btnrow.className='button-row'+(i+1);
         btnrow.setAttribute('id', "btn-r"+(i+1));
-        for (var j = 0; j <6; j++) {
+        for (var j = i; j <5; j++) {
           var btn = document.createElement('button');
-          btn.className='btn btn-outlinedark';
-          btn.setAttribute('id', ""+(i+1));
-          btn.setAttribute('textContent', ""+(i+1));
-          btn.setAttribute('onclick', goToQuestion(this.id));
-          btn.appendChild(btnrow);
+          btn.className='btn btn-outline-dark';
+          btn.setAttribute('id', ""+(j+1));
+          btn.setAttribute('textContent', ""+(j+1));
+          btn.innerHTML = "" + (j+1);
+          btn.setAttribute('value', ""+(j+1));
+          btn.setAttribute('style', 'color:#0000');
+          btn.setAttribute('onclick', "goToQuestion(this.id)");
+          btnrow.appendChild(btn);
         }
         document.getElementById('button-list').appendChild(btnrow);
       }
 
-      /* for(i=0; i<questionsList.length; i++){
-      alert("Question : " + questionsList[i].questionId + "," + questionsList[i].question);
-
-    } */
-    i=0;
-    document.getElementById("question-no").innerHTML = "Question No: " + (i+1);
-    document.getElementById("question-content").innerHTML = questionsList[i].question;
-    document.getElementById("radio-1").innerHTML = questionsList[i].option1;
-    document.getElementById("radio-2").innerHTML = questionsList[i].option2;
-    document.getElementById("radio-3").innerHTML = questionsList[i].option3;
-    document.getElementById("radio-4").innerHTML = questionsList[i].option4;
+      
+        currentQuestion=0;
+    document.getElementById("question-no").innerHTML = "Question No: " + (currentQuestion+1);
+    document.getElementById("question-content").innerHTML = questionsList[currentQuestion].question;
+    document.getElementById("radio-1").innerHTML = questionsList[currentQuestion].option1;
+    document.getElementById("radio-2").innerHTML = questionsList[currentQuestion].option2;
+    document.getElementById("radio-3").innerHTML = questionsList[currentQuestion].option3;
+    document.getElementById("radio-4").innerHTML = questionsList[currentQuestion].option4;
 
     $('#next').click(function() {
       // alert("From Next button");
-      if(i < questionsList.length-1){
-        i++;
-        document.getElementById("question-no").innerHTML = "Question No: " + (i+1);
+      if(currentQuestion < questionsList.length-1){
+    	  currentQuestion++;
+        
       }
-      document.getElementById("question-content").innerHTML = questionsList[i].question;
-      document.getElementById("radio-1").innerHTML = questionsList[i].option1;
-      document.getElementById("radio-2").innerHTML = questionsList[i].option2;
-      document.getElementById("radio-3").innerHTML = questionsList[i].option3;
-      document.getElementById("radio-4").innerHTML = questionsList[i].option4;
+      document.getElementById("question-no").innerHTML = "Question No: " + (currentQuestion+1);
+      document.getElementById("question-content").innerHTML = questionsList[currentQuestion].question;
+      document.getElementById("radio-1").innerHTML = questionsList[currentQuestion].option1;
+      document.getElementById("radio-2").innerHTML = questionsList[currentQuestion].option2;
+      document.getElementById("radio-3").innerHTML = questionsList[currentQuestion].option3;
+      document.getElementById("radio-4").innerHTML = questionsList[currentQuestion].option4;
     })
     $('#prev').click(function() {
       // alert("From Next button");
-      if(i > 0){
-        i--;
+      if(currentQuestion > 0){
+    	  currentQuestion--;
       }
-      document.getElementById("question-no").innerHTML = "Question No: " + (i+1);
-      document.getElementById("question-content").innerHTML = questionsList[i].question;
-      document.getElementById("radio-1").innerHTML = questionsList[i].option1;
-      document.getElementById("radio-2").innerHTML = questionsList[i].option2;
-      document.getElementById("radio-3").innerHTML = questionsList[i].option3;
-      document.getElementById("radio-4").innerHTML = questionsList[i].option4;
+      document.getElementById("question-no").innerHTML = "Question No: " + (currentQuestion+1);
+      document.getElementById("question-content").innerHTML = questionsList[currentQuestion].question;
+      document.getElementById("radio-1").innerHTML = questionsList[currentQuestion].option1;
+      document.getElementById("radio-2").innerHTML = questionsList[currentQuestion].option2;
+      document.getElementById("radio-3").innerHTML = questionsList[currentQuestion].option3;
+      document.getElementById("radio-4").innerHTML = questionsList[currentQuestion].option4;
     })
 
 
@@ -171,6 +179,7 @@
     }
   });
   function goToQuestion(questionNo){
+	  currentQuestion = questionNo-1;
     document.getElementById("question-no").innerHTML = "Question No: " + questionNo;
     document.getElementById("question-content").innerHTML = questionsList[questionNo-1].question;
     document.getElementById("radio-1").innerHTML = questionsList[questionNo-1].option1;
@@ -195,7 +204,7 @@
       <div class="row R1 main-frame2">
         <div class="col-lg-12 col-sm-12 col-md-12 col-xl-12">
           <div class="outter-frame">
-            <h4 id="test-name">Test Name</h4>
+            <h4 id="test-name"></h4>
           </div>
         </div>
       </div>
@@ -209,9 +218,7 @@
                 <h4 id="question-no">Question No:1</h4>
               </div>
               <div class="question-frame2">
-                <h6 id="question-content" >Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-                  Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-                  Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                <h6 id="question-content" >
                 </h6>
               </div>
               <div class="question-frame3">

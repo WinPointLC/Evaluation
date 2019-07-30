@@ -14,7 +14,7 @@ import com.winpoint.oes.util.sql.ConnectionManager;
 
 public class LoginDao {
 	UserProfile userProfile = null;
-	public UserProfile login(String emailId, String password) {
+	public UserProfile validateLogin(String emailId, String password) {
 		boolean flag = false;
 		ResultSet resultSet = null;
 		/*SQLServerDataSource dataSource = new SQLServerDataSource();
@@ -79,11 +79,12 @@ public class LoginDao {
 		// TODO Auto-generated method stub
 		try(Connection connection = ConnectionManager.getConnection()){
 			Statement statement = connection.createStatement();
-			
+			String email = userProfile.getEmail();
+			String password = userProfile.getPassword();
 			String query = "INSERT INTO [dbo].[USER_PROFILE]\r\n" + 
 					"           ([FIRST_NAME]\r\n" + 
 					"           ,[LAST_NAME]\r\n" + 
-					"           ,[EMAIL]\r\n" + 
+					"           ,[EMAIL_ID]\r\n" + 
 					"           ,[MOBILE_NUMBER]\r\n" + 
 					"           ,[ADDRESS]\r\n" + 
 					"           ,[BIRTHDATE]\r\n" + 
@@ -105,33 +106,34 @@ public class LoginDao {
 					"           ,[CREATED_BY]\r\n" + 
 					"           ,[CREATED_DATE])\r\n" + 
 					"     VALUES\r\n" + 
-					"           (\" + userProfile.getFirstName() + \"\r\n" + 
-					"           ,\" + userProfile.getLastName() + \"\r\n" + 
-					"           ,\" + userProfile.getEmail() + \"\r\n" + 
-					"           ,\" + userProfile.getMobileNumber() + \"\r\n" + 
-					"           ,\" + null + \"\r\n" + 
-					"           ,\" + null + \"\r\n" + 
-					"           ,\" + null + \"\r\n" + 
-					"           ,\" + null + \"\r\n" + 
-					"           ,\" + null + \"\r\n" + 
-					"           ,\" + null + \"\r\n" + 
-					"           ,\" + null + \"\r\n" + 
-					"           ,\" + userProfile.getPassword() + \"\r\n" + 
-					"           ,\" + userProfile.getSecurityQuestionId() + \"\r\n" + 
-					"           ,\" + userProfile.getSecurityAnswer() + \"\r\n" + 
-					"           ,\" + userProfile.getUserCategoryId() + \"\r\n" + 
-					"           ,\" + null + \"\r\n" + 
-					"           ,\" + null + \"\r\n" + 
-					"           ,\" + null + \"\r\n" + 
-					"           ,\" + null + \"\r\n" + 
-					"           ,\" + null + \"\r\n" + 
-					"           ,\" + null + \"\r\n" + 
-					"           ,\" + null + \"\r\n" + 
-					"           ,\" + null + \")";
+					"           (" + userProfile.getFirstName() + "\r\n" + 
+					"           ," + userProfile.getLastName() + "\r\n" + 
+					"           ," + email + "\r\n" + 
+					"           ," + userProfile.getMobileNumber() + "\r\n" + 
+					"           ," + null + "\r\n" + 
+					"           ," + null + "\r\n" + 
+					"           ," + null + "\r\n" + 
+					"           ," + null + "\r\n" + 
+					"           ," + null + "\r\n" + 
+					"           ," + null + "\r\n" + 
+					"           ," + null + "\r\n" + 
+					"           ," + password + "\r\n" + 
+					"           ," + userProfile.getSecurityQuestionId() + "\r\n" + 
+					"           ," + userProfile.getSecurityAnswer() + "\r\n" + 
+					"           ," + userProfile.getUserCategoryId() + "\r\n" + 
+					"           ," + null + "\r\n" + 
+					"           ," + null + "\r\n" + 
+					"           ," + null + "\r\n" + 
+					"           ," + null + "\r\n" + 
+					"           ," + null + "\r\n" + 
+					"           ," + null + "\r\n" + 
+					"           ," + null + "\r\n" + 
+					"           ," + null + ")";
+			statement.executeUpdate(query);
 			} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		return userProfile;
+		return validateLogin(userProfile.getEmail(), userProfile.getPassword());
 	}
 }

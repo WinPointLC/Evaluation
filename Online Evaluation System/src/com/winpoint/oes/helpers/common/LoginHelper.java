@@ -16,7 +16,7 @@ public class LoginHelper {
 		/*UserProfile userProfile = new UserProfile(1, "Anjali", "Parkhi", "anjali.parkhi@winpointsolutions.com", 1, "/OnlineEvaluationSystem/img/photos/client/Knitting Balls.jpg");//new LoginDao().login(email, password);
 		if (userProfile != null)
 		   System.out.println("User is " + userProfile.getUserCategoryId());*/
-		UserProfile userProfile = new LoginDao().login(email, password);
+		UserProfile userProfile = new LoginDao().validateLogin(email, password);
 		int userId = 0;
 		String firstName = null;
 		String courseName = null;

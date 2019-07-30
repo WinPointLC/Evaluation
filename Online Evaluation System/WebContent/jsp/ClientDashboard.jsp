@@ -40,7 +40,7 @@
     //alert("Client is " + userProfile);
     //var student1 = new Gson().fromJson(student, Student);
     userProfile1 =  eval('(' + userProfile + ')');
-    documents.getElementById('welcome').innerHtml = userProfile1.firstName + userProfile1.lastName;
+    document.getElementById('welcome').innerHtml = userProfile1.firstName + userProfile1.lastName;
     //alert("Client is " + userProfile1.userId + ":" + userProfile1.firstName + " " + userProfile1.lastName);
     //alert("Photo Location is " + userProfile1.photoLocation);
     //document.getElementById("photoId").src = userProfile1.photoLocation;

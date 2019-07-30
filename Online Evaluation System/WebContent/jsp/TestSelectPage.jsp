@@ -29,7 +29,8 @@
               cardheader1.setAttribute('style',"background-color:rgb(6, 7, 102)");
               var courseheader = document.createElement('h3');
               courseheader.setAttribute('style', "margin-left:41%;font-family:sans-serif;text-transform:uppercase;color:#fff;");
-              courseheader.textContent="Course Name";
+              //var courseName =  arr[1].split('=')[1];
+            // courseheader.textContent=courseName;
               cardheader1.appendChild(courseheader);
               column1.appendChild(cardheader1);
               row1.appendChild(column1);
@@ -137,6 +138,9 @@
               row3.appendChild(tablecontainer);
               // $(document).ready(function(){
               document.getElementById('main-container').appendChild(row3);
+              
+              var courseName =  testsList[0].courseName;
+              courseheader.textContent=courseName;
 
               //End- Extract Tests List
               //  });
@@ -173,7 +177,7 @@
                     
                     
                     //window.location.href = locationJson.location;
-                    window.location.href = locationJson.location + "?varid=" + encodeURIComponent(strResJSON) + encodeURIComponent(questionJSON) + encodeURIComponent(testDetailsJSON) + "&username=" + "Anjali" +"&password=" + "Anjali";
+                    window.location.href = locationJson.location + "?varid=" + encodeURIComponent(strResJSON) + encodeURIComponent(questionJSON) + encodeURIComponent(testDetailsJSON) + "&courseName=" + courseName + "&username=" + "Anjali" +"&password=" + "Anjali";
                   },
                   error: function(){
                     //alert("Error");

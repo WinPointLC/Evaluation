@@ -67,9 +67,11 @@ public class TestSelectServlet extends HttpServlet {
 		int streamId =  course.getStreamId();
 		int courseTypeId =  course.getCourseTypeId();
 		int courseId = course.getCourseId();
+		String courseName = course.getCourseName();
 		System.out.println("StreamId = " + course.getStreamId() + "CourseTypeId = " + course.getCourseTypeId()  + "CourseId = " + course.getCourseId());
 		HttpSession session = request.getSession(false);
 		int userId = (int) session.getAttribute("userId");
+		session.setAttribute("courseName", courseName);
 		List<Test> testsList = new CourseHelper().getTestsList(userId, streamId, courseTypeId, courseId);
 		
 		/*List<Test> testsList = new ArrayList<Test>();
