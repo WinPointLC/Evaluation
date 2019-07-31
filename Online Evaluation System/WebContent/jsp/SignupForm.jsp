@@ -59,8 +59,8 @@
   <script>
      function submitSignUpDetails(){
     	 //alert("Submit Sign Up Details");
-    	 var firsttname = $('#firstName').val();
-    	 var lastname = $('#lastName').val();
+    	 var firstName = $('#firstName').val();
+    	 var lastName = $('#lastName').val();
     	 var email = $('#email').val();
     	 var password = $('#password').val();
     	 var gender = $('#gender').val();
@@ -71,8 +71,8 @@
     	 //alert(gender);
     	 var myData = {
 
-    			 firsttname: firsttname,
-    			 lastname: lastname,
+    			 firstName: firstName,
+    			 lastName: lastName,
     			 email: email,
                  password: password,
                  gender:gender,

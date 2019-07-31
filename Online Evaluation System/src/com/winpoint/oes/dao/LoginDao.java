@@ -81,7 +81,7 @@ public class LoginDao {
 			Statement statement = connection.createStatement();
 			String email = userProfile.getEmail();
 			String password = userProfile.getPassword();
-			String query = "INSERT INTO [dbo].[USER_PROFILE]\r\n" + 
+			String query = "INSERT INTO [USER_PROFILE]\r\n" + 
 					"           ([FIRST_NAME]\r\n" + 
 					"           ,[LAST_NAME]\r\n" + 
 					"           ,[EMAIL_ID]\r\n" + 
@@ -92,7 +92,7 @@ public class LoginDao {
 					"           ,[DEGREE]\r\n" + 
 					"           ,[BRANCH]\r\n" + 
 					"           ,[YEAR_OF_GRADUATION]\r\n" + 
-					"           ,[PHOTO]\r\n" + 
+					"           ,[PHOTO_LOCATION]\r\n" + 
 					"           ,[PASSWORD]\r\n" + 
 					"           ,[SECURITY_QUESTION_ID]\r\n" + 
 					"           ,[SECURITY_ANSWER]\r\n" + 
@@ -106,9 +106,9 @@ public class LoginDao {
 					"           ,[CREATED_BY]\r\n" + 
 					"           ,[CREATED_DATE])\r\n" + 
 					"     VALUES\r\n" + 
-					"           (" + userProfile.getFirstName() + "\r\n" + 
-					"           ," + userProfile.getLastName() + "\r\n" + 
-					"           ," + email + "\r\n" + 
+					"           ('" + userProfile.getFirstName() + "'\r\n" + 
+					"           ,'" + userProfile.getLastName() + "'\r\n" + 
+					"           ,'" + email + "'\r\n" + 
 					"           ," + userProfile.getMobileNumber() + "\r\n" + 
 					"           ," + null + "\r\n" + 
 					"           ," + null + "\r\n" + 
@@ -117,9 +117,9 @@ public class LoginDao {
 					"           ," + null + "\r\n" + 
 					"           ," + null + "\r\n" + 
 					"           ," + null + "\r\n" + 
-					"           ," + password + "\r\n" + 
+					"           ,'" + password + "'\r\n" + 
 					"           ," + userProfile.getSecurityQuestionId() + "\r\n" + 
-					"           ," + userProfile.getSecurityAnswer() + "\r\n" + 
+					"           ,'" + userProfile.getSecurityAnswer() + "'\r\n" + 
 					"           ," + userProfile.getUserCategoryId() + "\r\n" + 
 					"           ," + null + "\r\n" + 
 					"           ," + null + "\r\n" + 
@@ -127,8 +127,9 @@ public class LoginDao {
 					"           ," + null + "\r\n" + 
 					"           ," + null + "\r\n" + 
 					"           ," + null + "\r\n" + 
-					"           ," + null + "\r\n" + 
+					"           ," + 1 + "\r\n" + 
 					"           ," + null + ")";
+			System.out.println("Insert query is: \n" + query);
 			statement.executeUpdate(query);
 			} catch (SQLException e) {
 			// TODO Auto-generated catch block

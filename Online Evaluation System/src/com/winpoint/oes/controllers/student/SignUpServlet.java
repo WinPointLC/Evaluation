@@ -62,7 +62,7 @@ public class SignUpServlet extends HttpServlet {
 			String gender = userProfile.getGender();
 			String mobileNumber = userProfile.getMobileNumber();
 			
-			System.out.println("email = " + email + "   password = " + password);
+			System.out.println("firstName = " + firstName + "   password = " + password);
 		
 		UserProfile userProfileRecd =  new LoginHelper().createLogin(userProfile);
 		
