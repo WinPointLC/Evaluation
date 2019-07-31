@@ -94,14 +94,16 @@
     </div>
     <div class="row R4">
       <!-- <div class="card-body"> -->
-      <div class="col-sm-6 col-md-12 col-lg-12 col-xl-12 c3">
-        <div class="bar-graph">
-
-        </div>
+      <div class="col-sm-6 col-md-12 col-lg-12 col-xl-12" style="margin-left:20%;">
+        
+           <div id="graph" style="width: 50%; height: 250%"></div>
+        
       </div>
       <!-- </div> -->
     </div>
   </div>
+<script src="https://cdn.anychart.com/releases/v8/themes/dark_glamour.min.js"></script>
+
 <script type="text/javascript">
   anychart.onDocumentReady(function() {
     var data = {
@@ -113,8 +115,12 @@
       ["File Handling", 6],
       ["Basic Concept", 9]
   ]}
-    var chart = anychart.bar();
+  var chart = anychart.bar();
+    anychart.theme(anychart.themes.dark_glamour);
   chart.data(data);
+  chart.title("Topicwise Marks");
+  chart.container('graph');
+  chart.draw();
 });
 </script>
 </body>

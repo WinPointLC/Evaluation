@@ -38,7 +38,7 @@
           <li class="nav-item  ">
             <a class="nav-link" href="ClientDashboard.jsp">
               <i class="material-icons">dashboard</i>
-              <p>Dashboard</p>
+              <p>User Dashboard</p>
             </a>
           </li>
           <li class="nav-item active ">
@@ -139,6 +139,7 @@
                 <div class="card-header card-header-primary">
                   <h4 class="card-title">Edit Profile</h4>
                   <p class="card-category">Complete your profile</p>
+                  <h4 id="userid">UserId:</h4>
                 </div>
                 <div class="card-body">
                   <form>
@@ -146,19 +147,19 @@
                       <div class="col-md-3">
                         <div class="form-group">
                           <label class="bmd-label-floating">Username</label>
-                          <input type="text" class="form-control">
+                          <input type="text" class="form-control" id="username">
                         </div>
                       </div>
                       <div class="col-md-4">
                         <div class="form-group">
                           <label class="bmd-label-floating">Email address</label>
-                          <input type="email" class="form-control">
+                          <input type="email" class="form-control" id="email">
                         </div>
                       </div>
                       <div class="col-md-4">
                         <div class="form-group">
                           <label class="bmd-label-floating">Mobile No:</label>
-                          <input type="number" class="form-control">
+                          <input type="number" class="form-control" id="mobileNumber">
                         </div>
                       </div>
                     </div>
@@ -178,7 +179,7 @@
                       <div class="col-md-6">
                         <div class="form-group">
                           <label class="bmd-label-floating">College Name</label>
-                          <input type="text" class="form-control">
+                          <input type="text" class="form-control" id="college">
                         </div>
                       </div>
                     </div>
@@ -186,25 +187,25 @@
                       <div class="col-md-4">
                         <div class="form-group">
                           <label class="bmd-label-floating">Degree</label>
-                          <input type="text" class="form-control">
+                          <input type="text" class="form-control" id="degree">
                         </div>
                       </div>
                       <div class="col-md-4">
                         <div class="form-group">
                           <label class="bmd-label-floating">Year of Graduation</label>
-                          <input type="number" class="form-control">
+                          <input type="number" class="form-control" id="graduationyear">
                         </div>
                       </div>
                       <div class="col-md-3">
                         <div class="form-group">
                           <label class="bmd-label-floating">Branch</label>
-                          <input type="text" class="form-control">
+                          <input type="text" class="form-control" id="branch">
                         </div>
                       </div>
                       <div class="col-md-12">
                         <div class="form-group">
                           <label class="bmd-label-floating">Adress</label>
-                          <input type="text" class="form-control">
+                          <input type="text" class="form-control" id="address">
                         </div>
                       </div>
                     </div>
@@ -212,19 +213,19 @@
                       <div class="col-md-4">
                         <div class="form-group">
                           <label class="bmd-label-floating">City</label>
-                          <input type="text" class="form-control">
+                          <input type="text" class="form-control" id="city">
                         </div>
                       </div>
                       <div class="col-md-4">
                         <div class="form-group">
                           <label class="bmd-label-floating">Country</label>
-                          <input type="text" class="form-control">
+                          <input type="text" class="form-control" id="Country">
                         </div>
                       </div>
                       <div class="col-md-4">
                         <div class="form-group">
                           <label class="bmd-label-floating">Postal Code</label>
-                          <input type="text" class="form-control">
+                          <input type="text" class="form-control" id="postal">
                         </div>
                       </div>
                     </div>
@@ -232,19 +233,19 @@
                       <div class="col-md-4">
                         <div class="form-group">
                           <label class="bmd-label-floating">Password</label>
-                          <input type="password" class="form-control">
+                          <input type="password" class="form-control" id="password">
                         </div>
                       </div>
                       <div class="col-md-4">
                         <div class="form-group">
                           <label class="bmd-label-floating">Security Question</label>
-                          <input type="text" class="form-control">
+                          <input type="text" class="form-control" id="secquestion">
                         </div>
                       </div>
                       <div class="col-md-4">
                         <div class="form-group">
                           <label class="bmd-label-floating">Security Answer</label>
-                          <input type="text" class="form-control">
+                          <input type="text" class="form-control" id="secanswer">
                         </div>
                       </div>
                       <div class="col-md-12">
@@ -252,7 +253,7 @@
                           <label>About Me</label>
                           <div class="form-group">
                             <label class="bmd-label-floating"></label>
-                            <textarea class="form-control" rows="5"></textarea>
+                            <textarea class="form-control" rows="5" id="aboutme"></textarea>
                           </div>
                         </div>
                       </div>
@@ -260,84 +261,6 @@
                     <button type="submit" class="btn btn-primary pull-right">Save Profile</button>
                     <div class="clearfix"></div>
                   </form>
-
-                  <%-- <form>
-                    <div class="row">
-                      <div class="col-md-5">
-                        <div class="form-group">
-                          <label class="bmd-label-floating">Company (disabled)</label>
-                          <input type="text" class="form-control" disabled>
-                        </div>
-                      </div>
-                      <div class="col-md-3">
-                        <div class="form-group">
-                          <label class="bmd-label-floating">College</label>
-                          <input type="text" class="form-control" id="college">
-                        </div>
-                      </div>
-                      <div class="col-md-4">
-                        <div class="form-group">
-                          <label class="bmd-label-floating">Email address</label>
-                          <input type="email" class="form-control" id="email">
-                        </div>
-                      </div>
-                    </div>
-                    <div class="row">
-                      <div class="col-md-6">
-                        <div class="form-group">
-                          <label class="bmd-label-floating">Fist Name</label>
-                          <input type="text" class="form-control" id="firstName">
-                        </div>
-                      </div>
-                      <div class="col-md-6">
-                        <div class="form-group">
-                          <label class="bmd-label-floating">Last Name</label>
-                          <input type="text" class="form-control" id="lastName">
-                        </div>
-                      </div>
-                    </div>
-                    <div class="row">
-                      <div class="col-md-12">
-                        <div class="form-group">
-                          <label class="bmd-label-floating">Address</label>
-                          <input type="text" class="form-control" id="address>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="row">
-                      <div class="col-md-4">
-                        <div class="form-group">
-                          <label class="bmd-label-floating">Mobile Number</label>
-                          <input type="text" class="form-control" id="mobileNumber">
-                        </div>
-                      </div>
-                      <div class="col-md-4">
-                        <div class="form-group">
-                          <label class="bmd-label-floating">Photo Location</label>
-                          <input type="text" class="form-control" id="photoLocation">
-                        </div>
-                      </div>
-                      <div class="col-md-4">
-                        <div class="form-group">
-                          <label class="bmd-label-floating">Password</label>
-                          <input type="text" class="form-control" id="password">
-                        </div>
-                      </div>
-                    </div>
-                    <div class="row">
-                      <div class="col-md-12">
-                        <div class="form-group">
-                          <label>About Me</label>
-                          <div class="form-group">
-                            <label class="bmd-label-floating"></label>
-                            <textarea class="form-control" rows="5"></textarea>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <button type="submit" class="btn btn-primary pull-right">Update Profile</button>
-                    <div class="clearfix"></div>
-                  </form> --%>
                 </div>
               </div>
             </div>
@@ -500,13 +423,24 @@
     	var userProfile = decodeURIComponent(data);
     	var userProfile1 =  eval('(' + userProfile + ')');
 	    //alert("Client is " + userProfile1.userId + ":" + userProfile1.firstName + " " + userProfile1.lastName);
-	    document.getElementById("photoId").src = userProfile1.photoLocation;
-	    document.getElementById("firstName").value = userProfile1.firstName;
-	    document.getElementById("lastName").value = userProfile1.lastName;
-	    document.getElementById("mobileNumber").value = userProfile1.mobileNumber;
-	    document.getElementById("photoLocation").value = userProfile1.photoLocation;
-	    document.getElementById("password").value = userProfile1.password;
-	    document.getElementById("college").value = userProfile1.college;
+	    // document.getElementById("photoId").src = "../assets//img/mask.png";//userProfile1.photoLocation;
+      document.getElementById('username').value="omii";//userProfile1.username;
+      document.getElementById('email').value="omkargosavi03@gmail.com";//userProfile1.email;
+      document.getElementById('degree').value="B.E.";//userProfile1.degree;
+      document.getElementById('graduationyear').value="2020";//userProfile1.yearOfGraduation;
+      document.getElementById('branch').value="Computer";//userProfile1.branch;
+      document.getElementById('address').value="Swargate";//userProfile1.address;
+      document.getElementById('city').value="Pune";//userProfile1.City;
+      document.getElementById('secquestion').value="where is your home";//userProfile1.securityQuestionId;
+      document.getElementById('secanswer').value="peth area";//userProfile1.securityAnswer;
+
+	    document.getElementById("firstName").value = "Omkar";//userProfile1.firstName;
+	    document.getElementById("lastName").value = "Gosavi";//userProfile1.lastName;
+	    document.getElementById("mobileNumber").value = "9850896993";//userProfile1.mobileNumber;
+	    document.getElementById("photoId").value ="../assets//img/sidebar-1.jpg"; //userProfile1.photoLocation;
+	    document.getElementById("password").value ="asdas"; //userProfile1.password;
+	    document.getElementById("college").value ="NBN";//userProfile1.college;
+      document.getElementById('userid').value="1";//userProfile1.userId;
 
       $().ready(function() {
 
