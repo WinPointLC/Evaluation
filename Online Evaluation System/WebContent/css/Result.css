@@ -1,0 +1,28 @@
+.R3{
+  margin: 20px;
+  border:1px solid rgb(144, 144, 144);
+}
+.Your-score{
+
+}
+.R4{
+  margin-top: 10%;
+  margin: 20px;
+  border:1px solid rgb(144, 144, 144);
+}
+
+.c2{
+  margin-left: 20%;
+}
+.c3{
+  margin-top: 20%;
+}
+.card-heading{
+  color:#000;
+}
+#result-header-card{
+  margin-left: 20%;
+}
+.result-footer{
+  background-color:lawgreen;
+}
