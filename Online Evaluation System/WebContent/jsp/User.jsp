@@ -423,7 +423,7 @@
     	var userProfile = decodeURIComponent(data);
     	var userProfile1 =  eval('(' + userProfile + ')');
 	    //alert("Client is " + userProfile1.userId + ":" + userProfile1.firstName + " " + userProfile1.lastName);
-	    // document.getElementById("photoId").src = userProfile1.photoLocation;
+	    // document.getElementById("photoId").src = "../assets//img/mask.png";//userProfile1.photoLocation;
       document.getElementById('username').value="omii";//userProfile1.username;
       document.getElementById('email').value="omkargosavi03@gmail.com";//userProfile1.email;
       document.getElementById('degree').value="B.E.";//userProfile1.degree;
@@ -437,7 +437,7 @@
 	    document.getElementById("firstName").value = "Omkar";//userProfile1.firstName;
 	    document.getElementById("lastName").value = "Gosavi";//userProfile1.lastName;
 	    document.getElementById("mobileNumber").value = "9850896993";//userProfile1.mobileNumber;
-	    // document.getElementById("photoLocation").value = //userProfile1.photoLocation;
+	    document.getElementById("photoId").value ="../assets//img/sidebar-1.jpg"; //userProfile1.photoLocation;
 	    document.getElementById("password").value ="asdas"; //userProfile1.password;
 	    document.getElementById("college").value ="NBN";//userProfile1.college;
       document.getElementById('userid').value="1";//userProfile1.userId;
