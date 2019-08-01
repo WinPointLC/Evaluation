@@ -24,6 +24,7 @@
     var answerList = null;
     var marks = 0;
     var totalMarks = 0;
+    var courseName;
     $(function () {
       var searchString = window.location.search.substring(1);
       var arr = searchString.split('&');
@@ -39,7 +40,7 @@
           //alert("Question : " + questionsList[i].questionId + "," + questionsList[i].question);
     	   answerList[i] = 0;
         }  
-        var courseName = arr[1].split('=')[1];
+        courseName = arr[1].split('=')[1];
         document.getElementById("test-name").textContent = courseName + " Test"
       for(i=0; i<questionsList.length/5; i++){
       //alert("Question : " + questionsList[i].questionId + "," + questionsList[i].question);
@@ -161,13 +162,13 @@
 	  }
       var answerStrList = ["A", "B", "C", "D"];
       for(i=0; i<answerList.length; i++){
-    	 alert("answerList[" + i + "] = " + answerList[i]);
+    	 //alert("answerList[" + i + "] = " + answerList[i]);
     	  if(answerStrList[answerList[i]-1] == questionsList[i].correctOption){
-    		  marks += questionsList[i].totalMarks;
-    		  totalMarks += questionsList[i].totalMarks;
+    		  marks += questionsList[i].totalMarks;    		  
     	  }
+    	  totalMarks += questionsList[i].totalMarks;
       }
-      alert("marks = " + marks + "total marks = " + totalMarks);
+      //alert("marks = " + marks + "total marks = " + totalMarks);
      // window.location.href = '/OnlineEvaluationSystem/jsp/FeedBackForm.jsp';
       callServlet();
     })
@@ -237,6 +238,7 @@
 
  */     // alert("**" + JSON.stringify(myData2));
    var myData = {
+		   courseName: courseName,
 		marks: marks,
 		totalMarks: totalMarks
    };
@@ -251,16 +253,16 @@
         traditional: true,
 
         success: function (jsonObj) {
-          alert("Success");
+          //alert("Success");
           var responseJson1=jsonObj[0];
           var locationJson = eval('(' + responseJson1 + ')');
-          window.location.href = locationJson.location ;
-
+          var marksJSON = JSON.stringify(myData);
+          alert("marksJSON = " + marksJSON);
+          window.location.href = locationJson.location + "?varid=" + encodeURIComponent(marksJSON);
         },
         error: function(){
           alert("Error");
         }
- 
       });
     }
   });

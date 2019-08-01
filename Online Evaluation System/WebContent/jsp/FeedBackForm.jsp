@@ -21,6 +21,7 @@
   <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script> -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 </head>
 <body>
   <div class="container-fluid">
@@ -72,7 +73,7 @@
                 </div>
               </div>
 
-              <button type="submit" class="btn btn-primary pull-right" onclick="myFunction()">Save</button>
+              <button type="button" class="btn btn-primary pull-right" onclick="saveFeedback()">Save</button>
               <div class="clearfix"></div>
             </form>
           </div>
@@ -185,8 +186,40 @@
 
   <script src="../js/StarRating.js"></script>
   <script type="text/javascript">
-  function myFunction() {
-    document.getElementById('ResultPage').showModal();
+  var searchString = window.location.search.substring(1);
+  var data= searchString.split('=')[1];
+  var resultJson = decodeURIComponent(data);
+  var result =  eval('(' + resultJson + ')');
+  alert("result **** = " + result.courseName + result.marks + ' ' + result.totalMarks);
+  function saveFeedback() {
+	  alert("clicked Save");
+	  var feedback1 = 'hhahdhf';//$('#TellUs').val();
+	  var rating = '5';
+	  var myFeedback = {
+			  feedback1: feedback1,
+			  rating: rating
+	  };
+	  $.ajax({
+		 	type: 'POST',
+	        url: '/OnlineEvaluationSystem/CommonController?action=FeedbackServlet',
+	        data: JSON.stringify(myFeedback),
+	        dataType: 'json',
+	        contentType: 'application/json; charset=utf-8',
+	        traditional: true,
+	        success: function (jsonObj) {
+	          alert("Success");
+	          var responseJson1=jsonObj[0];
+	          var locationJson = eval('(' + responseJson1 + ')');
+	          alert(locationJson.location);
+	          var marksJSON = JSON.stringify(result);
+	          window.location.href = locationJson.location + "?varid=" + encodeURIComponent(marksJSON);
+	        },
+	        error: function(){
+	          alert("Error");
+	        }
+	 
+	      });
+    //document.getElementById('ResultPage').showModal();
   }
   </script>
 </body>

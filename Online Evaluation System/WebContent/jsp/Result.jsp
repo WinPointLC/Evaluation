@@ -52,13 +52,13 @@
               <div class="card card-stats">
                 <div class="card-header card-header-icon">
                   <div class="card-heading">
-                    <h6>C language</h6>
+                    <h6 id="courseName"></h6>
                   </div>
                   <div class="card-icon" style="font-size:20px;" id="row1-card1">
                     <i class="fa fa-copyright" style="font-size:70px;"></i>
                   </div>
                   <p class="card-category">You Score</p>
-                  <h3 class="card-title">49/50
+                  <h3 class="card-title" id="score">
                   </h3>
                 </div>
                 <div class="card-footer result-footer" style="background-color: chartreuse;">
@@ -138,6 +138,15 @@ anychart.onDocumentReady(function() {
     chart.container('graph');
     chart.draw();
   });
+</script>
+<script>
+	var searchString = window.location.search.substring(1);
+	var data= searchString.split('=')[1];
+	var resultJson = decodeURIComponent(data);
+	var result =  eval('(' + resultJson + ')');
+	//alert(result.courseName + result.marks + ' ' + result.totalMarks);
+	document.getElementById('courseName').textContent = result.courseName;
+	document.getElementById('score').textContent = result.marks + '/' + result.totalMarks;
 </script>
 </body>
 </html>
