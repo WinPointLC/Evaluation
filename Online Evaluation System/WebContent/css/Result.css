@@ -4,6 +4,9 @@ body{
 .R3{
   margin: 20px;
 }
+.R4{
+  margin-bottom: 40%;
+}
 .c2{
   margin-left: 20%;
 }
@@ -20,8 +23,8 @@ body{
   background-color:lawgreen;
 }
 .card-stats{
-  background-color: #f4f0f4;
-  box-shadow: 0px 2px 2px 2px rgb(214, 214, 214);
+  /* background-color: #f4f0f4; */
+  /* box-shadow: 0px 2px 2px 2px rgb(214, 214, 214); */
 }
 .stats2{
   margin-left: 25%;

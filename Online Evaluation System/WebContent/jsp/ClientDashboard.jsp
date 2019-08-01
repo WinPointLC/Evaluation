@@ -18,9 +18,9 @@
   <link href="../assets/css/material-dashboard.css?v=2.1.1" rel="stylesheet"/>
   <!-- own CSS -->
   <link rel="stylesheet" href="../css/Dashboard.css">
-  
+
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-  
+
   <script>
   var data;
   var userProfile1;
@@ -36,7 +36,7 @@
     //var studentJson = eval('(' + data + ')');
     //alert("Student Id = " + studentJson.id);
     var userProfile = decodeURIComponent(data);
-   
+
     //alert("Client is " + userProfile);
     //var student1 = new Gson().fromJson(student, Student);
     userProfile1 =  eval('(' + userProfile + ')');
@@ -55,7 +55,7 @@
     strResJSON = JSON.stringify(userProfile1);
 });
     function sendToUserProfile(){
-    	window.location.href = "/OnlineEvaluationSystem/jsp/User.jsp?varid="+ data; 
+    	window.location.href = "/OnlineEvaluationSystem/jsp/User.jsp?varid="+ data;
     	//encodeURIComponent(strResJSON);
     }
     function sendToMainCoursePage(){
@@ -68,9 +68,9 @@
             traditional: true,
             success: function (jsonObj) {
             	//alert("Success from LoginForm");
-                var responseJson1 = jsonObj[0]; 
-                var responseJson2 = jsonObj[1];  
-                
+                var responseJson1 = jsonObj[0];
+                var responseJson2 = jsonObj[1];
+
                 /* Start- Code for ArrayList from servlet */
   				/*var streamList = responseJson2[0];
   				var courseTypeList = responseJson2[1];
@@ -81,7 +81,7 @@
                 	alert("courseTypeList = " + courseTypeList[i].courseTypeName);
   				} */
   				/* End- Code for ArrayList from servlet */
-  				
+
   			    var streamJson=jsonObj[1];
                 var courseTypeJson=jsonObj[2];
                 var locationJson = eval('(' + responseJson1 + ')');
@@ -94,8 +94,8 @@
                 	window.location.href = locationJson.location + "?varid=" + encodeURIComponent(streamJSON) + encodeURIComponent(courseTypeJSON) +"&username=" + "Anjali" +"&password=" + "Anjali";
                 	//window.location.href = locationJson.location + "?varid=" + streamJSON + courseTypeJSON +"&username=" + "Anjali" +"&password=" + "Anjali";
             		//window.location.href = locationJson.location + "?varid=" + encodeURIComponent(streamJSON) +"&username=" + "Anjali" +"&password=" + "Anjali";
-            		
-            		
+
+
             	} else {
                     $('#ajaxGetUserServletResponse').text(responseText);
             	}
@@ -181,7 +181,7 @@
             <a class="navbar-brand" href="#pablo">Dashboard</a>
             <img id="photoId" />
           </div>
-          <p id="welcome" style='margin-left:60%;'></p>
+          <p id="welcome" style="margin-left:60%; text-transform: uppercase;"></p>
           <button class="navbar-toggler" type="button" data-toggle="collapse" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
             <span class="sr-only">Toggle navigation</span>
             <span class="navbar-toggler-icon icon-bar"></span>
