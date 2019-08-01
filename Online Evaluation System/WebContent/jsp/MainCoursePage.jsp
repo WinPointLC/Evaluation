@@ -457,7 +457,7 @@
                 anchor.setAttribute('id', responseJson[j].courseId);
                 anchor.setAttribute('href', "#");
                 var courseName =responseJson[j].courseName;
-                //alert(courseName);
+               // alert("CourseName = "+courseName);
                 anchor.setAttribute('onclick',"displayTestSelect(this.id,'" +  courseName + "')");
                 var para = document.createElement('p');
                 para.className='card-category';
@@ -484,7 +484,7 @@
         //var streamId = 1;
         //var courseTypeId = courseTypeId;
         var courseId = courseId;
-        alert(courseName);
+        //alert(courseName);
         var myData = {
           streamId: streamId,
           courseTypeId: courseTypeId,
