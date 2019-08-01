@@ -160,11 +160,12 @@
       for(i=0; i<answerList.length; i++){
     	  alert("answerList[" + i + "] = " + answerList[i]);
       }
+     // window.location.href = '/OnlineEvaluationSystem/jsp/FeedBackForm.jsp';
       callServlet();
     })
     function callServlet() {
 
-      var testname = $('#test-name').val();
+/*       var testname = $('#test-name').val();
 
       var questionno = $('#question-no').val();
 
@@ -226,23 +227,30 @@
         "sub-btn":"submit"
       };
 
-     // alert("**" + JSON.stringify(myData2));
-      $.ajax({
-        type: 'POST',
-        url: '',
-        data: JSON.stringify(myData2),
+ */     // alert("**" + JSON.stringify(myData2));
+   var myData = {
+		firstName: 'Anjali',
+		lastName: 'Parkhi'
+   };
+ $.ajax({
+	 	type: 'POST',
+        url: '/OnlineEvaluationSystem/CommonController?action=ResultServlet',
+        data: JSON.stringify(answerList),
         dataType: 'json',
         contentType: 'application/json; charset=utf-8',
         traditional: true,
 
         success: function (jsonObj) {
           alert("Success");
+          var responseJson1=jsonObj[0];
+          var locationJson = eval('(' + responseJson1 + ')');
+          window.location.href = locationJson.location ;
 
         },
         error: function(){
           alert("Error");
         }
-
+ 
       });
     }
   });
