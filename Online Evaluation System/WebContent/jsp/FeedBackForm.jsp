@@ -18,6 +18,9 @@
   <link rel="stylesheet" href="//code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
   <link rel="stylesheet" href="../css/StarRating.css">
   <link rel="stylesheet" href="../css/FeedBackForm.css">
+  <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script> -->
 </head>
 <body>
   <div class="container-fluid">
@@ -65,12 +68,11 @@
                   </div>
                   <div class="star">
                     <x-star-rating value="3" number="5"></x-star-rating>
-
                   </div>
                 </div>
               </div>
 
-              <button type="submit" class="btn btn-primary pull-right">Save</button>
+              <button type="submit" class="btn btn-primary pull-right" onclick="myFunction()">Save</button>
               <div class="clearfix"></div>
             </form>
           </div>
@@ -79,6 +81,113 @@
 
     </div>
   </div>
+
+  <!-- <dialog id="myDialog">
+    <div class="container-fluid">
+      <div class="row main-row">
+        <div class="col-sm-6 col-md-9 col-lg-9 col-xl-9" id="main-column">
+          <div class="row">
+            <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
+              <div class="Rule-content-1">
+                <div class="card card-plain">
+                  <div class="card card-header card-header-primary">
+                    <h3 class="card-title text-align mr-auto ml-auto">Result for Test Name</h3>
+
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-sm-8 col-md-8 col-lg-8 col-xl-8" id="result-header-card">
+              <div class="card card-plain">
+                <div class="card card-header card-header-success">
+                  <h3 class="card-title text-align mr-auto ml-auto">Congratulations "Username" for Clearing Test Name</h3>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row R3">
+            <div class="col-sm-6 col-md-12 col-lg-12 col-xl-12 c2">
+              <div class="Your-score">
+                <div class="col-lg-6 col-md-6 col-sm-6">
+                  <div class="card card-stats">
+                    <div class="card-header card-header-icon">
+                      <div class="card-heading">
+                        <h6>C language</h6>
+                      </div>
+                      <div class="card-icon" style="font-size:20px;" id="row1-card1">
+                        <i class="fa fa-copyright" style="font-size:70px;"></i>
+                      </div>
+                      <p class="card-category">You Score</p>
+                      <h3 class="card-title">49/50
+                      </h3>
+                    </div>
+                    <div class="card-footer result-footer" style="background-color: chartreuse;">
+                      <div class="stats">
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="row ">
+            <div class="col-sm-5 col-md-5 col-lg-5 col-xl-5 stats2">
+              <div class="card card-stats">
+                <div class="time">
+                  <i class="material-icons">alarm</i>
+                  <p>Time Taken:40 minutes</p>
+                  <div class="border1"></div>
+                </div>
+                <div class="Attempted">
+                  <i class="material-icons">done_all</i>
+                  <p>Attempted Questions:50</p>
+                  <div class="border2"></div>
+                </div>
+                <div class="Correct">
+                  <i class="material-icons">check_circle</i>
+                  <p>Correct:49</p>
+                  <div class="border3"></div>
+                </div>
+                <div class="Wrong">
+                  <i class="material-icons">cancel</i>
+                  <p>Wrong Answer:1</p>
+                  <div class="border4"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-sm-6 col-md-6 col-lg-6 col-xl-6" id="result-header-card2">
+              <div class="card card-plain">
+                <div class="card card-header card-header-info">
+                  <h3 class="card-title text-align mr-auto ml-auto">Topicwise marks of Test Name</h3>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row R4">
+
+            <div class="col-sm-6 col-md-12 col-lg-12 col-xl-12" style="margin-left:20%;">
+
+              <div id="graph" style="width: 50%; height: 250%"></div>
+
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </dialog> -->
+
   <script src="../js/StarRating.js"></script>
+  <script type="text/javascript">
+  function myFunction() {
+    document.getElementById('ResultPage').showModal();
+  }
+  </script>
 </body>
 </html>

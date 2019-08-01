@@ -1,3 +1,6 @@
+body{
+  background-color: rgb(255, 255, 255);
+}
 .R3{
   margin: 20px;
 }
@@ -8,11 +11,64 @@
   color:#000;
 }
 #result-header-card{
+  margin-left: 15%;
+}
+#result-header-card2{
   margin-left: 20%;
 }
 .result-footer{
   background-color:lawgreen;
 }
-.graph{
-  margin-bottom: 20%;
+.card-stats{
+  background-color: #f4f0f4;
+  box-shadow: 0px 2px 2px 2px rgb(214, 214, 214);
+}
+.stats2{
+  margin-left: 25%;
+}
+.stats2 p{
+  margin-left: 20%;
+  font-size: 120%;
+  font-family: sans-serif;
+  border-bottom: 1px solid black;
+  border-width: thin;
+  width: 60%;
+}
+
+.time p{
+  transition-duration: 500ms;
+  border-bottom:1px solid rgb(247, 227, 41);
+}
+.Attempted p{
+  transition-duration: 500ms;
+  border-bottom:1px solid rgb(13, 94, 204);
+}
+.Correct p{
+  transition-duration: 500ms;
+  border-bottom:1px solid rgb(8, 238, 4);
+}
+.Wrong p{
+  transition-duration: 500ms;
+  border-bottom:1px solid rgb(238, 41, 21);
+}
+
+.time p:hover{
+  transition-duration: 500ms;
+  border-bottom:3px solid rgb(247, 227, 41);
+}
+.Attempted p:hover{
+  transition-duration: 500ms;
+  border-bottom:3px solid rgb(13, 94, 204);
+}
+.Correct p:hover{
+  transition-duration: 500ms;
+  border-bottom:3px solid rgb(8, 238, 4);
+}
+.Wrong p:hover{
+  transition-duration: 500ms;
+  border-bottom:3px solid rgb(238, 41, 21);
+}
+.stats2 i{
+  font-size: 230%;
+  float: left;
 }
