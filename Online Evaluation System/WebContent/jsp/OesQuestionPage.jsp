@@ -22,6 +22,8 @@
     var currentQuestion;
     var reviewFlag;
     var answerList = null;
+    var marks = 0;
+    var totalMarks = 0;
     $(function () {
       var searchString = window.location.search.substring(1);
       var arr = searchString.split('&');
@@ -149,7 +151,7 @@
     })
 
     $('#sub-btn').click(function() {
-      alert("From submit button");
+      //alert("From submit button");
       var ele = document.getElementsByName("radio-group");
       for(var i=0;i<ele.length;i++){
 	    	if(ele[i].checked == true){
@@ -157,9 +159,15 @@
 	    		break;
 	    	}
 	  }
+      var answerStrList = ["A", "B", "C", "D"];
       for(i=0; i<answerList.length; i++){
-    	  alert("answerList[" + i + "] = " + answerList[i]);
+    	 alert("answerList[" + i + "] = " + answerList[i]);
+    	  if(answerStrList[answerList[i]-1] == questionsList[i].correctOption){
+    		  marks += questionsList[i].totalMarks;
+    		  totalMarks += questionsList[i].totalMarks;
+    	  }
       }
+      alert("marks = " + marks + "total marks = " + totalMarks);
      // window.location.href = '/OnlineEvaluationSystem/jsp/FeedBackForm.jsp';
       callServlet();
     })
@@ -229,13 +237,15 @@
 
  */     // alert("**" + JSON.stringify(myData2));
    var myData = {
-		firstName: 'Anjali',
-		lastName: 'Parkhi'
+		marks: marks,
+		totalMarks: totalMarks
    };
+   
+
  $.ajax({
 	 	type: 'POST',
         url: '/OnlineEvaluationSystem/CommonController?action=ResultServlet',
-        data: JSON.stringify(answerList),
+        data: JSON.stringify(answerList) + JSON.stringify(questionsList),
         dataType: 'json',
         contentType: 'application/json; charset=utf-8',
         traditional: true,
