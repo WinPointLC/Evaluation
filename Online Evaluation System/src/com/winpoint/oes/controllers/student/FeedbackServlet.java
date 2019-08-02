@@ -66,8 +66,14 @@ public class FeedbackServlet extends HttpServlet {
 	    	json = br.readLine();
 	    }
 	    System.out.println(json); 
+	    HttpSession session = request.getSession(false);
+	    String firstName = (String) session.getAttribute("firstName");
+	    String lastName = (String) session.getAttribute("lastName");
+	    
+	    String userName = firstName + " " + lastName;
+	    System.out.println(userName);
 	    Gson gson = new Gson();
-	    String json1 = gson.toJson("{ 'success': 'true', 'location': '/OnlineEvaluationSystem/jsp/Result.jsp'}");
+	    String json1 = gson.toJson("{ 'success': 'true', 'location': '/OnlineEvaluationSystem/jsp/Result.jsp', 'firstName': '" + firstName + "', 'lastName': '" + lastName + "'}");
 		/*Gson gson = new Gson();
 		Course course = gson.fromJson(json, Course.class);
 		int streamId =  course.getStreamId();

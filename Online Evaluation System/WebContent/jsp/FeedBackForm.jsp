@@ -190,9 +190,9 @@
   var data= searchString.split('=')[1];
   var resultJson = decodeURIComponent(data);
   var result =  eval('(' + resultJson + ')');
-  alert("result **** = " + result.courseName + result.marks + ' ' + result.totalMarks);
+  //alert("result **** = " + result.courseName + result.marks + ' ' + result.totalMarks);
   function saveFeedback() {
-	  alert("clicked Save");
+	  //alert("clicked Save");
 	  var feedback1 = 'hhahdhf';//$('#TellUs').val();
 	  var rating = '5';
 	  var myFeedback = {
@@ -207,12 +207,13 @@
 	        contentType: 'application/json; charset=utf-8',
 	        traditional: true,
 	        success: function (jsonObj) {
-	          alert("Success");
+	          //alert("Success");
 	          var responseJson1=jsonObj[0];
 	          var locationJson = eval('(' + responseJson1 + ')');
-	          alert(locationJson.location);
+	          //alert(locationJson.location);
+	          //alert(locationJson.fistName);
 	          var marksJSON = JSON.stringify(result);
-	          window.location.href = locationJson.location + "?varid=" + encodeURIComponent(marksJSON);
+	          window.location.href = locationJson.location + "?varid=" + encodeURIComponent(marksJSON) + "&firstName=" + locationJson.firstName +  "&lastName=" + locationJson.lastName ;
 	        },
 	        error: function(){
 	          alert("Error");

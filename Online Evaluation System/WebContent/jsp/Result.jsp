@@ -44,7 +44,7 @@
                 <div class="col-sm-8 col-md-8 col-lg-11 col-xl-11" id="result-header-card" style="margin:auto;">
                   <div class="card card-plain">
                     <div class="card card-header card-header-success">
-                      <h3 class="card-title text-align mr-auto ml-auto">Congratulations "Username" for Clearing Test Name</h3>
+                      <h3 class="card-title text-align mr-auto ml-auto" id="congrats"></h3>
                     </div>
                   </div>
                 </div>
@@ -155,13 +155,16 @@
   <script>
 
     var searchString = window.location.search.substring(1);
-    var data= searchString.split('=')[1];
+    var arr = searchString.split('&');
+    var data= arr[0].split('=')[1];
     var resultJson = decodeURIComponent(data);
     var result =  eval('(' + resultJson + ')');
+    var firstName = (arr[1].split('=')[1]).toUpperCase();
+    var lastName = (arr[2].split('=')[1]).toUpperCase();
     //alert(result.courseName + result.marks + ' ' + result.totalMarks);
     document.getElementById('courseName').textContent = result.courseName;
     document.getElementById('score').textContent = result.marks + '/' + result.totalMarks;
-
+    document.getElementById('congrats').textContent = 'Congratulations ' + firstName + " " + lastName + ' for Clearing the Test of ' + result.courseName;
   </script>
   <!--  End Modal -->
   <script src="../MaterialKitHomePage/assets/js/core/jquery.min.js" type="text/javascript"></script>
