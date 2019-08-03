@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" type="text/css">
+  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" type="text/css">
   <title>Hello, world!</title>
   <!-- Required meta tags -->
   <meta charset="utf-8">
@@ -18,19 +18,19 @@
   <link href="../assets/css/material-dashboard.css?v=2.1.1" rel="stylesheet"/>
   <!-- own CSS -->
   <link rel="stylesheet" href="../css/Dashboard.css">
-
+  <!-- <link href="../MaterialKitHomePage/assets/css/material-kit.css?v=2.0.5" rel="stylesheet" /> -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 
   <script>
   var data;
   var userProfile1;
   var strResJSON;
-    $(document).ready(function(){
-	//alert("Hello");
+  $(document).ready(function(){
+    //alert("Hello");
     var searchString = window.location.search.substring(1);
-	//alert("SearchString = " + searchString);
-   var arr = searchString.split('&');
-   // alert("arra = " + arr);
+    //alert("SearchString = " + searchString);
+    var arr = searchString.split('&');
+    // alert("arra = " + arr);
     data= arr[0].split('=')[1];
     //alert("data = " + data);
     //var studentJson = eval('(' + data + ')');
@@ -44,8 +44,8 @@
     //alert("Client is " + userProfile1.userId + ":" + userProfile1.firstName + " " + userProfile1.lastName);
     //alert("Photo Location is " + userProfile1.photoLocation);
     //document.getElementById("photoId").src = userProfile1.photoLocation;
-   //var recieved_json = $.parseJSON(student);
-  // alert(received_json);
+    //var recieved_json = $.parseJSON(student);
+    // alert(received_json);
     //Set session variables
     var username = arr[1].split('=')[1];
     var password = arr[2].split('=')[1];
@@ -53,61 +53,61 @@
     //document.getElementById('username').value = username;
     //document.getElementById('password').value = password;
     strResJSON = JSON.stringify(userProfile1);
+  });
+  function sendToUserProfile(){
+    window.location.href = "/OnlineEvaluationSystem/jsp/User.jsp?varid="+ data;
+    //encodeURIComponent(strResJSON);
+  }
+  function sendToMainCoursePage(){
+    $.ajax({
+      type: 'POST',
+      url: '/OnlineEvaluationSystem/CommonController?action=OnlineEvaluationServlet',
+      data: JSON.stringify(userProfile1),
+      dataType: 'json',
+      contentType: 'application/json; charset=utf-8',
+      traditional: true,
+      success: function (jsonObj) {
+        //alert("Success from LoginForm");
+        var responseJson1 = jsonObj[0];
+        var responseJson2 = jsonObj[1];
+
+        /* Start- Code for ArrayList from servlet */
+        /*var streamList = responseJson2[0];
+        var courseTypeList = responseJson2[1];
+        for(i=0; i<streamList.length; i++){
+        alert("streamList = " + streamList[i].streamName);
+      }
+      for(i=0; i<courseTypeList.length; i++){
+      alert("courseTypeList = " + courseTypeList[i].courseTypeName);
+    } */
+    /* End- Code for ArrayList from servlet */
+
+    var streamJson=jsonObj[1];
+    var courseTypeJson=jsonObj[2];
+    var locationJson = eval('(' + responseJson1 + ')');
+    if (locationJson.success) {
+      var streamJSON = JSON.stringify(streamJson);
+      //alert(streamJSON);
+      var courseTypeJSON = JSON.stringify(courseTypeJson);
+      //alert(courseTypeJSON);
+      //alert("studentEmail : " + responseJson2.email);
+      window.location.href = locationJson.location + "?varid=" + encodeURIComponent(streamJSON) + encodeURIComponent(courseTypeJSON) +"&username=" + "Anjali" +"&password=" + "Anjali";
+      //window.location.href = locationJson.location + "?varid=" + streamJSON + courseTypeJSON +"&username=" + "Anjali" +"&password=" + "Anjali";
+      //window.location.href = locationJson.location + "?varid=" + encodeURIComponent(streamJSON) +"&username=" + "Anjali" +"&password=" + "Anjali";
+
+
+    } else {
+      $('#ajaxGetUserServletResponse').text(responseText);
+    }
+  },
+  error: function(){
+    //alert("Error");
+    document.getElementById("error").innerHTML = "Invalid email or password";
+  }
+
 });
-    function sendToUserProfile(){
-    	window.location.href = "/OnlineEvaluationSystem/jsp/User.jsp?varid="+ data;
-    	//encodeURIComponent(strResJSON);
-    }
-    function sendToMainCoursePage(){
-    	$.ajax({
-            type: 'POST',
-            url: '/OnlineEvaluationSystem/CommonController?action=OnlineEvaluationServlet',
-            data: JSON.stringify(userProfile1),
-            dataType: 'json',
-            contentType: 'application/json; charset=utf-8',
-            traditional: true,
-            success: function (jsonObj) {
-            	//alert("Success from LoginForm");
-                var responseJson1 = jsonObj[0];
-                var responseJson2 = jsonObj[1];
-
-                /* Start- Code for ArrayList from servlet */
-  				/*var streamList = responseJson2[0];
-  				var courseTypeList = responseJson2[1];
-  				for(i=0; i<streamList.length; i++){
-                	alert("streamList = " + streamList[i].streamName);
-  				}
-  				for(i=0; i<courseTypeList.length; i++){
-                	alert("courseTypeList = " + courseTypeList[i].courseTypeName);
-  				} */
-  				/* End- Code for ArrayList from servlet */
-
-  			    var streamJson=jsonObj[1];
-                var courseTypeJson=jsonObj[2];
-                var locationJson = eval('(' + responseJson1 + ')');
-               	if (locationJson.success) {
-            		var streamJSON = JSON.stringify(streamJson);
-            		//alert(streamJSON);
-            		var courseTypeJSON = JSON.stringify(courseTypeJson);
-            		//alert(courseTypeJSON);
-            		//alert("studentEmail : " + responseJson2.email);
-                	window.location.href = locationJson.location + "?varid=" + encodeURIComponent(streamJSON) + encodeURIComponent(courseTypeJSON) +"&username=" + "Anjali" +"&password=" + "Anjali";
-                	//window.location.href = locationJson.location + "?varid=" + streamJSON + courseTypeJSON +"&username=" + "Anjali" +"&password=" + "Anjali";
-            		//window.location.href = locationJson.location + "?varid=" + encodeURIComponent(streamJSON) +"&username=" + "Anjali" +"&password=" + "Anjali";
-
-
-            	} else {
-                    $('#ajaxGetUserServletResponse').text(responseText);
-            	}
-            },
-            error: function(){
-            	//alert("Error");
-            	document.getElementById("error").innerHTML = "Invalid email or password";
-            }
-
-        });
-    	//window.location.href = "/OnlineEvaluationSystem/jsp/MainCoursePage.jsp?varid="+ encodeURIComponent(strResJSON);
-    }
+//window.location.href = "/OnlineEvaluationSystem/jsp/MainCoursePage.jsp?varid="+ encodeURIComponent(strResJSON);
+}
 </script>
 </head>
 
@@ -118,368 +118,466 @@
       Tip 1: You can change the color of the sidebar using: data-color="purple | azure | green | orange | danger"
 
       Tip 2: you can also add an image using data-image tag
-  -->
-      <div class="logo">
-        <a href="http://www.winpointlc.com" class="simple-text logo-normal">
-          WinPoint
-        </a>
-      </div>
-      <div class="sidebar-wrapper">
-        <ul class="nav">
-          <li class="nav-item active  ">
-            <a class="nav-link" href="ClientDashboard.jsp">
-              <i class="material-icons">dashboard</i>
-              <p>Dashboard</p>
-            </a>
-          </li>
-          <li class="nav-item">
-            <!--  <a class="nav-link" href="User.jsp">  -->
-            <a class="nav-link" href="javascript:sendToUserProfile()">
-              <i class="material-icons">person</i>
-              <p>User Profile</p>
-            </a>
-          </li>
-          <li>
-          	<a class="nav-link" href="javascript:sendToMainCoursePage()">
-          		<i class="material-icons">computer</i>
-          		<p>Online Evaluation System</p>
-          	</a>
-          </li>
-          <li>
-          	<a class="nav-link" href="#">
-          		<i class="material-icons">assessment</i>
-          		<p>Analytics</p>
-          	</a>
-          </li>
-          <li>
-            <a class="nav-link" href="#">
-              <i class="material-icons">subject</i>
-              <p>Result</p>
-            </a>
-          </li>
-          <li>
-            <a class="nav-link" href="Notifications.jsp">
-              <i class="material-icons">notifications_none</i>
-              <p>Notifications</p>
-            </a>
-          </li>
-          <li>
-            <a class="nav-link" href="Settings.jsp">
-              <i class="material-icons">settings</i>
-              <p>Settings</p>
-            </a>
-          </li>
-          <!-- your sidebar here -->
-        </ul>
-      </div>
+    -->
+    <div class="logo">
+      <a href="http://www.winpointlc.com" class="simple-text logo-normal">
+        WinPoint
+      </a>
     </div>
-    <div class="main-panel">
-      <!-- Navbar -->
-      <nav class="navbar navbar-expand-lg navbar-transparent navbar-absolute fixed-top ">
-        <div class="container-fluid">
-          <div class="navbar-wrapper">
-            <a class="navbar-brand" href="#pablo">Dashboard</a>
-            <img id="photoId" />
-          </div>
-          <p id="welcome" style="margin-left:60%; text-transform: uppercase;"></p>
-          <button class="navbar-toggler" type="button" data-toggle="collapse" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="navbar-toggler-icon icon-bar"></span>
-            <span class="navbar-toggler-icon icon-bar"></span>
-            <span class="navbar-toggler-icon icon-bar"></span>
-          </button>
-          <div class="collapse navbar-collapse justify-content-end">
-            <ul class="navbar-nav">
-              <li class="nav-item dropdown">
-                <a class="nav-link" href="http://example.com" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  <i class="material-icons">notifications</i>
-                  <span class="notification">5</span>
-                  <p class="d-lg-none d-md-block">
-                    Some Actions
-                  </p>
-                </a>
-                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
-                  <a class="dropdown-item" href="#">Mike John responded to your email</a>
-                  <a class="dropdown-item" href="#">You have 5 new tasks</a>
-                  <a class="dropdown-item" href="#">You're now friend with Andrew</a>
-                  <a class="dropdown-item" href="#">Another Notification</a>
-                  <a class="dropdown-item" href="#">Another One</a>
-                </div>
-              </li>
-              <li class="nav-item dropdown">
-                <a class="nav-link" href="#pablo" id="navbarDropdownProfile" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  <i class="material-icons">person</i>
-                  <p class="d-lg-none d-md-block">
-                    Account
-                  </p>
-                </a>
-                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownProfile">
-                  <a class="dropdown-item" href="#">Profile</a>
-                  <a class="dropdown-item" href="#">Settings</a>
-                  <div class="dropdown-divider"></div>
-                  <a class="dropdown-item" href="#">Log out</a>
-                </div>
+    <div class="sidebar-wrapper">
+      <ul class="nav">
+        <li class="nav-item active  ">
+          <a class="nav-link" href="ClientDashboard.jsp">
+            <i class="material-icons">dashboard</i>
+            <p>Dashboard</p>
+          </a>
+        </li>
+        <li class="nav-item">
+          <!--  <a class="nav-link" href="User.jsp">  -->
+          <a class="nav-link" href="javascript:sendToUserProfile()">
+            <i class="material-icons">person</i>
+            <p>User Profile</p>
+          </a>
+        </li>
+        <li>
+          <a class="nav-link" href="javascript:sendToMainCoursePage()">
+            <i class="material-icons">computer</i>
+            <p>Online Evaluation System</p>
+          </a>
+        </li>
+        <li>
+          <a class="nav-link" href="#">
+            <i class="material-icons">assessment</i>
+            <p>Analytics</p>
+          </a>
+        </li>
+        <li>
+          <a class="nav-link" href="#">
+            <i class="material-icons">subject</i>
+            <p>Result</p>
+          </a>
+        </li>
+        <li>
+          <a class="nav-link" href="Notifications.jsp">
+            <i class="material-icons">notifications_none</i>
+            <p>Notifications</p>
+          </a>
+        </li>
+        <li>
+          <a class="nav-link" href="Settings.jsp">
+            <i class="material-icons">settings</i>
+            <p>Settings</p>
+          </a>
+        </li>
+        <!-- your sidebar here -->
+      </ul>
+    </div>
+  </div>
+  <div class="main-panel">
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-transparent navbar-absolute fixed-top ">
+      <div class="container-fluid">
+        <div class="navbar-wrapper">
+          <a class="navbar-brand" href="#pablo" id="navbar-brand">Dashboard</a>
+          <img id="photoId" />
+        </div>
+        <p id="welcome" style="margin-left:60%; text-transform: uppercase;"></p>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="navbar-toggler-icon icon-bar"></span>
+          <span class="navbar-toggler-icon icon-bar"></span>
+          <span class="navbar-toggler-icon icon-bar"></span>
+        </button>
+        <div class="collapse navbar-collapse justify-content-end">
+          <ul class="navbar-nav">
+            <li class="nav-item dropdown">
+              <a class="nav-link" href="http://example.com" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <i class="material-icons">notifications</i>
+                <span class="notification">5</span>
+                <p class="d-lg-none d-md-block">
+                  Some Actions
+                </p>
+              </a>
+              <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
+                <a class="dropdown-item" href="#">Mike John responded to your email</a>
+                <a class="dropdown-item" href="#">You have 5 new tasks</a>
+                <a class="dropdown-item" href="#">You're now friend with Andrew</a>
+                <a class="dropdown-item" href="#">Another Notification</a>
+                <a class="dropdown-item" href="#">Another One</a>
+              </div>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link" href="#pablo" id="navbarDropdownProfile" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <i class="material-icons">person</i>
+                <p class="d-lg-none d-md-block">
+                  Account
+                </p>
+              </a>
+              <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownProfile">
+                <a class="dropdown-item" href="#">Profile</a>
+                <a class="dropdown-item" href="#">Settings</a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="#">Log out</a>
+              </div>
               <!-- your navbar here -->
             </ul>
           </div>
         </div>
       </nav>
       <!-- End Navbar -->
-      <div class="content">
+
+
+      <div class="content Tech-content">
         <div class="container-fluid">
-          <div class="row">
 
-            <div class="col-lg-3 col-md-6 col-sm-6">
-              <div class="card card-stats">
-                <div class="card-header card-header-icon">
-                  <div class="card-heading">
-                    <h6>C</h6>
-                  </div>
-                  <div class="card-icon" style="font-size:20px;" id="row1-card1">
-                    <i class="fa fa-copyright" style="font-size:70px;"></i>
-                  </div>
-                  <p class="card-category">Marks obtained</p>
-                  <h3 class="card-title">49/50
-                  </h3>
-                </div>
-                <div class="card-footer">
-                  <div class="stats">
-                    <!-- <i class="material-icons text-danger">details</i> -->
-
-                    <div class="dropdown">
-                      <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        See More Marks
-                      </button>
-                      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                        <a class="dropdown-item" href="#">MCQ</a>
-                        <a class="dropdown-item" href="#">Coding</a>
-                        <a class="dropdown-item" href="#">Descriptive</a>
-                      </div>
-                    </div>
-
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div class="col-lg-3 col-md-6 col-sm-6">
-              <div class="card card-stats">
-                <div class="card-header card-header-danger card-header-icon">
-                  <div class="card-heading">
-                    <h6>Java</h6>
-                  </div>
-                  <div class="card-icon">
-                    <img src="../assets/img/Dashboard-main-page-images/java-brands.svg" alt="java" style=" height: 60px; width: 60px; ">
-                  </div>
-                  <p class="card-category">Marks obtained</p>
-                  <h3 class="card-title">49/50
-                  </h3>
-                </div>
-                <div class="card-footer">
-                  <div class="stats">
-
-                    <div class="dropdown">
-                      <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        See More Marks
-                      </button>
-                      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                        <a class="dropdown-item" href="#">MCQ</a>
-                        <a class="dropdown-item" href="#">Coding</a>
-                        <a class="dropdown-item" href="#">Descriptive</a>
-                      </div>
-                    </div>
-
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col-lg-3 col-md-6 col-sm-6">
-              <div class="card card-stats">
-                <div class="card-header card-header-success card-header-icon">
-                  <div class="card-heading">
-                    <h6>CPP</h6>
-                  </div>
-                  <div class="card-icon" style="font-size:20px;">
-                    <img src="../assets/img/Dashboard-main-page-images/cpp-icon-file-format.svg" alt="java" style=" height: 60px; width: 60px; ">
-
-                  </div>
-                  <p class="card-category">Marks obtained</p>
-                  <h3 class="card-title">49/50
-
-                  </h3>
-                </div>
-                <div class="card-footer">
-                  <div class="stats">
-
-                    <div class="dropdown">
-                      <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        See More Marks
-                      </button>
-                      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                        <a class="dropdown-item" href="#">MCQ</a>
-                        <a class="dropdown-item" href="#">Coding</a>
-                        <a class="dropdown-item" href="#">Descriptive</a>
-                      </div>
-                    </div>
-
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col-lg-3 col-md-6 col-sm-6">
-              <div class="card card-stats">
-                <div class="card-header card-header-warning card-header-icon">
-                  <div class="card-heading">
-                    <h6>Database</h6>
-                  </div>
-                  <div class="card-icon" style="font-size:20px;">
-                    <i class="fa fa-database" style="font-size:70px;"></i>
-                  </div>
-                  <p class="card-category">Marks obtained</p>
-                  <h3 class="card-title">49/50
-                  </h3>
-                </div>
-                <div class="card-footer">
-                  <div class="stats">
-
-                    <div class="dropdown">
-                      <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        See More Marks
-                      </button>
-                      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                        <a class="dropdown-item" href="#">MCQ</a>
-                        <a class="dropdown-item" href="#">Coding</a>
-                        <a class="dropdown-item" href="#">Descriptive</a>
-                      </div>
-                    </div>
-
-                  </div>
+          <div class="row row-main-header1">
+            <div class="col-md-11">
+              <div class="card card-plain">
+                <div class="card card-header card-header-rose">
+                  <h3 class="text-align mr-auto ml-auto">Technical Section</h3>
                 </div>
               </div>
             </div>
           </div>
 
-          <br><br><br><br>
-          <!-- Second Row -->
-          <div class="row">
-            <div class="col-lg-3 col-md-6 col-sm-6">
-              <div class="card card-stats">
-                <div class="card-header card-header-icon">
-                  <div class="card-heading">
-                    <h6>OS</h6>
+          <div class="inner-Tech-content">
+            <div class="row tech-row-1">
+              <div class="col-lg-3 col-md-6 col-sm-6">
+                <div class="card card-stats">
+                  <div class="card-header card-header-icon">
+                    <div class="card-heading">
+                      <h6>C</h6>
+                    </div>
+                    <div class="card-icon" style="font-size:20px;" id="row1-card1">
+                      <i class="fa fa-copyright" style="font-size:70px;"></i>
+                    </div>
+                    <p class="card-category">Marks obtained</p>
+                    <h3 class="card-title">49/50
+                    </h3>
                   </div>
-                  <div class="card-icon" style="font-size:20px;" id="card">
-                    <i class="fa fa-windows" style="font-size:70px;"></i>
-                  </div>
-                  <p class="card-category">Marks obtained</p>
-                  <h3 class="card-title">49/50
-
-                  </h3>
-                </div>
-                <div class="card-footer">
-                  <div class="stats">
-                    <div class="dropdown">
-                      <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        See More Marks
-                      </button>
-                      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                        <a class="dropdown-item" href="#">MCQ</a>
-                        <a class="dropdown-item" href="#">Coding</a>
-                        <a class="dropdown-item" href="#">Descriptive</a>
+                  <div class="card-footer">
+                    <div class="stats">
+                      <div class="dropdown">
+                        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                          See More Marks
+                        </button>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                          <a class="dropdown-item" href="#">MCQ</a>
+                          <a class="dropdown-item" href="#">Coding</a>
+                          <a class="dropdown-item" href="#">Descriptive</a>
+                        </div>
                       </div>
+
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-lg-3 col-md-6 col-sm-6">
+                <div class="card card-stats">
+                  <div class="card-header card-header-danger card-header-icon">
+                    <div class="card-heading">
+                      <h6>Java</h6>
+                    </div>
+                    <div class="card-icon">
+                      <img src="../assets/img/Dashboard-main-page-images/java-brands.svg" alt="java" style=" height: 60px; width: 60px; ">
+                    </div>
+                    <p class="card-category">Marks obtained</p>
+                    <h3 class="card-title">49/50
+                    </h3>
+                  </div>
+                  <div class="card-footer">
+                    <div class="stats">
+
+                      <div class="dropdown">
+                        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                          See More Marks
+                        </button>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                          <a class="dropdown-item" href="#">MCQ</a>
+                          <a class="dropdown-item" href="#">Coding</a>
+                          <a class="dropdown-item" href="#">Descriptive</a>
+                        </div>
+                      </div>
+
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+
+            </div>
+
+            <div class="row tech-row-2">
+              <div class="col-lg-3 col-md-6 col-sm-6">
+                <div class="card card-stats">
+                  <div class="card-header card-header-icon" >
+                    <div class="card-heading">
+                      <h6>Data Structures</h6>
+                    </div>
+                    <div class="card-icon" style="font-size:20px;" id="card3">
+                      <img src="../assets/img/Dashboard-main-page-images/cubes.svg" alt="java" style=" height: 60px; width: 60px; ">
+                    </div>
+                    <p class="card-category">Marks obtained</p>
+                    <h3 class="card-title">49/50
+                    </h3>
+                  </div>
+                  <div class="card-footer">
+                    <div class="stats">
+                      <div class="dropdown">
+                        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                          See More Marks
+                        </button>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                          <a class="dropdown-item" href="#">MCQ</a>
+                          <a class="dropdown-item" href="#">Coding</a>
+                          <a class="dropdown-item" href="#">Descriptive</a>
+                        </div>
+                      </div>
+
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-3 col-md-6 col-sm-6">
+                <div class="card card-stats">
+                  <div class="card-header card-header-icon">
+                    <div class="card-heading">
+                      <h6>CPP</h6>
+                    </div>
+                    <div class="card-icon" style="font-size:20px; background-color:rgb(20, 122, 159);">
+                      <img src="../assets/img/Dashboard-main-page-images/cpp-icon-file-format.svg" alt="java" style=" height: 60px; width: 60px; ">
+                    </div>
+                    <p class="card-category">Marks obtained</p>
+                    <h3 class="card-title">49/50
+                    </h3>
+                  </div>
+                  <div class="card-footer">
+                    <div class="stats">
+
+                      <div class="dropdown">
+                        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                          See More Marks
+                        </button>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                          <a class="dropdown-item" href="#">MCQ</a>
+                          <a class="dropdown-item" href="#">Coding</a>
+                          <a class="dropdown-item" href="#">Descriptive</a>
+                        </div>
+                      </div>
+
                     </div>
                   </div>
                 </div>
               </div>
             </div>
 
-            <div class="col-lg-3 col-md-6 col-sm-6">
-              <div class="card card-stats">
-                <div class="card-header card-header-primary  card-header-icon">
-                  <div class="card-heading">
-                    <h6>JS</h6>
+            <div class=" row tech-row-3">
+              <div class="col-lg-3 col-md-6 col-sm-6">
+                <div class="card card-stats">
+                  <div class="card-header card-header-warning card-header-icon">
+                    <div class="card-heading">
+                      <h6>Database</h6>
+                    </div>
+                    <div class="card-icon" style="font-size:20px;">
+                      <i class="fa fa-database" style="font-size:70px;"></i>
+                    </div>
+                    <p class="card-category">Marks obtained</p>
+                    <h3 class="card-title">49/50
+                    </h3>
                   </div>
-                  <div class="card-icon">
-                    <img src="../assets/img/Dashboard-main-page-images/js-brands.svg" alt="java" style=" height: 60px; width: 60px; ">
-                  </div>
-                  <p class="card-category">Marks obtained</p>
-                  <h3 class="card-title">49/50
-                  </h3>
-                </div>
-                <div class="card-footer">
-                  <div class="stats">
+                  <div class="card-footer">
+                    <div class="stats">
 
-                    <div class="dropdown">
-                      <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        See More Marks
-                      </button>
-                      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                        <a class="dropdown-item" href="#">MCQ</a>
-                        <a class="dropdown-item" href="#">Coding</a>
-                        <a class="dropdown-item" href="#">Descriptive</a>
+                      <div class="dropdown">
+                        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                          See More Marks
+                        </button>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                          <a class="dropdown-item" href="#">MCQ</a>
+                          <a class="dropdown-item" href="#">Coding</a>
+                          <a class="dropdown-item" href="#">Descriptive</a>
+                        </div>
                       </div>
                     </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-3 col-md-6 col-sm-6">
+                <div class="card card-stats">
+                  <div class="card-header card-header-primary  card-header-icon">
+                    <div class="card-heading">
+                      <h6>JS</h6>
+                    </div>
+                    <div class="card-icon">
+                      <img src="../assets/img/Dashboard-main-page-images/js-brands.svg" alt="java" style=" height: 60px; width: 60px; ">
+                    </div>
+                    <p class="card-category">Marks obtained</p>
+                    <h3 class="card-title">49/50
+                    </h3>
+                  </div>
+                  <div class="card-footer">
+                    <div class="stats">
 
+                      <div class="dropdown">
+                        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                          See More Marks
+                        </button>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                          <a class="dropdown-item" href="#">MCQ</a>
+                          <a class="dropdown-item" href="#">Coding</a>
+                          <a class="dropdown-item" href="#">Descriptive</a>
+                        </div>
+                      </div>
+
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+            <!-- End Inner Tech Content -->
+          </div>
+
+        </div>
+      </div>
+      <div class="content GA-content">
+        <div class="container-fluid">
+          <div class="row row-main-header2">
+            <div class="col-md-11">
+              <div class="card card-plain">
+                <div class="card card-header card-header-danger">
+                  <h3 class="text-align mr-auto ml-auto">General Aptitude Section</h3>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="inner-GA-content">
+            <div class="row GA-row-1">
+              <div class="col-lg-3 col-md-6 col-sm-6">
+                <div class="card card-stats">
+                  <div class="card-header card-header-icon">
+                    <div class="card-heading">
+                      <h6>QA</h6>
+                    </div>
+                    <div class="card-icon" style="font-size:20px; background-color:rgb(128, 4, 86);">
+                      <i class="material-icons">exposure</i>
+
+                    </div>
+                    <p class="card-category">Marks obtained</p>
+                    <h3 class="card-title">49/50
+
+                    </h3>
+                  </div>
+                  <div class="card-footer">
+                    <div class="stats">
+
+                      <div class="dropdown">
+                        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                          See More Marks
+                        </button>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                          <a class="dropdown-item" href="#">MCQ</a>
+                          <a class="dropdown-item" href="#">Coding</a>
+                          <a class="dropdown-item" href="#">Descriptive</a>
+                        </div>
+                      </div>
+
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-3 col-md-6 col-sm-6">
+                <div class="card card-stats">
+                  <div class="card-header card-header-icon">
+                    <div class="card-heading">
+                      <h6>LR</h6>
+                    </div>
+                    <div class="card-icon" style="font-size:20px; background-color:rgb(225, 228, 27);">
+                      <i class="material-icons">extension</i>
+                    </div>
+                    <p class="card-category">Marks obtained</p>
+                    <h3 class="card-title">49/50
+                    </h3>
+                  </div>
+                  <div class="card-footer">
+                    <div class="stats">
+
+                      <div class="dropdown">
+                        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                          See More Marks
+                        </button>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                          <a class="dropdown-item" href="#">MCQ</a>
+                          <a class="dropdown-item" href="#">Coding</a>
+                          <a class="dropdown-item" href="#">Descriptive</a>
+                        </div>
+                      </div>
+
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
-            <div class="col-lg-3 col-md-6 col-sm-6">
-              <div class="card card-stats">
-                <div class="card-header card-header-icon" >
-                  <div class="card-heading">
-                    <h6>Data Structures</h6>
-                  </div>
-                  <div class="card-icon" style="font-size:20px;" id="card3">
-                    <img src="../assets/img/Dashboard-main-page-images/cubes.svg" alt="java" style=" height: 60px; width: 60px; ">
-                  </div>
-                  <p class="card-category">Marks obtained</p>
-                  <h3 class="card-title">49/50
-                  </h3>
-                </div>
-                <div class="card-footer">
-                  <div class="stats">
-                    <div class="dropdown">
-                      <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        See More Marks
-                      </button>
-                      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                        <a class="dropdown-item" href="#">MCQ</a>
-                        <a class="dropdown-item" href="#">Coding</a>
-                        <a class="dropdown-item" href="#">Descriptive</a>
-                      </div>
+            <div class="row GA-row-2">
+              <div class="col-lg-3 col-md-6 col-sm-6">
+                <div class="card card-stats">
+                  <div class="card-header card-header-icon" >
+                    <div class="card-heading">
+                      <h6>Verbal Ability</h6>
                     </div>
+                    <div class="card-icon" style="font-size:20px; background-color:rgb(251, 26, 30);" id="card3">
+                      <i class="material-icons">spellcheck</i>
+                    </div>
+                    <p class="card-category">Marks obtained</p>
+                    <h3 class="card-title">49/50
+                    </h3>
+                  </div>
+                  <div class="card-footer">
+                    <div class="stats">
+                      <div class="dropdown">
+                        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                          See More Marks
+                        </button>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                          <a class="dropdown-item" href="#">MCQ</a>
+                          <a class="dropdown-item" href="#">Coding</a>
+                          <a class="dropdown-item" href="#">Descriptive</a>
+                        </div>
+                      </div>
 
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
 
-            <div class="col-lg-3 col-md-6 col-sm-6">
-              <div class="card card-stats">
-                <div class="card-header card-header-icon">
-                  <div class="card-heading">
-                    <h6>CN</h6>
+              <div class="col-lg-3 col-md-6 col-sm-6">
+                <div class="card card-stats">
+                  <div class="card-header card-header-icon">
+                    <div class="card-heading">
+                      <h6>Verbal Reasoning</h6>
+                    </div>
+                    <div class="card-icon" style="font-size:20px;background-color:rgb(22, 156, 185);" id="card4">
+                      <i class="material-icons">find_in_page</i>
+                    </div>
+                    <p class="card-category">Marks obtained</p>
+                    <h3 class="card-title">49/50
+                    </h3>
                   </div>
-                  <div class="card-icon" style="font-size:20px;" id="card4">
-                    <img src="../assets/img/Dashboard-main-page-images/network.svg" alt="java" style=" height: 60px; width: 60px; ">
-                  </div>
-                  <p class="card-category">Marks obtained</p>
-                  <h3 class="card-title">49/50
-                  </h3>
-                </div>
-                <div class="card-footer">
-                  <div class="stats">
-                    <div class="dropdown">
-                      <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        See More Marks
-                      </button>
-                      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                        <a class="dropdown-item" href="#">MCQ</a>
-                        <a class="dropdown-item" href="#">Coding</a>
-                        <a class="dropdown-item" href="#">Descriptive</a>
+                  <div class="card-footer">
+                    <div class="stats">
+                      <div class="dropdown">
+                        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                          See More Marks
+                        </button>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                          <a class="dropdown-item" href="#">MCQ</a>
+                          <a class="dropdown-item" href="#">Coding</a>
+                          <a class="dropdown-item" href="#">Descriptive</a>
+                        </div>
                       </div>
-                    </div>y
+                    </div>
                   </div>
                 </div>
               </div>
@@ -504,7 +602,7 @@
           <div class="copyright float-right">
             &copy;
             <script>
-              document.write(new Date().getFullYear())
+            document.write(new Date().getFullYear())
             </script>, made with <i class="material-icons">favorite</i> by
             <a href="https://www.winpointlc.com" target="_blank">WinPoint Team</a> for a better education.
           </div>
@@ -558,182 +656,182 @@
   <!-- Material Dashboard DEMO methods, don't include it in your project! -->
   <script src="../assets/demo/demo.js"></script>
   <script>
-    $(document).ready(function() {
-      $().ready(function() {
-        $sidebar = $('.sidebar');
+  $(document).ready(function() {
+    $().ready(function() {
+      $sidebar = $('.sidebar');
 
-        $sidebar_img_container = $sidebar.find('.sidebar-background');
+      $sidebar_img_container = $sidebar.find('.sidebar-background');
 
-        $full_page = $('.full-page');
+      $full_page = $('.full-page');
 
-        $sidebar_responsive = $('body > .navbar-collapse');
+      $sidebar_responsive = $('body > .navbar-collapse');
 
-        window_width = $(window).width();
+      window_width = $(window).width();
 
-        fixed_plugin_open = $('.sidebar .sidebar-wrapper .nav li.active a p').html();
+      fixed_plugin_open = $('.sidebar .sidebar-wrapper .nav li.active a p').html();
 
-        if (window_width > 767 && fixed_plugin_open == 'Dashboard') {
-          if ($('.fixed-plugin .dropdown').hasClass('show-dropdown')) {
-            $('.fixed-plugin .dropdown').addClass('open');
-          }
-
+      if (window_width > 767 && fixed_plugin_open == 'Dashboard') {
+        if ($('.fixed-plugin .dropdown').hasClass('show-dropdown')) {
+          $('.fixed-plugin .dropdown').addClass('open');
         }
 
-        $('.fixed-plugin a').click(function(event) {
-          // Alex if we click on switch, stop propagation of the event, so the dropdown will not be hide, otherwise we set the  section active
-          if ($(this).hasClass('switch-trigger')) {
-            if (event.stopPropagation) {
-              event.stopPropagation();
-            } else if (window.event) {
-              window.event.cancelBubble = true;
-            }
+      }
+
+      $('.fixed-plugin a').click(function(event) {
+        // Alex if we click on switch, stop propagation of the event, so the dropdown will not be hide, otherwise we set the  section active
+        if ($(this).hasClass('switch-trigger')) {
+          if (event.stopPropagation) {
+            event.stopPropagation();
+          } else if (window.event) {
+            window.event.cancelBubble = true;
           }
-        });
+        }
+      });
 
-        $('.fixed-plugin .active-color span').click(function() {
-          $full_page_background = $('.full-page-background');
+      $('.fixed-plugin .active-color span').click(function() {
+        $full_page_background = $('.full-page-background');
 
-          $(this).siblings().removeClass('active');
-          $(this).addClass('active');
+        $(this).siblings().removeClass('active');
+        $(this).addClass('active');
 
-          var new_color = $(this).data('color');
+        var new_color = $(this).data('color');
 
-          if ($sidebar.length != 0) {
-            $sidebar.attr('data-color', new_color);
-          }
+        if ($sidebar.length != 0) {
+          $sidebar.attr('data-color', new_color);
+        }
 
-          if ($full_page.length != 0) {
-            $full_page.attr('filter-color', new_color);
-          }
+        if ($full_page.length != 0) {
+          $full_page.attr('filter-color', new_color);
+        }
 
-          if ($sidebar_responsive.length != 0) {
-            $sidebar_responsive.attr('data-color', new_color);
-          }
-        });
+        if ($sidebar_responsive.length != 0) {
+          $sidebar_responsive.attr('data-color', new_color);
+        }
+      });
 
-        $('.fixed-plugin .background-color .badge').click(function() {
-          $(this).siblings().removeClass('active');
-          $(this).addClass('active');
+      $('.fixed-plugin .background-color .badge').click(function() {
+        $(this).siblings().removeClass('active');
+        $(this).addClass('active');
 
-          var new_color = $(this).data('background-color');
+        var new_color = $(this).data('background-color');
 
-          if ($sidebar.length != 0) {
-            $sidebar.attr('data-background-color', new_color);
-          }
-        });
+        if ($sidebar.length != 0) {
+          $sidebar.attr('data-background-color', new_color);
+        }
+      });
 
-        $('.fixed-plugin .img-holder').click(function() {
-          $full_page_background = $('.full-page-background');
+      $('.fixed-plugin .img-holder').click(function() {
+        $full_page_background = $('.full-page-background');
 
-          $(this).parent('li').siblings().removeClass('active');
-          $(this).parent('li').addClass('active');
+        $(this).parent('li').siblings().removeClass('active');
+        $(this).parent('li').addClass('active');
 
 
-          var new_image = $(this).find("img").attr('src');
+        var new_image = $(this).find("img").attr('src');
 
-          if ($sidebar_img_container.length != 0 && $('.switch-sidebar-image input:checked').length != 0) {
-            $sidebar_img_container.fadeOut('fast', function() {
-              $sidebar_img_container.css('background-image', 'url("' + new_image + '")');
-              $sidebar_img_container.fadeIn('fast');
-            });
-          }
-
-          if ($full_page_background.length != 0 && $('.switch-sidebar-image input:checked').length != 0) {
-            var new_image_full_page = $('.fixed-plugin li.active .img-holder').find('img').data('src');
-
-            $full_page_background.fadeOut('fast', function() {
-              $full_page_background.css('background-image', 'url("' + new_image_full_page + '")');
-              $full_page_background.fadeIn('fast');
-            });
-          }
-
-          if ($('.switch-sidebar-image input:checked').length == 0) {
-            var new_image = $('.fixed-plugin li.active .img-holder').find("img").attr('src');
-            var new_image_full_page = $('.fixed-plugin li.active .img-holder').find('img').data('src');
-
+        if ($sidebar_img_container.length != 0 && $('.switch-sidebar-image input:checked').length != 0) {
+          $sidebar_img_container.fadeOut('fast', function() {
             $sidebar_img_container.css('background-image', 'url("' + new_image + '")');
+            $sidebar_img_container.fadeIn('fast');
+          });
+        }
+
+        if ($full_page_background.length != 0 && $('.switch-sidebar-image input:checked').length != 0) {
+          var new_image_full_page = $('.fixed-plugin li.active .img-holder').find('img').data('src');
+
+          $full_page_background.fadeOut('fast', function() {
             $full_page_background.css('background-image', 'url("' + new_image_full_page + '")');
+            $full_page_background.fadeIn('fast');
+          });
+        }
+
+        if ($('.switch-sidebar-image input:checked').length == 0) {
+          var new_image = $('.fixed-plugin li.active .img-holder').find("img").attr('src');
+          var new_image_full_page = $('.fixed-plugin li.active .img-holder').find('img').data('src');
+
+          $sidebar_img_container.css('background-image', 'url("' + new_image + '")');
+          $full_page_background.css('background-image', 'url("' + new_image_full_page + '")');
+        }
+
+        if ($sidebar_responsive.length != 0) {
+          $sidebar_responsive.css('background-image', 'url("' + new_image + '")');
+        }
+      });
+
+      $('.switch-sidebar-image input').change(function() {
+        $full_page_background = $('.full-page-background');
+
+        $input = $(this);
+
+        if ($input.is(':checked')) {
+          if ($sidebar_img_container.length != 0) {
+            $sidebar_img_container.fadeIn('fast');
+            $sidebar.attr('data-image', '#');
           }
 
-          if ($sidebar_responsive.length != 0) {
-            $sidebar_responsive.css('background-image', 'url("' + new_image + '")');
-          }
-        });
-
-        $('.switch-sidebar-image input').change(function() {
-          $full_page_background = $('.full-page-background');
-
-          $input = $(this);
-
-          if ($input.is(':checked')) {
-            if ($sidebar_img_container.length != 0) {
-              $sidebar_img_container.fadeIn('fast');
-              $sidebar.attr('data-image', '#');
-            }
-
-            if ($full_page_background.length != 0) {
-              $full_page_background.fadeIn('fast');
-              $full_page.attr('data-image', '#');
-            }
-
-            background_image = true;
-          } else {
-            if ($sidebar_img_container.length != 0) {
-              $sidebar.removeAttr('data-image');
-              $sidebar_img_container.fadeOut('fast');
-            }
-
-            if ($full_page_background.length != 0) {
-              $full_page.removeAttr('data-image', '#');
-              $full_page_background.fadeOut('fast');
-            }
-
-            background_image = false;
-          }
-        });
-
-        $('.switch-sidebar-mini input').change(function() {
-          $body = $('body');
-
-          $input = $(this);
-
-          if (md.misc.sidebar_mini_active == true) {
-            $('body').removeClass('sidebar-mini');
-            md.misc.sidebar_mini_active = false;
-
-            $('.sidebar .sidebar-wrapper, .main-panel').perfectScrollbar();
-
-          } else {
-
-            $('.sidebar .sidebar-wrapper, .main-panel').perfectScrollbar('destroy');
-
-            setTimeout(function() {
-              $('body').addClass('sidebar-mini');
-
-              md.misc.sidebar_mini_active = true;
-            }, 300);
+          if ($full_page_background.length != 0) {
+            $full_page_background.fadeIn('fast');
+            $full_page.attr('data-image', '#');
           }
 
-          // we simulate the window Resize so the charts will get updated in realtime.
-          var simulateWindowResize = setInterval(function() {
-            window.dispatchEvent(new Event('resize'));
-          }, 180);
+          background_image = true;
+        } else {
+          if ($sidebar_img_container.length != 0) {
+            $sidebar.removeAttr('data-image');
+            $sidebar_img_container.fadeOut('fast');
+          }
 
-          // we stop the simulation of Window Resize after the animations are completed
+          if ($full_page_background.length != 0) {
+            $full_page.removeAttr('data-image', '#');
+            $full_page_background.fadeOut('fast');
+          }
+
+          background_image = false;
+        }
+      });
+
+      $('.switch-sidebar-mini input').change(function() {
+        $body = $('body');
+
+        $input = $(this);
+
+        if (md.misc.sidebar_mini_active == true) {
+          $('body').removeClass('sidebar-mini');
+          md.misc.sidebar_mini_active = false;
+
+          $('.sidebar .sidebar-wrapper, .main-panel').perfectScrollbar();
+
+        } else {
+
+          $('.sidebar .sidebar-wrapper, .main-panel').perfectScrollbar('destroy');
+
           setTimeout(function() {
-            clearInterval(simulateWindowResize);
-          }, 1000);
+            $('body').addClass('sidebar-mini');
 
-        });
+            md.misc.sidebar_mini_active = true;
+          }, 300);
+        }
+
+        // we simulate the window Resize so the charts will get updated in realtime.
+        var simulateWindowResize = setInterval(function() {
+          window.dispatchEvent(new Event('resize'));
+        }, 180);
+
+        // we stop the simulation of Window Resize after the animations are completed
+        setTimeout(function() {
+          clearInterval(simulateWindowResize);
+        }, 1000);
+
       });
     });
+  });
   </script>
   <script>
-    $(document).ready(function() {
-      // Javascript method's body can be found in assets/js/demos.js
-      md.initDashboardPageCharts();
+  $(document).ready(function() {
+    // Javascript method's body can be found in assets/js/demos.js
+    md.initDashboardPageCharts();
 
-    });
+  });
   </script>
 </body>
 

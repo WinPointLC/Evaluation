@@ -22,3 +22,42 @@ font-size: 13px;
 .drop1{
   width: 190px;
 }
+.Dashboard-content-2{
+  overflow-y: scroll;
+  width: 70vw;
+  height:60vh;
+  margin-left:15%;
+  border: 1px solid rgb(196, 188, 188);
+  box-shadow: 2px 2px 8px 3px rgb(196, 188, 188);
+}
+.tech-row-1{
+/* margin-left: 10%; */
+}
+.tech-row-2{
+/* margin-left: 10%; */
+}
+
+.row-main-header2{
+  /* margin-top:7%; */
+  margin-left: 3%;
+}
+.row-main-header1{
+  margin-left: 3%;
+}
+
+.GA-row-1 .col-md-6{
+  /* margin-left: 15%; */
+}
+.GA-row-2 .col-md-6{
+  /* margin-left: 15%; */
+}
+.inner-Tech-content{
+border: 1px solid rgb(196, 188, 188);
+box-shadow: 2px 2px 8px 3px rgb(196, 188, 188);
+overflow-y: scroll;
+}
+.inner-GA-content{
+  border: 1px solid rgb(196, 188, 188);
+  box-shadow: 2px 2px 8px 3px rgb(196, 188, 188);
+  overflow-y: scroll;
+}

@@ -53,8 +53,6 @@
 
 	        });
 	    }
-
-
 	    });
 	</script>
 </head>
@@ -74,10 +72,10 @@
 				</div>
 				<div class="form-group">
 					<label for="password">Password</label>
-					<input class="form-control" id="password" type="password" placeholder="Type your Password" name="password" required>
+					<input class="form-control" id="password" type="password" placeholder="Type your Password" name="password" required >
 				</div>
 				<div class="form-group">
-					<input type="button" id="log-btn" class="login-btn" value="Login" name="login">
+					<input type="button" id="log-btn" class="login-btn" value="Login" name="login" >
 				</div>
 				<div class="forgot-password">
 					<a href="ForgetPassword.jsp">Forgot Password</a>
@@ -88,6 +86,18 @@
 	  	</form>
 	  </div>
 	</div>
+	<script type="text/javascript">
+	window.onload = function() {
+		document.getElementById("password")
+			.addEventListener("keyup", function(event) {
+			event.preventDefault();
+			if (event.keyCode === 13) {
+					document.getElementById("log-btn").click();
+					console.log("You Pressed Enter");
+			}
+		});
+	}
+	</script>
 </body>
 
 </html>

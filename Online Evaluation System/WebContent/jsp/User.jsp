@@ -15,8 +15,8 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
   <!-- CSS Files -->
   <link href="../assets/css/material-dashboard.css?v=2.1.1" rel="stylesheet" />
-  <!-- CSS Just for demo purpose, don't include it in your project -->
-  <link href="../assets/demo/demo.css" rel="stylesheet" />
+  <link href="../MaterialKitHomePage/assets/css/material-kit.css?v=2.0.5" rel="stylesheet" />
+  <link rel="stylesheet" href="../css/User.css">
 
 </head>
 
@@ -146,19 +146,19 @@
                     <div class="row">
                       <div class="col-md-3">
                         <div class="form-group">
-                          <label class="bmd-label-floating">Username</label>
+                          <label>Username</label>
                           <input type="text" class="form-control" id="username">
                         </div>
                       </div>
                       <div class="col-md-4">
                         <div class="form-group">
-                          <label class="bmd-label-floating">Email address</label>
+                          <label>Email address</label>
                           <input type="email" class="form-control" id="email">
                         </div>
                       </div>
                       <div class="col-md-4">
                         <div class="form-group">
-                          <label class="bmd-label-floating">Mobile No:</label>
+                          <label>Mobile No:</label>
                           <input type="number" class="form-control" id="mobileNumber">
                         </div>
                       </div>
@@ -166,19 +166,19 @@
                     <div class="row">
                       <div class="col-md-3">
                         <div class="form-group">
-                          <label class="bmd-label-floating">Fist Name</label>
+                          <label>Fist Name</label>
                           <input type="text" class="form-control" id="firstName">
                         </div>
                       </div>
                       <div class="col-md-3">
                         <div class="form-group">
-                          <label class="bmd-label-floating">Last Name</label>
+                          <label>Last Name</label>
                           <input type="text" class="form-control" id="lastName">
                         </div>
                       </div>
                       <div class="col-md-6">
                         <div class="form-group">
-                          <label class="bmd-label-floating">College Name</label>
+                          <label>College Name</label>
                           <input type="text" class="form-control" id="college">
                         </div>
                       </div>
@@ -186,25 +186,25 @@
                     <div class="row">
                       <div class="col-md-4">
                         <div class="form-group">
-                          <label class="bmd-label-floating">Degree</label>
+                          <label>Degree</label>
                           <input type="text" class="form-control" id="degree">
                         </div>
                       </div>
                       <div class="col-md-4">
                         <div class="form-group">
-                          <label class="bmd-label-floating">Year of Graduation</label>
+                          <label>Year of Graduation</label>
                           <input type="number" class="form-control" id="graduationyear">
                         </div>
                       </div>
                       <div class="col-md-3">
                         <div class="form-group">
-                          <label class="bmd-label-floating">Branch</label>
+                          <label>Branch</label>
                           <input type="text" class="form-control" id="branch">
                         </div>
                       </div>
                       <div class="col-md-12">
                         <div class="form-group">
-                          <label class="bmd-label-floating">Adress</label>
+                          <label>Adress</label>
                           <input type="text" class="form-control" id="address">
                         </div>
                       </div>
@@ -212,19 +212,19 @@
                     <div class="row">
                       <div class="col-md-4">
                         <div class="form-group">
-                          <label class="bmd-label-floating">City</label>
+                          <label>City</label>
                           <input type="text" class="form-control" id="city">
                         </div>
                       </div>
                       <div class="col-md-4">
                         <div class="form-group">
-                          <label class="bmd-label-floating">Country</label>
+                          <label>Country</label>
                           <input type="text" class="form-control" id="Country">
                         </div>
                       </div>
                       <div class="col-md-4">
-                        <div class="form-group">
-                          <label class="bmd-label-floating">Postal Code</label>
+                        <div class="form-group has-default bmd-form-group">
+                          <label>Postal Code</label>
                           <input type="text" class="form-control" id="postal">
                         </div>
                       </div>
@@ -232,19 +232,19 @@
                     <div class="row">
                       <div class="col-md-4">
                         <div class="form-group">
-                          <label class="bmd-label-floating">Password</label>
+                          <label>Password</label>
                           <input type="password" class="form-control" id="password">
                         </div>
                       </div>
                       <div class="col-md-4">
                         <div class="form-group">
-                          <label class="bmd-label-floating">Security Question</label>
+                          <label>Security Question</label>
                           <input type="text" class="form-control" id="secquestion">
                         </div>
                       </div>
                       <div class="col-md-4">
                         <div class="form-group">
-                          <label class="bmd-label-floating">Security Answer</label>
+                          <label>Security Answer</label>
                           <input type="text" class="form-control" id="secanswer">
                         </div>
                       </div>
@@ -252,7 +252,7 @@
                         <div class="form-group">
                           <label>About Me</label>
                           <div class="form-group">
-                            <label class="bmd-label-floating"></label>
+                            <label></label>
                             <textarea class="form-control" rows="5" id="aboutme"></textarea>
                           </div>
                         </div>
@@ -268,19 +268,19 @@
               <div class="card card-profile">
                 <div class="card-avatar">
                   <a href="#pablo">
-                    <img class="img" id="photoId" /> <!-- src="../assets/img/faces/rucha.jpg" /> -->
+                    <img id="uploadPreview" style="width: 100px; height: 100px;" />
                   </a>
                 </div>
                 <div class="choosefile">
-                  <input type="file" id="read-file" accept="image/jpeg" onclick="showImage();">
+                  <input id="uploadImage" type="file" name="myPhoto" onchange="PreviewImage();" />
                 </div>
                 <div class="card-body">
-                  <%-- <h6 class="card-category text-gray">Student</h6>
+                   <h6 class="card-category text-gray">Student</h6>
                   <h4 class="card-title">Rucha Jaiswal</h4>
                   <p class="card-description">
                     Hello I am Rucha Jaiswal. Student of PICT BE(Computer).
                   </p>
-                  <a href="#pablo" class="btn btn-primary btn-round">Follow</a> --%>
+                  <a href="#pablo" class="btn btn-primary btn-round">Follow</a>
                 </div>
               </div>
             </div>
@@ -416,6 +416,14 @@
   <!-- Material Dashboard DEMO methods, don't include it in your project! -->
   <script src="../assets/demo/demo.js"></script>
   <script>
+  function PreviewImage() {
+    var oFReader = new FileReader();
+    oFReader.readAsDataURL(document.getElementById('uploadImage').files[0]);
+    oFReader.onload = function (oFREvent) {
+      document.getElementById('uploadPreview').src = oFREvent.target.result;
+    }
+  }
+
     $(document).ready(function() {
     	var searchString = window.location.search.substring(1);
     	var arr = searchString.split('&');
