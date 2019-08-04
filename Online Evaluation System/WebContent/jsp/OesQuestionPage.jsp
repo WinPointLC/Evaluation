@@ -319,7 +319,8 @@
     // radiobtn.setAttribute('checked', false);
     var ele = document.getElementsByName("radio-group");
     for(var i=0;i<ele.length;i++)
-    ele[i].checked = false;
+       ele[i].checked = false;
+    answersList[currentQuestion-1] = 0;
   }
 </script>
 </head>

@@ -58,6 +58,10 @@
     window.location.href = "/OnlineEvaluationSystem/jsp/User.jsp?varid="+ data;
     //encodeURIComponent(strResJSON);
   }
+  function sendToUserAnalytics(){
+	    window.location.href = "/OnlineEvaluationSystem/jsp/Analytics.jsp?varid="+ data;
+	    //encodeURIComponent(strResJSON);
+	  }
   function sendToMainCoursePage(){
     $.ajax({
       type: 'POST',
@@ -146,7 +150,7 @@
           </a>
         </li>
         <li>
-          <a class="nav-link" href="#">
+          <a class="nav-link" href="javascript:sendToUserAnalytics()">
             <i class="material-icons">assessment</i>
             <p>Analytics</p>
           </a>
