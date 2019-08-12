@@ -21,7 +21,7 @@
   <!-- <link href="../MaterialKitHomePage/assets/css/material-kit.css?v=2.0.5" rel="stylesheet" /> -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 
-  <script>
+   <script>
   var data;
   var userProfile1;
   var strResJSON;
@@ -244,8 +244,8 @@
             </div>
           </div>
 
-          <div class="inner-Tech-content">
-            <div class="row tech-row-1">
+          <div class="inner-Tech-content" id="Tech-cards">
+             <!--<div class="row tech-row-1">
               <div class="col-lg-3 col-md-6 col-sm-6">
                 <div class="card card-stats">
                   <div class="card-header card-header-icon">
@@ -308,7 +308,6 @@
                   </div>
                 </div>
               </div>
-
 
             </div>
 
@@ -439,7 +438,7 @@
                 </div>
               </div>
 
-            </div>
+            </div> -->
             <!-- End Inner Tech Content -->
           </div>
 
@@ -660,6 +659,96 @@
   <!-- Material Dashboard DEMO methods, don't include it in your project! -->
   <script src="../assets/demo/demo.js"></script>
   <script>
+  
+console.log("Creating Dynamic Elements");
+  //Dynamic Cards
+
+var TechArr = ['Java','Data Structures','CPP','JS'];
+var TechArr2 = ['Java','Data Structures','CPP','JS'];
+var Mixarr=['../assets/img/Dashboard-main-page-images/java-brands.svg','../assets/img/Dashboard-main-page-images/cubes.svg','../assets/img/Dashboard-main-page-images/cpp-icon-file-format.svg','../assets/img/Dashboard-main-page-images/js-brands.svg'];
+
+for (var i = 0; i < TechArr2.length/2; i++) {
+  // for (var j=0;j<Mixarr.length;j++) {
+  var row  =document.createElement('div');
+  row.className="row tech-row";
+for (var x = 0; x < TechArr.length; x++) {
+  var col1 = document.createElement('div');
+  col1.className="col-lg-3 col-md-6 col-sm-6";
+  var card = document.createElement('div');
+  card.className="card card-stats";
+  var cardheader = document.createElement('div');
+  cardheader.className="card-header  card-header-icon";
+  var cardHeading = document.createElement('div');
+  cardHeading.className="card-heading";
+  var h6 = document.createElement('h6');
+    h6.textContent = TechArr[x];
+    cardHeading.appendChild(h6);
+  var cardIcon = document.createElement('div');
+  cardIcon.className="card-icon";
+  var img = document.createElement('img');
+
+      img.setAttribute('src',Mixarr[x]);
+      img.setAttribute('style', "width:60px;height:60px;");
+      cardIcon.appendChild(img);
+
+
+  var p = document.createElement('p');
+  p.className="card-category";
+  p.textContent = 'Marks Obtained';
+  var h3 = document.createElement('h3');
+  h3.className="card-title";
+  h3.textContent = 'Score';
+  // End Card Header
+  var cardfooter = document.createElement('div');
+  cardfooter.className="card-footer";
+  var stats =document.createElement('div');
+  stats.className="stats";
+  var dropdown = document.createElement('div');
+  dropdown.className="dropdown";
+  var button = document.createElement('button');
+  button.className="btn btn-secondary dropdown-toggle";
+  button.id="dropdownMenuButton";
+  button.setAttribute('data-toggle',"dropdown");
+  button.setAttribute('aria-haspopup', "true");
+  button.setAttribute('aria-expanded', "false");
+  button.textContent = 'See More Marks';
+
+  var dropdownmenu = document.createElement('div');
+  dropdownmenu.className="dropdown-menu";
+  dropdownmenu.setAttribute('aria-labelledby',"dropdownMenuButton");
+  var Anchors = ['MCQ','Coding','Descriptive'];
+
+  for (var k = 0; k < Anchors.length; k++) {
+    var anchor  = document.createElement('a');
+    anchor.className="dropdown-item";
+    anchor.textContent = Anchors[k];
+    dropdownmenu.appendChild(anchor);
+    dropdown.appendChild(dropdownmenu);
+    dropdown.appendChild(button);
+  }
+  // inner card header elements
+
+  cardheader.appendChild(cardIcon);
+  cardheader.appendChild(p);
+  cardheader.appendChild(h3);
+  cardheader.appendChild(cardHeading);
+  card.appendChild(cardheader);
+
+  stats.appendChild(dropdown);
+  cardfooter.appendChild(stats);
+  card.appendChild(cardfooter);
+
+  col1.appendChild(card);
+  // console.log("Inner For Loop");
+  row.appendChild(col1);
+}
+
+  document.getElementById('Tech-cards').appendChild(row);
+  console.log("We are at te End of Loop");
+  }
+// }
+
+
   $(document).ready(function() {
     $().ready(function() {
       $sidebar = $('.sidebar');
@@ -834,8 +923,8 @@
   $(document).ready(function() {
     // Javascript method's body can be found in assets/js/demos.js
     md.initDashboardPageCharts();
-
   });
+
   </script>
 </body>
 
