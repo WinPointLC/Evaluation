@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="utf-8" />
+  <link rel="apple-touch-icon" sizes="76x76" href="../assets/img/apple-icon.png">
+  <link rel="icon" type="image/png" href="../assets/img/favicon.png">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+  <title>
+    Admin Page
+  </title>
+  <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no' name='viewport' />
+  <!--     Fonts and icons     -->
+  <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons" />
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
+  <!-- CSS Files -->
+  <!-- <link href="../assets/css/material-dashboard.css?v=2.1.1" rel="stylesheet" /> -->
+  <link href="../MaterialKitHomePage/assets/css/material-kit.css?v=2.0.5" rel="stylesheet" />
+  <link rel="stylesheet" href="../css/AdminPage.css">
+</head>
+<body>
+  <div class="container-fluid">
+
+    <div class="row">
+      <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
+        <div class="card card-plain">
+          <div class="card card-header card-header-primary main-head">
+            <h3 class="text-align mr-auto ml-auto">Add Question</h3>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card-body">
+      <form>
+        <div class="row">
+          <div class="col-md-3">
+            <div class="stats">
+              <div class="dropdown">
+                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  Select Stream
+                </button>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" id="stream-dropdown">
+
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-3">
+            <div class="stats">
+              <div class="dropdown">
+                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  Select Course Type
+                </button>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" id="coursetype-dropdown">
+
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-3">
+            <div class="stats">
+              <div class="dropdown">
+                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  Select Evaluation Type
+                </button>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" id="Evaluation-dropdown">
+
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-3">
+            <div class="stats">
+              <div class="dropdown">
+                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  Select a course
+                </button>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" id="course-dropdown">
+
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-3">
+            <div class="stats">
+              <div class="dropdown">
+                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  Select Topics
+                </button>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" id="topic-dropdown">
+
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-3">
+            <div class="form-group">
+              <label class="bmd-label-floating">Enter Total Marks</label>
+              <input type="number" class="form-control">
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="stats">
+              <div class="dropdown">
+                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  Select Difficulty level
+                </button>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" id="diff-dropdown">
+
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+        <div class="row">
+          <div class="col-md-12">
+            <div class="form-group">
+              <label>Add a Question</label>
+              <div class="form-group">
+                <label></label>
+                <textarea class="form-control" rows="3" id="aboutme"></textarea>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-4">
+            <h4>Add Options</h4>
+          </div>
+        </div>
+        <div class="inner-option" id="inner-opt-content">
+
+        </div>
+
+        <div class="row">
+          <div class="col-md-4">
+            <h4>Correct Options</h4>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-4">
+            <div class="form-group">
+              <label class="bmd-label-floating">Enter the Correct Option Number</label>
+              <input type="number" class="form-control">
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-4">
+            <h4>Explaination for Answer</h4>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-12">
+            <div class="form-group">
+              <label>Add Explaination</label>
+              <div class="form-group">
+                <label></label>
+                <textarea name="name" class="form-control" rows="3"></textarea>
+              </div>
+
+            </div>
+          </div>
+        </div>
+        <button type="submit" class="btn btn-primary pull-right">Save</button>
+        <div class="clearfix"></div>
+      </form>
+
+    </div>
+
+  </div>
+  <script type="text/javascript">
+    // adding code for all components of dropdown
+    // first for select Stream
+    var Streamlist = ['Technical','SoftSkills','General Aptitude'];
+    for (var i = 0; i < Streamlist.length; i++) {
+      var anchor = document.createElement('a');
+      anchor.className="dropdown-item";
+      anchor.setAttribute('href', "#");
+      anchor.textContent = Streamlist[i];
+      document.getElementById('stream-dropdown').appendChild(anchor);
+    }
+
+    //Second For Course List
+    var Coursetypelist = ['Modular','TBC','CRT'];
+    for (var i = 0; i < Coursetypelist.length; i++) {
+      var anchor2 = document.createElement('a');
+      anchor2.className="dropdown-item";
+      anchor2.setAttribute('href', "#");
+      anchor2.textContent = Coursetypelist[i];
+      document.getElementById('coursetype-dropdown').appendChild(anchor2);
+    }
+
+    //Third for Evaluation type
+    var Evaluationlist = ['MCQ','Coding','Descriptive'];
+    for (var i = 0; i < Evaluationlist.length; i++) {
+      var anchor3 = document.createElement('a');
+      anchor3.className="dropdown-item";
+      anchor3.setAttribute('href', "#");
+      anchor3.textContent = Evaluationlist[i];
+      document.getElementById('Evaluation-dropdown').appendChild(anchor3);
+    }
+
+    //Fourth for Course list
+    var Courselist = ['C','C++','Java','JavaScript','Database','DataStructures'];
+    for (var i = 0; i < Courselist.length; i++) {
+      var anchor4 = document.createElement('a');
+      anchor4.className="dropdown-item";
+      anchor4.setAttribute('href', "#");
+      anchor4.textContent = Courselist[i];
+      document.getElementById('course-dropdown').appendChild(anchor4);
+    }
+
+    //Fifth for Topics
+    var TopicList = ['Basics','Functions','Operators','Input/output','pointers','FileHandling'];
+    for (var i = 0; i < TopicList.length; i++) {
+      var anchor5 = document.createElement('a');
+      anchor5.className="dropdown-item";
+      anchor5.setAttribute('href', "#");
+      anchor5.textContent = TopicList[i];
+      document.getElementById('topic-dropdown').appendChild(anchor5);
+    }
+
+    // Sixth for Difficulty level
+    var DiffList = ['Easy ','Medium','Hard'];
+    for (var i = 0; i < DiffList.length; i++) {
+      var anchor6 = document.createElement('a');
+      anchor6.className="dropdown-item";
+      anchor6.setAttribute('href', "#");
+      anchor6.textContent = DiffList[i];
+      document.getElementById('diff-dropdown').appendChild(anchor6);
+    }
+
+//Adding Dynamic Option content
+
+var optionArr = ['option1','option2','option3','option4'];
+for (var i = 0; i < optionArr.length; i++) {
+  var row = document.createElement('div');
+  row.className="row";
+  var col = document.createElement('div');
+  col.className="col-md-4";
+  var formcheck = document.createElement('div');
+  formcheck.className="form-check";
+  var label = document.createElement('label');
+  label.className="form-check-label";
+  label.textContent = optionArr[i];
+  var input1 =  document.createElement('input');
+  input1.className="form-check-input";
+  input1.setAttribute('type',"radio");
+  input1.setAttribute('name', "exampleRadios");
+  input1.id="exampleRadios2";
+  input1.setAttribute('value',optionArr[i]);
+  //input1.innerHTML= optionArr[i];
+  // input1.setAttribute('style', "color:#000;");
+  formcheck.appendChild(input1);
+  formcheck.appendChild(label);
+  var span = document.createElement('span');
+  span.className="circle";
+  var span2 = document.createElement('span');
+  span2.className="check";
+  span.appendChild(span2);
+
+  label.appendChild(span);
+  formcheck.appendChild(label);
+  col.appendChild(formcheck);
+  row.appendChild(col);
+  var col2 = document.createElement('div');
+  col2.className="col-md-4";
+  var formgroup = document.createElement('div');
+  formgroup.className="form-group";
+  var label2 = document.createElement('label');
+  label2.className="bmd-label-floating";
+  label2.textContent = 'Enter the option content';
+  var input2 = document.createElement('input');
+  input2.setAttribute('type',"text");
+  input2.className="form-control";
+  formgroup.appendChild(input2);
+  formgroup.appendChild(label2);
+  col2.appendChild(formgroup);
+  row.appendChild(col2);
+  document.getElementById('inner-opt-content').appendChild(row);
+}
+  </script>
+  <script src="../assets/js/core/jquery.min.js"></script>
+  <script src="../assets/js/core/popper.min.js"></script>
+  <script src="../assets/js/core/bootstrap-material-design.min.js"></script>
+  <script src="../assets/js/plugins/perfect-scrollbar.jquery.min.js"></script>
+  <script src="../assets/js/material-dashboard.js?v=2.1.1" type="text/javascript"></script>
+</body>
+</html>
