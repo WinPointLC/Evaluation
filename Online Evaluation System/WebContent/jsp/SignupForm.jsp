@@ -1,3 +1,4 @@
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -5,11 +6,16 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Document</title>
+  <title>Sign Up Form</title>
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css">
   <link rel="stylesheet" href="../css/Signup-form.css">
   <link rel="stylesheet" href="style1.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+  <script>
+  <c:import url="/SignUpServlet" />
+
+<c:set var="securityQuestions" value="${requestScope.securityQuestionsList}" />
+	</script>
 </head>
 
 <body>
@@ -46,9 +52,63 @@
           <input class="form-control" type="text" id="mobileNumber" placeholder="Mobile Number" required>
         </div>
         <div class="form-group">
-          <input class="form-control" type="text" id="securityQuestion" placeholder="Security Question" required>
+          <select class="form-control" id="securityQuestion" required>
+          <option value="">Security Question</option>
+          </select>
+          
+          </div>
+          <script> var selectVar = document.getElementById('securityQuestion');</script>
+          <c:forEach var="securityQuestion" items= "${securityQuestions}" varStatus="i">
+          <script>
+             var option = document.createElement('option');
+             option.textContent = "${securityQuestion}";
+             selectVar.appendChild(option);
+             </script>
+          </c:forEach>
+        
+        <%-- <div class="form-group">
+        
+            <!--  <div class="dropdown-menu" id = "secQuest" aria-labelledby="dropdownMenuButton"></div>-->
+            <div id="drop11" class="dropdown drop1">
+				<!-- <input type="button" class="btn btn-secondary dropdown-toggle" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" value="Security Question">
+                      --> </div>
+                      <script>
+                      var drop1 = document.getElementsByClassName('drop1');
+                      var btn = document.createElement('button');
+                      btn.className='btn btn-secondary dropdown-toggle';
+                      btn.id='dropdownMenuButton';
+                      btn.setAttribute('data-toggle', "dropdown");
+                      btn.setAttribute('aria-haspopup', "true");
+                      btn.setAttribute('aria-expanded',"false");
+                      btn.textContent="Security Question";
+                      document.getElementById('drop11').appendChild(btn); 
+
+                      var dropdownMenu = document.createElement('div');
+                      dropdownMenu.className='dropdown-menu';
+                      dropdownMenu.setAttribute('aria-labelledby',"dropdownMenuButton");
+                      </script>
+
+<c:forEach var="securityQuestion" items= "${securityQuestions}" varStatus="i">
+
+<script>
+
+  var dropanchor = document.createElement('a');
+  dropanchor.className='dropdown-item';
+  dropanchor.setAttribute('href',"#");
+  //dropanchor.id=courseTypesList[i].courseTypeId;
+  dropanchor.textContent="${securityQuestion}";
+  //dropanchor.setAttribute('onclick',"displayStreamCourses(this.id)");
+  dropdownMenu.appendChild(dropanchor);
+</script>
+</c:forEach>
+<script>document.getElementById('drop11').appendChild(dropdownMenu);</script>
+
         </div>
-        <div class="form-group">
+      <!--    <div class="form-group">
+          <input class="form-control" type="text" id="securityQuestion" placeholder="Security Question" required>
+        </div>-->
+        
+ --%>        <div class="form-group">
           <input class="form-control" type="text" id="securityAnswer" placeholder="Security Answer" required>
         </div>
         <br>
