@@ -48,7 +48,7 @@
             </a>
           </li>
           <li>
-          	<a class="nav-link" href="" id="add-question-link" onclick="showPage();">
+          	<a class="nav-link" id="add-question-link" onclick="showPage();">
           		<i class="material-icons">computer</i>
           		<p>Add Questions</p>
           	</a>
@@ -583,18 +583,19 @@
     </div>
   </div>
 <script type="text/javascript">
+// document.getElementById('main-content').style.display="none";
+document.getElementById('admin-content').style.display="none";
 
 document.getElementById('add-question-link').onclick=function() {
-  alert("We are in");
   if (document.getElementById('main-content').style.display === "block") {
-    document.getElementById('main-content').style.display = "none"
+    alert("We are in if block");
+    document.getElementById('main-content').style.display = "none";
     document.getElementById('admin-content').style.display = "block";
   } else {
-    document.getElementById('admin-content').style.display = "none";
-    document.getElementById('main-content').style.display = "block"
+    alert("We are in else block");
+    document.getElementById('admin-content').style.display = "block";
+    document.getElementById('main-content').style.display = "none";
   }
-  // document.getElementById('admin-content').style.display="block";
-  // document.getElementById('main-content').style.display="none";
 };
 </script>
   <!--   Core JS Files   -->
