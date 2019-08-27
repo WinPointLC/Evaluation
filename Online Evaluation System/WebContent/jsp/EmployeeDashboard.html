@@ -835,6 +835,118 @@ document.getElementById('add-question-link').onclick=function() {
     });
 
   </script>
+  <script type="text/javascript">
+    // adding code for all components of dropdown
+    // first for select Stream
+    var Streamlist = ['Technical','SoftSkills','General Aptitude'];
+    for (var i = 0; i < Streamlist.length; i++) {
+      var anchor = document.createElement('a');
+      anchor.className="dropdown-item";
+      anchor.setAttribute('href', "#");
+      anchor.textContent = Streamlist[i];
+      document.getElementById('stream-dropdown').appendChild(anchor);
+    }
+
+    //Second For Course List
+    var Coursetypelist = ['Modular','TBC','CRT'];
+    for (var i = 0; i < Coursetypelist.length; i++) {
+      var anchor2 = document.createElement('a');
+      anchor2.className="dropdown-item";
+      anchor2.setAttribute('href', "#");
+      anchor2.textContent = Coursetypelist[i];
+      document.getElementById('coursetype-dropdown').appendChild(anchor2);
+    }
+
+    //Third for Evaluation type
+    var Evaluationlist = ['MCQ','Coding','Descriptive'];
+    for (var i = 0; i < Evaluationlist.length; i++) {
+      var anchor3 = document.createElement('a');
+      anchor3.className="dropdown-item";
+      anchor3.setAttribute('href', "#");
+      anchor3.textContent = Evaluationlist[i];
+      document.getElementById('Evaluation-dropdown').appendChild(anchor3);
+    }
+
+    //Fourth for Course list
+    var Courselist = ['C','C++','Java','JavaScript','Database','DataStructures'];
+    for (var i = 0; i < Courselist.length; i++) {
+      var anchor4 = document.createElement('a');
+      anchor4.className="dropdown-item";
+      anchor4.setAttribute('href', "#");
+      anchor4.textContent = Courselist[i];
+      document.getElementById('course-dropdown').appendChild(anchor4);
+    }
+
+    //Fifth for Topics
+    var TopicList = ['Basics','Functions','Operators','Input/output','pointers','FileHandling'];
+    for (var i = 0; i < TopicList.length; i++) {
+      var anchor5 = document.createElement('a');
+      anchor5.className="dropdown-item";
+      anchor5.setAttribute('href', "#");
+      anchor5.textContent = TopicList[i];
+      document.getElementById('topic-dropdown').appendChild(anchor5);
+    }
+
+    // Sixth for Difficulty level
+    var DiffList = ['Easy ','Medium','Hard'];
+    for (var i = 0; i < DiffList.length; i++) {
+      var anchor6 = document.createElement('a');
+      anchor6.className="dropdown-item";
+      anchor6.setAttribute('href', "#");
+      anchor6.textContent = DiffList[i];
+      document.getElementById('diff-dropdown').appendChild(anchor6);
+    }
+
+//Adding Dynamic Option content
+
+var optionArr = ['option1','option2','option3','option4'];
+for (var i = 0; i < optionArr.length; i++) {
+  var row = document.createElement('div');
+  row.className="row";
+  var col = document.createElement('div');
+  col.className="col-md-4";
+  var formcheck = document.createElement('div');
+  formcheck.className="form-check";
+  var label = document.createElement('label');
+  label.className="form-check-label";
+  label.textContent = optionArr[i];
+  var input1 =  document.createElement('input');
+  input1.className="form-check-input";
+  input1.setAttribute('type',"radio");
+  input1.setAttribute('name', "exampleRadios");
+  input1.id="exampleRadios2";
+  input1.setAttribute('value',optionArr[i]);
+  //input1.innerHTML= optionArr[i];
+  // input1.setAttribute('style', "color:#000;");
+  formcheck.appendChild(input1);
+  formcheck.appendChild(label);
+  var span = document.createElement('span');
+  span.className="circle";
+  var span2 = document.createElement('span');
+  span2.className="check";
+  span.appendChild(span2);
+
+  label.appendChild(span);
+  formcheck.appendChild(label);
+  col.appendChild(formcheck);
+  row.appendChild(col);
+  var col2 = document.createElement('div');
+  col2.className="col-md-4";
+  var formgroup = document.createElement('div');
+  formgroup.className="form-group";
+  var label2 = document.createElement('label');
+  label2.className="bmd-label-floating";
+  label2.textContent = 'Enter the option content';
+  var input2 = document.createElement('input');
+  input2.setAttribute('type',"text");
+  input2.className="form-control";
+  formgroup.appendChild(input2);
+  formgroup.appendChild(label2);
+  col2.appendChild(formgroup);
+  row.appendChild(col2);
+  document.getElementById('inner-opt-content').appendChild(row);
+}
+  </script>
 </body>
 
 </html>
