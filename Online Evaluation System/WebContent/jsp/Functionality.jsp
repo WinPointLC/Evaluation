@@ -50,13 +50,13 @@
           <div class="card-body">
             <div class="tab-content">
               <div class="tab-pane active" id="profile">
-                  <iframe src="Profile.html" width="1300" height="500"></iframe>
+                  <iframe src="Profile.jsp" width="1300" height="500"></iframe>
               </div>
               <div class="tab-pane" id="messages">
-                <iframe src="UpdateUser.html" width="1300" height="500" id="iframe" ></iframe>
+                <iframe src="UpdateUser.jsp" width="1300" height="500" id="iframe" ></iframe>
               </div>
               <div class="tab-pane" id="settings">
-                <iframe src="RemoveUser.html" width="1300" height="500" id="iframe" ></iframe>
+                <iframe src="RemoveUser.jsp" width="1300" height="500" id="iframe" ></iframe>
               </div>
             </div>
           </div>
