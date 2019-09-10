@@ -22,12 +22,19 @@ body{
 .result-footer{
   background-color:lawgreen;
 }
-.card-stats{
-  /* background-color: #f4f0f4; */
-  /* box-shadow: 0px 2px 2px 2px rgb(214, 214, 214); */
+.score{
+  float: left;
+  display: inline-block;
+  padding-top: 5%;
+}
+.detail-card{
+  box-shadow: none;
 }
 .stats2{
-  margin-left: 25%;
+  display: inline-block;
+  margin: 0;
+  float: left;
+
 }
 .stats2 p{
   margin-left: 20%;
@@ -41,18 +48,22 @@ body{
 .time p{
   transition-duration: 500ms;
   border-bottom:1px solid rgb(247, 227, 41);
+  margin-bottom: 5%;
 }
 .Attempted p{
   transition-duration: 500ms;
   border-bottom:1px solid rgb(13, 94, 204);
+  margin-bottom: 5%;
 }
 .Correct p{
   transition-duration: 500ms;
   border-bottom:1px solid rgb(8, 238, 4);
+  margin-bottom: 5%;
 }
 .Wrong p{
   transition-duration: 500ms;
   border-bottom:1px solid rgb(238, 41, 21);
+  margin-bottom: 5%;  
 }
 
 .time p:hover{

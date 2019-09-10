@@ -33,7 +33,6 @@
                     <div class="card card-plain">
                       <div class="card card-header card-header-primary">
                         <h3 class="card-title text-align mr-auto ml-auto">Result for Test Name</h3>
-
                       </div>
                     </div>
                   </div>
@@ -50,10 +49,9 @@
                 </div>
               </div>
               <div class="row R3">
-                <div class="col-sm-6 col-md-8 col-lg-8 col-xl-12 " style="margin-left:auto;">
+                <div class="col-sm-6 col-md-12 col-lg-12 col-xl-12">
                   <div class="Your-score">
-                    <div class="col-lg-8 col-md-8 col-sm-6"  style="margin:auto;">
-                      <!-- <div class="card card-stats"> -->
+                    <div class="col-sm-5 col-md-5 col-lg-5 col-xl-5 score">
                         <div class="card-header card-header-icon" style="background-color:ghostwhite;">
                           <div class="card-heading">
                             <h6 id="courseName"></h6>
@@ -69,12 +67,38 @@
                           <div class="stats">
                           </div>
                         </div>
-                      <!-- </div> -->
                     </div>
+
+                    <div class="col-sm-5 col-md-7 col-lg-7 stats2">
+                      <div class="card detail-card" style="background-color:rgb(255, 255, 255);">
+                        <div class="time">
+                          <i class="material-icons">alarm</i>
+                          <p id="Time-Taken">Time Taken:40 minutes</p>
+                          <div class="border1"></div>
+                        </div>
+                        <div class="Attempted">
+                          <i class="material-icons">done_all</i>
+                          <p id="Attempted-Questions">Attempted Questions:50</p>
+                          <div class="border2"></div>
+                        </div>
+                        <div class="Correct">
+                          <i class="material-icons">check_circle</i>
+                          <p id="Correct-Answer">Correct:49</p>
+                          <div class="border3"></div>
+                        </div>
+                        <div class="Wrong">
+                          <i class="material-icons">cancel</i>
+                          <p id="Wrong-Answer">Wrong Answer:1</p>
+                          <div class="border4"></div>
+                        </div>
+                      </div>
+                    </div>
+
                   </div>
                 </div>
-              </div><br><br>
-              <div class="row">
+              </div>
+
+              <!-- <div class="row">
                 <div class="col-sm-6 col-md-6 col-lg-8 col-xl-8" id="result-header-card2" style="margin:auto;">
                   <div class="card card-plain">
                     <div class="card card-header card-header-info">
@@ -87,43 +111,7 @@
                 <div class="col-sm-6 col-md-8 col-lg-12 col-xl-12">
                   <div id="graph" style="width: 50%; margin:auto; height: 250%"></div>
                 </div>
-              </div>
-              <div class="row">
-                <div class="col-sm-6 col-md-6 col-lg-8 col-xl-8" id="result-header-card2" style="margin:auto;">
-                  <div class="card card-plain">
-                    <div class="card card-header card-header-rose">
-                      <h3 class="card-title text-align mr-auto ml-auto">Details</h3>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <div class="row">
-                <div class="col-sm-5 col-md-5 col-lg-8 col-xl-8 stats2" style="margin:auto;">
-                  <div class="card card-stats" style="background-color:rgb(255, 255, 255);">
-                    <div class="time">
-                      <i class="material-icons">alarm</i>
-                      <p id="Time-Taken">Time Taken:40 minutes</p>
-                      <div class="border1"></div>
-                    </div>
-                    <div class="Attempted">
-                      <i class="material-icons">done_all</i>
-                      <p id="Attempted-Questions">Attempted Questions:50</p>
-                      <div class="border2"></div>
-                    </div>
-                    <div class="Correct">
-                      <i class="material-icons">check_circle</i>
-                      <p id="Correct-Answer">Correct:49</p>
-                      <div class="border3"></div>
-                    </div>
-                    <div class="Wrong">
-                      <i class="material-icons">cancel</i>
-                      <p id="Wrong-Answer">Wrong Answer:1</p>
-                      <div class="border4"></div>
-                    </div>
-                  </div>
-                </div>
-              </div>
+              </div> -->
 
             </div>
           </div>
@@ -132,7 +120,7 @@
       </div>
     </div>
   </div>
-  <script type="text/javascript">
+  <!-- <script type="text/javascript">
   anychart.onDocumentReady(function() {
     var data = {
       header: ["Topic Name", "Marks"],
@@ -150,7 +138,7 @@
       chart.container('graph');
       chart.draw();
     });
-  </script>
+  </script> -->
 
   <script>
 
