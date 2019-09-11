@@ -41,10 +41,10 @@
 
               <div class="row">
                 <div class="col-sm-8 col-md-8 col-lg-11 col-xl-11" id="result-header-card" style="margin:auto;">
-                  <div class="card card-plain">
-                    <div class="card card-header card-header-success">
+                  <div class="card card-plain" id="card-plain">
+                    <!-- <div class="card card-heade4r card-header-success">
                       <h3 class="card-title text-align mr-auto ml-auto" id="congrats"></h3>
-                    </div>
+                    </div> -->
                   </div>
                 </div>
               </div>
@@ -73,22 +73,22 @@
                       <div class="card detail-card" style="background-color:rgb(255, 255, 255);">
                         <div class="time">
                           <i class="material-icons">alarm</i>
-                          <p id="Time-Taken">Time Taken:40 minutes</p>
+                          <p id="Time-Taken">Time Taken:<span id="Time"></span> </p>
                           <div class="border1"></div>
                         </div>
                         <div class="Attempted">
                           <i class="material-icons">done_all</i>
-                          <p id="Attempted-Questions">Attempted Questions:50</p>
+                          <p id="Attempted-Questions">Attempted Questions:<span id="AttemptQues"></span> </p>
                           <div class="border2"></div>
                         </div>
                         <div class="Correct">
                           <i class="material-icons">check_circle</i>
-                          <p id="Correct-Answer">Correct:49</p>
+                          <p id="Correct-Answer">Correct: <span id="CorrectAns"></span> </p>
                           <div class="border3"></div>
                         </div>
                         <div class="Wrong">
                           <i class="material-icons">cancel</i>
-                          <p id="Wrong-Answer">Wrong Answer:1</p>
+                          <p id="Wrong-Answer">Wrong Answer:<span id="WrongAns"></span> </p>
                           <div class="border4"></div>
                         </div>
                       </div>
@@ -97,22 +97,6 @@
                   </div>
                 </div>
               </div>
-
-              <!-- <div class="row">
-                <div class="col-sm-6 col-md-6 col-lg-8 col-xl-8" id="result-header-card2" style="margin:auto;">
-                  <div class="card card-plain">
-                    <div class="card card-header card-header-info">
-                      <h3 class="card-title text-align mr-auto ml-auto">Topicwise marks of Test Name</h3>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="row R4">
-                <div class="col-sm-6 col-md-8 col-lg-12 col-xl-12">
-                  <div id="graph" style="width: 50%; margin:auto; height: 250%"></div>
-                </div>
-              </div> -->
-
             </div>
           </div>
         </div>
@@ -120,28 +104,31 @@
       </div>
     </div>
   </div>
-  <!-- <script type="text/javascript">
-  anychart.onDocumentReady(function() {
-    var data = {
-      header: ["Topic Name", "Marks"],
-      rows: [
-        ["Functions ", 20],
-        ["Pointers", 4],
-        ["Operators", 10],
-        ["File Handling", 6],
-        ["Basic Concept", 9]
-      ]}
-      var chart = anychart.bar();
-      anychart.theme(anychart.themes.dark_glamour);
-      chart.data(data);
-      chart.title("Topicwise Marks");
-      chart.container('graph');
-      chart.draw();
-    });
-  </script> -->
-
   <script>
 
+  var carheader = document.createElement('div');
+  carheader.className = "card card-header";
+  carheader.id="card-header";
+  var h3 = document.createElement('h3');
+  h3.className = "card-title text-align mr-auto ml-auto";
+  h3.id="congrats";
+  carheader.appendChild(h3);
+  document.getElementById('card-plain').appendChild(carheader);
+
+    //Code for marks shown
+    var timevalue=40;
+    var AttemptedQues=50;
+    var CorrectAnswer = 40;
+    var WrongAnswer = 10;
+    var timetaken = document.getElementById('Time');
+    timetaken.textContent = timevalue;
+
+    var Attempted = document.getElementById('AttemptQues');
+    Attempted.textContent = AttemptedQues;
+    var CorrectAns = document.getElementById('CorrectAns');
+    CorrectAns.textContent = CorrectAnswer;
+    var WrongAns = document.getElementById('WrongAns');
+    WrongAns.textContent =WrongAnswer ;
     var searchString = window.location.search.substring(1);
     var arr = searchString.split('&');
     var data= arr[0].split('=')[1];
@@ -152,13 +139,19 @@
     //alert(result.courseName + result.marks + ' ' + result.totalMarks);
     document.getElementById('courseName').textContent = result.courseName;
     document.getElementById('score').textContent = result.marks + '/' + result.totalMarks;
-    document.getElementById('congrats').textContent = 'Congratulations ' + firstName + " " + lastName + ' for Clearing the Test of ' + result.courseName;
+    // code for heading of congrats user
+
+    if(result.marks > result.totalMarks/2){
+      carheader.className="card card-header card-header-success";
+      document.getElementById('congrats').textContent = 'Congratulations ' + firstName + " " + lastName + ' for Clearing the Test of ' + result.courseName;
+    }
+    else if (result.marks < result.totalMarks/2) {
+      carheader.className="card card-header card-header-danger";
+      document.getElementById('congrats').textContent = 'Sorry ' + firstName + " " + lastName + ' for Not Clearing the Test of ' + result.courseName;
+    }
   </script>
   <!--  End Modal -->
   <script src="../MaterialKitHomePage/assets/js/core/jquery.min.js" type="text/javascript"></script>
-  <!-- <script src="./assets/js/core/popper.min.js" type="text/javascript"></script> -->
   <script src="../MaterialKitHomePage/assets/js/core/bootstrap-material-design.min.js" type="text/javascript"></script>
-  <!-- <script src="https://cdn.anychart.com/releases/v8/themes/dark_glamour.min.js"></script> -->
-  <!-- <script src="../js/Modal.js" charset="utf-8"></script> -->
 </body>
 </html>
