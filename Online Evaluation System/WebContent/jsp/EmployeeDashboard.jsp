@@ -50,7 +50,7 @@
         </li>
 
         <li class="nav-item">
-          <a class="nav-link" href="#">
+          <a class="nav-link" id="all-user-link">
             <i class="material-icons">person</i>
             <p>All User's</p>
           </a>
@@ -562,10 +562,137 @@
       <button type="submit" class="btn btn-primary pull-right">Save</button>
       <div class="clearfix"></div>
     </form>
+  </div>
+</div>
+
+<!-- All USer content -->
+<div class="container-fluid" id="all-user-content">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card card-plain">
+        <div class="card-header card-header-primary">
+          <h4 class="card-title mt-0">List of all user </h4>
+        </div><br><br>
+        <div class="dropdown-section">
+          <select class="dropdown" onchange="dropfunct(this);">
+            <option id="11">Modular</option>
+            <option id="22">TBC</option>
+            <option id="33">CRT</option>
+          </select>
+        </div><br><br>
+        <div class="dropdown-section2">
+          <select class="dropdown2" onchange="dropfunct(this);" id="dropdown2">
+
+          </select>
+        </div><br><br>
+
+        <div class="card-body">
+          <div class="table-responsive" id="table">
+            <!-- <table class="table table-hover">
+              <thead>
+                <th>Sr.no:</th>
+                <th>
+                  Username
+                </th>
+                <th>
+                  Email
+                </th>
+                <th>
+                  Address
+                </th>
+                <th>
+                  Mobile No:
+                </th>
+                <th>
+                  Courses Done
+                </th>
+                <th>
+                  Click here for Scores
+                </th>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>
+                    1
+                  </td>
+                  <td>
+                    Sahil Naphade
+                  </td>
+                  <td>
+                    sahil@gmail.com
+                  </td>
+                  <td>
+                    Katraj
+                  </td>
+                  <td>
+                    9850896993
+                  </td>
+                  <td>
+                    C,CPP,JS
+                  </td>
+                  <td>
+                    <button class="btn btn-primary" type="button">See Scores</button>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    2
+                  </td>
+                  <td>
+                    Sanika Gandhe
+                  </td>
+                  <td>
+                    SanikaG@gmail.com
+                  </td>
+                  <td>
+                    Sinhgad Road
+                  </td>
+                  <td>
+                    9850896993
+                  </td>
+                  <td>
+                    C,CPP,JAVA
+                  </td>
+                  <td>
+                    <button class="btn btn-primary" type="button">See Scores</button>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    6
+                  </td>
+                  <td>
+                    Shrirang Mhalgi
+                  </td>
+                  <td>
+                    Shri@gmail.com
+                  </td>
+
+                  <td>
+                    BibeWadi
+                  </td>
+                  <td>
+                    9850896993
+                  </td>
+                  <td>
+                    C,CPP,DS,JAVA
+                  </td>
+                  <td>
+                    <button class="btn btn-primary" type="button">See Scores</button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>-->
+
+          </div>
+        </div>
+      </div>
+    </div>
 
   </div>
-
 </div>
+
+<!-- End of All USer content  -->
 
 <!-- Footer -->
 <footer class="footer">
@@ -592,8 +719,10 @@
 </div>
 </div>
 <script type="text/javascript">
+
 // document.getElementById('main-content').style.display="none";
 document.getElementById('admin-content').style.display="none";
+document.getElementById('all-user-content').style.display="none";
 // document.getElementById('funct-section').style.display="none";
 
 // document.getElementById('add-funct-link').onclick=function() {
@@ -610,6 +739,7 @@ document.getElementById('admin-content').style.display="none";
 // };
 //
 
+
 document.getElementById('add-question-link').onclick=function() {
   if (document.getElementById('main-content').style.display === "block") {
     alert("We are in if block");
@@ -619,9 +749,77 @@ document.getElementById('add-question-link').onclick=function() {
     alert("We are in else block");
     document.getElementById('admin-content').style.display = "block";
     document.getElementById('main-content').style.display = "none";
+    document.getElementById('all-user-content').style.display = "none";
   }
 };
+
+//showing all-user content
+document.getElementById('all-user-link').onclick=function() {
+  if (document.getElementById('main-content').style.display === "block") {
+    alert("We are in if block");
+    //document.getElementById('main-content').style.display = "none";
+    //document.getElementById('admin-content').style.display = "block";
+  } else {
+    alert("We are in else block");
+    document.getElementById('all-user-content').style.display = "block";
+    document.getElementById('main-content').style.display = "none";
+    document.getElementById('admin-content').style.display="none";
+  }
+};
+
 </script>
+
+<!-- Js for All user  -->
+<script type="text/javascript">
+  //creating table dynamically
+  var table = document.createElement('table');
+  table.className="table table-hover";
+  var thead = document.createElement('thead');
+  var head = ['Sr.no','Username','Email','Address','Mobile No','Courses Done'];
+  for (var i = 0; i < head.length; i++) {
+    var th = document.createElement('th');
+    th.textContent = head[i];
+    thead.appendChild(th);
+  }
+  table.appendChild(thead);
+  var td0 = ['1','2']; var td1 = ['Sahil','Sanika']; var td2 = ['sahil@','sanika@'];
+  var td3 = ['M.G. Road','M.A.Road']; var td4=[12,23]; var td5 = ['c','cpp','java'];
+  // var students = {Srno:1, Username:"Sahil",Email:"sahi@",Address:"PICT",MobileNo:121,CoursesDone:"C,CPP"};
+   var students = {
+     Srno:1, Username:"Sahil",Email:"sahi@",Address:"PICT",MobileNo:121,CoursesDone:"C,CPP"
+   };
+
+  //creating Tbody
+  var tbody = document.createElement('tbody');
+  var tr = document.createElement('tr');
+   var td0 = document.createElement('td');
+   td0.textContent = students.Srno;
+   var td1 = document.createElement('td');
+   td1.textContent = students.Username;
+   var td2 = document.createElement('td');
+   td2.textContent = students.Email;
+   var td3 = document.createElement('td');
+   td3.textContent = students.Address;
+   var td4 = document.createElement('td');
+   td4.textContent = students.MobileNo;
+   var td5 = document.createElement('td');
+   td5.textContent = students.CoursesDone;
+   tr.appendChild(td0);
+   tr.appendChild(td1);
+   tr.appendChild(td2);
+   tr.appendChild(td3);
+   tr.appendChild(td4);
+   tr.appendChild(td5);
+
+
+  thead.appendChild(th);
+  tbody.appendChild(tr);
+  table.appendChild(tbody);
+
+  document.getElementById('table').appendChild(table);
+
+</script>
+
 <!--   Core JS Files   -->
 <script src="../assets/js/core/jquery.min.js"></script>
 <script src="../assets/js/core/popper.min.js"></script>
@@ -666,21 +864,6 @@ document.getElementById('add-question-link').onclick=function() {
 <!-- Material Dashboard DEMO methods, don't include it in your project! -->
 <script src="../assets/demo/demo.js"></script>
 <script>
-// var admincontent = document.getElementById('admin-content');
-// admincontent.style.display="none";
-
-// function clearFunction() {
-// // alert("calling Clear Function");
-// var maindiv = document.getElementById('main-content');
-// // maindiv.style.display="none";
-//
-// var admincontent = document.getElementById('admin-content');
-// admincontent.style.display="none";
-//
-//  // document.getElementById('add-question-link').setAttribute('onclick',showPage());
-//
-// }
-
 $(document).ready(function() {
   $().ready(function() {
     $sidebar = $('.sidebar');
