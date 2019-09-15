@@ -7,7 +7,7 @@
 	<title>Forget Password form</title>
 	<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-	<link rel="stylesheet" href="../css/ForgetPassword.css">
+	<link rel="stylesheet" href="../css/forget-password.css">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 	<script>
 	$(function () {
@@ -61,14 +61,16 @@
 	  <div class="col-sm-6 col-md-4 col-lg-4 form-content ml-auto mr-auto">
 	  	<!--  <form class="form-outer" me	thod="post" action="/OnlineEvaluationSystem/CommonController"> -->
 	  	<form class="form-outer" >
-				<h3 class="form-login-heading text-center">Forget Password Form</h3>
+				<h3 class="form-login-heading text-center">Forgot Password Form</h3>
 				<div class="form-group">
 					<label for="email">Email Id</label>
-					<input class="form-control" id="email" type="text" placeholder="Type your Email ID" name="email" required>
+					<input class="form-control" id="email" type="email" placeholder="Type your Email ID" name="email" required>
 				</div>
-
 				<div class="form-group">
-					<input type="button" id="Submit-btn" class="Submit-btn" value="Submit" name="Submit">
+					<input type="button"  class="submit-btn" value="Submit" name="Submit">
+				</div>
+				<div class="login-link">
+					<a href="login-form.jsp">Back to Login</a>
 				</div>
 	  	</form>
 	  </div>
