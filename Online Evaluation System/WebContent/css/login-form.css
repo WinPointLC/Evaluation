@@ -1,0 +1,87 @@
+body{
+  background-image: linear-gradient(132deg,rgb(107, 48, 213),rgb(23, 237, 207),rgb(245, 29, 146));
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 400%,400%;
+  height: 100vh;
+  animation: BackgroundGradient 20s ease infinite;
+  font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+
+}
+@keyframes BackgroundGradient {
+  0%{background-position: 0% 50%;}
+  50%{background-position: 100% 50%}
+  100%{background-position: 0% 50%}
+}
+.form-control:focus {
+  /* border-color:none; */
+  box-shadow: none;
+}
+.container{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.form-content{
+  border: 1px solid rgba(228, 225, 226, 0.82);
+  border-radius: 8px;
+  background-color: #fff;
+}
+.form-login-heading{
+  margin: 10% 0;
+  letter-spacing: 8px;
+}
+
+.form-outer{
+  padding-bottom: 2rem;
+}
+
+.form-outer input{
+  border-top: none;
+  border-left:none;
+  border-right:none;
+}
+
+.form-outer input[type=text]:hover,
+.form-outer input[type=password]:hover{
+  transition-duration: 1s;
+  border-bottom:1px solid black;
+}
+
+.login-btn{
+  width: 80%;
+  margin-left: 10%;
+  position: relative;
+  border-radius: 15px;
+  color: #fff;
+  border: 1px solid #fff ;
+  background-image: linear-gradient(132deg,rgb(107, 48, 213),rgb(23, 237, 207),rgb(245, 29, 146));
+  background-size: 400%,400%;
+  animation: BackgroundGradient 20s ease infinite;
+  padding: 0.5rem 1.5rem;
+  transition-duration: 500ms;
+}
+.login-btn:hover{
+  transform: translateY(-4px);
+  transition-duration: 500ms;
+  box-shadow: 0px 0px 8px 1px rgb(140, 135, 135);
+}
+
+.forgot-password {
+  display: inline;
+}
+
+.forgot-password a{
+  color: #DD4B39;
+}
+
+.forgot-password a:hover{
+  color: rgb(236, 9, 9);
+}
+
+.sign-up{
+  display: inline;
+  float: right;
+}
