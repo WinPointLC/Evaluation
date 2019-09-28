@@ -78,7 +78,7 @@
 					<input type="button" id="log-btn" class="login-btn" value="Login" name="login" >
 				</div>
 				<div class="forgot-password">
-					<a href="ForgetPassword.jsp">Forgot Password</a>
+					<a href="ForgotPassword.jsp">Forgot Password</a>
 				</div>
 				<div class="form-group sign-up ml-auto">
 					<a href="SignupForm.jsp" id="sign-up">New User SignUP.</a>

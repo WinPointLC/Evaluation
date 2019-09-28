@@ -139,7 +139,7 @@
                 <div class="card-header card-header-primary">
                   <h4 class="card-title">Edit Profile</h4>
                   <p class="card-category">Complete your profile</p>
-                  <h4 id="userid">UserId:</h4>
+                  <h4 style="float:left;">UserId:&nbsp </h4><h4 id="userid"></h4>
                 </div>
                 <div class="card-body">
                   <form>
@@ -276,11 +276,9 @@
                 </div>
                 <div class="card-body">
                    <h6 class="card-category text-gray">Student</h6>
-                  <h4 class="card-title">Rucha Jaiswal</h4>
-                  <p class="card-description">
-                    Hello I am Rucha Jaiswal. Student of PICT BE(Computer).
-                  </p>
-                  <a href="#pablo" class="btn btn-primary btn-round">Follow</a>
+                  <h4 class="card-title" id="studProfileName"></h4>
+                  <p class="card-description" id="profileDesc"></p>
+                  <a href="#pablo" class="btn btn-primary btn-round">Save</a>
                 </div>
               </div>
             </div>
@@ -423,32 +421,41 @@
       document.getElementById('uploadPreview').src = oFREvent.target.result;
     }
   }
-
+  function camelCase(str) { 
+      return str.replace(/(?:^\w|[A-Z]|\b\w)/g, function(word, index) 
+      { 
+          return index == 0 ? word.toLowerCase() : word.toUpperCase(); 
+      }).replace(/\s+/g, ''); 
+  } 
     $(document).ready(function() {
     	var searchString = window.location.search.substring(1);
     	var arr = searchString.split('&');
     	var data= arr[0].split('=')[1];
     	var userProfile = decodeURIComponent(data);
     	var userProfile1 =  eval('(' + userProfile + ')');
-	    //alert("Client is " + userProfile1.userId + ":" + userProfile1.firstName + " " + userProfile1.lastName);
-	    // document.getElementById("photoId").src = "../assets//img/mask.png";//userProfile1.photoLocation;
-      document.getElementById('username').value="omii";//userProfile1.username;
-      document.getElementById('email').value="omkargosavi03@gmail.com";//userProfile1.email;
-      document.getElementById('degree').value="B.E.";//userProfile1.degree;
-      document.getElementById('graduationyear').value="2020";//userProfile1.yearOfGraduation;
-      document.getElementById('branch').value="Computer";//userProfile1.branch;
-      document.getElementById('address').value="Swargate";//userProfile1.address;
-      document.getElementById('city').value="Pune";//userProfile1.City;
-      document.getElementById('secquestion').value="where is your home";//userProfile1.securityQuestionId;
-      document.getElementById('secanswer').value="peth area";//userProfile1.securityAnswer;
+	    //alert("Client is " + userProfile1.userId + ":" + userProfile1.photoLocation+ " " + userProfile1.lastName);
+	    var photoLocation = userProfile1.photoLocation;
+	    //document.getElementById("studProfileName").innerHTML = camelCase(userProfile1.firstName) + " " + camelCase(userProfile1.lastName);
+	    document.getElementById("studProfileName").innerHTML = userProfile1.firstName.toUpperCase() + " " + userProfile1.lastName.toUpperCase();
+	    document.getElementById("profileDesc").innerHTML = "Hello, I am " + userProfile1.firstName.toUpperCase() + " " + userProfile1.lastName.toUpperCase() +
+	    													" from " + userProfile1.college;
+	    document.getElementById('uploadPreview').src = userProfile1.photoLocation;
+        document.getElementById('username').value=userProfile1.username;
+        document.getElementById('email').value=userProfile1.email;
+        document.getElementById('degree').value=userProfile1.degree;
+        document.getElementById('graduationyear').value=userProfile1.yearOfGraduation;
+        document.getElementById('branch').value=userProfile1.branch;
+        document.getElementById('address').value=userProfile1.address;
+        document.getElementById('city').value=userProfile1.City;
+        document.getElementById('secquestion').value=userProfile1.securityQuestionId;
+        document.getElementById('secanswer').value=userProfile1.securityAnswer;
 
-	    document.getElementById("firstName").value = "Omkar";//userProfile1.firstName;
-	    document.getElementById("lastName").value = "Gosavi";//userProfile1.lastName;
-	    document.getElementById("mobileNumber").value = "9850896993";//userProfile1.mobileNumber;
-	    document.getElementById("photoId").value ="../assets//img/sidebar-1.jpg"; //userProfile1.photoLocation;
-	    document.getElementById("password").value ="asdas"; //userProfile1.password;
-	    document.getElementById("college").value ="NBN";//userProfile1.college;
-      document.getElementById('userid').value="1";//userProfile1.userId;
+	    document.getElementById("firstName").value = userProfile1.firstName;
+	    document.getElementById("lastName").value = userProfile1.lastName;
+	    document.getElementById("mobileNumber").value = userProfile1.mobileNumber;
+	    document.getElementById("password").value =userProfile1.password;
+	    document.getElementById("college").value =userProfile1.college;
+      document.getElementById('userid').textContent=userProfile1.userId;
 
       $().ready(function() {
 

@@ -1,9 +1,10 @@
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!doctype html>
 <html lang="en">
 
 <head>
   <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" type="text/css">
-  <title>Hello, world!</title>
+  <title>DashBoard</title>
   <!-- Required meta tags -->
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport" />
@@ -22,6 +23,8 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 
    <script>
+   <c:import url="/ClientDashboardServlet" />
+	     <c:set var="studentCourseDetails" value="${requestScope.studentCourseDetailsList}" />
   var data;
   var userProfile1;
   var strResJSON;
@@ -53,7 +56,49 @@
     //document.getElementById('username').value = username;
     //document.getElementById('password').value = password;
     strResJSON = JSON.stringify(userProfile1);
-  });
+
+    
+      });
+  
+ /* var mydata = {
+    		userId : userProfile1.userId	  
+    	  };
+    	$.ajax({
+    	    type: 'POST',
+    	    url: '/OnlineEvaluationSystem/CommonController?action=ClientDashboardServlet',
+    	    data: JSON.stringify(mydata),
+    	    dataType: 'json',
+    	    contentType: 'application/json; charset=utf-8',
+    	    traditional: true,
+    	    success: function (jsonObj) {
+    	      alert("Success from LoginForm");
+    	      var responseJson1 = jsonObj[0];
+    	      //var responseJson2 = jsonObj[1];
+
+    	      /* Start- Code for ArrayList from servlet */
+    	      /*var streamList = responseJson2[0];
+    	      var courseTypeList = responseJson2[1];
+    	      for(i=0; i<streamList.length; i++){
+    	      alert("streamList = " + streamList[i].streamName);
+    	    }
+    	    for(i=0; i<courseTypeList.length; i++){
+    	    alert("courseTypeList = " + courseTypeList[i].courseTypeName);
+    	  } */
+    	  /* End- Code for ArrayList from servlet */
+
+  /*  	      var studentcourseDetailsList=jsonObj[1];
+    	  alert(studentcourseDetailsList);
+    	      for(i=0; i<studentcourseDetailsList.length; i++){
+    		  	alert(studentcourseDetailsList[i].courseName)
+    	      }
+    	},
+    	error: function(){
+    	  alert("Error");
+    	  //document.getElementById("error").innerHTML = "Invalid email or password";
+    	}
+
+    	});
+*/
   function sendToUserProfile(){
     window.location.href = "/OnlineEvaluationSystem/jsp/User.jsp?varid="+ data;
     //encodeURIComponent(strResJSON);
@@ -116,6 +161,11 @@
 </head>
 
 <body>
+	<c:forEach var="studentCourseDetail" items= "${studentCourseDetails}" varStatus="i">
+		<script>
+			//alert("${studentCourseDetail.courseAggr}");
+		</script>
+	</c:forEach>
   <div class="wrapper ">
     <div class="sidebar" data-color="purple" data-background-color="white">
       <!--
@@ -663,11 +713,88 @@
 console.log("Creating Dynamic Elements");
   //Dynamic Cards
 
-var TechArr = ['Java','Data Structures','CPP','JS'];
+
+<c:forEach var="studentCourseDetail" items= "${studentCourseDetails}" varStatus="i">
+
+	var row  =document.createElement('div');
+	row.className="row tech-row";
+	var col1 = document.createElement('div');
+	  col1.className="col-lg-3 col-md-6 col-sm-6";
+	  var card = document.createElement('div');
+	  card.className="card card-stats";
+	  var cardheader = document.createElement('div');
+	  cardheader.className="card-header  card-header-icon";
+	  var cardHeading = document.createElement('div');
+	  cardHeading.className="card-heading";
+	  var h6 = document.createElement('h6');
+	  h6.textContent = "${studentCourseDetail.courseTypeName}" + " - " + "${studentCourseDetail.courseName}";
+	  cardHeading.appendChild(h6);
+	  var cardIcon = document.createElement('div');
+	  cardIcon.className="card-icon";
+	  var img = document.createElement('img');
+
+	      img.setAttribute('src',"${studentCourseDetail.logoLocation}");
+	      img.setAttribute('style', "width:60px;height:60px;");
+	      cardIcon.appendChild(img);
+
+
+	  var p = document.createElement('p');
+	  p.className="card-category";
+	  p.textContent = 'Marks Obtained';
+	  var h3 = document.createElement('h3');
+	  h3.className="card-title";
+	  h3.textContent = "${studentCourseDetail.courseAggr}";
+	  // End Card Header
+	  var cardfooter = document.createElement('div');
+  cardfooter.className="card-footer";
+  var stats =document.createElement('div');
+  stats.className="stats";
+  var dropdown = document.createElement('div');
+  dropdown.className="dropdown";
+  var button = document.createElement('button');
+  button.className="btn btn-secondary dropdown-toggle";
+  button.id="dropdownMenuButton";
+  button.setAttribute('data-toggle',"dropdown");
+  button.setAttribute('aria-haspopup', "true");
+  button.setAttribute('aria-expanded', "false");
+  button.textContent = 'See More Marks';
+
+  var dropdownmenu = document.createElement('div');
+  dropdownmenu.className="dropdown-menu";
+  dropdownmenu.setAttribute('aria-labelledby',"dropdownMenuButton");
+  var anchorsList = ['MCQ','Coding','Descriptive'];
+
+  for (var k = 0; k < anchorsList.length; k++) {
+    var anchor  = document.createElement('a');
+    anchor.className="dropdown-item";
+    anchor.textContent = anchorsList[k];
+    dropdownmenu.appendChild(anchor);
+    dropdown.appendChild(dropdownmenu);
+    dropdown.appendChild(button);
+  }
+  cardheader.appendChild(cardIcon);
+  cardheader.appendChild(p);
+  cardheader.appendChild(h3);
+  cardheader.appendChild(cardHeading);
+  card.appendChild(cardheader);
+
+  stats.appendChild(dropdown);
+  cardfooter.appendChild(stats);
+  card.appendChild(cardfooter);
+
+  col1.appendChild(card);
+  // console.log("Inner For Loop");
+  row.appendChild(col1);
+
+
+  document.getElementById('Tech-cards').appendChild(row);
+
+</c:forEach>
+/*var TechArr = ['Java','Data Structures','CPP','JS'];
 var TechArr2 = ['Java','Data Structures','CPP','JS'];
 var Mixarr=['../assets/img/Dashboard-main-page-images/java-brands.svg','../assets/img/Dashboard-main-page-images/cubes.svg','../assets/img/Dashboard-main-page-images/cpp-icon-file-format.svg','../assets/img/Dashboard-main-page-images/js-brands.svg'];
-
-for (var i = 0; i < TechArr2.length/2; i++) {
+*/
+/*for (var i = 0; i < TechArr2.length/2; i++) {
   // for (var j=0;j<Mixarr.length;j++) {
   var row  =document.createElement('div');
   row.className="row tech-row";
@@ -741,14 +868,14 @@ for (var x = 0; x < TechArr.length; x++) {
   col1.appendChild(card);
   // console.log("Inner For Loop");
   row.appendChild(col1);
-}
+
 
   document.getElementById('Tech-cards').appendChild(row);
-  console.log("We are at te End of Loop");
-  }
+//  console.log("We are at te End of Loop");
+  //}
 // }
 
-
+*/
   $(document).ready(function() {
     $().ready(function() {
       $sidebar = $('.sidebar');

@@ -40,6 +40,12 @@ public class LoginHelper {
 		return userProfile;
 	}
 
+	public boolean changePassword(int userId, String password) {
+		return new LoginDao().changePassword(userId, password);
+	}
+	public UserProfile getSecurityQuesAns(String email) {
+		return new LoginDao().getSecurityQuesAns(email);
+	}
 	public UserProfile createLogin(UserProfile userProfile) {
 		// TODO Auto-generated method stub
 		return new LoginDao().createlogin(userProfile);

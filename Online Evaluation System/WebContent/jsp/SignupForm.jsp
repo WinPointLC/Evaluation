@@ -1,4 +1,4 @@
-
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -7,7 +7,7 @@
   <link rel="icon" type="image/png" href="./assets/img/favicon.png">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
   <title>
-     Result Page
+     Sign-Up Form
   </title>
   <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no' name='viewport' />
   <!--     Fonts and icons     -->
@@ -18,6 +18,10 @@
   <!-- <link rel="stylesheet" href="../css/Signup-form.css"> -->
   <link rel="stylesheet" href="../css/SignUp-form.css">
   <script src="https://cdn.anychart.com/releases/8.0.0/js/anychart-base.min.js"></script>
+  <script>
+     <c:import url="/SignUpServlet" />
+     <c:set var="securityQuestions" value="${requestScope.securityQuestionsList}" />
+  </script>
 </head>
 <body>
   <!-- Large modal -->
@@ -68,7 +72,7 @@
                 <script>
 
                    var option = document.createElement('option');
-                   option.textContent = "${securityQuestion}";
+                   option.textContent = "${securityQuestion.securityQuestion}";
                    selectVar.appendChild(option);
                    </script>
                 </c:forEach>

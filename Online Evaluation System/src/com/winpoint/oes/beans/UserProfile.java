@@ -19,6 +19,18 @@ public class UserProfile {
 	private String password;
 	private String gender;
 	private Integer securityQuestionId;
+	private String securityQuestion;
+	public String getSecurityQuestion() {
+		return securityQuestion;
+	}
+
+	public void setSecurityQuestion(String securityQuestion) {
+		this.securityQuestion = securityQuestion;
+	}
+
+	public void setPhotoLocation(String photoLocation) {
+		this.photoLocation = photoLocation;
+	}
 	private String securityAnswer;
 	private Integer userCategoryId;
 	private String occupation;

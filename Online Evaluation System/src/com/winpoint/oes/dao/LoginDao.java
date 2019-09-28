@@ -70,11 +70,85 @@ public class LoginDao {
 
 	}
 	
+	public boolean changePassword(int userId, String password) {
+		boolean flag = false;
+		
+		try(Connection connection = ConnectionManager.getConnection()){
+			Statement statement = connection.createStatement();
+			String query = "update USER_PROFILE \r\n" + 
+					"	SET USER_PROFILE.PASSWORD = '" + password + "'" + "\r\n" + 
+					"	WHERE USER_ID="+userId;
+			statement.executeUpdate(query);
+			flag = true;	
+		}
+		catch (Exception e) {
+			System.out.println("Exception raised" + e);
+		}
+		return flag;
+	}
 	public ResultSet getDashboardDetails(int userId) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
+	public UserProfile getSecurityQuesAns(String emailId) {
+		UserProfile userProfile = new UserProfile();
+		ResultSet resultSet = null;
+		try(Connection connection = ConnectionManager.getConnection()){
+			Statement statement = connection.createStatement();
+			
+			/*String query = "SELECT	USER_PROFILE.SEC,\r\n" + 
+					"		FIRST_NAME, \r\n" + 
+					"		LAST_NAME, \r\n" + 
+					"		PHOTO_LOCATION, \r\n" + 
+					"		USER_PROFILE.USER_CATEGORY_ID,\r\n" + 
+					"		EMPLOYEE_CATEGORY.EMPLOYEE_CATEGORY_ID\r\n" + 
+					"	FROM USER_PROFILE JOIN USER_CATEGORY \r\n" + 
+					"		ON USER_PROFILE.USER_CATEGORY_ID = USER_CATEGORY.USER_CATEGORY_ID\r\n" + 
+					"			LEFT OUTER JOIN EMPLOYEE_DETAILS D\r\n" + 
+					"			ON USER_PROFILE.USER_ID = D.USER_ID\r\n" + 
+					"				LEFT OUTER JOIN EMPLOYEE_CATEGORY\r\n" + 
+					"				ON D.EMPLOYEE_CATEGORY_ID = EMPLOYEE_CATEGORY.EMPLOYEE_CATEGORY_ID\r\n" + 
+					"	WHERE USER_PROFILE.EMAIL_ID = '" + emailId + "'";*/
+			String query = "SELECT	USER_PROFILE.USER_ID,\r\n" + 
+					"		USER_PROFILE.FIRST_NAME,\r\n" + 
+					"		USER_PROFILE.LAST_NAME,\r\n" + 
+					"		USER_PROFILE.EMAIL_ID,\r\n" + 
+					"		SECURITY_QUESTIONS.SECURITY_QUESTION_ID,\r\n" +
+					"		SECURITY_QUESTIONS.SECURITY_QUESTION,\r\n" + 
+					"		USER_PROFILE.SECURITY_ANSWER\r\n" + 
+					"	FROM USER_PROFILE\r\n" + 
+					"	JOIN \r\n" + 
+					"	SECURITY_QUESTIONS\r\n" + 
+					"	ON USER_PROFILE.SECURITY_QUESTION_ID = SECURITY_QUESTIONS.SECURITY_QUESTION_ID\r\n" + 
+					"	WHERE USER_PROFILE.EMAIL_ID = '" + emailId + "'";
+			resultSet = statement.executeQuery(query);
+			while(resultSet.next()) {
+				int userId = resultSet.getInt("USER_ID");
+				String firstName = resultSet.getString("FIRST_NAME");
+				String lastName = resultSet.getString("LAST_NAME");
+				String email = resultSet.getString("EMAIL_ID");
+				String securityQuestion = resultSet.getString("SECURITY_QUESTION");
+				int securityQuestionId = resultSet.getInt("SECURITY_QUESTION_ID");
+				String securityAnswer = resultSet.getString("SECURITY_ANSWER");
+				
+				System.out.println("" + securityQuestion + " " + securityAnswer);
+				
+				userProfile = new UserProfile();
+				userProfile.setUserId(userId);
+				userProfile.setFirstName(firstName);
+				userProfile.setLastName(lastName);
+				userProfile.setEmail(email);
+				userProfile.setSecurityQuestionId(securityQuestionId);
+				userProfile.setSecurityQuestion(securityQuestion);
+				userProfile.setSecurityAnswer(securityAnswer);
+			}
+		}
+		catch (Exception e) {
+			System.out.println("Exception raised" + e);
+		}
+		return userProfile;
+	}
 	public UserProfile createlogin(UserProfile userProfile) {
 		// TODO Auto-generated method stub
 		try(Connection connection = ConnectionManager.getConnection()){

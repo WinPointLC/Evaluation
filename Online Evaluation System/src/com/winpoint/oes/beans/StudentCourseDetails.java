@@ -2,8 +2,13 @@ package com.winpoint.oes.beans;
 
 import java.util.Date;
 
-public class StudentBatchDetails {
+public class StudentCourseDetails {
 	private Integer userId;
+	private Integer courseId;
+	private String courseName;
+	private String logoLocation;
+	private String courseTypeName;
+	private String streamName;
 	private Integer batchId;
 	private String isFeedbackGiven;
 	private String isCertificateGiven;
@@ -24,10 +29,11 @@ public class StudentBatchDetails {
 	 * @param createdBy
 	 * @param createdDate
 	 */
-	public StudentBatchDetails(Integer userId, Integer batchId, String isFeedbackGiven, String isCertificateGiven,
+	public StudentCourseDetails(Integer userId, Integer courseId, Integer batchId, String isFeedbackGiven, String isCertificateGiven,
 			Integer courseAggr, String gradeId, String feeStatus, Integer createdBy, Date createdDate) {
 		super();
 		this.userId = userId;
+		this.courseId = courseId;
 		this.batchId = batchId;
 		this.isFeedbackGiven = isFeedbackGiven;
 		this.isCertificateGiven = isCertificateGiven;
@@ -38,6 +44,25 @@ public class StudentBatchDetails {
 		this.createdDate = createdDate;
 	}
 	
+	public StudentCourseDetails(int userId, int courseId, int courseAggr) {
+		// TODO Auto-generated constructor stub
+		this.userId = userId;
+		this.courseId = courseId;
+		this.courseAggr = courseAggr;
+	}
+
+	public StudentCourseDetails(int userId, int courseId, String courseName, String logoLocation, String courseTypeName,
+			String streamName, int courseAggr) {
+		// TODO Auto-generated constructor stub
+		this.userId = userId;
+		this.courseId = courseId;
+		this.courseName = courseName;
+		this.logoLocation = logoLocation;
+		this.courseTypeName = courseTypeName;
+		this.streamName = streamName;
+		this.courseAggr = courseAggr;
+	}
+
 	/**
 	 * @return the userId
 	 */
@@ -163,4 +188,45 @@ public class StudentBatchDetails {
 	public void setCreatedDate(Date createdDate) {
 		this.createdDate = createdDate;
 	}
+
+	public Integer getCourseId() {
+		return courseId;
+	}
+
+	public void setCourseId(Integer courseId) {
+		this.courseId = courseId;
+	}
+
+	public String getCourseName() {
+		return courseName;
+	}
+
+	public void setCourseName(String courseName) {
+		this.courseName = courseName;
+	}
+
+	public String getLogoLocation() {
+		return logoLocation;
+	}
+
+	public void setLogoLocation(String logoLocation) {
+		this.logoLocation = logoLocation;
+	}
+
+	public String getCourseTypeName() {
+		return courseTypeName;
+	}
+
+	public void setCourseTypeName(String courseTypeName) {
+		this.courseTypeName = courseTypeName;
+	}
+
+	public String getStreamName() {
+		return streamName;
+	}
+
+	public void setStreamName(String streamName) {
+		this.streamName = streamName;
+	}
+	
 }

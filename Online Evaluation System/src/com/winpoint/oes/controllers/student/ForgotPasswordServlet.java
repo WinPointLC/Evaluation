@@ -4,8 +4,6 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
-import java.util.ArrayList;
-import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -16,23 +14,21 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.google.gson.Gson;
-import com.winpoint.oes.beans.SecurityQuestions;
 import com.winpoint.oes.beans.UserProfile;
 import com.winpoint.oes.dao.Dummy;
 import com.winpoint.oes.helpers.common.LoginHelper;
-import com.winpoint.oes.helpers.common.SecurityQuestionsHelper;
 
 /**
  * Servlet implementation class LoginServ
  */
-@WebServlet("/SignUpServlet")
-public class SignUpServlet extends HttpServlet {
+@WebServlet("/ForgotPasswordServlet")
+public class ForgotPasswordServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public SignUpServlet() {
+    public ForgotPasswordServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -42,14 +38,7 @@ public class SignUpServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		//.getWriter().append("Served at: ").append(request.getContextPath());
-		System.out.println("From Get SignUpServlet");
-		List<SecurityQuestions> securityQuestions = new SecurityQuestionsHelper().getSecurityQuestionsList();// new ArrayList<String>();
-		/*securityQuestions.add("Car");
-		securityQuestions.add("Gun");
-		securityQuestions.add("Shades");*/
-
-        request.setAttribute("securityQuestionsList", securityQuestions);
+		response.getWriter().append("Served at: ").append(request.getContextPath());
 	}
 
 	/**
@@ -66,32 +55,21 @@ public class SignUpServlet extends HttpServlet {
 		Gson gson = new Gson();
 		UserProfile userProfile = gson.fromJson(json, UserProfile.class);
 		if(userProfile != null) {
-			String firstName = userProfile.getFirstName();
-			String lastName = userProfile.getLastName();
-			String email = userProfile.getEmail();
-			String password = userProfile.getPassword();
-			String gender = userProfile.getGender();
-			String mobileNumber = userProfile.getMobileNumber();
-			
-			System.out.println("firstName = " + firstName + "   password = " + password);
+		String email = userProfile.getEmail();
+		System.out.println("email = " + email);
 		
-		UserProfile userProfileRecd =  new LoginHelper().createLogin(userProfile);
+		UserProfile userProfileRecd =  new LoginHelper().getSecurityQuesAns(email);
 		
 		if(userProfileRecd != null) {
-			HttpSession session = request.getSession(true);
+			HttpSession session = request.getSession();
 			session.setAttribute("userId", userProfileRecd.getUserId());
 			session.setAttribute("firstName", userProfileRecd.getFirstName());
 			session.setAttribute("lastName", userProfileRecd.getLastName());
 			String json1 = null;
-			int userCategoryId;
-		
+					
 			PrintWriter writer = response.getWriter();
-			userCategoryId =  userProfileRecd.getUserCategoryId();
-			if (userCategoryId == 1)
-			   json1 = gson.toJson("{ 'success': 'true', 'location': '/OnlineEvaluationSystem/jsp/ClientDashboard.jsp'}");
-			else if(userCategoryId == 2) {
-				json1 = gson.toJson("{ 'success': 'true', 'location': '/OnlineEvaluationSystem/jsp/EmployeeDashboard.jsp'}");
-			}
+			json1 = gson.toJson("{ 'success': 'true', 'location': '/OnlineEvaluationSystem/jsp/ForgotPassword.jsp'}");
+			
 			//String json2 = gson.toJson(new UserProfile("anjali.parkhi", "Anjali"));
 			String json2 = gson.toJson(userProfileRecd);
 			String jsonString = "[" + json1 + "," + json2 + "]";

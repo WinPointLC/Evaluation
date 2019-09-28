@@ -163,7 +163,7 @@
 <body>
 	<c:forEach var="studentCourseDetail" items= "${studentCourseDetails}" varStatus="i">
 		<script>
-			alert("${studentCourseDetail.courseAggr}");
+			//alert("${studentCourseDetail.courseAggr}");
 		</script>
 	</c:forEach>
   <div class="wrapper ">
@@ -716,8 +716,6 @@ console.log("Creating Dynamic Elements");
 
 <c:forEach var="studentCourseDetail" items= "${studentCourseDetails}" varStatus="i">
 
-	alert("${studentCourseDetail.courseAggr}");
-	
 	var row  =document.createElement('div');
 	row.className="row tech-row";
 	var col1 = document.createElement('div');
@@ -729,8 +727,8 @@ console.log("Creating Dynamic Elements");
 	  var cardHeading = document.createElement('div');
 	  cardHeading.className="card-heading";
 	  var h6 = document.createElement('h6');
-	    h6.textContent = "${studentCourseDetail.courseName}";
-	    cardHeading.appendChild(h6);
+	  h6.textContent = "${studentCourseDetail.courseTypeName}" + " - " + "${studentCourseDetail.courseName}";
+	  cardHeading.appendChild(h6);
 	  var cardIcon = document.createElement('div');
 	  cardIcon.className="card-icon";
 	  var img = document.createElement('img');
@@ -764,12 +762,12 @@ console.log("Creating Dynamic Elements");
   var dropdownmenu = document.createElement('div');
   dropdownmenu.className="dropdown-menu";
   dropdownmenu.setAttribute('aria-labelledby',"dropdownMenuButton");
-  var Anchors = ['MCQ','Coding','Descriptive'];
+  var anchorsList = ['MCQ','Coding','Descriptive'];
 
-  for (var k = 0; k < Anchors.length; k++) {
+  for (var k = 0; k < anchorsList.length; k++) {
     var anchor  = document.createElement('a');
     anchor.className="dropdown-item";
-    anchor.textContent = Anchors[k];
+    anchor.textContent = anchorsList[k];
     dropdownmenu.appendChild(anchor);
     dropdown.appendChild(dropdownmenu);
     dropdown.appendChild(button);
