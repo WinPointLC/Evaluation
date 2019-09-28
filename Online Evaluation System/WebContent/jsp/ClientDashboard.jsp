@@ -57,11 +57,11 @@
     //document.getElementById('password').value = password;
     strResJSON = JSON.stringify(userProfile1);
 
-    
+
       });
-  
+
  /* var mydata = {
-    		userId : userProfile1.userId	  
+    		userId : userProfile1.userId
     	  };
     	$.ajax({
     	    type: 'POST',
@@ -709,7 +709,7 @@
   <!-- Material Dashboard DEMO methods, don't include it in your project! -->
   <script src="../assets/demo/demo.js"></script>
   <script>
-  
+
 console.log("Creating Dynamic Elements");
   //Dynamic Cards
 
