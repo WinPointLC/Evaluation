@@ -84,7 +84,7 @@
               // start of table body
 
               var tbody = document.createElement('tbody');
-              
+
 
               var searchString = window.location.search.substring(1);
               var arr = searchString.split('&');
@@ -109,9 +109,9 @@
                 anchort.setAttribute('href', "#");
                 anchort.textContent="Register";
                 anchort.setAttribute("href", "LoginForm.jsp");
-                
+
                 td3.appendChild(anchort);
-                
+
 
                 var ancdiv = document.createElement('div');
                 ancdiv.className="col-md-5";
@@ -125,23 +125,21 @@
                 ancbtn.setAttribute('style', "background-color: darkslateblue;");
                 ancbtn.className='btn';
                 ancbtn.setAttribute('type', "button");
-                ancbtn.setAttribute('disable', true);
                 ancbtn.textContent="Go To Test";
                 anchort2.appendChild(ancbtn);
                 ancdiv.appendChild(anchort2);
                 td4.appendChild(ancdiv);
-                
+
                 alert(">>>>>>>" + testsList[i].feeStatus)
                 if(testsList[i].feeStatus){
                 	alert("Fees are Paid");
                 	anchort.style.pointerEvents="none";
                 	anchort.style.cursor="default";
-                	ancbtn.setAttribute('disable', false);
                 	anchort2.setAttribute('href',"#");
-                	anchort2.style.pointerEvents="block";
+                	anchort2.style.pointerEvents='';
                 	anchort2.style.cursor="default";
                 }
-                
+
                 tr2.appendChild(td1);
                 tr2.appendChild(td2);
                 tr2.appendChild(td3);
@@ -149,13 +147,13 @@
 
                 tbody.appendChild(tr2);
               }
-              
+
               table.appendChild(tbody);
               tablecontainer.appendChild(table);
               row3.appendChild(tablecontainer);
               // $(document).ready(function(){
               document.getElementById('main-container').appendChild(row3);
-              
+
               var courseName =  testsList[0].courseName;
               courseheader.textContent=courseName;
 
@@ -188,11 +186,11 @@
                     } */
                     var questionJson = jsonObj[2];
                     var questionJSON = JSON.stringify(questionJson);
-                    
+
                     var testDetailsJson = jsonObj[3];
                     var testDetailsJSON = JSON.stringify(testDetailsJson);
-                    
-                    
+
+
                     //window.location.href = locationJson.location;
                     window.location.href = locationJson.location + "?varid=" + encodeURIComponent(strResJSON) + encodeURIComponent(questionJSON) + encodeURIComponent(testDetailsJSON) + "&courseName=" + courseName + "&username=" + "Anjali" +"&password=" + "Anjali";
                   },
