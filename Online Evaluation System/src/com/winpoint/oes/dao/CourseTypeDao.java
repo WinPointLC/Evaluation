@@ -9,16 +9,16 @@ import java.util.List;
 
 import com.microsoft.sqlserver.jdbc.SQLServerDataSource;
 import com.microsoft.sqlserver.jdbc.SQLServerException;
-import com.winpoint.oes.beans.Course;
+import com.winpoint.oes.beans.CourseType;
 import com.winpoint.oes.beans.Test;
 import com.winpoint.oes.util.sql.ConnectionManager;
 
 
-public class CourseDao {
+public class CourseTypeDao {
 
-	public List<Course> getCourseList(int streamId, int courseTypeId) {
+	public List<CourseType> getCourseTypeList(int streamId) {
 		
-		List<Course> courseList = new ArrayList<Course>();
+		List<CourseType> courseTypeList = new ArrayList<CourseType>();
 		
 		ResultSet resultSet = null;
 		/*SQLServerDataSource dataSource = new SQLServerDataSource();
@@ -31,29 +31,17 @@ public class CourseDao {
 		try(Connection connection = ConnectionManager.getConnection()){
 			Statement statement = connection.createStatement();
 
-			String query = "SELECT\r\n" + 
-					"	/*STREAMSTREAM_ID,\r\n" + 
-					"	STREAMS.STREAM_NAME,\r\n" + 
-					"	COURSE_TYPE.COURSE_TYPE_ID,\r\n" + 
-					"	COURSE_TYPE.COURSE_TYPE_NAME,*/\r\n" + 
-					"	COURSES.COURSE_ID,\r\n" + 
-					"	COURSES.COURSE_NAME,\r\n" + 
-					"	LOGO_LOCATION\r\n" + 
-					"	FROM \r\n" + 
-					"	STREAMS STREAMS JOIN COURSES COURSES\r\n" + 
-					"	ON STREAMS.STREAM_ID = COURSES.STREAM_ID\r\n" + 
-					"		JOIN COURSE_TYPE COURSE_TYPE\r\n" + 
-					"		ON COURSES.COURSE_TYPE_ID = COURSE_TYPE.COURSE_TYPE_ID\r\n" + 
-					"WHERE " + streamId + "= STREAMS.STREAM_ID and " + courseTypeId + " = COURSE_TYPE.COURSE_TYPE_ID\r\n" + 
-					"ORDER BY STREAMS.STREAM_ID, COURSE_TYPE.COURSE_TYPE_ID, COURSES.COURSE_ID";
+			String query = "SELECT COURSE_TYPE_ID, COURSE_TYPE.COURSE_TYPE_NAME \r\n" + 
+					"		FROM COURSE_TYPE\r\n" + 
+					"		WHERE COURSE_TYPE_ID IN\r\n" + 
+					"		(SELECT COURSE_TYPE_ID FROM STREAM_COURSE_TYPE WHERE STREAM_ID = " + streamId + ")\r\n";
 			resultSet = statement.executeQuery(query);
 			
 			while(resultSet.next()) {
-				int courseId = resultSet.getInt("course_id");
-				String courseName = resultSet.getString("course_name");
-				String logoLocation = resultSet.getString("logo_location");
-				Course course = new Course(courseId, courseName, streamId, courseTypeId, logoLocation);
-				courseList.add(course);
+				int courseTypeId = resultSet.getInt("COURSE_TYPE_ID");
+				String courseTypeName = resultSet.getString("COURSE_TYPE_NAME");
+				CourseType courseType = new CourseType(courseTypeId, courseTypeName);
+				courseTypeList.add(courseType);
 			}
 		} catch (SQLServerException e) {
 			// TODO Auto-generated catch block
@@ -62,7 +50,7 @@ public class CourseDao {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		} 
-		return courseList;
+		return courseTypeList;
 		
 	}
 
@@ -106,7 +94,6 @@ public class CourseDao {
 				int testDetailId = resultSet.getInt("TEST_DETAIL_ID");
 				int testFees = resultSet.getInt("TEST_FEES");
 				int fee_status = resultSet.getInt("FEE_STATUS");
-				System.out.println("<<<<<<<<<<<<< fee status = " + fee_status + ">>>>>>>>>>>>>>>>>>>>>>>>>");
 				//Boolean feeStatus = true;
 				int marksRceived = resultSet.getInt("MARKS_RECEIVED");
 				Test test = new Test(userId, courseName, evaluationTypeName, testDetailId, testFees, fee_status, marksRceived);

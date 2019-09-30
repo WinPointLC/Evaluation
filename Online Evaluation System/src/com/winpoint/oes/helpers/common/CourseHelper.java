@@ -22,7 +22,7 @@ public class CourseHelper {
 
 	public List<Test> getTestsList(int userId, int streamId, int courseTypeId, int courseId) {
 		// TODO Auto-generated method stub
-		List<Test> testList = new CourseDao().getTestList(streamId, courseTypeId);
+		List<Test> testList = new CourseDao().getTestList(userId, courseId);
 		return testList;
 	}
 }

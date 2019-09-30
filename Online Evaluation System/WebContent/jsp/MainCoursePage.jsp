@@ -43,7 +43,7 @@
                       </div>
                     </div>
                     <div class="card" style="display:none;" id="CourseCard" >
-                      <div class="card-body">
+                      <div class="card-body" id="courses">
                         <div class="tab-content" id="tab-content">
                           <div class="tab-pane active" id="profile"><br><br>
                             <!--    <div id="drop11" class="dropdown drop1">
@@ -263,12 +263,13 @@
               div1.id="tab-div";
               var li = document.createElement('li');
               li.className='nav-item';
+              li.id = streamList[i].streamId + 'l';
 
               var anchor =document.createElement('a');
               anchor.setAttribute('href',"#Profile");
               anchor.setAttribute('data-toggle',"tab");
-              anchor.className='nav-link active';
-              //anchor.id = streamList1[i].streamId;
+              anchor.className='nav-link ';
+              anchor.id = streamList[i].streamId + 'a';
               anchor.textContent=streamList[i].streamName;
               li.id = streamList[i].streamId;
              // alert("Li id = " + li.id);
@@ -279,7 +280,9 @@
               // End Inserted Code
             }
             // }
-
+            var streamElem = document.getElementById(streamList[0].streamId + 'a');
+            streamElem.className='nav-link active';
+            
             //End- Extract Stream List
             var drop1 = document.getElementsByClassName('drop1');
             var btn = document.createElement('button');
@@ -293,6 +296,7 @@
 
             var dropdownMenu = document.createElement('div');
             dropdownMenu.className='dropdown-menu';
+            dropdownMenu.id='dropdownMenu';
             dropdownMenu.setAttribute('aria-labelledby',"dropdownMenuButton");
             //Start- Extract Course Type List
             var courseTypes = decodedData.substring(decodedData.indexOf(']')+1, decodedData.length);
@@ -303,8 +307,8 @@
               dropanchor.className='dropdown-item';
               dropanchor.setAttribute('href',"#");
               dropanchor.id=courseTypesList[i].courseTypeId;
-              dropanchor.textContent=courseTypesList[i].courseTypeName;
-              dropanchor.setAttribute('onclick',"displayStreamCourses(this.id)");
+              dropanchor.textContent=(courseTypesList[i].courseTypeName).toUpperCase();
+              dropanchor.setAttribute('onclick',"displayStreamCourses(this.id, this.textContent)");
 
               dropdownMenu.appendChild(dropanchor);
               // alert(courseTypesList[i].courseTypeId + ":" + courseTypesList[i].courseTypeName)
@@ -391,17 +395,100 @@
       <script src="../assets/demo/demo.js"></script>
 
       <script>
+      
+      //alert(streamList[i].streamId + ":" + streamList[i].streamName);
+     
       var streamId=1;
       var courseTypeId;
+      
       function getStreamId(stream_id){
-        //alert("stream_id = " + stream_id);
-        streamId = stream_id;
+    	  streamId = stream_id;
+        
+        var streamElem = document.getElementById(streamId + 'a');
+        var elem;
+        for(i=0; i<streamList.length; i++){
+        	elem = document.getElementById(streamList[i].streamId + 'a');
+        	 elem.className = 'nav-link';
+        }
+        streamElem.className = 'nav-link active';
+       
+        elem = document.getElementById('courseList');
+        if(elem != null){
+        	elem.parentNode.removeChild(elem);
+        }        
+        
+        var myData = {
+        	streamId: streamId	
+        };
+        $.ajax({
+            type: 'POST',
+            url: '/OnlineEvaluationSystem/CommonController?action=StreamCourseTypeServlet',
+            data: JSON.stringify(myData),
+            dataType: 'json',
+            contentType: 'application/json; charset=utf-8',
+            traditional: true,
+            success: function (jsonObj) {
+              var courseTypesList=jsonObj[0];
+             // alert(courseTypesList.length);
+              //var strResJSON = JSON.stringify(responseJson);
+            
+            elem = document.getElementById('dropdownMenu');
+            if(elem != null){
+            	elem.parentNode.removeChild(elem);
+            }
+            
+            var elem = document.getElementById('dropdownMenuButton');
+            elem.parentNode.removeChild(elem);
+            
+            //var drop1 = document.getElementsByClassName('drop1');
+            var btn = document.createElement('button');
+            btn.className='btn btn-secondary dropdown-toggle';
+            btn.id='dropdownMenuButton';
+            btn.setAttribute('data-toggle', "dropdown");
+            btn.setAttribute('aria-haspopup', "true");
+            btn.setAttribute('aria-expanded',"false");
+            btn.textContent="Course Category";
+            document.getElementById('drop11').appendChild(btn);
+
+			 
+              var dropdownMenu = document.createElement('div');
+              dropdownMenu.className='dropdown-menu';
+              dropdownMenu.id='dropdownMenu';
+              dropdownMenu.setAttribute('aria-labelledby',"dropdownMenuButton");
+              for(i=0; i<courseTypesList.length; i++){
+            	//  alert(courseTypesList[i].courseTypeName);
+                  var dropanchor = document.createElement('a');
+                  dropanchor.className='dropdown-item';
+                  dropanchor.setAttribute('href',"#");
+                  dropanchor.id=courseTypesList[i].courseTypeId;
+                  var courseTypeName = (courseTypesList[i].courseTypeName).toUpperCase();
+                  //alert(courseTypeName);
+                  dropanchor.textContent=courseTypeName;
+                  dropanchor.setAttribute('onclick',"displayStreamCourses(this.id, this.textContent)");
+
+                  dropdownMenu.appendChild(dropanchor);
+                  // alert(courseTypesList[i].courseTypeId + ":" + courseTypesList[i].courseTypeName)
+                }
+
+              document.getElementById('drop11').appendChild(dropdownMenu);
+            },
+            error: function(){
+              alert("Error");
+              //document.getElementById("error").innerHTML = "Invalid email or password";
+            }
+
+
+          });
+        
       }
 
-      function displayStreamCourses(courseType_id){
+      function displayStreamCourses(courseType_id, courseTypeName ){
         //var streamId = stream_id;
         courseTypeId = courseType_id;
         //alert("stream_id = " + streamId + "courseType_id = " + courseType_id);
+        
+          document.getElementById('dropdownMenuButton').textContent = courseTypeName;
+        
         var myData = {
           streamId: streamId,
           courseTypeId: courseTypeId
@@ -430,7 +517,9 @@
             //     </div>
             //   </div>
             var elem = document.getElementById('courseList');
-            elem.parentNode.removeChild(elem);
+            if(elem != null){
+            	elem.parentNode.removeChild(elem);
+            }
             //document.getElementById('profile').removeChild(document.getElementById('xyz'));
 
             for(i=0; i<(responseJson.length); i=i+3){

@@ -88,9 +88,7 @@ public class TestSelectServlet extends HttpServlet {
 		   System.out.println("Json string is " + jsonString);
 		   PrintWriter writer = response.getWriter();
 		   writer.println(jsonString);
-		   writer.flush();
-		   
-		   
+		   writer.flush();		   
 		}
 	}
 }

@@ -19,6 +19,7 @@ import com.winpoint.oes.beans.CourseType;
 import com.winpoint.oes.beans.Stream;
 import com.winpoint.oes.beans.UserProfile;
 import com.winpoint.oes.dao.Dummy;
+import com.winpoint.oes.helpers.common.CourseTypeHelper;
 import com.winpoint.oes.helpers.common.LoginHelper;
 import com.winpoint.oes.helpers.common.StreamHelper;
 
@@ -70,12 +71,12 @@ public class OnlineEvaluationServlet extends HttpServlet {
 		streamList.add(new Stream(1, "ABC"));
 		streamList.add(new Stream(2, "LMN"));
 		streamList.add(new Stream(3, "XYZ"));*/
-		
-		//List<Stream> courseTypeList = new CourseTypeHelper().getCourseTypeList();
-		List<CourseType> courseTypeList = new ArrayList<CourseType>();
+		System.out.println(streamList.get(0).getStreamName());
+		List<CourseType> courseTypeList = new CourseTypeHelper().getCourseTypeList(streamList.get(0).getStreamId());
+		/*List<CourseType> courseTypeList = new ArrayList<CourseType>();
 		courseTypeList.add(new CourseType(1, "mod"));
 		courseTypeList.add(new CourseType(2, "tbc"));
-		courseTypeList.add(new CourseType(3, "crt"));
+		courseTypeList.add(new CourseType(3, "crt"));*/
 		
 		if(streamList != null && courseTypeList != null) {
 		   PrintWriter writer = response.getWriter();

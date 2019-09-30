@@ -6,18 +6,18 @@ public class Test {
 	private String evaluationTypeName;
 	private Integer testDetailId;
 	private Integer testFees;
-	private Boolean feeStatus;
+	private int feeStatus;
 	private Integer marksReceived;
 	
 	public Test(Integer userId, String courseName, String evaluationTypeName, Integer testDetailId, Integer testFees,
-			Boolean feeStatus, Integer marksReceived) {
+			int fee_status, Integer marksReceived) {
 		super();
 		this.userId = userId;
 		this.courseName = courseName;
 		this.evaluationTypeName = evaluationTypeName;
 		this.testDetailId = testDetailId;
 		this.testFees = testFees;
-		this.feeStatus = feeStatus;
+		this.feeStatus = fee_status;
 		this.marksReceived = marksReceived;
 	}
 	public Integer getUserId() {
@@ -50,10 +50,10 @@ public class Test {
 	public void setTestFees(Integer testFees) {
 		this.testFees = testFees;
 	}
-	public Boolean getFeeStatus() {
+	public int getFeeStatus() {
 		return feeStatus;
 	}
-	public void setFeeStatus(Boolean feeStatus) {
+	public void setFeeStatus(int feeStatus) {
 		this.feeStatus = feeStatus;
 	}
 	public Integer getMarksReceived() {
