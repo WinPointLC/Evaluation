@@ -109,12 +109,7 @@
                 anchort.setAttribute('href', "#");
                 anchort.textContent="Register";
                 anchort.setAttribute("href", "LoginForm.jsp");
-                alert(">>>>>>>" + testsList[i].feeStatus)
-                if(testsList[i].feeStatus){
-                	alert("Fees are Paid");
-                	anchort.style.pointerEvents="none";
-                	anchort.style.cursor="default";
-                }
+                
                 td3.appendChild(anchort);
                 
 
@@ -123,16 +118,30 @@
                 var anchort2 = document.createElement('a');
                 anchort2.setAttribute('href',"#");
                 anchort2.setAttribute('id',testsList[i].testDetailId);
+                anchort2.style.pointerEvents="none";
+            	anchort2.style.cursor="default";
                 anchort2.setAttribute('onclick',"displayRulesPage(this.id)");
                 var ancbtn = document.createElement('button');
                 ancbtn.setAttribute('style', "background-color: darkslateblue;");
                 ancbtn.className='btn';
                 ancbtn.setAttribute('type', "button");
+                ancbtn.setAttribute('disable', true);
                 ancbtn.textContent="Go To Test";
                 anchort2.appendChild(ancbtn);
                 ancdiv.appendChild(anchort2);
                 td4.appendChild(ancdiv);
-				
+                
+                alert(">>>>>>>" + testsList[i].feeStatus)
+                if(testsList[i].feeStatus){
+                	alert("Fees are Paid");
+                	anchort.style.pointerEvents="none";
+                	anchort.style.cursor="default";
+                	ancbtn.setAttribute('disable', false);
+                	anchort2.setAttribute('href',"#");
+                	anchort2.style.pointerEvents="block";
+                	anchort2.style.cursor="default";
+                }
+                
                 tr2.appendChild(td1);
                 tr2.appendChild(td2);
                 tr2.appendChild(td3);
