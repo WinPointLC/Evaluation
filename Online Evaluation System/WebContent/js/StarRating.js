@@ -1,3 +1,34 @@
+// very very imp Note : The created Custom element Star Rating gives an error(Uncomment this)
+// Why -->
+// >Stack Overflow
+// I have a custom element defined like so:
+//
+// class SquareLetter extends HTMLElement {
+//     constructor() {
+//         super();
+//         this.className = getRandomColor();
+//     }
+// }
+// customElements.define("square-letter", SquareLetter);
+// When the JavaScript file is included in HTML <head> tag, the Chrome console reports this error:
+//
+// Uncaught DOMException: Failed to construct 'CustomElement': The result must not have attributes
+//
+// But when the JavaScript file is included before the </body> ending tag, everything works fine. What's the reason?
+//
+// <head>
+//     <script src="js/SquareLetter.js"></script> <!-- here -->
+// </head>
+// <body>
+//     <square-letter>A</square-letter>
+//     <script src="js/SquareLetter.js"></script> <!-- or here -->
+// </body>
+
+// Solution for above:
+// When you move the script to after the element in the DOM, you cause the existing elements to go through the "upgrade" process.
+// When the script is before the element, the element goes through the standard construction process.
+// This difference is apparently causing the error to not appear in all cases, but that's an implementation detail and may change.
+
 class StarRating extends HTMLElement {
     get value () {
         return this.getAttribute('value') || 0;
