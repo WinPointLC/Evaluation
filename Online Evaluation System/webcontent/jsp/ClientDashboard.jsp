@@ -186,13 +186,14 @@
             <p>Dashboard</p>
           </a>
         </li>
-        <li class="nav-item">
-          <!--  <a class="nav-link" href="User.jsp">  -->
-          <a class="nav-link" href="javascript:sendToUserProfile()">
+        <!-- <a class="nav-link" href="javascript:sendToUserProfile()" onclick="User_link();"> -->
+        <!-- <li class="nav-item">
+          <a class="nav-link" href="#" onclick="User_link();">
             <i class="material-icons">person</i>
             <p>User Profile</p>
           </a>
-        </li>
+        </li> -->
+
         <li>
           <a class="nav-link" href="javascript:sendToMainCoursePage()">
             <i class="material-icons">computer</i>
@@ -206,23 +207,23 @@
           </a>
         </li>
         <li>
-          <a class="nav-link" href="#">
+          <a class="nav-link" href="#" onclick="Result_link();">
             <i class="material-icons">subject</i>
             <p>Result</p>
           </a>
         </li>
         <li>
-          <a class="nav-link" href="Notifications.jsp">
+          <a class="nav-link" href="#" onclick="Notif_link();">
             <i class="material-icons">notifications_none</i>
             <p>Notifications</p>
           </a>
         </li>
-        <li>
-          <a class="nav-link" href="Settings.jsp">
+        <%-- <li>
+          <a class="nav-link" href="#" onclick="Settings_link();">
             <i class="material-icons">settings</i>
             <p>Settings</p>
           </a>
-        </li>
+        </li> --%>
         <!-- your sidebar here -->
       </ul>
     </div>
@@ -268,8 +269,8 @@
                 </p>
               </a>
               <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownProfile">
-                <a class="dropdown-item" href="#">Profile</a>
-                <a class="dropdown-item" href="#">Settings</a>
+                <a class="dropdown-item" href="#" onclick="User_link();">Profile</a>
+                <a class="dropdown-item" href="#" onclick="Settings_link();">Settings</a>
                 <div class="dropdown-divider"></div>
                 <a class="dropdown-item" href="#">Log out</a>
               </div>
@@ -281,7 +282,7 @@
       <!-- End Navbar -->
 
 
-      <div class="content Tech-content">
+      <div class="content Tech-content" id="Tech-content">
         <div class="container-fluid">
 
           <div class="row row-main-header1">
@@ -494,7 +495,7 @@
 
         </div>
       </div>
-      <div class="content GA-content">
+      <div class="content GA-content" id="GA-content">
         <div class="container-fluid">
           <div class="row row-main-header2">
             <div class="col-md-11">
@@ -638,8 +639,28 @@
           </div>
 
           <!-- Chart Ends here -->
+
         </div>
       </div>
+      <!-- Adding Iframes here  -->
+
+      <iframe src="Notifications.jsp" width="1050" height="1000" id="Notif-frame"></iframe>
+      <iframe src="Settings.jsp" width="1050" height="1000" id="Settings-frame"></iframe>
+      <iframe src="StudentResult.jsp" width="1050" height="1000" id="Result-frame"></iframe>
+      <iframe width="1050" height="1000" id="User-frame"></iframe>
+      <!-- <iframe src="Analytics.jsp" width="1050" height="1000" id="Result-frame"></iframe> -->
+      <script type="text/javascript">
+        // var source = "User.jsp?varid="+ data;
+        // string Url = "User.jsp?varid=data";
+        // User-frame.Attributes["src"] = Server.HtmlDecode(Url);
+
+        //New Method
+        function loaddata() {
+        document.getElementById('User-frame').src='User.jsp?varid='+ data;
+        }
+
+      </script>
+      <!-- End of Iframes -->
       <!-- Footer -->
       <footer class="footer">
         <div class="container-fluid">
@@ -664,6 +685,63 @@
       </footer>
     </div>
   </div>
+<script type="text/javascript">
+  //code to hide and show the iframes
+  document.getElementById('Tech-content').style.display="block";
+  document.getElementById('GA-content').style.display="block";
+
+  document.getElementById('Notif-frame').style.display="none";
+  document.getElementById('Settings-frame').style.display="none";
+  document.getElementById('Result-frame').style.display="none";
+  document.getElementById('User-frame').style.display="none";
+
+  function Result_link() {
+    document.getElementById('Tech-content').style.display="none";
+    document.getElementById('GA-content').style.display="none";
+    document.getElementById('Notif-frame').style.display="none";
+    document.getElementById('Settings-frame').style.display="none";
+    document.getElementById('User-frame').style.display="none";
+    // document.getElementById('Analytics-frame').style.display="none";
+    document.getElementById('Result-frame').style.display="block";
+  }
+  function Settings_link() {
+    document.getElementById('Tech-content').style.display="none";
+    document.getElementById('GA-content').style.display="none";
+    document.getElementById('Notif-frame').style.display="none";
+    document.getElementById('Result-frame').style.display="none";
+    document.getElementById('User-frame').style.display="none";
+    // document.getElementById('Analytics-frame').style.display="none";
+    document.getElementById('Settings-frame').style.display="block";
+  }
+  function Notif_link() {
+    document.getElementById('Tech-content').style.display="none";
+    document.getElementById('GA-content').style.display="none";
+    document.getElementById('Result-frame').style.display="none";
+    document.getElementById('Settings-frame').style.display="none";
+    document.getElementById('User-frame').style.display="none";
+    // document.getElementById('Analytics-frame').style.display="none";
+    document.getElementById('Notif-frame').style.display="block";
+  }
+  function User_link() {
+    loaddata();
+    document.getElementById('Tech-content').style.display="none";
+    document.getElementById('GA-content').style.display="none";
+    document.getElementById('Result-frame').style.display="none";
+    document.getElementById('Settings-frame').style.display="none";
+    document.getElementById('User-frame').style.display="block";
+    // document.getElementById('Analytics-frame').style.display="none";
+
+    //sendToUserProfile();
+  }
+  function Analytics_link() {
+    document.getElementById('Tech-content').style.display="none";
+    document.getElementById('GA-content').style.display="none";
+    document.getElementById('Result-frame').style.display="none";
+    document.getElementById('Settings-frame').style.display="none";
+    document.getElementById('User-frame').style.display="none";
+    // document.getElementById('Analytics-frame').style.display="block";
+  }
+</script>
 
   <!--   Core JS Files   -->
   <script src="../assets/js/core/jquery.min.js"></script>
