@@ -644,10 +644,10 @@
       </div>
       <!-- Adding Iframes here  -->
 
-      <iframe src="Notifications.jsp" width="1050" height="1000" id="Notif-frame"></iframe>
-      <iframe src="Settings.jsp" width="1050" height="1000" id="Settings-frame"></iframe>
-      <iframe src="StudentResult.jsp" width="1050" height="1000" id="Result-frame"></iframe>
-      <iframe width="1050" height="1000" id="User-frame"></iframe>
+      <iframe src="Notifications.jsp" width="1100" height="1000" id="Notif-frame"></iframe>
+      <iframe src="Settings.jsp" width="1100" height="1000" id="Settings-frame"></iframe>
+      <iframe src="StudentResult.jsp" width="1100" height="1000" id="Result-frame"></iframe>
+      <iframe width="1100" height="1000" id="User-frame"></iframe>
       <!-- <iframe src="Analytics.jsp" width="1050" height="1000" id="Result-frame"></iframe> -->
       <script type="text/javascript">
         // var source = "User.jsp?varid="+ data;

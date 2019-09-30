@@ -1,8 +1,7 @@
 body{
   background-color: rgb(255, 255, 255);
 }
-
-#Settings-content{
+.content{
   margin-top: 10%;
   margin-right: auto;
 }

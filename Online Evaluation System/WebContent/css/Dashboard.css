@@ -1,3 +1,39 @@
+body{
+  background-color: rgb(255, 255, 255);
+}
+.Tech-typo h2{
+  margin-left: 20%;
+  font-weight: 600;
+  letter-spacing: 5px;
+  text-transform: uppercase;
+  /* animation: TextGradient 10s ease infinite; */ 
+ background: -webkit-linear-gradient(12deg,#7900ab,#e61010,#8f06b1);
+ -webkit-background-clip: text;
+ -webkit-text-fill-color: transparent;
+}
+
+.Tech-typo h2:hover{
+background: -webkit-linear-gradient(132deg,#530075,#7113cf,#120147);
+-webkit-background-clip: text;
+-webkit-text-fill-color: transparent;
+}
+.GA-typo h2{
+  margin-left: 20%;
+  font-weight: 600;
+  letter-spacing: 5px;
+  text-transform: uppercase;
+  /* animation: TextGradient 10s ease infinite; */
+  background: -webkit-linear-gradient(132deg,#530075,#7113cf,#120147);
+ -webkit-background-clip: text;
+ -webkit-text-fill-color: transparent;
+}
+
+.GA-typo h2:hover{
+background: -webkit-linear-gradient(12deg,#7900ab,#e61010,#8f06b1);
+-webkit-background-clip: text;
+-webkit-text-fill-color: transparent;
+}
+
 #card{
   background-color: #2e7fe8;
 }
@@ -23,7 +59,7 @@ font-size: 13px;
   width: 190px;
 }
 .Dashboard-content-2{
-  overflow-y: scroll;
+  /* overflow-y: scroll; */
   width: 70vw;
   height:60vh;
   margin-left:15%;

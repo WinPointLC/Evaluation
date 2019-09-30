@@ -14,17 +14,18 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
   <!-- Material Kit CSS -->
   <link href="../assets/css/material-dashboard.css?v=2.1.1" rel="stylesheet"/>
+  <link rel="stylesheet" href="../css/Settings.css">
 </head>
 
 <body>
-  <div class="wrapper ">
+  <%-- <div class="wrapper "> --%>
 
-    <div class="main-panel">
+    <%-- <div class="main-panel"> --%>
 
-      <div class="content">
-        <div class="container-fluid">
+      <%-- <div class="content"> --%>
+        <div class="container-fluid" id="Settings-content">
           <div class="row">
-            <div class="col-md-12">
+            <div class="col-md-11">
               <div class="card">
                 <div class="card-header card-header-primary">
                   <h4 class="card-title">Settings</h4>
@@ -73,11 +74,10 @@
               </div>
             </div>
           </div>
-        </div>
-      </div>
-      
-        </div>
-      </footer>
+        <%-- </div> --%>
+      <%-- </div> --%>
+
+        <%-- </div> --%>
 
 </body>
 

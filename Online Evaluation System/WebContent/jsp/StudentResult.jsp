@@ -15,11 +15,11 @@
   <!-- CSS Files -->
   <link href="../assets/css/material-dashboard.css?v=2.1.1" rel="stylesheet" />
   <!-- CSS Just for demo purpose, don't include it in your project -->
-  <link href="../assets/demo/demo.css" rel="stylesheet" />
+  <link rel="stylesheet" href="../css/StudentResult.css">
 </head>
 
 <body>
-  <div class="container-fluid">
+  <div class="container-fluid" id="Result-content">
     <div class="row">
       <div class="col-md-12">
         <div class="card card-plain">
