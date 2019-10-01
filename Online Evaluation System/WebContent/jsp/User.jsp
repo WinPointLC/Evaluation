@@ -87,7 +87,7 @@
                       <div class="col-md-4">
                         <div class="form-group">
                           <label>Year of Graduation</label>
-                          <input type="number" class="form-control" id="graduationyear">
+                          <input type="number" class="form-control" id="yearOfGraduation">
                         </div>
                       </div>
                       <div class="col-md-3">
@@ -227,6 +227,7 @@
   <!-- Material Dashboard DEMO methods, don't include it in your project! -->
   <script src="../assets/demo/demo.js"></script>
   <script>
+  int userId = userProfile1.userId;
   function PreviewImage() {
     var oFReader = new FileReader();
     oFReader.readAsDataURL(document.getElementById('uploadImage').files[0]);
@@ -239,6 +240,47 @@
       {
           return index == 0 ? word.toLowerCase() : word.toUpperCase();
       }).replace(/\s+/g, '');
+  }
+  function saveUserProfile(){
+	  String document.getElementById("aboutme").value;
+	  String photoLocation = document.getElementById('uploadPreview').src;
+      String userName = document.getElementById('username').value;
+      String email = document.getElementById('email').value;
+      String degree = document.getElementById('degree').value;
+      String yearOfGraduation = document.getElementById('yearOfGraduation').value;
+      String branch = document.getElementById('branch').value;
+      String address = document.getElementById('address').value;
+      String city = document.getElementById('city').value;
+      String country = document.getElementById('country').value;
+      String secquestion = document.getElementById('secquestion').value;
+      String secanswer = document.getElementById('secanswer').value;
+      String firstName = document.getElementById("firstName").value;
+      String lastName = document.getElementById("lastName").value;
+      String mobileNumber = document.getElementById("mobileNumber").value;
+      String password = document.getElementById("password").value;
+      String college = document.getElementById("college").value;
+    
+      var userProfileData = {
+    		  userId:userId,
+    		  userName: userName,
+    		  email: email,
+    		  degree: degree,
+    		  yearOfGraduation: yearOfGraduation,
+    		  branch: branch,
+    		  address: address,
+    		  city: city,
+    		  country: country,
+    		  securityQuestionId: securityQuestionId,
+    		  secanswer: secanswer,
+    		  firstName: firstName,
+    		  lastName: lastName,
+    		  mobileNumber: mobileNumber,
+    		  password: password,
+    		  college: college,
+    		  birthDate:,
+    		  photoLocation: photoLocation,
+    		  gender:gender,
+      }
   }
     $(document).ready(function() {
     	var searchString = window.location.search.substring(1);
@@ -256,7 +298,7 @@
         document.getElementById('username').value=userProfile1.username;
         document.getElementById('email').value=userProfile1.email;
         document.getElementById('degree').value=userProfile1.degree;
-        document.getElementById('graduationyear').value=userProfile1.yearOfGraduation;
+        document.getElementById('yearOfGraduation').value=userProfile1.yearOfGraduation;
         document.getElementById('branch').value=userProfile1.branch;
         document.getElementById('address').value=userProfile1.address;
         document.getElementById('city').value=userProfile1.City;

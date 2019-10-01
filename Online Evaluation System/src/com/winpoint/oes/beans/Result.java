@@ -1,16 +1,19 @@
 package com.winpoint.oes.beans;
 
 public class Result {
-	int courseId;
-	String  courseName;
-	int marks;
-	int totalMarks;
-	int numberOfCorrectAnswers;
-	int numberOfAttempedQuestions;
-	int numberOfTotalQuestions;
+	private int courseId;
+	private String  courseName;
+	private int marks;
+	private int totalMarks;
+	private int numberOfCorrectAnswers;
+	private int numberOfAttempedQuestions;
+	private int numberOfTotalQuestions;
+	private int hours;
+	private int minutes;
+	private int seconds;
 	
 	public Result(int courseId, String courseName, int marks, int totalMarks, int numberOfCorrectAnswers,
-			int numberOfAttempedQuestions, int numberOfTotalQuestions) {
+			int numberOfAttempedQuestions, int numberOfTotalQuestions, int hours, int minutes, int seconds) {
 		super();
 		this.courseId = courseId;
 		this.courseName = courseName;
@@ -19,6 +22,9 @@ public class Result {
 		this.numberOfCorrectAnswers = numberOfCorrectAnswers;
 		this.numberOfAttempedQuestions = numberOfAttempedQuestions;
 		this.numberOfTotalQuestions = numberOfTotalQuestions;
+		this.hours = hours;
+		this.minutes = minutes;
+		this.seconds = seconds;
 	}
 
 	public int getCourseId() {
@@ -75,5 +81,31 @@ public class Result {
 
 	public void setNumberOfTotalQuestions(int numberOfTotalQuestions) {
 		this.numberOfTotalQuestions = numberOfTotalQuestions;
+	}
+
+	public int getHours() {
+		return hours;
+	}
+
+	public void setHours(int hours) {
+		this.hours = hours;
+	}
+
+	public int getMinutes() {
+		return minutes;
+	}
+
+	public void setMinutes(int minutes) {
+		this.minutes = minutes;
+	}
+
+	public int getSeconds() {
+		return seconds;
+	}
+
+	public void setSeconds(int seconds) {
+		this.seconds = seconds;
 	}	
+	
+	
 }

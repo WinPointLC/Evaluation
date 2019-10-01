@@ -125,7 +125,10 @@
   alert(result.numberOfAttempedQuestions + ' ' + result.numberOfCorrectAnswers + ' ' + result.numberOfTotalQuestions);
     //Code for marks shown
     document.getElementById('resultHeading').textContent = 'Result for ' + result.courseName;
-    var timevalue= 40;
+    var hrs = 0 - result.hours;
+    var mins = 59 - result.minutes;
+    var secs = 60 - result.seconds;
+    var timevalue= hrs + "hrs " + mins + "mins " + secs + "secs";
     var attemptedQues= result.numberOfAttempedQuestions;//50;
     var correctAnswer = result.numberOfCorrectAnswers;//40;
     var wrongAnswer = attemptedQues - correctAnswer;//10;

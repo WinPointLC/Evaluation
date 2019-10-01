@@ -42,7 +42,7 @@
       answerList = new Array(questionsList.length);
       reviewFlag = new Array(questionsList.length);
        for(i=0; i<questionsList.length; i++){
-          alert("Question : " + questionsList[i].questionId + "," + questionsList[i].courseId);
+          //alert("Question : " + questionsList[i].questionId + "," + questionsList[i].courseId);
     	   answerList[i] = 0;
         }  
         courseName = arr[1].split('=')[1];
@@ -247,14 +247,24 @@
       };
 
  */     // alert("**" + JSON.stringify(myData2));
+ 	var hours = 0;
+ 	hours = hour;//document.getElementById('hr').value;
+ 	var minutes = 0;
+ 	minutes = min;//document.getElementById('min').value;
+ 	var seconds = 0;
+ 	seconds = sec;//document.getElementById('sec').value;
+ 	alert("hours : " + hours + " minutes : " + minutes + " seconds " + seconds);
    var myData = {
-		courseId:courseId,
+		courseId: courseId,
 		courseName: courseName,
 		marks: marks,
 		totalMarks: totalMarks,
 		numberOfCorrectAnswers: numberOfCorrectAnswers,
 		numberOfAttempedQuestions: numberOfAttempedQuestions,
-		numberOfTotalQuestions: numberOfTotalQuestions
+		numberOfTotalQuestions: numberOfTotalQuestions,
+		hours: hours,
+		minutes: minutes,
+		seconds: seconds
    };
    
 
@@ -271,11 +281,11 @@
           var responseJson1=jsonObj[0];
           var locationJson = eval('(' + responseJson1 + ')');
           var responseJson2 = jsonObj[1];
-          alert(responseJson2);
+          //alert(responseJson2);
           var feedbackQuestionsJSON = JSON.stringify(responseJson2);
-          alert(feedbackQuestionsJSON);
+          //alert(feedbackQuestionsJSON);
           var marksJSON = JSON.stringify(myData);
-          alert("marksJSON = " + marksJSON);
+          //alert("marksJSON = " + marksJSON);
           window.location.href = locationJson.location + "?varid=" + encodeURIComponent(marksJSON) + encodeURIComponent(feedbackQuestionsJSON);
         },
         error: function(){
@@ -468,7 +478,7 @@ function startTimer() {
     
     min = parseInt(timer/60);
     hour=parseInt(min/60);
-    var sec = parseInt(timer%60);
+    sec = parseInt(timer%60);
 
     if(timer < 1 ){
         document.getElementById('Expired').textContent="Time Expired";
