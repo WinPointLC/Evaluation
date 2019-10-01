@@ -100,7 +100,7 @@
                 var data= searchString.split('=')[1];
                 var resultJson = decodeURIComponent(data);
                 var result =  eval('(' + resultJson + ')');
-                //alert("result **** = " + result.courseName + result.marks + ' ' + result.totalMarks);
+                alert("result **** = " + result.numberOfCorrectAnswers + ' ' + result.numberOfAttempedQuestions + ' ' + result.numberOfTotalQuestions);
                 function saveFeedback() {
                   //alert("clicked Save");
                   var feedback1 = 'hhahdhf';//$('#TellUs').val();
