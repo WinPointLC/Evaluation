@@ -324,7 +324,7 @@
   }
 </script>
 </head>
-<body>
+<body onload="startTimer();">
   <jsp : useBean id="" class=" ">
 
     <div class="container-fluid main-frame">
@@ -385,10 +385,18 @@
               <div class="clock-header">
                 <h6>Time Left</h6>
               </div>
+              <div class="clock-header2">
+                <h5 id="hr-name" style="float: left; margin:2%; margin-left: 30%; color: rgb(250, 52, 0);">Hr</h5>
+                <h5 id="min-name" style="float: left;margin: 2%;color: rgb(42, 250, 0);"> Min</h5>
+                <h5 id="sec-name" style="float: left;margin: 2%;color: rgb(12, 0, 250);"> Sec</h5>
+              </div>
               <div class="clock-content">
-                <label id="hr">0 :</label>
-                <label id="min">40 :</label>
-                <label id="sec">50</label>
+                <label id="hr"></label>
+                <label id="min"></label>
+                <label id="sec"></label>
+              </div>
+              <div class="Expired">
+                <p id="Expired"></p>
               </div>
             </div>
             <div class="question-frame5">
@@ -431,5 +439,30 @@
 </div>
 </div>
 </div>
+<script type="text/javascript">
+var timer =3600;
+var hour=0;
+var min = 0; 
+var sec = 0;
+function startTimer() {
+    
+    min = parseInt(timer/60);
+    hour=parseInt(min/60);
+    var sec = parseInt(timer%60);
+
+    if(timer < 1 ){
+        document.getElementById('Expired').textContent="Time Expired";
+    }
+
+    document.getElementById('hr').textContent=hour.toString()+" "+":";
+    document.getElementById('min').textContent=min.toString()+" "+":";
+    document.getElementById('sec').textContent=sec.toString();
+    timer--;
+    setTimeout(function() {
+        startTimer();
+    },1000);
+}
+
+</script>
 </body>
 </html>
