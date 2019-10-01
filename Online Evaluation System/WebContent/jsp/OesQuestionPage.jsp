@@ -37,6 +37,7 @@
       var decodedData = decodeURIComponent(data);
       // alert(decodedData);
       questionsList = eval('(' + decodedData + ')');
+      numberOfTotalQuestions = questionsList.length;
       //alert(questionsList);
       answerList = new Array(questionsList.length);
       reviewFlag = new Array(questionsList.length);
@@ -164,7 +165,7 @@
 	    	if(ele[i].checked == true){
 	    		answerList[currentQuestion]=i+1;
 	    		numberOfAttempedQuestions++;
-	    		numberOfTotalQuestions++;
+	    		//numberOfTotalQuestions++;
 	    		break;
 	    	}
 	  }
@@ -312,7 +313,7 @@
 	    	if(ele[i].checked == true){
 	    		answerList[currentQuestion]=i+1;
 	    		//document.getElementById(currentQuestion+1).className = 'btn btn-success';
-	    		numberOfTotalQuestions++;
+	    		//numberOfTotalQuestions++;
 	    		numberOfAttempedQuestions++;
 	    		attempted = true;
 	    		break;
