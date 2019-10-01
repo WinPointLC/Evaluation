@@ -22,12 +22,14 @@ import com.google.gson.JsonElement;
 import com.google.gson.JsonParser;
 import com.winpoint.oes.beans.Course;
 import com.winpoint.oes.beans.CourseType;
+import com.winpoint.oes.beans.FeedbackQuestions;
 import com.winpoint.oes.beans.QuestionBank;
 import com.winpoint.oes.beans.Stream;
 import com.winpoint.oes.beans.Test;
 import com.winpoint.oes.beans.UserProfile;
 import com.winpoint.oes.dao.Dummy;
 import com.winpoint.oes.helpers.common.CourseHelper;
+import com.winpoint.oes.helpers.common.FeedbackQuestionsHelper;
 import com.winpoint.oes.helpers.common.LoginHelper;
 import com.winpoint.oes.helpers.common.StreamHelper;
 
@@ -82,11 +84,11 @@ public class ResultServlet extends HttpServlet {
         JsonArray array = parser.parse(questionsListStr).getAsJsonArray();
         for(final JsonElement jsonElement: array){
            QuestionBank question = gson.fromJson(jsonElement, QuestionBank.class);
-           System.out.println("Question = " + question.getQuestion() + " correctOption = " + question.getCorrectOption());
+           System.out.println("Question = " + question.getQuestion() + " correctOption = " + question.getCorrectOption() + " courseId = " + question.getCourseId());
            lst.add(question);
         }
 	     
-	    String json1 = gson.toJson("{ 'success': 'true', 'location': '/OnlineEvaluationSystem/jsp/FeedBackForm.jsp'}");
+	    
 		/*Gson gson = new Gson();
 		Course course = gson.fromJson(json, Course.class);
 		int streamId =  course.getStreamId();
@@ -117,7 +119,14 @@ public class ResultServlet extends HttpServlet {
 		   
 		   
 		}*/
-	    String jsonString = "[" + json1 + "]";
+        String json1 = gson.toJson("{ 'success': 'true', 'location': '/OnlineEvaluationSystem/jsp/FeedBackForm.jsp'}");
+        String json2 = null;
+        ArrayList<FeedbackQuestions> feedbackQuestionsList = new FeedbackQuestionsHelper().getFeedbackQuestions();
+        if (feedbackQuestionsList != null) {
+        	json2 = gson.toJson(feedbackQuestionsList);
+        }
+        
+        String jsonString = "[" + json1  + "," + json2 + "]";
 	    PrintWriter writer = response.getWriter();
 		   writer.println(jsonString);
 		   writer.flush();

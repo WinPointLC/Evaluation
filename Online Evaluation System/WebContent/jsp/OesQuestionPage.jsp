@@ -24,8 +24,12 @@
     var answerList = null;
     var marks = 0;
     var totalMarks = 0;
+    var courseId;
     var courseName;
-    $(function () {
+    var numberOfTotalQuestions = 0;
+	var numberOfAttempedQuestions = 0;
+	var numberOfCorrectAnswers = 0;
+	$(function () {
       var searchString = window.location.search.substring(1);
       var arr = searchString.split('&');
       //alert(arr);
@@ -37,10 +41,12 @@
       answerList = new Array(questionsList.length);
       reviewFlag = new Array(questionsList.length);
        for(i=0; i<questionsList.length; i++){
-          //alert("Question : " + questionsList[i].questionId + "," + questionsList[i].question);
+          alert("Question : " + questionsList[i].questionId + "," + questionsList[i].courseId);
     	   answerList[i] = 0;
         }  
         courseName = arr[1].split('=')[1];
+        courseId = questionsList[0].courseId;
+        //alert("CourseId = " + courseId);
         document.getElementById("test-name").textContent = courseName + " Test"
       for(i=0; i<questionsList.length/5; i++){
       //alert("Question : " + questionsList[i].questionId + "," + questionsList[i].question);
@@ -157,6 +163,8 @@
       for(var i=0;i<ele.length;i++){
 	    	if(ele[i].checked == true){
 	    		answerList[currentQuestion]=i+1;
+	    		numberOfAttempedQuestions++;
+	    		numberOfTotalQuestions++;
 	    		break;
 	    	}
 	  }
@@ -164,7 +172,8 @@
       for(i=0; i<answerList.length; i++){
     	 //alert("answerList[" + i + "] = " + answerList[i]);
     	  if(answerStrList[answerList[i]-1] == questionsList[i].correctOption){
-    		  marks += questionsList[i].totalMarks;    		  
+    		  marks += questionsList[i].totalMarks;    
+    		  numberOfCorrectAnswers++;
     	  }
     	  totalMarks += questionsList[i].totalMarks;
       }
@@ -238,9 +247,13 @@
 
  */     // alert("**" + JSON.stringify(myData2));
    var myData = {
-		   courseName: courseName,
+		courseId:courseId,
+		courseName: courseName,
 		marks: marks,
-		totalMarks: totalMarks
+		totalMarks: totalMarks,
+		numberOfCorrectAnswers: numberOfCorrectAnswers,
+		numberOfAttempedQuestions: numberOfAttempedQuestions,
+		numberOfTotalQuestions: numberOfTotalQuestions
    };
    
 
@@ -256,9 +269,13 @@
           //alert("Success");
           var responseJson1=jsonObj[0];
           var locationJson = eval('(' + responseJson1 + ')');
+          var responseJson2 = jsonObj[1];
+          alert(responseJson2);
+          var feedbackQuestionsJSON = JSON.stringify(responseJson2);
+          alert(feedbackQuestionsJSON);
           var marksJSON = JSON.stringify(myData);
           alert("marksJSON = " + marksJSON);
-          window.location.href = locationJson.location + "?varid=" + encodeURIComponent(marksJSON);
+          window.location.href = locationJson.location + "?varid=" + encodeURIComponent(marksJSON) + encodeURIComponent(feedbackQuestionsJSON);
         },
         error: function(){
           alert("Error");
@@ -294,7 +311,9 @@
 	    for(var i=0;i<ele.length;i++){
 	    	if(ele[i].checked == true){
 	    		answerList[currentQuestion]=i+1;
-	    		//document.getElementById(currentQuestion+1).className = 'btn btn-success';  
+	    		//document.getElementById(currentQuestion+1).className = 'btn btn-success';
+	    		numberOfTotalQuestions++;
+	    		numberOfAttempedQuestions++;
 	    		attempted = true;
 	    		break;
 	    	}
@@ -314,7 +333,7 @@
 	  
   
   function reset() {
-    console.log("We are in reset function");
+    //console.log("We are in reset function");
     // var radiobtn = document.getElementsByName('radio-group');
     // radiobtn.setAttribute('checked', false);
     var ele = document.getElementsByName("radio-group");

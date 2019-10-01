@@ -5,6 +5,7 @@ import java.util.Date;
 public class FeedbackQuestions {
 	private Integer feedbackQuestionId;
 	private String feedbackQuestion;
+	private String feedbackQuestionType;
 	private Integer createdBy;
 	private Date createdDate;
 	
@@ -22,6 +23,10 @@ public class FeedbackQuestions {
 		this.createdDate = createdDate;
 	}
 	
+	public FeedbackQuestions() {
+		// TODO Auto-generated constructor stub
+	}
+
 	/**
 	 * @return the feedbackQuestionId
 	 */
@@ -50,6 +55,15 @@ public class FeedbackQuestions {
 		this.feedbackQuestion = feedbackQuestion;
 	}
 	
+	
+	public String getFeedbackQuestionType() {
+		return feedbackQuestionType;
+	}
+
+	public void setFeedbackQuestionType(String feedbackQuestionType) {
+		this.feedbackQuestionType = feedbackQuestionType;
+	}
+
 	/**
 	 * @return the createdBy
 	 */

@@ -15,7 +15,7 @@ public class CourseHelper {
 		Iterator<Course> courseIterator = courseList.iterator();
 		while(courseIterator.hasNext()) {
 			Course course = (Course)courseIterator.next();
-			System.out.println("Course Id = " + course.getStreamId() + ": Course Name = " + course.getCourseName());
+			System.out.println("Course Id = " + course.getCourseId() + ": Course Name = " + course.getCourseName());
 		}
 		return courseList;
 	}

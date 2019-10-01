@@ -96,23 +96,24 @@
 
 
                 <script type="text/javascript">
-                var searchString = window.location.search.substring(1);
-                var data= searchString.split('=')[1];
-                var resultJson = decodeURIComponent(data);
-                var result =  eval('(' + resultJson + ')');
-                alert("result **** = " + result.numberOfCorrectAnswers + ' ' + result.numberOfAttempedQuestions + ' ' + result.numberOfTotalQuestions);
+                                
                 function saveFeedback() {
-                  //alert("clicked Save");
-                  var feedback1 = 'hhahdhf';//$('#TellUs').val();
-                  var rating = '5';
-                  var myFeedback = {
-                    feedback1: feedback1,
-                    rating: rating
-                  };
+                  
+                  var userFeedback = [];
+                  for(var i=0; i<feedbackQuestionsList.length; i++){
+                	    console.log(i);
+                	    var curStarRateElemVal = i+2;//document.getElementById(feedbackQuestionsList[i].feedbackQuestionId).value;
+                	    var feedback = { 
+                	    		feedbackQuestionId : feedbackQuestionsList[i].feedbackQuestionId,
+                	    		response : curStarRateElemVal
+                	    };
+                	    userFeedback.push(feedback);
+                	}
+                  alert(userFeedback);
                   $.ajax({
                     type: 'POST',
                     url: '/OnlineEvaluationSystem/CommonController?action=FeedbackServlet',
-                    data: JSON.stringify(myFeedback),
+                    data: JSON.stringify(userFeedback) + JSON.stringify(result),
                     dataType: 'json',
                     contentType: 'application/json; charset=utf-8',
                     traditional: true,
@@ -135,9 +136,28 @@
               </script>
               <script type="text/javascript">
               //code to make it dynamic
-              var FeedBackQuestion = ['Clarity of Question','Usability of UserInterface','Usability of Code Editor'];
+              //var FeedBackQuestion = ['Clarity of Question','Usability of UserInterface','Usability of Code Editor'];
+              var searchString = window.location.search.substring(1);
+                var data= searchString.split('=')[1];
+                /* var resultJson = decodeURIComponent(data);
+                var result =  eval('(' + resultJson + ')'); */
+                var decodedData = decodeURIComponent(data);
+                //alert(decodedData);
+                //var stream_id = 0;
+
+                //Start- Extract Resut 
+                var resultJson = decodedData.substring(0, decodedData.indexOf('}')+1);
+                //alert(streams);
+                var result = eval('(' + resultJson + ')');
+                alert("CourseId from FB Form " + result.courseId);
+                //alert("result **** = " + result.numberOfCorrectAnswers + ' ' + result.numberOfAttempedQuestions + ' ' + result.numberOfTotalQuestions);
+                
+                var feedbackQuestionsListJson = decodedData.substring(decodedData.indexOf('}')+1, decodedData.length);
+                var feedbackQuestionsList = eval('(' + feedbackQuestionsListJson + ')');
+                //alert(feedbackQuestionsList);
+
               var form = document.createElement('form');
-              for (var i = 0; i < FeedBackQuestion.length; i++) {
+              for (var i = 0; i < feedbackQuestionsList.length; i++) {
                 var row = document.createElement('div');
                 row.className="row";
                 var col = document.createElement('div');
@@ -146,20 +166,20 @@
                 formgroup.className="form-group";
                 var label = document.createElement('label');
                 label.className="bmd-label-floating";
-                label.textContent = FeedBackQuestion[i];
+                label.textContent = feedbackQuestionsList[i].feedbackQuestion;
                 formgroup.appendChild(label);
                 col.appendChild(formgroup);
                 row.appendChild(col);
-
-
 
                 var col2 = document.createElement('div');
                 col2.className="col-md-5";
                 var star = document.createElement('div');
                 star.className="star";
                 var starrate =document.createElement('x-star-rating');
-                starrate.setAttribute('value', 3);
+                starrate.setAttribute('value', 0);
                 starrate.setAttribute('number', 5);
+                starrate.setAttribute('id', 'feedbackQuestionsList[i].feedbackQuestionId');
+                starrate.setAttribute('onclick', 'getStarRateValue(this.id)');
                 star.appendChild(starrate);
                 col2.appendChild(star);
                 row.appendChild(col2);
@@ -196,7 +216,9 @@
                 btn.textContent = 'Save';
                 document.getElementById('card-body').appendChild(btn);
 
-
+				function getStarRateValue(starRateId){
+					
+				}
             </script>
             <script src="../js/StarRating.js"></script>
           </body>

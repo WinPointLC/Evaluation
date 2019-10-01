@@ -22,14 +22,18 @@ import com.google.gson.JsonElement;
 import com.google.gson.JsonParser;
 import com.winpoint.oes.beans.Course;
 import com.winpoint.oes.beans.CourseType;
+import com.winpoint.oes.beans.FeedbackQuestions;
 import com.winpoint.oes.beans.QuestionBank;
+import com.winpoint.oes.beans.Result;
 import com.winpoint.oes.beans.Stream;
 import com.winpoint.oes.beans.Test;
+import com.winpoint.oes.beans.TestFeedback;
 import com.winpoint.oes.beans.UserProfile;
 import com.winpoint.oes.dao.Dummy;
 import com.winpoint.oes.helpers.common.CourseHelper;
 import com.winpoint.oes.helpers.common.LoginHelper;
 import com.winpoint.oes.helpers.common.StreamHelper;
+import com.winpoint.oes.helpers.common.TestFeedbackHelper;
 
 /**
  * Servlet implementation class LoginServ
@@ -65,14 +69,34 @@ public class FeedbackServlet extends HttpServlet {
 	    if(br != null){
 	    	json = br.readLine();
 	    }
-	    System.out.println(json); 
-	    HttpSession session = request.getSession(false);
+	   
+	    Gson gson = new Gson();
+	        
+	    String feedbackResListStr = json.substring(0, json.indexOf(']')+1);
+	    	    
+	    List<TestFeedback> testFeedbackList =  new ArrayList<TestFeedback>();
+	    JsonParser parser = new JsonParser();
+        JsonArray array = parser.parse(feedbackResListStr).getAsJsonArray();
+        for(final JsonElement jsonElement: array){
+        	TestFeedback testFeedback = gson.fromJson(jsonElement, TestFeedback.class);
+        	System.out.println(testFeedback.getFeedbackQuestionId() + ":" + testFeedback.getResponse());
+           testFeedbackList.add(testFeedback);
+        }
+	    
+        String resultJsonStr = json.substring(json.indexOf(']')+1, json.length());
+        Result result = gson.fromJson(resultJsonStr, Result.class);
+        int courseId = result.getCourseId();
+        System.out.println("resultJsonStr courseId = " + result.getCourseId());
+        
+        HttpSession session = request.getSession(false);
+        int userId = (Integer) session.getAttribute("userId");
 	    String firstName = (String) session.getAttribute("firstName");
 	    String lastName = (String) session.getAttribute("lastName");
 	    
 	    String userName = firstName + " " + lastName;
-	    System.out.println(userName);
-	    Gson gson = new Gson();
+	    System.out.println("From FB Servlet UserId = " + userId);
+	    
+	    new TestFeedbackHelper().insertTestFeedback(userId, courseId, testFeedbackList);
 	    String json1 = gson.toJson("{ 'success': 'true', 'location': '/OnlineEvaluationSystem/jsp/Result.jsp', 'firstName': '" + firstName + "', 'lastName': '" + lastName + "'}");
 		/*Gson gson = new Gson();
 		Course course = gson.fromJson(json, Course.class);

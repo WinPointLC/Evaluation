@@ -32,7 +32,7 @@
                   <div class="Rule-content-1">
                     <div class="card card-plain">
                       <div class="card card-header card-header-primary">
-                        <h3 class="card-title text-align mr-auto ml-auto">Result for Test Name</h3>
+                        <h3 class="card-title text-align mr-auto ml-auto" id="resultHeading"></h3>
                       </div>
                     </div>
                   </div>
@@ -78,17 +78,17 @@
                         </div>
                         <div class="Attempted">
                           <i class="material-icons">done_all</i>
-                          <p id="Attempted-Questions">Attempted Questions:<span id="AttemptQues"></span> </p>
+                          <p id="Attempted-Questions">Attempted Questions:<span id="attemptQues"></span> </p>
                           <div class="border2"></div>
                         </div>
                         <div class="Correct">
                           <i class="material-icons">check_circle</i>
-                          <p id="Correct-Answer">Correct: <span id="CorrectAns"></span> </p>
+                          <p id="Correct-Answer">Correct: <span id="correctAns"></span> </p>
                           <div class="border3"></div>
                         </div>
                         <div class="Wrong">
                           <i class="material-icons">cancel</i>
-                          <p id="Wrong-Answer">Wrong Answer:<span id="WrongAns"></span> </p>
+                          <p id="Wrong-Answer">Wrong Answer:<span id="wrongAns"></span> </p>
                           <div class="border4"></div>
                         </div>
                       </div>
@@ -115,28 +115,38 @@
   carheader.appendChild(h3);
   document.getElementById('card-plain').appendChild(carheader);
 
+  var searchString = window.location.search.substring(1);
+  var arr = searchString.split('&');
+  var data= arr[0].split('=')[1];
+  var resultJson = decodeURIComponent(data);
+  var result =  eval('(' + resultJson + ')');
+  var firstName = (arr[1].split('=')[1]).toUpperCase();
+  var lastName = (arr[2].split('=')[1]).toUpperCase();
+  alert(result.numberOfAttempedQuestions + ' ' + result.numberOfCorrectAnswers + ' ' + result.numberOfTotalQuestions);
     //Code for marks shown
-    var timevalue=40;
-    var AttemptedQues=50;
-    var CorrectAnswer = 40;
-    var WrongAnswer = 10;
+    document.getElementById('resultHeading').textContent = 'Result for ' + result.courseName;
+    var timevalue= 40;
+    var attemptedQues= result.numberOfAttempedQuestions;//50;
+    var correctAnswer = result.numberOfCorrectAnswers;//40;
+    var wrongAnswer = attemptedQues - correctAnswer;//10;
     var timetaken = document.getElementById('Time');
     timetaken.textContent = timevalue;
 
-    var Attempted = document.getElementById('AttemptQues');
-    Attempted.textContent = AttemptedQues;
-    var CorrectAns = document.getElementById('CorrectAns');
-    CorrectAns.textContent = CorrectAnswer;
-    var WrongAns = document.getElementById('WrongAns');
-    WrongAns.textContent =WrongAnswer ;
-    var searchString = window.location.search.substring(1);
+    var attempted = document.getElementById('attemptQues');
+    attempted.textContent = attemptedQues;
+    var correctAns = document.getElementById('correctAns');
+    correctAns.textContent = correctAnswer;
+    var wrongAns = document.getElementById('wrongAns');
+    wrongAns.textContent =wrongAnswer ;
+    
+    /* var searchString = window.location.search.substring(1);
     var arr = searchString.split('&');
     var data= arr[0].split('=')[1];
     var resultJson = decodeURIComponent(data);
     var result =  eval('(' + resultJson + ')');
     var firstName = (arr[1].split('=')[1]).toUpperCase();
-    var lastName = (arr[2].split('=')[1]).toUpperCase();
-    //alert(result.courseName + result.marks + ' ' + result.totalMarks);
+    var lastName = (arr[2].split('=')[1]).toUpperCase(); */
+    alert(correctAnswer + ' ' + attemptedQues + ' ' + wrongAnswer);
     document.getElementById('courseName').textContent = result.courseName;
     document.getElementById('score').textContent = result.marks + '/' + result.totalMarks;
     // code for heading of congrats user
