@@ -34,6 +34,7 @@
                   <h4 class="card-title">Edit Profile</h4>
                   <p class="card-category">Complete your profile</p>
                   <h4 style="float:left;">UserId:&nbsp </h4><h4 id="userid"></h4>
+                  <input type="hidden" id="hiddenUserId"></input>
                 </div>
                 <div class="card-body">
                   <form>
@@ -227,7 +228,7 @@
   <!-- Material Dashboard DEMO methods, don't include it in your project! -->
   <script src="../assets/demo/demo.js"></script>
   <script>
-  int userId = userProfile1.userId;
+  
   function PreviewImage() {
     var oFReader = new FileReader();
     oFReader.readAsDataURL(document.getElementById('uploadImage').files[0]);
@@ -242,23 +243,24 @@
       }).replace(/\s+/g, '');
   }
   function saveUserProfile(){
-	  String document.getElementById("aboutme").value;
-	  String photoLocation = document.getElementById('uploadPreview').src;
-      String userName = document.getElementById('username').value;
-      String email = document.getElementById('email').value;
-      String degree = document.getElementById('degree').value;
-      String yearOfGraduation = document.getElementById('yearOfGraduation').value;
-      String branch = document.getElementById('branch').value;
-      String address = document.getElementById('address').value;
-      String city = document.getElementById('city').value;
-      String country = document.getElementById('country').value;
-      String secquestion = document.getElementById('secquestion').value;
-      String secanswer = document.getElementById('secanswer').value;
-      String firstName = document.getElementById("firstName").value;
-      String lastName = document.getElementById("lastName").value;
-      String mobileNumber = document.getElementById("mobileNumber").value;
-      String password = document.getElementById("password").value;
-      String college = document.getElementById("college").value;
+	  var userId = document.getElementById('hiddenUserId').value;
+	  var aboutMe = document.getElementById("aboutme").value;
+	  var photoLocation = document.getElementById('uploadPreview').src;
+      var userName = document.getElementById('username').value;
+      var email = document.getElementById('email').value;
+      var degree = document.getElementById('degree').value;
+      var yearOfGraduation = document.getElementById('yearOfGraduation').value;
+      var branch = document.getElementById('branch').value;
+      var address = document.getElementById('address').value;
+      var city = document.getElementById('city').value;
+      var country = document.getElementById('country').value;
+      var secquestion = document.getElementById('secquestion').value;
+      var secanswer = document.getElementById('secanswer').value;
+      var firstName = document.getElementById("firstName").value;
+      var lastName = document.getElementById("lastName").value;
+      var mobileNumber = document.getElementById("mobileNumber").value;
+      var password = document.getElementById("password").value;
+      var college = document.getElementById("college").value;
     
       var userProfileData = {
     		  userId:userId,
@@ -277,11 +279,29 @@
     		  mobileNumber: mobileNumber,
     		  password: password,
     		  college: college,
-    		  birthDate:,
     		  photoLocation: photoLocation,
     		  gender:gender,
       }
-  }
+      $.ajax({
+  	 	type: 'POST',
+          url: '/OnlineEvaluationSystem/CommonController?action=UserProfileServlet',
+          data: JSON.stringify(userProfile),
+          dataType: 'json',
+          contentType: 'application/json; charset=utf-8',
+          traditional: true,
+
+          success: function (jsonObj) {
+            //alert("Success");
+            var responseJson1=jsonObj[0];
+            var locationJson = eval('(' + responseJson1 + ')');
+            var userProfileJSON = JSON.stringify(userProfile)
+            window.location.href = locationJson.location + "?varid=" + encodeURIComponent(userProfileJSON) + "&username=" + "Anjali" +"&password=" + "Anjali";
+          },
+          error: function(){
+            alert("Error");
+          }
+        }); 
+    }
     $(document).ready(function() {
     	var searchString = window.location.search.substring(1);
     	var arr = searchString.split('&');
@@ -289,8 +309,11 @@
     	var userProfile = decodeURIComponent(data);
     	var userProfile1 =  eval('(' + userProfile + ')');
 	    //alert("Client is " + userProfile1.userId + ":" + userProfile1.photoLocation+ " " + userProfile1.lastName);
+	    
+        userId = userProfile1.userId;
 	    var photoLocation = userProfile1.photoLocation;
 	    //document.getElementById("studProfileName").innerHTML = camelCase(userProfile1.firstName) + " " + camelCase(userProfile1.lastName);
+	    document.getElementById('hiddenUserId').value = userProfile1.userId;
 	    document.getElementById("studProfileName").innerHTML = userProfile1.firstName.toUpperCase() + " " + userProfile1.lastName.toUpperCase();
 	    document.getElementById("profileDesc").innerHTML = "Hello, I am " + userProfile1.firstName.toUpperCase() + " " + userProfile1.lastName.toUpperCase() +
 	    													" from " + userProfile1.college;

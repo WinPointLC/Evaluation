@@ -73,22 +73,23 @@
                       <div class="card detail-card" style="background-color:rgb(255, 255, 255);">
                         <div class="time">
                           <i class="material-icons">alarm</i>
-                          <p id="Time-Taken">Time Taken:<span id="Time"></span> </p>
+                          <!-- <p id="Time-Taken">Time Taken: <span id="Time"></span> </p> -->
+                          <p id="Time-Taken" style="color: rgb(0, 0, 255);">Time Taken: </p><p id="Time"> </p>
                           <div class="border1"></div>
                         </div>
                         <div class="Attempted">
                           <i class="material-icons">done_all</i>
-                          <p id="Attempted-Questions">Attempted Questions:<span id="attemptQues"></span> </p>
+                          <p id="Attempted-Questions" style="color: rgb(0, 0, 255);">Attempted Questions: <span id="attemptQues" style="color: rgb(0, 0, 0);"></span> </p>
                           <div class="border2"></div>
                         </div>
                         <div class="Correct">
                           <i class="material-icons">check_circle</i>
-                          <p id="Correct-Answer">Correct: <span id="correctAns"></span> </p>
+                          <p id="Correct-Answer" style="color: rgb(0, 0, 255);">Correct: <span id="correctAns" style="color: rgb(0, 0, 0);"></span> </p>
                           <div class="border3"></div>
                         </div>
-                        <div class="Wrong">
+                        <div class="Wrong" >
                           <i class="material-icons">cancel</i>
-                          <p id="Wrong-Answer">Wrong Answer:<span id="wrongAns"></span> </p>
+                          <p id="Wrong-Answer" style="color: rgb(0, 0, 255);">Wrong Answer: <span id="wrongAns" style="color: rgb(0, 0, 0);"></span> </p>
                           <div class="border4"></div>
                         </div>
                       </div>
@@ -122,7 +123,7 @@
   var result =  eval('(' + resultJson + ')');
   var firstName = (arr[1].split('=')[1]).toUpperCase();
   var lastName = (arr[2].split('=')[1]).toUpperCase();
-  alert(result.numberOfAttempedQuestions + ' ' + result.numberOfCorrectAnswers + ' ' + result.numberOfTotalQuestions);
+  //alert(result.numberOfAttempedQuestions + ' ' + result.numberOfCorrectAnswers + ' ' + result.numberOfTotalQuestions);
     //Code for marks shown
     document.getElementById('resultHeading').textContent = 'Result for ' + result.courseName;
     var hrs = 0 - result.hours;
@@ -149,7 +150,7 @@
     var result =  eval('(' + resultJson + ')');
     var firstName = (arr[1].split('=')[1]).toUpperCase();
     var lastName = (arr[2].split('=')[1]).toUpperCase(); */
-    alert(correctAnswer + ' ' + attemptedQues + ' ' + wrongAnswer);
+    //alert(correctAnswer + ' ' + attemptedQues + ' ' + wrongAnswer);
     document.getElementById('courseName').textContent = result.courseName;
     document.getElementById('score').textContent = result.marks + '/' + result.totalMarks;
     // code for heading of congrats user

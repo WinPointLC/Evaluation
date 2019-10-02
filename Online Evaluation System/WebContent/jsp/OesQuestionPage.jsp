@@ -82,7 +82,7 @@
     	 isCurrentAttempted(currentQuestion);
     	 questionNo = 3;
 	  	  currentQuestion = questionNo-1;
-	  	  alert(questionsList);
+	  	  //alert(questionsList);
    		document.getElementById("question-no").innerHTML = "Question No: " + questionNo;
    		document.getElementById("question-content").innerHTML = questionsList[questionNo-1].question;
    		document.getElementById("radio-1").innerHTML = questionsList[questionNo-1].option1;
@@ -91,7 +91,7 @@
    		document.getElementById("radio-4").innerHTML = questionsList[questionNo-1].option4;
    
   	 var ele = document.getElementsByName("radio-group");
-	  alert("currentQuestion = " + currentQuestion + "answerList[currentQuestion] = " + answerList[currentQuestion]);
+	  //alert("currentQuestion = " + currentQuestion + "answerList[currentQuestion] = " + answerList[currentQuestion]);
 	  if(answerList[currentQuestion] !=0)
  	     ele[answerList[currentQuestion]].checked = true;
 	  else
@@ -253,7 +253,7 @@
  	minutes = min;//document.getElementById('min').value;
  	var seconds = 0;
  	seconds = sec;//document.getElementById('sec').value;
- 	alert("hours : " + hours + " minutes : " + minutes + " seconds " + seconds);
+ 	//alert("hours : " + hours + " minutes : " + minutes + " seconds " + seconds);
    var myData = {
 		courseId: courseId,
 		courseName: courseName,

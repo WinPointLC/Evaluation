@@ -130,9 +130,9 @@
                 ancdiv.appendChild(anchort2);
                 td4.appendChild(ancdiv);
 
-                alert(">>>>>>>" + testsList[i].feeStatus)
+                //alert(">>>>>>>" + testsList[i].feeStatus)
                 if(testsList[i].feeStatus){
-                	alert("Fees are Paid");
+                	//alert("Fees are Paid");
                 	anchort.style.pointerEvents="none";
                 	anchort.style.cursor="default";
                 	anchort2.setAttribute('href',"#");

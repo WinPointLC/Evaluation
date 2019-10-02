@@ -109,7 +109,7 @@
                 	    };
                 	    userFeedback.push(feedback);
                 	}
-                  alert(userFeedback);
+                  //alert(userFeedback);
                   $.ajax({
                     type: 'POST',
                     url: '/OnlineEvaluationSystem/CommonController?action=FeedbackServlet',
@@ -149,7 +149,7 @@
                 var resultJson = decodedData.substring(0, decodedData.indexOf('}')+1);
                 //alert(streams);
                 var result = eval('(' + resultJson + ')');
-                alert("CourseId from FB Form " + result.courseId);
+                //alert("CourseId from FB Form " + result.courseId);
                 //alert("result **** = " + result.numberOfCorrectAnswers + ' ' + result.numberOfAttempedQuestions + ' ' + result.numberOfTotalQuestions);
                 
                 var feedbackQuestionsListJson = decodedData.substring(decodedData.indexOf('}')+1, decodedData.length);
