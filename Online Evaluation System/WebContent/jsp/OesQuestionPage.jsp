@@ -21,7 +21,8 @@
     var questionsList = null;
     var currentQuestion;
     var reviewFlag;
-    var answerList = null;
+    var answerList = 0;
+    var isCorrect = null;
     var marks = 0;
     var totalMarks = 0;
     var courseId;
@@ -40,10 +41,12 @@
       numberOfTotalQuestions = questionsList.length;
       //alert(questionsList);
       answerList = new Array(questionsList.length);
+      isCorrect = new Array(questionsList.length);
       reviewFlag = new Array(questionsList.length);
        for(i=0; i<questionsList.length; i++){
           //alert("Question : " + questionsList[i].questionId + "," + questionsList[i].courseId);
     	   answerList[i] = 0;
+    	   isCorrect[i] = 0;
         }  
         courseName = arr[1].split('=')[1];
         courseId = questionsList[0].courseId;
@@ -174,6 +177,7 @@
     	 //alert("answerList[" + i + "] = " + answerList[i]);
     	  if(answerStrList[answerList[i]-1] == questionsList[i].correctOption){
     		  marks += questionsList[i].totalMarks;    
+    		  isCorrect[i]=1;
     		  numberOfCorrectAnswers++;
     	  }
     	  totalMarks += questionsList[i].totalMarks;
@@ -271,7 +275,7 @@
  $.ajax({
 	 	type: 'POST',
         url: '/OnlineEvaluationSystem/CommonController?action=ResultServlet',
-        data: JSON.stringify(answerList) + JSON.stringify(questionsList),
+        data: JSON.stringify(answerList) + JSON.stringify(questionsList) + JSON.stringify(isCorrect),
         dataType: 'json',
         contentType: 'application/json; charset=utf-8',
         traditional: true,

@@ -31,6 +31,7 @@ import com.winpoint.oes.dao.Dummy;
 import com.winpoint.oes.helpers.common.CourseHelper;
 import com.winpoint.oes.helpers.common.FeedbackQuestionsHelper;
 import com.winpoint.oes.helpers.common.LoginHelper;
+import com.winpoint.oes.helpers.common.ResultHelper;
 import com.winpoint.oes.helpers.common.StreamHelper;
 
 /**
@@ -69,26 +70,47 @@ public class ResultServlet extends HttpServlet {
 	    }
 	    System.out.println(json.length());
 	    String answerListStr = json.substring(0, json.indexOf(']')+1);
-	    String questionsListStr = json.substring(json.indexOf(']')+1, json.length());
+	    
+	    String jsonNextSubstring = json.substring(json.indexOf(']')+1, json.length());
+	    System.out.println(jsonNextSubstring);
+	    
+	    String questionsListStr = jsonNextSubstring.substring(0, jsonNextSubstring.indexOf(']')+1);
+	    //System.out.println("*****" + questionsListStr);
+	    String isCorrectListStr = jsonNextSubstring.substring(jsonNextSubstring.indexOf(']')+1, jsonNextSubstring.length());
 	    System.out.println(answerListStr);
 	    System.out.println(questionsListStr);
+	    System.out.println(isCorrectListStr);
 	    Gson gson = new Gson();
-	    ArrayList<Integer> answersList = gson.fromJson(answerListStr, ArrayList.class); 
-	    Iterator answersIterator = answersList.iterator();
-	    while(answersIterator.hasNext()) {
-		   System.out.println(((Double)answersIterator.next()).intValue());
-	    }
-	   
-	    List<QuestionBank> lst =  new ArrayList<QuestionBank>();
+	    
+	    List<QuestionBank> questionsList =  new ArrayList<QuestionBank>();
 	    JsonParser parser = new JsonParser();
         JsonArray array = parser.parse(questionsListStr).getAsJsonArray();
         for(final JsonElement jsonElement: array){
            QuestionBank question = gson.fromJson(jsonElement, QuestionBank.class);
            System.out.println("Question = " + question.getQuestion() + " correctOption = " + question.getCorrectOption() + " courseId = " + question.getCourseId());
-           lst.add(question);
+           questionsList.add(question);
         }
-	     
-	    
+	 
+        /*ArrayList<Integer> answersList = gson.fromJson(answerListStr, ArrayList.class); 
+	    Iterator answersIterator = answersList.iterator();
+	    while(answersIterator.hasNext()) {
+		   System.out.println(((Double)answersIterator.next()).intValue());
+	    }*/
+	
+        Integer[] answersList = gson.fromJson(answerListStr, Integer[].class); 
+	    /*Iterator answersIterator = answersList.iterator();
+	    while(answersIterator.hasNext()) {
+		   System.out.println(((Double)answersIterator.next()).intValue());
+	    }*/
+        Integer[] isCorrectList = gson.fromJson(isCorrectListStr, Integer[].class); 
+	    /*Iterator isCorrectListIterator = isCorrectList.iterator();
+	    while(isCorrectListIterator.hasNext()) {
+		   System.out.println(((Double)isCorrectListIterator.next()).intValue());
+	    }*/
+	    HttpSession session = request.getSession(false);
+		int userId = (int) session.getAttribute("userId");
+	    boolean isUpdated = new ResultHelper().updateStudentTestResponses(userId, questionsList, answersList, isCorrectList);
+	  
 		/*Gson gson = new Gson();
 		Course course = gson.fromJson(json, Course.class);
 		int streamId =  course.getStreamId();
