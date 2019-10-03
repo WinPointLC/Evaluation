@@ -252,8 +252,10 @@
       var yearOfGraduation = document.getElementById('yearOfGraduation').value;
       var branch = document.getElementById('branch').value;
       var address = document.getElementById('address').value;
+      /*** Following fields need to be removed from the form */
       var city = document.getElementById('city').value;
       var country = document.getElementById('country').value;
+      /*************************************/
       var secquestion = document.getElementById('secquestion').value;
       var secanswer = document.getElementById('secanswer').value;
       var firstName = document.getElementById("firstName").value;
@@ -261,26 +263,43 @@
       var mobileNumber = document.getElementById("mobileNumber").value;
       var password = document.getElementById("password").value;
       var college = document.getElementById("college").value;
-    
+      /*** Following fields need to be added in the form */
+      var birthDate = "12-Sep-1985";//document.getElementById("birthDate,").value;
+      var userCategoryId = "1";//document.getElementById("userCategoryId,").value;
+      var occupation = "Student";//document.getElementById("occupation").value;
+      var organisation = "";//document.getElementById("organisation").value;
+      var designation = "";//document.getElementById("designation").value;
+      var domain = "";//document.getElementById("domain").value;
+      var role = "";//document.getElementById("role").value;
+      var experience = "";//document.getElementById("experience").value;
+      /*************************************/
       var userProfileData = {
     		  userId:userId,
     		  userName: userName,
+     		  firstName: firstName,
+    		  lastName: lastName,
     		  email: email,
-    		  degree: degree,
-    		  yearOfGraduation: yearOfGraduation,
-    		  branch: branch,
+    		  mobileNumber: mobileNumber,
     		  address: address,
-    		  city: city,
-    		  country: country,
+    		  birthDate: birthDate,
+    		  college: college,
+    		  degree: degree,
+    		  branch: branch,
+    		  yearOfGraduation: yearOfGraduation,
+    		  photoLocation: photoLocation,
+    		  password: password,
     		  securityQuestionId: securityQuestionId,
     		  secanswer: secanswer,
-    		  firstName: firstName,
-    		  lastName: lastName,
-    		  mobileNumber: mobileNumber,
-    		  password: password,
-    		  college: college,
-    		  photoLocation: photoLocation,
-    		  gender:gender,
+    		  /************
+    		  userCategoryId: userCategoryId,
+    		  occupation: occupation,
+    		  organisation: organisation,
+    		  designation: designation,
+    		  domain: domain,
+    		  role: role,
+    		  experience: experience,
+    		  *********/
+    		  gender:gender
       }
       $.ajax({
   	 	type: 'POST',
