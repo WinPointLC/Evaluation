@@ -160,9 +160,10 @@
     	  reviewFlag[currentQuestion] = false;
       }
     })
-
-    $('#sub-btn').click(function() {
-      //alert("From submit button");
+	});
+   // $('#sub-btn').click(function() {
+	  function submitAnswers() {
+      alert("From submit button");
       var ele = document.getElementsByName("radio-group");
       for(var i=0;i<ele.length;i++){
 	    	if(ele[i].checked == true){
@@ -185,7 +186,7 @@
       //alert("marks = " + marks + "total marks = " + totalMarks);
      // window.location.href = '/OnlineEvaluationSystem/jsp/FeedBackForm.jsp';
       callServlet();
-    })
+    };
     function callServlet() {
 
 /*       var testname = $('#test-name').val();
@@ -275,7 +276,7 @@
  $.ajax({
 	 	type: 'POST',
         url: '/OnlineEvaluationSystem/CommonController?action=ResultServlet',
-        data: JSON.stringify(answerList) + JSON.stringify(questionsList) + JSON.stringify(isCorrect),
+        data: JSON.stringify(answerList) + JSON.stringify(questionsList) + JSON.stringify(isCorrect) + JSON.stringify(myData),
         dataType: 'json',
         contentType: 'application/json; charset=utf-8',
         traditional: true,
@@ -297,7 +298,7 @@
         }
       });
     }
-  });
+  
     
   function goToQuestion(questionNo){
 	  isCurrentAttempted(currentQuestion);
@@ -466,7 +467,7 @@
         </div>
       </div>
       <div class="question-submit">
-        <button class="btn btn-danger text center" id="sub-btn"><i class="material-icons">lock</i>Finish Exam</button>
+        <button class="btn btn-danger text center" id="sub-btn" onclick="submitAnswers()"><i class="material-icons">lock</i>Finish Exam</button>
       </div>
     </div>
   </div>
@@ -474,7 +475,7 @@
 </div>
 </div>
 <script type="text/javascript">
-var timer =3600;
+var timer = 3600;
 var hour=0;
 var min = 0; 
 var sec = 0;
@@ -483,16 +484,19 @@ function startTimer() {
     min = parseInt(timer/60);
     hour=parseInt(min/60);
     sec = parseInt(timer%60);
-
-    if(timer < 1 ){
+    timer--;
+    if(timer < 0 ){
         document.getElementById('Expired').textContent="Time Expired";
+        alert("Time is up. Your test will be submitted and result will be displayed shortly");
+        clearTimeout(timeOut);
+        submitAnswers();
     }
 
     document.getElementById('hr').textContent=hour.toString()+" "+":";
     document.getElementById('min').textContent=min.toString()+" "+":";
     document.getElementById('sec').textContent=sec.toString();
-    timer--;
-    setTimeout(function() {
+    
+    timeOut = setTimeout(function() {
         startTimer();
     },1000);
 }

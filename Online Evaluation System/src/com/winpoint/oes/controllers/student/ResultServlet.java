@@ -24,6 +24,7 @@ import com.winpoint.oes.beans.Course;
 import com.winpoint.oes.beans.CourseType;
 import com.winpoint.oes.beans.FeedbackQuestions;
 import com.winpoint.oes.beans.QuestionBank;
+import com.winpoint.oes.beans.Result;
 import com.winpoint.oes.beans.Stream;
 import com.winpoint.oes.beans.Test;
 import com.winpoint.oes.beans.UserProfile;
@@ -71,16 +72,25 @@ public class ResultServlet extends HttpServlet {
 	    System.out.println(json.length());
 	    String answerListStr = json.substring(0, json.indexOf(']')+1);
 	    
-	    String jsonNextSubstring = json.substring(json.indexOf(']')+1, json.length());
-	    System.out.println(jsonNextSubstring);
+	    String jsonSubstr1 = json.substring(json.indexOf(']')+1, json.length());
+	    System.out.println(jsonSubstr1);
+	    String questionsListStr = jsonSubstr1.substring(0, jsonSubstr1.indexOf(']')+1);
 	    
-	    String questionsListStr = jsonNextSubstring.substring(0, jsonNextSubstring.indexOf(']')+1);
 	    //System.out.println("*****" + questionsListStr);
-	    String isCorrectListStr = jsonNextSubstring.substring(jsonNextSubstring.indexOf(']')+1, jsonNextSubstring.length());
+	    String jsonSubstr2 = jsonSubstr1.substring(jsonSubstr1.indexOf(']')+1, jsonSubstr1.length());
+	    String isCorrectListStr = jsonSubstr2.substring(0, jsonSubstr2.indexOf(']')+1);
+	    
+	    String resultStr = jsonSubstr2.substring(jsonSubstr2.indexOf(']')+1, jsonSubstr2.length());
+	    
 	    System.out.println(answerListStr);
 	    System.out.println(questionsListStr);
 	    System.out.println(isCorrectListStr);
+	    System.out.println(resultStr);
+	    
 	    Gson gson = new Gson();
+	    
+	    Result result = gson.fromJson(resultStr, Result.class);
+	    System.out.println(result.getCourseName() + result.getMarks());
 	    
 	    List<QuestionBank> questionsList =  new ArrayList<QuestionBank>();
 	    JsonParser parser = new JsonParser();
@@ -91,6 +101,7 @@ public class ResultServlet extends HttpServlet {
            questionsList.add(question);
         }
 	 
+        
         /*ArrayList<Integer> answersList = gson.fromJson(answerListStr, ArrayList.class); 
 	    Iterator answersIterator = answersList.iterator();
 	    while(answersIterator.hasNext()) {
@@ -109,7 +120,8 @@ public class ResultServlet extends HttpServlet {
 	    }*/
 	    HttpSession session = request.getSession(false);
 		int userId = (int) session.getAttribute("userId");
-	    boolean isUpdated = new ResultHelper().updateStudentTestResponses(userId, questionsList, answersList, isCorrectList);
+		boolean isUpdated = new ResultHelper().updateUserTestDetails(userId, questionsList, result);
+		isUpdated = new ResultHelper().updateStudentTestResponses(userId, questionsList, answersList, isCorrectList);
 	  
 		/*Gson gson = new Gson();
 		Course course = gson.fromJson(json, Course.class);
