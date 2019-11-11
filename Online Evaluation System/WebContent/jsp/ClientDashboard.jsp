@@ -105,6 +105,7 @@
   }
   function sendToUserAnalytics(){
 	    window.location.href = "/OnlineEvaluationSystem/jsp/Analytics.jsp?varid="+ data;
+	   window.location.href = "/OnlineEvaluationSystem/jsp/Analytics.jsp?varid="+ encodeURIComponent('${studentCourseDetails}');
 	    //encodeURIComponent(strResJSON);
 	  }
   function sendToMainCoursePage(){
