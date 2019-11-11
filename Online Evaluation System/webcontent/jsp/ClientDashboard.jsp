@@ -104,7 +104,10 @@
     //encodeURIComponent(strResJSON);
   }
   function sendToUserAnalytics(){
-	    window.location.href = "/OnlineEvaluationSystem/jsp/Analytics.jsp?varid="+ data;
+	  //var studentCourseDetails = '<c:out value="${studentCourseDetails}"/>';
+	  
+	  alert('${studentCourseDetails}');
+	   window.location.href = "/OnlineEvaluationSystem/jsp/Analytics.jsp?varid="+ encodeURIComponent('${studentCourseDetails}');
 	    //encodeURIComponent(strResJSON);
 	  }
   function sendToMainCoursePage(){
@@ -163,7 +166,7 @@
 <body>
 	<c:forEach var="studentCourseDetail" items= "${studentCourseDetails}" varStatus="i">
 		<script>
-			//alert("${studentCourseDetail.courseAggr}");
+			alert(studentCourseDetail);
 		</script>
 	</c:forEach>
   <div class="wrapper ">
@@ -648,7 +651,7 @@
       <iframe src="Settings.jsp" width="1100" height="1000" id="Settings-frame"></iframe>
       <iframe src="StudentResult.jsp" width="1100" height="1000" id="Result-frame"></iframe>
       <iframe width="1100" height="1000" id="User-frame"></iframe>
-      <!-- <iframe src="Analytics.jsp" width="1050" height="1000" id="Result-frame"></iframe> -->
+      <!-- <iframe src="Analytics.jsp" width="1050" height="1000" id="Analytics-frame"></iframe> -->
       <script type="text/javascript">
         // var source = "User.jsp?varid="+ data;
         // string Url = "User.jsp?varid=data";
@@ -791,9 +794,9 @@
 console.log("Creating Dynamic Elements");
   //Dynamic Cards
 
-
-<c:forEach var="studentCourseDetail" items= "${studentCourseDetails}" varStatus="i">
-
+var studentCourseDetailsList = eval('(' + '${studentCourseDetails}' + ')');
+alert(studentCourseDetailsList.length);
+for(var i=0; i<studentCourseDetailsList.length; i++){
 	var row  =document.createElement('div');
 	row.className="row tech-row";
 	var col1 = document.createElement('div');
@@ -805,13 +808,13 @@ console.log("Creating Dynamic Elements");
 	  var cardHeading = document.createElement('div');
 	  cardHeading.className="card-heading";
 	  var h6 = document.createElement('h6');
-	  h6.textContent = "${studentCourseDetail.courseTypeName}" + " - " + "${studentCourseDetail.courseName}";
+	  h6.textContent = studentCourseDetailsList[i].courseTypeName + " - " + studentCourseDetailsList[i].courseName;
 	  cardHeading.appendChild(h6);
 	  var cardIcon = document.createElement('div');
 	  cardIcon.className="card-icon";
 	  var img = document.createElement('img');
 
-	      img.setAttribute('src',"${studentCourseDetail.logoLocation}");
+	      img.setAttribute('src',studentCourseDetailsList[i].logoLocation);
 	      img.setAttribute('style', "width:60px;height:60px;");
 	      cardIcon.appendChild(img);
 
@@ -821,7 +824,7 @@ console.log("Creating Dynamic Elements");
 	  p.textContent = 'Marks Obtained';
 	  var h3 = document.createElement('h3');
 	  h3.className="card-title";
-	  h3.textContent = "${studentCourseDetail.courseAggr}";
+	  h3.textContent = studentCourseDetailsList[i].courseAggr;
 	  // End Card Header
 	  var cardfooter = document.createElement('div');
   cardfooter.className="card-footer";
@@ -866,8 +869,7 @@ console.log("Creating Dynamic Elements");
 
 
   document.getElementById('Tech-cards').appendChild(row);
-
-</c:forEach>
+}
 /*var TechArr = ['Java','Data Structures','CPP','JS'];
 var TechArr2 = ['Java','Data Structures','CPP','JS'];
 var Mixarr=['../assets/img/Dashboard-main-page-images/java-brands.svg','../assets/img/Dashboard-main-page-images/cubes.svg','../assets/img/Dashboard-main-page-images/cpp-icon-file-format.svg','../assets/img/Dashboard-main-page-images/js-brands.svg'];

@@ -50,7 +50,10 @@ public class ClientDashboardServlet extends HttpServlet {
 			StudentCourseDetails studDet = studcourseIt.next();
 			System.out.println(studDet.getCourseAggr());
 		}
-		request.setAttribute("studentCourseDetailsList", studentCourseDetailsList);
+		Gson gson = new Gson();
+		String studentCourseDetailsListJSON = gson.toJson(studentCourseDetailsList);
+		System.out.println(studentCourseDetailsListJSON);
+		request.setAttribute("studentCourseDetailsList", studentCourseDetailsListJSON);
 	}
 
 	/**

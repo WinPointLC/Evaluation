@@ -17,7 +17,25 @@
   <link rel="stylesheet" href="../css/Analytics.css">
   <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
   <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+
   <script type="text/javascript">
+  var studentCourseDetailsList;
+  $(document).ready(function(){
+	 //alert("Hello");
+	 var searchString = window.location.search.substring(1);
+	 //alert("SearchString = " + searchString);
+	 var arr = searchString.split('&');
+	 //alert("arra = " + arr);
+	 data= arr[0].split('=')[1];
+	 
+	 var decodedData = decodeURIComponent(data);
+	 alert(decodedData);
+	 //var studentCourseDetailsList = decodedData.substring(0, decodedData.indexOf(']')+1);
+	 //alert(studentCourseDetailsList);
+	 studentCourseDetailsList =  eval('(' + decodedData + ')');
+	 alert(studentCourseDetailsList + " " + studentCourseDetailsList.length + " **** "+ studentCourseDetailsList[0].courseTypeName);
+  });
     google.charts.load('current', {'packages':['corechart']});
     google.charts.setOnLoadCallback(drawChart1);
     var value1;
@@ -27,8 +45,12 @@
       data.addColumn('string', 'Subject');
       data.addColumn('number', 'Marks');
 
-      var TechnicalData = '[["C",21],["C++",25],["DS",19],["JS",32],["DB",40]]';
-      data.addRows(JSON.parse(TechnicalData));
+      //var technicalData = '[["C",21],["C++",25],["DS",19],["JS",32],["DB",40]]';
+      var technicalData = '[["' + studentCourseDetailsList[0].courseName + '",' + studentCourseDetailsList[0].courseAggr + '],["' +
+    	  						 studentCourseDetailsList[1].courseName + '",' + studentCourseDetailsList[1].courseAggr + '],["' +
+    	  						 studentCourseDetailsList[2].courseName + '",' + studentCourseDetailsList[2].courseAggr + ']]';
+      alert(technicalData);
+      data.addRows(JSON.parse(technicalData));
 
       var options = {
         title: 'My Evaluation Scores'
@@ -39,8 +61,8 @@
         var selectedItem = chart.getSelection()[0];
         if(selectedItem){
 
-          var value1 = data.getValue(selectedItem.row , 0);
-          var value2 = data.getValue(selectedItem.row,1);
+          value1 = data.getValue(selectedItem.row , 0);
+          value2 = data.getValue(selectedItem.row,1);
           // alert("The user has selected "+" "+value1);
           // alert("The user has selected "+" "+value2);
           document.getElementById('clickedcontent1').textContent ="Subject:" + value1;
@@ -55,7 +77,7 @@
 
   <script type="text/javascript">
 google.charts.load("current",{'packages':['corechart']});
-google.charts.setOnLoadCallback(drawChart2);
+//google.charts.setOnLoadCallback(drawChart2);
 function drawChart2() {
 // alert("drawChart2    " + value1);
 
@@ -63,13 +85,13 @@ var data = new google.visualization.DataTable();
 data.addColumn('string', 'Topics');
 data.addColumn('number', 'Marks');
 
-var stringDataC = '[["Basic Functions",4],["Operators",6],["Pointers",3],["File Handing",2],["overloading",5]]';
+var stringDataC = '[["Basic Functions",4],["Operators",6],["Pointers",3],["File Handing",2],["overloading",6]]';
 var stringDataCPP = '[["Basic Functions",2],["Operators",4],["Pointers",6],["File Handing",1],["overloading",5]]';
 var stringDataDS = '[["Basic Functions",1],["Operators",5],["Pointers",2],["File Handing",6],["overloading",2]]';
 var stringDataJS = '[["Basic Functions",6],["Operators",5],["Pointers",3],["File Handing",2],["overloading",4]]';
 var stringDataDB= '[["Basic Functions",3],["Operators",5],["Pointers",2],["File Handing",4],["overloading",6]]';
 
-if (value1=='C') {
+if (value1=='c') {
 data.addRows(JSON.parse(stringDataC));
 }
 else if (value1=='C++') {
@@ -90,17 +112,20 @@ else if (value1=='DB') {
      width: 400,
      height: 300,
   };
+//  alert("Draw");
   var chart = new google.visualization.BarChart(document.getElementById('barchart'));
+  //alert("Drawing");
   chart.draw(data, options);
+  //alert("Drawn");
 }
 </script>
 <!-- Script for GA Section -->
 <script type="text/javascript">
     google.charts.load('current', {'packages':['corechart']});
-    google.charts.setOnLoadCallback(drawChart1);
+    google.charts.setOnLoadCallback(drawChart4);
     var value3;
     var value4;
-    function drawChart1() {
+    function drawChart4() {
       var data = new google.visualization.DataTable();
       data.addColumn('string', 'Subject');
       data.addColumn('number', 'Marks');
@@ -118,11 +143,11 @@ else if (value1=='DB') {
         if(selectedItem){
           value3 = data.getValue(selectedItem.row , 0);
             value4 = data.getValue(selectedItem.row,1);
-          alert("The user has selected "+" "+value3);
-          alert("The user has selected "+" "+value4);
+          //alert("The user has selected "+" "+value3);
+          //alert("The user has selected "+" "+value4);
           document.getElementById('clickedcontent3').textContent ="Subject:" + value3;
           document.getElementById('clickedcontent4').textContent = "Marks:" + value4;
-          drawChart2();
+          drawChart3();
         }
       }
       google.visualization.events.addListener(chart,'select',selectHandler);
@@ -132,8 +157,8 @@ else if (value1=='DB') {
   </script>
   <script type="text/javascript">
 google.charts.load("current",{'packages':['corechart']});
-google.charts.setOnLoadCallback(drawChart2);
-function drawChart2() {
+//google.charts.setOnLoadCallback(drawChart3);
+function drawChart3() {
 // alert("drawChart2    " + value1);
 
 var data = new google.visualization.DataTable();
@@ -185,12 +210,11 @@ else if (value3=='VA') {
           </div>
         </div>
       </div>
-
       <div class="row row-header-2">
         <div class="card card-plain">
           <div class="col-sm-6 col-md-6 col-lg-8 col-xl-8 col-header-2" id="result-header-card2" style="margin:auto;">
             <div class="card card-header card-header-info">
-              <h3 class="card-title text-align mr-auto ml-auto">Marks of all Evaluation</h3>
+              <h3 class="card-title text-align mr-auto ml-auto">Evaluation Details</h3>
             </div>
           </div>
         </div>
@@ -198,7 +222,7 @@ else if (value3=='VA') {
       <!-- Inner Header  -->
       <div class="row row-inheader-1">
 
-        <div class="col-md-6 col-inheader-1">
+     <!--    <div class="col-md-6 col-inheader-1">
           <div class="card card-plain">
             <div class="card card-header card-header-danger">
               <h3 class="card-title text-align mr-auto ml-auto">Technical Evaluation</h3>
@@ -211,7 +235,7 @@ else if (value3=='VA') {
               <h3 class="card-title text-align mr-auto ml-auto">General Aptitude Evaluation</h3>
             </div>
           </div>
-        </div>
+        </div>  -->
       </div>
       <!-- Natours Content -->
       <div class="row">
@@ -232,10 +256,10 @@ else if (value3=='VA') {
                             <div class="col-sm-5 col-md-5 col-lg-5 col-xl-5">
                               <div id="piechart" style="width: 400px; height: 300px;" class="chart"></div>
                             </div>
-                            <div class="col-md-6" >
+                            <div class="col-md-4" >
                               <div class="right-side-contents">
                                 <div class="hover-content" >
-                                  <h2 align="center">Contents</h2>
+                                <h2 align="center">Contents</h2>
                                   <div class="row">
                                     <h3 id="graph-content"></h3>
                                     <div class="col-sm-5 col-md-5 col-lg-5 col-xl-5">
@@ -324,22 +348,6 @@ else if (value3=='VA') {
     </div>
   </div>
   <script>
-
-    document.getElementById("Tech").style.display = "none";
-    document.getElementById("GA").style.display = "none";
-    //code to check whether student has given evaluation for Technical or General aptitude section:
-      var evaluationid = 2 ;
-
-      if (evaluationid==1) {
-        document.getElementById("Tech").style.display = "block";
-      }
-      else if(evaluationid==2){
-        document.getElementById("GA").style.display = "block";
-      }
-      else if(evaluationid==1 && evaluationid == 2){
-        document.getElementById("Tech").style.display = "block";
-        document.getElementById("GA").style.display = "block";
-      }
   </script>
 </body>
 </html>
