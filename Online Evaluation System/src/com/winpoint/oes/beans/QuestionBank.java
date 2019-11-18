@@ -251,4 +251,15 @@ public class QuestionBank {
 	public void setCreatedDate(Date createdDate) {
 		this.createdDate = createdDate;
 	}
+
+	@Override
+	public String toString() {
+		return "QuestionBank [questionId=" + questionId + ", courseId=" + courseId + ", topicId=" + topicId
+				+ ", question=" + question + ", option1=" + option1 + ", option2=" + option2 + ", option3=" + option3
+				+ ", option4=" + option4 + ", correctOption=" + correctOption + ", totalMarks=" + totalMarks
+				+ ", difficultyLevelId=" + difficultyLevelId + ", createdBy=" + createdBy + ", createdDate="
+				+ createdDate + "]";
+	}
+	
+	
 }

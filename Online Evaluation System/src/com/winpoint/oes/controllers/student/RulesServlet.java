@@ -76,16 +76,19 @@ public class RulesServlet extends HttpServlet {
 		rulesList.add(new Rules(1, "Each question carries one mark"));
 		rulesList.add(new Rules(2, "No negative marking"));
 		rulesList.add(new Rules(3, "Duration is 60 mins"));*/
-		List<QuestionBank> questionsList = new ArrayList<QuestionBank>();//new QuestionBankHelper().getQuestionsList(testDetailId);
+		List<QuestionBank> questionsList = new QuestionBankHelper().getQuestionsList(testDetailId);
+		//System.out.println("questionsList from RulesServlet = " + questionsList);
+		
+		/*List<QuestionBank> questionsList = new ArrayList<QuestionBank>();//new QuestionBankHelper().getQuestionsList(testDetailId);
 		questionsList.add(new QuestionBank(1, 1, 1, "What", "A", "B", "C", "D", "A", 12, 1));
 		questionsList.add(new QuestionBank(2, 1, 1, "When", "A", "B", "C", "D", "B", 12, 1));
 		questionsList.add(new QuestionBank(3, 1, 1, "Where", "A", "B", "C", "D", "C", 12, 1));
 		questionsList.add(new QuestionBank(4, 1, 1, "Why", "A", "B", "C", "D", "D", 12, 1));
 		questionsList.add(new QuestionBank(5, 1, 1, "How", "A", "B", "C", "D", "A", 12, 1));
-		
+		*/
 
 		if(rulesList != null && questionsList != null) {
-		  
+		   //System.out.println("From Rules Servlet questionsList is not null" + questionsList);
 		   String json1 = gson.toJson("{ 'success': 'true', 'location': '/OnlineEvaluationSystem/jsp/RulesPage.jsp'}");
 		   String json2 = gson.toJson(rulesList);
 		   String json3 = gson.toJson(questionsList);

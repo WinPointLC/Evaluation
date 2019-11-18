@@ -25,6 +25,7 @@
    <script>
    <c:import url="/ClientDashboardServlet" />
 	     <c:set var="studentCourseDetails" value="${requestScope.studentCourseDetailsList}" />
+	     <c:set var="studentGACourseDetails" value="${requestScope.studentGACourseDetailsList}" />
   var data;
   var userProfile1;
   var strResJSON;
@@ -107,9 +108,10 @@
 	  //var studentCourseDetails = '<c:out value="${studentCourseDetails}"/>';
 	  
 	  alert('${studentCourseDetails}');
-	   window.location.href = "/OnlineEvaluationSystem/jsp/Analytics.jsp?varid="+ encodeURIComponent('${studentCourseDetails}');
+	  alert('${studentGACourseDetails}');
+	   window.location.href = "/OnlineEvaluationSystem/jsp/Analytics.jsp?varid="+ encodeURIComponent('${studentCourseDetails}') + encodeURIComponent('${studentGACourseDetails}');
 	    //encodeURIComponent(strResJSON);
-	  }
+  }
   function sendToMainCoursePage(){
     $.ajax({
       type: 'POST',
@@ -299,200 +301,6 @@
           </div>
 
           <div class="inner-Tech-content" id="Tech-cards">
-             <!--<div class="row tech-row-1">
-              <div class="col-lg-3 col-md-6 col-sm-6">
-                <div class="card card-stats">
-                  <div class="card-header card-header-icon">
-                    <div class="card-heading">
-                      <h6>C</h6>
-                    </div>
-                    <div class="card-icon" style="font-size:20px;" id="row1-card1">
-                      <i class="fa fa-copyright" style="font-size:70px;"></i>
-                    </div>
-                    <p class="card-category">Marks obtained</p>
-                    <h3 class="card-title">49/50
-                    </h3>
-                  </div>
-                  <div class="card-footer">
-                    <div class="stats">
-                      <div class="dropdown">
-                        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                          See More Marks
-                        </button>
-                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                          <a class="dropdown-item" href="#">MCQ</a>
-                          <a class="dropdown-item" href="#">Coding</a>
-                          <a class="dropdown-item" href="#">Descriptive</a>
-                        </div>
-                      </div>
-
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <div class="col-lg-3 col-md-6 col-sm-6">
-                <div class="card card-stats">
-                  <div class="card-header card-header-danger card-header-icon">
-                    <div class="card-heading">
-                      <h6>Java</h6>
-                    </div>
-                    <div class="card-icon">
-                      <img src="../assets/img/Dashboard-main-page-images/java-brands.svg" alt="java" style=" height: 60px; width: 60px; ">
-                    </div>
-                    <p class="card-category">Marks obtained</p>
-                    <h3 class="card-title">49/50
-                    </h3>
-                  </div>
-                  <div class="card-footer">
-                    <div class="stats">
-
-                      <div class="dropdown">
-                        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                          See More Marks
-                        </button>
-                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                          <a class="dropdown-item" href="#">MCQ</a>
-                          <a class="dropdown-item" href="#">Coding</a>
-                          <a class="dropdown-item" href="#">Descriptive</a>
-                        </div>
-                      </div>
-
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-            </div>
-
-            <div class="row tech-row-2">
-              <div class="col-lg-3 col-md-6 col-sm-6">
-                <div class="card card-stats">
-                  <div class="card-header card-header-icon" >
-                    <div class="card-heading">
-                      <h6>Data Structures</h6>
-                    </div>
-                    <div class="card-icon" style="font-size:20px;" id="card3">
-                      <img src="../assets/img/Dashboard-main-page-images/cubes.svg" alt="java" style=" height: 60px; width: 60px; ">
-                    </div>
-                    <p class="card-category">Marks obtained</p>
-                    <h3 class="card-title">49/50
-                    </h3>
-                  </div>
-                  <div class="card-footer">
-                    <div class="stats">
-                      <div class="dropdown">
-                        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                          See More Marks
-                        </button>
-                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                          <a class="dropdown-item" href="#">MCQ</a>
-                          <a class="dropdown-item" href="#">Coding</a>
-                          <a class="dropdown-item" href="#">Descriptive</a>
-                        </div>
-                      </div>
-
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="col-lg-3 col-md-6 col-sm-6">
-                <div class="card card-stats">
-                  <div class="card-header card-header-icon">
-                    <div class="card-heading">
-                      <h6>CPP</h6>
-                    </div>
-                    <div class="card-icon" style="font-size:20px; background-color:rgb(20, 122, 159);">
-                      <img src="../assets/img/Dashboard-main-page-images/cpp-icon-file-format.svg" alt="java" style=" height: 60px; width: 60px; ">
-                    </div>
-                    <p class="card-category">Marks obtained</p>
-                    <h3 class="card-title">49/50
-                    </h3>
-                  </div>
-                  <div class="card-footer">
-                    <div class="stats">
-
-                      <div class="dropdown">
-                        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                          See More Marks
-                        </button>
-                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                          <a class="dropdown-item" href="#">MCQ</a>
-                          <a class="dropdown-item" href="#">Coding</a>
-                          <a class="dropdown-item" href="#">Descriptive</a>
-                        </div>
-                      </div>
-
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div class=" row tech-row-3">
-              <div class="col-lg-3 col-md-6 col-sm-6">
-                <div class="card card-stats">
-                  <div class="card-header card-header-warning card-header-icon">
-                    <div class="card-heading">
-                      <h6>Database</h6>
-                    </div>
-                    <div class="card-icon" style="font-size:20px;">
-                      <i class="fa fa-database" style="font-size:70px;"></i>
-                    </div>
-                    <p class="card-category">Marks obtained</p>
-                    <h3 class="card-title">49/50
-                    </h3>
-                  </div>
-                  <div class="card-footer">
-                    <div class="stats">
-
-                      <div class="dropdown">
-                        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                          See More Marks
-                        </button>
-                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                          <a class="dropdown-item" href="#">MCQ</a>
-                          <a class="dropdown-item" href="#">Coding</a>
-                          <a class="dropdown-item" href="#">Descriptive</a>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="col-lg-3 col-md-6 col-sm-6">
-                <div class="card card-stats">
-                  <div class="card-header card-header-primary  card-header-icon">
-                    <div class="card-heading">
-                      <h6>JS</h6>
-                    </div>
-                    <div class="card-icon">
-                      <img src="../assets/img/Dashboard-main-page-images/js-brands.svg" alt="java" style=" height: 60px; width: 60px; ">
-                    </div>
-                    <p class="card-category">Marks obtained</p>
-                    <h3 class="card-title">49/50
-                    </h3>
-                  </div>
-                  <div class="card-footer">
-                    <div class="stats">
-
-                      <div class="dropdown">
-                        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                          See More Marks
-                        </button>
-                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                          <a class="dropdown-item" href="#">MCQ</a>
-                          <a class="dropdown-item" href="#">Coding</a>
-                          <a class="dropdown-item" href="#">Descriptive</a>
-                        </div>
-                      </div>
-
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-            </div> -->
             <!-- End Inner Tech Content -->
           </div>
 
@@ -510,8 +318,8 @@
             </div>
           </div>
 
-          <div class="inner-GA-content">
-            <div class="row GA-row-1">
+          <div class="inner-GA-content" id="GA-cards">
+          <!--  end at 450 <div class="row GA-row-1">
               <div class="col-lg-3 col-md-6 col-sm-6">
                 <div class="card card-stats">
                   <div class="card-header card-header-icon">
@@ -639,8 +447,8 @@
                 </div>
               </div>
             </div>
-          </div>
-
+          </div>   start at 322-->
+<!-- End Inner Tech Content -->
           <!-- Chart Ends here -->
 
         </div>
@@ -870,6 +678,86 @@ for(var i=0; i<studentCourseDetailsList.length; i++){
 
   document.getElementById('Tech-cards').appendChild(row);
 }
+
+
+var studentGACourseDetailsList = eval('(' + '${studentGACourseDetails}' + ')');
+alert(studentGACourseDetailsList.length);
+for(var i=0; i<studentGACourseDetailsList.length; i++){
+	var row  =document.createElement('div');
+	row.className="row tech-row";
+	var col1 = document.createElement('div');
+	  col1.className="col-lg-3 col-md-6 col-sm-6";
+	  var card = document.createElement('div');
+	  card.className="card card-stats";
+	  var cardheader = document.createElement('div');
+	  cardheader.className="card-header  card-header-icon";
+	  var cardHeading = document.createElement('div');
+	  cardHeading.className="card-heading";
+	  var h6 = document.createElement('h6');
+	  h6.textContent = studentGACourseDetailsList[i].courseTypeName + " - " + studentGACourseDetailsList[i].courseName;
+	  cardHeading.appendChild(h6);
+	  var cardIcon = document.createElement('div');
+	  cardIcon.className="card-icon";
+	  var img = document.createElement('img');
+
+	      img.setAttribute('src',studentGACourseDetailsList[i].logoLocation);
+	      img.setAttribute('style', "width:60px;height:60px;");
+	      cardIcon.appendChild(img);
+
+
+	  var p = document.createElement('p');
+	  p.className="card-category";
+	  p.textContent = 'Marks Obtained';
+	  var h3 = document.createElement('h3');
+	  h3.className="card-title";
+	  h3.textContent = studentGACourseDetailsList[i].courseAggr;
+	  // End Card Header
+	  var cardfooter = document.createElement('div');
+  cardfooter.className="card-footer";
+  var stats =document.createElement('div');
+  stats.className="stats";
+  var dropdown = document.createElement('div');
+  dropdown.className="dropdown";
+  var button = document.createElement('button');
+  button.className="btn btn-secondary dropdown-toggle";
+  button.id="dropdownMenuButton";
+  button.setAttribute('data-toggle',"dropdown");
+  button.setAttribute('aria-haspopup', "true");
+  button.setAttribute('aria-expanded', "false");
+  button.textContent = 'See More Marks';
+
+  var dropdownmenu = document.createElement('div');
+  dropdownmenu.className="dropdown-menu";
+  dropdownmenu.setAttribute('aria-labelledby',"dropdownMenuButton");
+  var anchorsList = ['MCQ','Coding','Descriptive'];
+
+  for (var k = 0; k < anchorsList.length; k++) {
+    var anchor  = document.createElement('a');
+    anchor.className="dropdown-item";
+    anchor.textContent = anchorsList[k];
+    dropdownmenu.appendChild(anchor);
+    dropdown.appendChild(dropdownmenu);
+    dropdown.appendChild(button);
+  }
+  cardheader.appendChild(cardIcon);
+  cardheader.appendChild(p);
+  cardheader.appendChild(h3);
+  cardheader.appendChild(cardHeading);
+  card.appendChild(cardheader);
+
+  stats.appendChild(dropdown);
+  cardfooter.appendChild(stats);
+  card.appendChild(cardfooter);
+
+  col1.appendChild(card);
+  // console.log("Inner For Loop");
+  row.appendChild(col1);
+
+
+  document.getElementById('GA-cards').appendChild(row);
+}
+
+
 /*var TechArr = ['Java','Data Structures','CPP','JS'];
 var TechArr2 = ['Java','Data Structures','CPP','JS'];
 var Mixarr=['../assets/img/Dashboard-main-page-images/java-brands.svg','../assets/img/Dashboard-main-page-images/cubes.svg','../assets/img/Dashboard-main-page-images/cpp-icon-file-format.svg','../assets/img/Dashboard-main-page-images/js-brands.svg'];

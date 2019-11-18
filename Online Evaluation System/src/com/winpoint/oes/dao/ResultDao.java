@@ -18,7 +18,7 @@ import com.winpoint.oes.beans.UserProfile;
 import com.winpoint.oes.util.sql.ConnectionManager;
 
 public class ResultDao {
-	public boolean updateStudentTestResponses(int userId, List<QuestionBank> questionsList, Integer[] answersList, Integer[] isCorrectList){
+	public boolean updateStudentTestResponses(int userId, List<QuestionBank> questionsList, Integer[] answersList, Integer[] isCorrectList, Result result){
 		
 		try(Connection connection = ConnectionManager.getConnection()){
 			Statement statement = connection.createStatement();
@@ -50,7 +50,20 @@ public class ResultDao {
 				courseName = resultSet.getString("COURSE_NAME");
 				courseTypeName = resultSet.getString("COURSE_TYPE_NAME");
 			}
-			 
+		// Update STUDENT_COURSE_DETAILS
+			int totalMarks = result.getMarks();
+			PreparedStatement preparedStatement = connection.prepareStatement("UPDATE STUDENT_COURSE_DETAILS SET COURSE_AGGR=?, " + 
+					"	   GRADE_ID=(SELECT GRADE_ID FROM GRADING_SYSTEM \r\n" + 
+					"				 WHERE LOWER_LIMIT<=? AND ?<=HIGHER_LIMIT)\r\n" + 
+					"WHERE USER_ID=?  AND COURSE_ID= ?");
+			preparedStatement.setInt(1, result.getMarks());
+			preparedStatement.setInt(2, totalMarks);
+			preparedStatement.setInt(3, totalMarks);
+			preparedStatement.setInt(4, userId);
+			preparedStatement.setInt(5, courseId);
+			preparedStatement.executeUpdate();
+			preparedStatement.close();
+			
 			String tableName = "STUDENT_TEST_RESULT_" + courseName.toUpperCase() + "_" + courseTypeName.toUpperCase();
 			System.out.println(tableName + "***" + answersList[0]);
 			/*QuestionBank[] questionsListArr = (QuestionBank[])questionsList.toArray();

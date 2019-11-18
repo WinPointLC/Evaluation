@@ -50,15 +50,19 @@
         }  
         courseName = arr[1].split('=')[1];
         courseId = questionsList[0].courseId;
-        //alert("CourseId = " + courseId);
+        alert("CourseId = " + courseId);
         document.getElementById("test-name").textContent = courseName + " Test"
-      for(i=0; i<questionsList.length/5; i++){
+        var start=0;
+        alert(questionsList.length/5);
+      for(i=0; i<Math.floor(questionsList.length/5); i++){
       //alert("Question : " + questionsList[i].questionId + "," + questionsList[i].question);
+      
       // creating dynamic button-list
         var btnrow = document.createElement('div');
         btnrow.className='button-row'+(i+1);
         btnrow.setAttribute('id', "btn-r"+(i+1));
-        for (var j = i; j <5; j++) {
+        
+        for (var j = start; (j <start+5) ; j++) {
           var btn = document.createElement('button');
           btn.className='btn btn-outline-dark';
           btn.setAttribute('id', ""+(j+1));
@@ -68,11 +72,20 @@
           btn.setAttribute('onclick', "goToQuestion(this.id)");
           btnrow.appendChild(btn);
         }
+        start = j;
         document.getElementById('button-list').appendChild(btnrow);
+      }
+      for(var j=start; j<questionsList.length; j++){
+    	  var btn = document.createElement('button');
+          btn.className='btn btn-outline-dark';
+          btn.setAttribute('id', ""+(j+1));
+          btn.textContent = ""+(j+1);
+          btn.setAttribute('onclick', "goToQuestion(this.id)");
+          btnrow.appendChild(btn);
       }
 
       
-        currentQuestion=0;
+    currentQuestion=0;
     document.getElementById("question-no").innerHTML = "Question No: " + (currentQuestion+1);
     document.getElementById("question-content").innerHTML = questionsList[currentQuestion].question;
     document.getElementById("radio-1").innerHTML = questionsList[currentQuestion].option1;
@@ -259,6 +272,7 @@
  	var seconds = 0;
  	seconds = sec;//document.getElementById('sec').value;
  	//alert("hours : " + hours + " minutes : " + minutes + " seconds " + seconds);
+ 	alert("courseId before submit = " + courseId);
    var myData = {
 		courseId: courseId,
 		courseName: courseName,
@@ -355,7 +369,7 @@
     var ele = document.getElementsByName("radio-group");
     for(var i=0;i<ele.length;i++)
        ele[i].checked = false;
-    answersList[currentQuestion-1] = 0;
+    answerList[currentQuestion-1] = 0;
   }
 </script>
 </head>

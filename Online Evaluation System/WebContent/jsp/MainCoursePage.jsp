@@ -526,7 +526,7 @@
               var row  = document.createElement('div');
               row.className='row';
               row.id="courseList";
-              for(j=i; j<i+3; j++){
+              for(j=i; j<i+3 && j<responseJson.length; j++){
                 //alert("course : " + responseJson[j].courseId + "," + responseJson[j].courseName + "," + responseJson[j].iconLocation);
                 var column = document.createElement('div');
                 column.className='col-lg-3 col-md-6 col-sm-6 column3';

@@ -17,4 +17,13 @@ public class StudentCourseDetailsHelper {
 		}
 		return studentCourseDetailsList;
 	}
+	
+	public ArrayList<StudentCourseDetails> getStudentGACourseDetailsList(int userId){
+		ArrayList<StudentCourseDetails> studentGACourseDetailsList = new StudentCourseDetailsDao().getStudentGACourseDetailsList(userId);
+		Iterator<StudentCourseDetails> studentGACourseDetailsIterator = studentGACourseDetailsList.iterator();
+		while(studentGACourseDetailsIterator.hasNext()) {
+			StudentCourseDetails studentGACourseDetails = (StudentCourseDetails)studentGACourseDetailsIterator.next();
+		}
+		return studentGACourseDetailsList;
+	}
 }

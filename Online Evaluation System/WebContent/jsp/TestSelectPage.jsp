@@ -184,6 +184,7 @@
                     /* for(i=0; i<responseJson2.length; i++){
                       alert("Rules : " + responseJson2[i].rulesId + "," + responseJson2[i].rulesDescription);
                     } */
+                    
                     var questionJson = jsonObj[2];
                     var questionJSON = JSON.stringify(questionJson);
 

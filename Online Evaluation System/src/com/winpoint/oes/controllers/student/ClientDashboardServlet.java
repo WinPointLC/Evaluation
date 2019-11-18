@@ -44,7 +44,9 @@ public class ClientDashboardServlet extends HttpServlet {
 		// TODO Auto-generated method stub
 		//response.getWriter().append("Served at: ").append(request.getContextPath());
 		System.out.println("From Get of ClientDashboardServlet");
-		ArrayList <StudentCourseDetails>studentCourseDetailsList =  new StudentCourseDetailsHelper().getStudentCourseDetailsList(1);
+		HttpSession session = request.getSession(false);
+		int userId = (int) session.getAttribute("userId");
+		ArrayList <StudentCourseDetails>studentCourseDetailsList =  new StudentCourseDetailsHelper().getStudentCourseDetailsList(userId);
 		Iterator<StudentCourseDetails> studcourseIt = studentCourseDetailsList.iterator();
 		while(studcourseIt.hasNext()) {
 			StudentCourseDetails studDet = studcourseIt.next();
@@ -53,7 +55,18 @@ public class ClientDashboardServlet extends HttpServlet {
 		Gson gson = new Gson();
 		String studentCourseDetailsListJSON = gson.toJson(studentCourseDetailsList);
 		System.out.println(studentCourseDetailsListJSON);
+		
+		ArrayList <StudentCourseDetails>studentGACourseDetailsList =  new StudentCourseDetailsHelper().getStudentGACourseDetailsList(1);
+		Iterator<StudentCourseDetails> studGAcourseIt = studentGACourseDetailsList.iterator();
+		while(studGAcourseIt.hasNext()) {
+			StudentCourseDetails studDet = studGAcourseIt.next();
+			System.out.println(studDet.getCourseAggr());
+		}
+		
+		String studentGACourseDetailsListJSON = gson.toJson(studentGACourseDetailsList);
+		System.out.println(studentGACourseDetailsListJSON);
 		request.setAttribute("studentCourseDetailsList", studentCourseDetailsListJSON);
+		request.setAttribute("studentGACourseDetailsList", studentGACourseDetailsListJSON);
 	}
 
 	/**

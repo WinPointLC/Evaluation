@@ -121,7 +121,7 @@ public class ResultServlet extends HttpServlet {
 	    HttpSession session = request.getSession(false);
 		int userId = (int) session.getAttribute("userId");
 		boolean isUpdated = new ResultHelper().updateUserTestDetails(userId, questionsList, result);
-		isUpdated = new ResultHelper().updateStudentTestResponses(userId, questionsList, answersList, isCorrectList);
+		isUpdated = new ResultHelper().updateStudentTestResponses(userId, questionsList, answersList, isCorrectList, result);
 	  
 		/*Gson gson = new Gson();
 		Course course = gson.fromJson(json, Course.class);

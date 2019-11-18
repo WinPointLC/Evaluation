@@ -21,6 +21,8 @@
 
   <script type="text/javascript">
   var studentCourseDetailsList;
+  var studentGACourseDetailsList;
+  
   $(document).ready(function(){
 	 //alert("Hello");
 	 var searchString = window.location.search.substring(1);
@@ -30,25 +32,39 @@
 	 data= arr[0].split('=')[1];
 	 
 	 var decodedData = decodeURIComponent(data);
-	 alert(decodedData);
-	 //var studentCourseDetailsList = decodedData.substring(0, decodedData.indexOf(']')+1);
-	 //alert(studentCourseDetailsList);
-	 studentCourseDetailsList =  eval('(' + decodedData + ')');
-	 alert(studentCourseDetailsList + " " + studentCourseDetailsList.length + " **** "+ studentCourseDetailsList[0].courseTypeName);
+	 alert("****" + decodedData);
+	 var studentCourseDetailsListJSON = decodedData.substring(0, decodedData.indexOf(']')+1);
+	 alert(studentCourseDetailsListJSON);
+	 studentCourseDetailsList =  eval('(' + studentCourseDetailsListJSON + ')');
+	 //alert(studentCourseDetailsList + " " + studentCourseDetailsList.length + " **** "+ studentCourseDetailsList[0].courseTypeName);
+	 
+	 var decodedNextData = decodedData.substring(decodedData.indexOf(']')+1, decodedData.length);
+	 alert(decodedNextData);
+	 var studentGACourseDetailsListJSON = decodedNextData.substring(0, decodedNextData.indexOf(']')+1);
+	 alert(studentGACourseDetailsListJSON);
+	 studentGACourseDetailsList =  eval('(' + studentGACourseDetailsListJSON + ')');
   });
     google.charts.load('current', {'packages':['corechart']});
     google.charts.setOnLoadCallback(drawChart1);
     var value1;
     var value2;
+    var courseId = 0;
     function drawChart1() {
       var data = new google.visualization.DataTable();
       data.addColumn('string', 'Subject');
       data.addColumn('number', 'Marks');
 
       //var technicalData = '[["C",21],["C++",25],["DS",19],["JS",32],["DB",40]]';
-      var technicalData = '[["' + studentCourseDetailsList[0].courseName + '",' + studentCourseDetailsList[0].courseAggr + '],["' +
+      /*var technicalData = '[["' + studentCourseDetailsList[0].courseName + '",' + studentCourseDetailsList[0].courseAggr + '],["' +
     	  						 studentCourseDetailsList[1].courseName + '",' + studentCourseDetailsList[1].courseAggr + '],["' +
     	  						 studentCourseDetailsList[2].courseName + '",' + studentCourseDetailsList[2].courseAggr + ']]';
+      */
+      var technicalData = '[["';
+		for(var i=0; i<studentCourseDetailsList.length; i++){
+			technicalData += studentCourseDetailsList[i].courseName + '",' + studentCourseDetailsList[i].courseAggr + '],["';
+		}
+		technicalData = technicalData.substring(0, technicalData.length-3) + ']';
+		
       alert(technicalData);
       data.addRows(JSON.parse(technicalData));
 
@@ -67,6 +83,12 @@
           // alert("The user has selected "+" "+value2);
           document.getElementById('clickedcontent1').textContent ="Subject:" + value1;
           document.getElementById('clickedcontent2').textContent = "Marks:" + value2;
+          for(var i=0; i<studentCourseDetailsList.length; i++){
+        	  if(studentCourseDetailsList[i].courseName ==value1){
+        		  courseId = studentCourseDetailsList[i].courseId;
+        	      break;
+        	  }
+          }
           drawChart2();
         }
       }
@@ -79,13 +101,51 @@
 google.charts.load("current",{'packages':['corechart']});
 //google.charts.setOnLoadCallback(drawChart2);
 function drawChart2() {
-// alert("drawChart2    " + value1);
+	var data = new google.visualization.DataTable();
+	data.addColumn('string', 'Topics');
+	data.addColumn('number', 'Marks');
+	/*
+	 * Make an AJAX call for the following 
+	 *
+	 * Create the two dimentional array named topicDetails which would contain topic name, marks obtained for the topic for--
+	 * this userId, testId, and course i.e. courseId of value1
+	 * Add these rows to the data object ----> data.addRows(JSON.parse(topicDetails))
+	 */
+ 	 var myData = {
+	     			courseId: courseId
+    	    	  };
+			$.ajax({
+				type: 'POST',
+				url: '/OnlineEvaluationSystem/CommonController?action=AnalyticsServlet',
+				data: JSON.stringify(myData),
+				dataType: 'json',
+				contentType: 'application/json; charset=utf-8',
+				traditional: true,
+				success: function (jsonObj) {
+					//alert("Success from AnalyticsForm");
+					var responseJson1=jsonObj[0], responseJson2=jsonObj[1];
+					var topicArray = '[["';
+					for(var i=0; i<responseJson2.length; i++){
+						topicArray += responseJson2[i].topicName + '",' + responseJson2[i].topicwiseNumberOfCorrectAns + '],["';
+					}
+					topicArray = topicArray.substring(0, topicArray.length-3) + ']';
+					//alert("******* " + topicArray);
+					data.addRows(JSON.parse(topicArray));
+					var options = {
+						    title: 'Your Topicwise score in Evaluations',
+						     width: 400,
+						     height: 300,
+					};
+					var chart = new google.visualization.BarChart(document.getElementById('barchart'));
+					chart.draw(data, options);
+				},
+				error: function(){
+					//alert("Error");
+					document.getElementById("error").innerHTML = "Invalid email or password";
+				}
 
-var data = new google.visualization.DataTable();
-data.addColumn('string', 'Topics');
-data.addColumn('number', 'Marks');
-
-var stringDataC = '[["Basic Functions",4],["Operators",6],["Pointers",3],["File Handing",2],["overloading",6]]';
+			});
+/* var stringDataC = '[["Basic Functions",4],["Operators",6],["Pointers",3],["File Handing",2],["overloading",6]]';
 var stringDataCPP = '[["Basic Functions",2],["Operators",4],["Pointers",6],["File Handing",1],["overloading",5]]';
 var stringDataDS = '[["Basic Functions",1],["Operators",5],["Pointers",2],["File Handing",6],["overloading",2]]';
 var stringDataJS = '[["Basic Functions",6],["Operators",5],["Pointers",3],["File Handing",2],["overloading",4]]';
@@ -106,7 +166,7 @@ else if (value1=='JS') {
 else if (value1=='DB') {
  data.addRows(JSON.parse(stringDataDB));
 }
-
+ 
   var options = {
     title: 'Your Topicwise score in Evaluations',
      width: 400,
@@ -117,6 +177,7 @@ else if (value1=='DB') {
   //alert("Drawing");
   chart.draw(data, options);
   //alert("Drawn");
+  */
 }
 </script>
 <!-- Script for GA Section -->
@@ -125,13 +186,26 @@ else if (value1=='DB') {
     google.charts.setOnLoadCallback(drawChart4);
     var value3;
     var value4;
+    var courseId=0;
     function drawChart4() {
       var data = new google.visualization.DataTable();
       data.addColumn('string', 'Subject');
       data.addColumn('number', 'Marks');
 
-      var GAData = '[["LR",30],["QA",26],["VR",39],["VA",32]]';
-      data.addRows(JSON.parse(GAData));
+   //   var GAData = '[["LR",30],["QA",26],["VR",39],["VA",32]]';
+     // data.addRows(JSON.parse(GAData));
+      
+      
+      var generalAptitudeData = '[["';
+		for(var i=0; i<studentGACourseDetailsList.length; i++){
+			generalAptitudeData += studentGACourseDetailsList[i].courseName + '",' + studentGACourseDetailsList[i].courseAggr + '],["';
+		}
+		generalAptitudeData = generalAptitudeData.substring(0, generalAptitudeData.length-3) + ']';
+		
+    alert(generalAptitudeData);
+    data.addRows(JSON.parse(generalAptitudeData));
+
+ 
 
       var options = {
         title: 'My Evaluation Scores'
@@ -147,6 +221,13 @@ else if (value1=='DB') {
           //alert("The user has selected "+" "+value4);
           document.getElementById('clickedcontent3').textContent ="Subject:" + value3;
           document.getElementById('clickedcontent4').textContent = "Marks:" + value4;
+          
+          for(var i=0; i<studentGACourseDetailsList.length; i++){
+        	  if(studentGACourseDetailsList[i].courseName ==value1){
+        		  courseId = studentGACourseDetailsList[i].courseId;
+        	      break;
+        	  }
+          }
           drawChart3();
         }
       }
@@ -165,7 +246,43 @@ var data = new google.visualization.DataTable();
 data.addColumn('string', 'Topics');
 data.addColumn('number', 'Marks');
 
-var stringDataLR= '[["Directions",4],["Blood Relations ",6],["Sequence and Series",3],["coding and Decodeing",2]]';
+ var myData = {
+	     			courseId: courseId
+    	    	  };
+			$.ajax({
+				type: 'POST',
+				url: '/OnlineEvaluationSystem/CommonController?action=AnalyticsServlet',
+				data: JSON.stringify(myData),
+				dataType: 'json',
+				contentType: 'application/json; charset=utf-8',
+				traditional: true,
+				success: function (jsonObj) {
+					//alert("Success from AnalyticsForm");
+					var responseJson1=jsonObj[0], responseJson2=jsonObj[1];
+					alert(responseJson2);
+					var topicArray = '[["';
+					for(var i=0; i<responseJson2.length; i++){
+						topicArray += responseJson2[i].topicName + '",' + responseJson2[i].topicwiseNumberOfCorrectAns + '],["';
+					}
+					topicArray = topicArray.substring(0, topicArray.length-3) + ']';
+					alert("******* " + topicArray);
+					data.addRows(JSON.parse(topicArray));
+					var options = {
+						    title: 'Your Topicwise score in Evaluations',
+						     width: 400,
+						     height: 300,
+					};
+					var chart = new google.visualization.BarChart(document.getElementById('barchart'));
+					chart.draw(data, options);
+				},
+				error: function(){
+					//alert("Error");
+					document.getElementById("error").innerHTML = "Invalid email or password";
+				}
+
+			});
+
+/*var stringDataLR= '[["Directions",4],["Blood Relations ",6],["Sequence and Series",3],["coding and Decodeing",2]]';
 var stringDataQA = '[["Calender",2],["Time and Works",4],["Ratio and proportion",6],["Mixture and alligation",1]]';
 var stringDataVR = '[["XYZ",1],["ABC",5],["pqr",2],["xasd",6]]';
 var stringDataVA = '[["sad",3],["khj",1],["agr",6],["gsdf",4]]';
@@ -190,7 +307,7 @@ else if (value3=='VA') {
      height: 300,
   };
   var chart = new google.visualization.BarChart(document.getElementById('barchart2'));
-  chart.draw(data, options);
+  chart.draw(data, options); */
 }
 </script>
 

@@ -77,7 +77,7 @@ public class CourseDao {
 		dataSource.setServerName("SHRIRANGMHALGI\\SQLEXPRESS");
 		dataSource.setPortNumber(Integer.parseInt("1433"));
 		dataSource.setDatabaseName("OES_TESTING");*/
-
+System.out.println("USERID = " + userId);
 		try(Connection connection = ConnectionManager.getConnection()){
 			Statement statement = connection.createStatement();
 

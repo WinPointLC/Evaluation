@@ -15,7 +15,7 @@ public class QuestionBankHelper {
 			Iterator<QuestionBank> questionsIterator = questionsList.iterator();
 			while(questionsIterator.hasNext()) {
 				QuestionBank stream = (QuestionBank)questionsIterator.next();
-				System.out.println("Question Id = " + stream.getQuestionId() + ": Stream Name = " + stream.getQuestion());
+				System.out.println("Question Id = " + stream.getQuestionId() + ": Question = " + stream.getQuestion());
 			}
 		}
 		return questionsList;
