@@ -56,7 +56,7 @@ public class ClientDashboardServlet extends HttpServlet {
 		String studentCourseDetailsListJSON = gson.toJson(studentCourseDetailsList);
 		System.out.println(studentCourseDetailsListJSON);
 		
-		ArrayList <StudentCourseDetails>studentGACourseDetailsList =  new StudentCourseDetailsHelper().getStudentGACourseDetailsList(1);
+		ArrayList <StudentCourseDetails>studentGACourseDetailsList =  new StudentCourseDetailsHelper().getStudentGACourseDetailsList(userId);
 		Iterator<StudentCourseDetails> studGAcourseIt = studentGACourseDetailsList.iterator();
 		while(studGAcourseIt.hasNext()) {
 			StudentCourseDetails studDet = studGAcourseIt.next();

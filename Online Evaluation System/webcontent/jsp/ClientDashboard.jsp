@@ -100,22 +100,66 @@
 
     	});
 */
+  function sendToCourseRegistrationPage(){
+	$.ajax({
+	      type: 'POST',
+	      url: '/OnlineEvaluationSystem/CommonController?action=OnlineEvaluationServlet?isReg=1',
+	      data: JSON.stringify(userProfile1),
+	      dataType: 'json',
+	      contentType: 'application/json; charset=utf-8',
+	      traditional: true,
+	      success: function (jsonObj) {
+	        //alert("Success from LoginForm");
+	        var responseJson1 = jsonObj[0];
+	        var responseJson2 = jsonObj[1];
+
+	        /* Start- Code for ArrayList from servlet */
+	        var streamList = responseJson2[0];
+	        var courseTypeList = responseJson2[1];
+	       /* for(i=0; i<streamList.length; i++){
+	           alert("streamList = " + streamList[i].streamName);
+	        }*/
+	        var streamJson=jsonObj[1];
+	        var courseTypeJson=jsonObj[2];
+	        var locationJson = eval('(' + responseJson1 + ')');
+	        if (locationJson.success) {
+	          var streamJSON = JSON.stringify(streamJson);
+	          //alert(streamJSON);
+	          var courseTypeJSON = JSON.stringify(courseTypeJson);
+	          //alert(courseTypeJSON);
+	          //alert("studentEmail : " + responseJson2.email);
+	          window.location.href = locationJson.location + "?varid=" + encodeURIComponent(streamJSON) + encodeURIComponent(courseTypeJSON)+ encodeURIComponent('${studentCourseDetails}') + encodeURIComponent('${studentGACourseDetails}') +"&username=" + "Anjali" +"&password=" + "Anjali";
+	          //window.location.href = locationJson.location + "?varid=" + streamJSON + courseTypeJSON +"&username=" + "Anjali" +"&password=" + "Anjali";
+	          //window.location.href = locationJson.location + "?varid=" + encodeURIComponent(streamJSON) +"&username=" + "Anjali" +"&password=" + "Anjali";
+	        } else {
+	          $('#ajaxGetUserServletResponse').text(responseText);
+	        }
+	      },
+	      error: function(){
+	        //alert("Error");
+	        document.getElementById("error").innerHTML = "Invalid email or password";
+	      }
+
+	    });
+	//window.location.href = "/OnlineEvaluationSystem/jsp/CourseRegistration.jsp?varid="+ data;
+  }
   function sendToUserProfile(){
+	  alert("User Profile");
     window.location.href = "/OnlineEvaluationSystem/jsp/User.jsp?varid="+ data;
     //encodeURIComponent(strResJSON);
   }
   function sendToUserAnalytics(){
 	  //var studentCourseDetails = '<c:out value="${studentCourseDetails}"/>';
 	  
-	  alert('${studentCourseDetails}');
-	  alert('${studentGACourseDetails}');
+	  //alert('${studentCourseDetails}');
+	  //alert('${studentGACourseDetails}');
 	   window.location.href = "/OnlineEvaluationSystem/jsp/Analytics.jsp?varid="+ encodeURIComponent('${studentCourseDetails}') + encodeURIComponent('${studentGACourseDetails}');
 	    //encodeURIComponent(strResJSON);
   }
   function sendToMainCoursePage(){
     $.ajax({
       type: 'POST',
-      url: '/OnlineEvaluationSystem/CommonController?action=OnlineEvaluationServlet',
+      url: '/OnlineEvaluationSystem/CommonController?action=OnlineEvaluationServlet?isReg=0',
       data: JSON.stringify(userProfile1),
       dataType: 'json',
       contentType: 'application/json; charset=utf-8',
@@ -199,6 +243,12 @@
           </a>
         </li> -->
 
+		<li>
+          <a class="nav-link" href="javascript:sendToCourseRegistrationPage()">
+            <i class="material-icons">computer</i>
+            <p>Course Registration</p>
+          </a>
+        </li>
         <li>
           <a class="nav-link" href="javascript:sendToMainCoursePage()">
             <i class="material-icons">computer</i>
@@ -603,7 +653,7 @@ console.log("Creating Dynamic Elements");
   //Dynamic Cards
 
 var studentCourseDetailsList = eval('(' + '${studentCourseDetails}' + ')');
-alert(studentCourseDetailsList.length);
+//alert(studentCourseDetailsList.length);
 for(var i=0; i<studentCourseDetailsList.length; i++){
 	var row  =document.createElement('div');
 	row.className="row tech-row";
@@ -681,7 +731,7 @@ for(var i=0; i<studentCourseDetailsList.length; i++){
 
 
 var studentGACourseDetailsList = eval('(' + '${studentGACourseDetails}' + ')');
-alert(studentGACourseDetailsList.length);
+//alert(studentGACourseDetailsList.length);
 for(var i=0; i<studentGACourseDetailsList.length; i++){
 	var row  =document.createElement('div');
 	row.className="row tech-row";

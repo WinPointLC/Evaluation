@@ -26,4 +26,10 @@ public class StudentCourseDetailsHelper {
 		}
 		return studentGACourseDetailsList;
 	}
+
+	public void createStudentCourseDetails(int userId, int courseId, String courseName, int streamId,
+			int courseTypeId) {
+		// TODO Auto-generated method stub
+		new StudentCourseDetailsDao().createStudentCourseDetails(userId, courseId, courseName, streamId);
+	}
 }

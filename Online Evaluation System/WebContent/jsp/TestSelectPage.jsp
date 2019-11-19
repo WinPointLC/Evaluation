@@ -132,12 +132,22 @@
 
                 //alert(">>>>>>>" + testsList[i].feeStatus)
                 if(testsList[i].feeStatus){
-                	//alert("Fees are Paid");
-                	anchort.style.pointerEvents="none";
-                	anchort.style.cursor="default";
-                	anchort2.setAttribute('href',"#");
-                	anchort2.style.pointerEvents='';
-                	anchort2.style.cursor="default";
+                //	alert("testsList[i].attempted  = " + testsList[i].attempted);
+                	if(testsList[i].attempted){
+                		anchort.style.pointerEvents="none";
+                		anchort.style.cursor="default";
+                		anchort2.removeAttribute('href');
+                		anchort2.style.pointerEvents='none';
+                		anchort2.style.cursor="default";
+                		ancbtn.textContent="Attempted";
+                	}
+                	else{
+                	    anchort.style.pointerEvents="none";
+                		anchort.style.cursor="default";
+                		anchort2.setAttribute('href',"#");
+                		anchort2.style.pointerEvents='';
+                		anchort2.style.cursor="default";
+                	}
                 }
 
                 tr2.appendChild(td1);

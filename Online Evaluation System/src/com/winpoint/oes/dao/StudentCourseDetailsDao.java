@@ -110,4 +110,22 @@ public ArrayList<StudentCourseDetails> getStudentGACourseDetailsList(int userId)
 		return studentGACourseDetailsList;
 		
 	}
+
+	public void createStudentCourseDetails(int userId, int courseId, String courseName, int streamId) {
+	// TODO Auto-generated method stub
+		try(Connection connection = ConnectionManager.getConnection()){
+			Statement statement = connection.createStatement();
+			
+			String query = "INSERT INTO STUDENT_COURSE_DETAILS (USER_ID, COURSE_ID) VALUES (" + userId + ","+ courseId + ")" ;
+			statement.executeUpdate(query);
+			
+		} catch (SQLServerException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (SQLException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		} 
+
+	}
 }

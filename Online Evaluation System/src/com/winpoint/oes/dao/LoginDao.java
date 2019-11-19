@@ -149,7 +149,7 @@ public class LoginDao {
 		}
 		return userProfile;
 	}
-	public UserProfile createlogin(UserProfile userProfile) {
+	public UserProfile createLogin(UserProfile userProfile) {
 		// TODO Auto-generated method stub
 		try(Connection connection = ConnectionManager.getConnection()){
 			Statement statement = connection.createStatement();

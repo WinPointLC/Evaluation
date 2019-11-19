@@ -48,6 +48,6 @@ public class LoginHelper {
 	}
 	public UserProfile createLogin(UserProfile userProfile) {
 		// TODO Auto-generated method stub
-		return new LoginDao().createlogin(userProfile);
+		return new LoginDao().createLogin(userProfile);
 	}
 }

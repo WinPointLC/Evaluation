@@ -13,6 +13,7 @@ import com.winpoint.oes.dao.ResultDao;
 import com.winpoint.oes.dao.StreamDao;
 import com.winpoint.oes.dao.TestFeedbackDao;
 import com.winpoint.oes.dao.UserProfileDao;
+import com.winpoint.oes.dao.UserTestDetailsDao;
 
 public class ResultHelper {
 	public boolean updateStudentTestResponses(int userId, List<QuestionBank> questionsList, Integer[] answersList, Integer[] isCorrectList, Result result){
@@ -21,6 +22,6 @@ public class ResultHelper {
 	}
 	
 	public boolean updateUserTestDetails(int userId, List<QuestionBank> questionsList, Result result) {
-		return new ResultDao().updateUserTestDetails(userId, questionsList, result);
+		return new UserTestDetailsDao().updateUserTestDetails(userId, questionsList, result);
 	}
 }

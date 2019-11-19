@@ -59,12 +59,13 @@ public class OnlineEvaluationServlet extends HttpServlet {
 	    }
 	    System.out.println(json);
 		Gson gson = new Gson();
-		UserProfile userProfile = gson.fromJson(json, UserProfile.class);
+		/*UserProfile userProfile = gson.fromJson(json, UserProfile.class);
 		
 		String email = userProfile.getEmail();
 		String password = userProfile.getPassword();
 		System.out.println("email = " + email + "   password = " + password);
-		
+		*/
+		String isReg = request.getParameter("isReg");
 		String json1 = null;
 		List<Stream> streamList = new StreamHelper().getStreamList();
 		/*List<Stream> streamList = new ArrayList<Stream>();
@@ -80,7 +81,10 @@ public class OnlineEvaluationServlet extends HttpServlet {
 		
 		if(streamList != null && courseTypeList != null) {
 		   PrintWriter writer = response.getWriter();
-		   json1 = gson.toJson("{ 'success': 'true', 'location': '/OnlineEvaluationSystem/jsp/MainCoursePage.jsp'}");
+		   if(Integer.parseInt(isReg) == 1)
+			   json1 = gson.toJson("{ 'success': 'true', 'location': '/OnlineEvaluationSystem/jsp/CourseRegistration.jsp'}");
+		   else
+		       json1 = gson.toJson("{ 'success': 'true', 'location': '/OnlineEvaluationSystem/jsp/MainCoursePage.jsp'}");
 		   String json2 = gson.toJson(streamList);
 		   String json3 = gson.toJson(courseTypeList);
 		   /* Start- Code for ArrayList from servlet */
