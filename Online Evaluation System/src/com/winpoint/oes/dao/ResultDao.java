@@ -50,6 +50,7 @@ public class ResultDao {
 				courseName = resultSet.getString("COURSE_NAME");
 				courseTypeName = resultSet.getString("COURSE_TYPE_NAME");
 			}
+			
 		// Update STUDENT_COURSE_DETAILS
 			int totalMarks = result.getMarks();
 			PreparedStatement preparedStatement = connection.prepareStatement("UPDATE STUDENT_COURSE_DETAILS SET COURSE_AGGR=?, " + 
@@ -96,38 +97,7 @@ public class ResultDao {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		} 
-		
-		return true;
-		
-	}
-	
-	public boolean updateUserTestDetails(int userId, List<QuestionBank> questionsList, Result result) {
-		int testDetailId = getTestDetailID(questionsList);
-		try(Connection connection = ConnectionManager.getConnection()){
-			
-			int hrs = 0-result.getHours();
-			int mins = 59-result.getMinutes();
-			int secs = 60-result.getSeconds();
-			System.out.println("************ ?????" + hrs + " " + mins + " " + secs );
-			Time timeTaken = new Time((hrs*3600 + mins*60 + secs)*1000);
-			PreparedStatement preparedStatement = connection.prepareStatement(
-					"UPDATE USER_TEST_DETAILS SET MARKS_RECEIVED = ?, TIME_TAKEN = ?"
-					+ " where USER_ID = ? AND TEST_DETAIL_ID = ?");
-			preparedStatement.setInt(1, result.getMarks());
-			preparedStatement.setTime(2, timeTaken);
-			preparedStatement.setInt(3, userId);
-			preparedStatement.setInt(4, testDetailId);
-			System.out.println("************" + result.getMarks() + " " + timeTaken + " " + userId + " " + testDetailId);
-			preparedStatement.executeUpdate();
-			preparedStatement.close();
-		}catch (SQLServerException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (SQLException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
-		} 
-		return true;
+		return true;	
 	}
 	
 	public int getTestDetailID(List<QuestionBank> questionsList) {
@@ -150,7 +120,6 @@ public class ResultDao {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		} 
-		
 		return testDetailId;
 	}
 }

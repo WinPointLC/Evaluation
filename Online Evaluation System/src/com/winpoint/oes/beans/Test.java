@@ -8,9 +8,10 @@ public class Test {
 	private Integer testFees;
 	private int feeStatus;
 	private Integer marksReceived;
+	private Integer attempted;
 	
 	public Test(Integer userId, String courseName, String evaluationTypeName, Integer testDetailId, Integer testFees,
-			int fee_status, Integer marksReceived) {
+			int fee_status, Integer marksReceived, Integer attempted) {
 		super();
 		this.userId = userId;
 		this.courseName = courseName;
@@ -19,6 +20,7 @@ public class Test {
 		this.testFees = testFees;
 		this.feeStatus = fee_status;
 		this.marksReceived = marksReceived;
+		this.attempted = attempted;
 	}
 	public Integer getUserId() {
 		return userId;
@@ -61,5 +63,12 @@ public class Test {
 	}
 	public void setMarksReceived(Integer marksReceived) {
 		this.marksReceived = marksReceived;
+	}
+	public Integer getAttempted() {
+		return attempted;
+	}
+	public void setAttempted(Integer attempted) {
+		this.attempted = attempted;
 	}	
+	
 }
