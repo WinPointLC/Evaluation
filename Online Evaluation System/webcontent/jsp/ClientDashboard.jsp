@@ -232,7 +232,7 @@
         <li class="nav-item active  ">
           <a class="nav-link" href="ClientDashboard.jsp">
             <i class="material-icons">dashboard</i>
-            <p>Dashboard</p>
+            <p>User Dashboard</p>
           </a>
         </li>
         <!-- <a class="nav-link" href="javascript:sendToUserProfile()" onclick="User_link();"> -->

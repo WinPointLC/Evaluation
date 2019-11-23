@@ -76,7 +76,8 @@ public class CourseTypeDao {
 					"		TD.TEST_DETAIL_ID, \r\n" + 
 					"		TD.TEST_FEES,\r\n" + 
 					"		UTD.FEE_STATUS,\r\n" + 
-					"		UTD.MARKS_RECEIVED\r\n" + 
+					"		UTD.MARKS_RECEIVED,\r\n" +
+					"		UTD.ATTEMPTED\r\n" +
 					"		FROM\r\n" + 
 					"		COURSES CRS JOIN EVALUATION_TYPE EVAL\r\n" + 
 					"		ON EVAL.EVALUATION_TYPE_ID =  CRS.EVALUATION_TYPE_ID\r\n" + 
@@ -96,7 +97,8 @@ public class CourseTypeDao {
 				int fee_status = resultSet.getInt("FEE_STATUS");
 				//Boolean feeStatus = true;
 				int marksRceived = resultSet.getInt("MARKS_RECEIVED");
-				Test test = new Test(userId, courseName, evaluationTypeName, testDetailId, testFees, fee_status, marksRceived);
+				int  attempted= resultSet.getInt("ATTEMPTED");
+				Test test = new Test(userId, courseName, evaluationTypeName, testDetailId, testFees, fee_status, marksRceived, attempted);
 				testList.add(test);
 			}
 		} catch (SQLServerException e) {

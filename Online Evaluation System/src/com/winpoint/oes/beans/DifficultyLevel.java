@@ -11,10 +11,8 @@ public class DifficultyLevel {
 	/**
 	 * @param difficultyLevelId
 	 * @param difficultyLevelName
-	 * @param createdBy
-	 * @param createdDate
 	 */
-	public DifficultyLevel(Integer difficultyLevelId, String difficultyLevelName, Integer createdBy, Date createdDate) {
+	public DifficultyLevel(Integer difficultyLevelId, String difficultyLevelName) {
 		super();
 		this.difficultyLevelId = difficultyLevelId;
 		this.difficultyLevelName = difficultyLevelName;

@@ -16,7 +16,9 @@ public class QuestionBank {
 	private String option4;
 	private String correctOption;
 	private Integer totalMarks;
+	private String explanation;
 	private Integer difficultyLevelId;
+	private String inCrt;
 	private Integer createdBy;
 	private Date createdDate;
 	
@@ -31,13 +33,15 @@ public class QuestionBank {
 	 * @param option4
 	 * @param correctOption
 	 * @param totalMarks
+	 * @param explanation
 	 * @param difficultyLevelId
+	 * @param inCrt
 	 * @param createdBy
 	 * @param createdDate
 	 */
 	public QuestionBank(Integer questionId, Integer courseId, Integer topicId, String question, String option1,
-			String option2, String option3, String option4, String correctOption, Integer totalMarks,
-			Integer difficultyLevelId, Integer createdBy, Date createdDate) {
+			String option2, String option3, String option4, String correctOption, Integer totalMarks, String explanation,
+			Integer difficultyLevelId, String inCrt, Integer createdBy, Date createdDate) {
 		super();
 		this.questionId = questionId;
 		this.courseId = courseId;
@@ -49,7 +53,9 @@ public class QuestionBank {
 		this.option4 = option4;
 		this.correctOption = correctOption;
 		this.totalMarks = totalMarks;
+		this.explanation = explanation;
 		this.difficultyLevelId = difficultyLevelId;
+		this.inCrt = inCrt;
 		this.createdBy = createdBy;
 		this.createdDate = createdDate;
 	}
@@ -259,6 +265,22 @@ public class QuestionBank {
 				+ ", option4=" + option4 + ", correctOption=" + correctOption + ", totalMarks=" + totalMarks
 				+ ", difficultyLevelId=" + difficultyLevelId + ", createdBy=" + createdBy + ", createdDate="
 				+ createdDate + "]";
+	}
+
+	public String getInCrt() {
+		return inCrt;
+	}
+
+	public void setInCrt(String inCrt) {
+		this.inCrt = inCrt;
+	}
+
+	public String getExplanation() {
+		return explanation;
+	}
+
+	public void setExplanation(String explanation) {
+		this.explanation = explanation;
 	}
 	
 	

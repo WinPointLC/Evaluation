@@ -35,13 +35,14 @@
 				traditional: true,
 				success: function (jsonObj) {
 					//alert("Success from LoginForm");
-					var responseJson1=jsonObj[0], responseJson2=jsonObj[1];
+					var responseJson1=jsonObj[0], responseJson2=jsonObj[1], responseJson3=jsonObj[2];
 					var locationJson = eval('(' + responseJson1 + ')');
 					//var studentJson = eval('(' + responseJson2 + ')');
 					if (locationJson.success) {
 						var strResJSON = JSON.stringify(responseJson2);
+						var streamJSON = JSON.stringify(responseJson3);
 						//alert("studentEmail : " + responseJson2.email);
-						window.location.href = locationJson.location + "?varid=" + encodeURIComponent(strResJSON) +"&username=" + "Anjali" +"&password=" + "Anjali";
+						window.location.href = locationJson.location + "?varid=" + encodeURIComponent(strResJSON) + encodeURIComponent(streamJSON) +"&username=" + "Anjali" +"&password=" + "Anjali";
 					} else {
 						$('#ajaxGetUserServletResponse').text(responseText);
 					}

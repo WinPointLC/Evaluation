@@ -15,11 +15,8 @@ public class Topic {
 	 * @param topicId
 	 * @param topicName
 	 * @param minimumNoOfQuestionsForTest
-	 * @param createdBy
-	 * @param createdDate
 	 */
-	public Topic(Integer courseId, Integer topicId, String topicName, Integer minimumNoOfQuestionsForTest,
-			Integer createdBy, Date createdDate) {
+	public Topic(Integer topicId, Integer courseId, String topicName, Integer minimumNoOfQuestionsForTest) {
 		super();
 		this.courseId = courseId;
 		this.topicId = topicId;

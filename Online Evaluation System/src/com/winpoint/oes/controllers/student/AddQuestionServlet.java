@@ -17,9 +17,11 @@ import javax.servlet.http.HttpSession;
 import com.google.gson.Gson;
 import com.winpoint.oes.beans.Course;
 import com.winpoint.oes.beans.CourseType;
+import com.winpoint.oes.beans.QuestionBank;
 import com.winpoint.oes.beans.Stream;
 import com.winpoint.oes.beans.UserProfile;
 import com.winpoint.oes.dao.Dummy;
+import com.winpoint.oes.helpers.common.AddQuestionHelper;
 import com.winpoint.oes.helpers.common.CourseHelper;
 import com.winpoint.oes.helpers.common.CourseTypeHelper;
 import com.winpoint.oes.helpers.common.LoginHelper;
@@ -28,14 +30,14 @@ import com.winpoint.oes.helpers.common.StreamHelper;
 /**
  * Servlet implementation class LoginServ
  */
-@WebServlet("/LoginServlet")
-public class LoginServlet extends HttpServlet {
+@WebServlet("/AddQuestionServlet")
+public class AddQuestionServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public LoginServlet() {
+    public AddQuestionServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -53,6 +55,7 @@ public class LoginServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
+		System.out.println("From AddQuestionServlet");
 		BufferedReader br = new BufferedReader(new InputStreamReader(request.getInputStream()));
 	    String json = "";
 	    if(br != null){
@@ -60,45 +63,32 @@ public class LoginServlet extends HttpServlet {
 	    }
 	    System.out.println(json);
 		Gson gson = new Gson();
-		UserProfile userProfile = gson.fromJson(json, UserProfile.class);
-		if(userProfile != null) {
-		String email = userProfile.getEmail();
-		String password = userProfile.getPassword();
-		System.out.println("email = " + email + "   password = " + password);
+		QuestionBank questionObj = gson.fromJson(json, QuestionBank.class);
+		if(questionObj != null) {
 		
-		UserProfile userProfileRecd =  new LoginHelper().validateLogin(email, password);
+		new AddQuestionHelper().createQuestion(questionObj);
 		
-		if(userProfileRecd != null) {
-			HttpSession session = request.getSession();
-			session.setAttribute("userId", userProfileRecd.getUserId());
-			session.setAttribute("firstName", userProfileRecd.getFirstName());
-			session.setAttribute("lastName", userProfileRecd.getLastName());
-			String json1 = null;
-			String json2 = null;
-			String json3 = null;
-			String jsonString = null;
-			json2 = gson.toJson(userProfileRecd);
+		UserProfile userProfile = new UserProfile();
+		HttpSession session = request.getSession(false);
+		userProfile.setUserId((Integer)session.getAttribute("userId"));
+		userProfile.setFirstName((String)session.getAttribute("firstName"));
+		userProfile.setLastName((String)session.getAttribute("lastName"));
+		
+		String json1 = gson.toJson("{ 'success': 'true', 'location': '/OnlineEvaluationSystem/jsp/EmployeeDashboard.jsp'}");
+		String json2 = gson.toJson(userProfile);
 			
-			int userCategoryId;
+		List<Stream> streamList = new StreamHelper().getStreamList();
+		System.out.println(streamList);
+		String json3 = gson.toJson(streamList);
 		
-			PrintWriter writer = response.getWriter();
-			userCategoryId =  userProfileRecd.getUserCategoryId();
-			if (userCategoryId == 1) {
-			   json1 = gson.toJson("{ 'success': 'true', 'location': '/OnlineEvaluationSystem/jsp/ClientDashboard.jsp'}");
-			   jsonString = "[" + json1 + "," + json2 + "]";
-			}
-			else if(userCategoryId == 2) {
-				List<Stream> streamList = new StreamHelper().getStreamList();
-				System.out.println(streamList);
-				json3 = gson.toJson(streamList);
-				json1 = gson.toJson("{ 'success': 'true', 'location': '/OnlineEvaluationSystem/jsp/EmployeeDashboard.jsp'}");
-				jsonString = "[" + json1 + "," + json2 + "," + json3 + "]";
-			}
-			
-			System.out.println("Json string is " + jsonString);
-			writer.println(jsonString);
-			writer.flush();
-		}
+		
+		String jsonString = "[" + json1 + "," + json2 + "," + json3 + "]";
+					
+		System.out.println("Json string is " + jsonString);
+		PrintWriter writer = response.getWriter();
+		writer.println(jsonString);
+		writer.flush();
+		
 		}
 	}
 

@@ -4,6 +4,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.RequestDispatcher;
@@ -17,25 +18,27 @@ import javax.servlet.http.HttpSession;
 import com.google.gson.Gson;
 import com.winpoint.oes.beans.Course;
 import com.winpoint.oes.beans.CourseType;
+import com.winpoint.oes.beans.DifficultyLevel;
 import com.winpoint.oes.beans.Stream;
+import com.winpoint.oes.beans.Test;
 import com.winpoint.oes.beans.UserProfile;
 import com.winpoint.oes.dao.Dummy;
 import com.winpoint.oes.helpers.common.CourseHelper;
-import com.winpoint.oes.helpers.common.CourseTypeHelper;
+import com.winpoint.oes.helpers.common.DifficultyLevelHelper;
 import com.winpoint.oes.helpers.common.LoginHelper;
 import com.winpoint.oes.helpers.common.StreamHelper;
 
 /**
  * Servlet implementation class LoginServ
  */
-@WebServlet("/LoginServlet")
-public class LoginServlet extends HttpServlet {
+@WebServlet("/DifficultyLevelServlet")
+public class DifficultyLevelServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public LoginServlet() {
+    public DifficultyLevelServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -53,53 +56,34 @@ public class LoginServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
+		System.out.println("From DifficultyLevelServlet");
 		BufferedReader br = new BufferedReader(new InputStreamReader(request.getInputStream()));
 	    String json = "";
 	    if(br != null){
 	    	json = br.readLine();
 	    }
 	    System.out.println(json);
+	   
 		Gson gson = new Gson();
-		UserProfile userProfile = gson.fromJson(json, UserProfile.class);
-		if(userProfile != null) {
-		String email = userProfile.getEmail();
-		String password = userProfile.getPassword();
-		System.out.println("email = " + email + "   password = " + password);
+		Course course = gson.fromJson(json, Course.class);
 		
-		UserProfile userProfileRecd =  new LoginHelper().validateLogin(email, password);
+		List<DifficultyLevel> testsList = new DifficultyLevelHelper().getDifficultyLevelsList();
 		
-		if(userProfileRecd != null) {
-			HttpSession session = request.getSession();
-			session.setAttribute("userId", userProfileRecd.getUserId());
-			session.setAttribute("firstName", userProfileRecd.getFirstName());
-			session.setAttribute("lastName", userProfileRecd.getLastName());
-			String json1 = null;
-			String json2 = null;
-			String json3 = null;
-			String jsonString = null;
-			json2 = gson.toJson(userProfileRecd);
-			
-			int userCategoryId;
-		
-			PrintWriter writer = response.getWriter();
-			userCategoryId =  userProfileRecd.getUserCategoryId();
-			if (userCategoryId == 1) {
-			   json1 = gson.toJson("{ 'success': 'true', 'location': '/OnlineEvaluationSystem/jsp/ClientDashboard.jsp'}");
-			   jsonString = "[" + json1 + "," + json2 + "]";
-			}
-			else if(userCategoryId == 2) {
-				List<Stream> streamList = new StreamHelper().getStreamList();
-				System.out.println(streamList);
-				json3 = gson.toJson(streamList);
-				json1 = gson.toJson("{ 'success': 'true', 'location': '/OnlineEvaluationSystem/jsp/EmployeeDashboard.jsp'}");
-				jsonString = "[" + json1 + "," + json2 + "," + json3 + "]";
-			}
-			
-			System.out.println("Json string is " + jsonString);
-			writer.println(jsonString);
-			writer.flush();
-		}
+		/*List<Test> testsList = new ArrayList<Test>();
+		testsList.add(new Test(1, "C", "Objective", 1, 1000, true, 43));
+		testsList.add(new Test(2, "C", "Coding", 1, 2000, true, 0));
+		testsList.add(new Test(3, "C", "Descriptive", 1, 3000, false, 0));*/
+				
+		if(testsList != null) {
+		  
+		   String json1 = gson.toJson("{ 'success': 'true', 'location': '/OnlineEvaluationSystem/jsp/TestSelectPage.jsp'}");
+		   String json2 = gson.toJson(testsList);
+		  		   
+		   String jsonString = "[" + json1  + "," + json2 + "]";
+		   System.out.println("Json string is " + jsonString);
+		   PrintWriter writer = response.getWriter();
+		   writer.println(jsonString);
+		   writer.flush();		   
 		}
 	}
-
 }
