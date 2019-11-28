@@ -78,7 +78,7 @@ public class UserTestDetailsDao {
 		try(Connection connection = ConnectionManager.getConnection()){
 			Statement statement = connection.createStatement();
 			int testDetailId = getTestDetailID(courseId);
-			String query = "INSERT INTO USER_TEST_DETAILS (USER_ID, TEST_DETAIL_ID) VALUES (" + userId + ","+ testDetailId + ")" ;
+			String query = "INSERT INTO USER_TEST_DETAILS (USER_ID, TEST_DETAIL_ID, FEE_STATUS) VALUES (" + userId + ","+ testDetailId + ",'True')" ;
 			statement.executeUpdate(query);
 		} catch (SQLServerException e) {
 			// TODO Auto-generated catch block

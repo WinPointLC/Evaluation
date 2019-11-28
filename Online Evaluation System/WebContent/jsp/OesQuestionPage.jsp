@@ -21,7 +21,7 @@
     var questionsList = null;
     var currentQuestion;
     var reviewFlag;
-    var answerList = 0;
+    var answerList = null;
     var isCorrect = null;
     var marks = 0;
     var totalMarks = 0;
@@ -30,6 +30,7 @@
     var numberOfTotalQuestions = 0;
 	var numberOfAttempedQuestions = 0;
 	var numberOfCorrectAnswers = 0;
+	var attempted = null;
 	$(function () {
       var searchString = window.location.search.substring(1);
       var arr = searchString.split('&');
@@ -43,17 +44,20 @@
       answerList = new Array(questionsList.length);
       isCorrect = new Array(questionsList.length);
       reviewFlag = new Array(questionsList.length);
+      attempted = new Array(questionsList.length);
        for(i=0; i<questionsList.length; i++){
           //alert("Question : " + questionsList[i].questionId + "," + questionsList[i].courseId);
     	   answerList[i] = 0;
     	   isCorrect[i] = 0;
+    	   attempted[i] = 0;
         }  
         courseName = arr[1].split('=')[1];
         courseId = questionsList[0].courseId;
-        alert("CourseId = " + courseId);
+        //alert("CourseId = " + courseId);
         document.getElementById("test-name").textContent = courseName + " Test"
         var start=0;
-        alert(questionsList.length/5);
+        //alert(questionsList.length/5);
+        
       for(i=0; i<Math.floor(questionsList.length/5); i++){
       //alert("Question : " + questionsList[i].questionId + "," + questionsList[i].question);
       
@@ -75,6 +79,10 @@
         start = j;
         document.getElementById('button-list').appendChild(btnrow);
       }
+      
+      var btnrow = document.createElement('div');
+      btnrow.className='button-row'+(i+1);
+      btnrow.setAttribute('id', "btn-r"+(i+1));
       for(var j=start; j<questionsList.length; j++){
     	  var btn = document.createElement('button');
           btn.className='btn btn-outline-dark';
@@ -83,7 +91,7 @@
           btn.setAttribute('onclick', "goToQuestion(this.id)");
           btnrow.appendChild(btn);
       }
-
+      document.getElementById('button-list').appendChild(btnrow);
       
     currentQuestion=0;
     document.getElementById("question-no").innerHTML = "Question No: " + (currentQuestion+1);
@@ -118,13 +126,15 @@
     
     $('#next').click(function() {
       // alert("From Next button");
+      //alert(currentQuestion);
       isCurrentAttempted(currentQuestion);
+      //isCurrentAttempted();
       
       if(currentQuestion < questionsList.length-1){
     	  currentQuestion++;
         
       }
-      
+      //alert(currentQuestion);
       document.getElementById("question-no").innerHTML = "Question No: " + (currentQuestion+1);
       document.getElementById("question-content").innerHTML = questionsList[currentQuestion].question;
       document.getElementById("radio-1").innerHTML = questionsList[currentQuestion].option1;
@@ -133,19 +143,27 @@
       document.getElementById("radio-4").innerHTML = questionsList[currentQuestion].option4;
       
       var ele = document.getElementsByName("radio-group");
-	  //alert("currentQuestion = " + currentQuestion + "answerList[currentQuestion] = " + answerList[currentQuestion]);
-	  if(answerList[currentQuestion] !=0)
-    	ele[answerList[currentQuestion]-1].checked = true;
-	  else
-		  reset();
-
-    })
+	  //alert("From NEXT -- currentQuestion = " + currentQuestion + "answerList[currentQuestion] = " + answerList[currentQuestion]);
+	  if(answerList[currentQuestion] !=0){
+		//  alert("From if");
+		  //alert(">>>>>>>" + answerList);
+    	  ele[answerList[currentQuestion]-1].checked = true;
+	  }
+	  else{
+		  //alert("From else");
+		  //alert(">>>>>>> Next1" + answerList);
+		 reset();
+		  //alert(">>>>>>> Next2" + answerList);
+	  }
+    });
+    
     $('#prev').click(function() {
       // alert("From Next button");
       
       isCurrentAttempted(currentQuestion);
-            if(currentQuestion > 0){
-    	  currentQuestion--;
+      //isCurrentAttempted();
+      if(currentQuestion > 0){
+    	 currentQuestion--;
       }
       document.getElementById("question-no").innerHTML = "Question No: " + (currentQuestion+1);
       document.getElementById("question-content").innerHTML = questionsList[currentQuestion].question;
@@ -155,11 +173,15 @@
       document.getElementById("radio-4").innerHTML = questionsList[currentQuestion].option4;
       
       var ele = document.getElementsByName("radio-group");
-	  //alert("currentQuestion = " + currentQuestion + "answerList[currentQuestion] = " + answerList[currentQuestion]);
-	  if(answerList[currentQuestion] !=0)
+	  //alert("PREV currentQuestion = " + currentQuestion + "answerList[currentQuestion] = " + answerList[currentQuestion]);
+	  if(answerList[currentQuestion] !=0){
     	ele[answerList[currentQuestion]-1].checked = true;
-	  else
+	  //alert(">>>>>>>" + answerList);
+	  }
+	  else{
+		  //alert(">>>>>>>" + answerList);
 		  reset();
+	  }
     })
 
     $('#rev').click(function() {
@@ -176,19 +198,25 @@
 	});
    // $('#sub-btn').click(function() {
 	  function submitAnswers() {
-      alert("From submit button");
-      var ele = document.getElementsByName("radio-group");
-      for(var i=0;i<ele.length;i++){
+      //alert("From submit button" + numberOfAttempedQuestions);
+      if(document.getElementById(currentQuestion+1).className != 'btn btn-success'){
+    	  var ele = document.getElementsByName("radio-group");
+      	  for(var i=0;i<ele.length;i++){
 	    	if(ele[i].checked == true){
 	    		answerList[currentQuestion]=i+1;
 	    		numberOfAttempedQuestions++;
 	    		//numberOfTotalQuestions++;
+	    		//alert("From submit button" + numberOfAttempedQuestions);
 	    		break;
 	    	}
-	  }
+	  	  }
+      }
       var answerStrList = ["A", "B", "C", "D"];
+      alert(answerList);
       for(i=0; i<answerList.length; i++){
     	 //alert("answerList[" + i + "] = " + answerList[i]);
+    	 //alert("answerStrList[answerList[i]-1] = " + answerStrList[answerList[i]-1]);
+    	 //alert("Questionlist ans = "  + questionsList[i].correctOption);
     	  if(answerStrList[answerList[i]-1] == questionsList[i].correctOption){
     		  marks += questionsList[i].totalMarks;    
     		  isCorrect[i]=1;
@@ -198,7 +226,7 @@
       }
       //alert("marks = " + marks + "total marks = " + totalMarks);
      // window.location.href = '/OnlineEvaluationSystem/jsp/FeedBackForm.jsp';
-      callServlet();
+     callServlet();
     };
     function callServlet() {
 
@@ -316,6 +344,8 @@
     
   function goToQuestion(questionNo){
 	  isCurrentAttempted(currentQuestion);
+	  //alert("No of qusts attempted = " +  numberOfAttempedQuestions);
+	  //isCurrentAttempted()
 	  	  currentQuestion = questionNo-1;
 	  	  //alert(questionsList);
     document.getElementById("question-no").innerHTML = "Question No: " + questionNo;
@@ -335,33 +365,42 @@
   }
   
   function isCurrentAttempted(currentQuestion){
-	  
+//	function isCurrentAttempted(){
 	  var ele = document.getElementsByName("radio-group");
-	  var attempted = false;
-	    for(var i=0;i<ele.length;i++){
+	  //var attempted = false;
+	  //if(document.getElementById(currentQuestion+1).className == 'btn btn-success'){
+		 if(attempted[currentQuestion] == 1){
+	  	     //alert("Question Already attempted");
+	  	     attempted[currentQuestion] = 0;
+		     numberOfAttempedQuestions--;
+	     }
+	     for(var i=0;i<ele.length;i++){
 	    	if(ele[i].checked == true){
 	    		answerList[currentQuestion]=i+1;
+	    		//alert("currentQuestion = "+currentQuestion+" answerList[currentQuestion] = "+answerList[currentQuestion]);
 	    		//document.getElementById(currentQuestion+1).className = 'btn btn-success';
 	    		//numberOfTotalQuestions++;
 	    		numberOfAttempedQuestions++;
-	    		attempted = true;
+	    		//attempted = true;
+	    		attempted[currentQuestion] = 1;
 	    		break;
 	    	}
 	    }
+	    //alert(">>>>>>>" + answerList);
 	    if(reviewFlag[currentQuestion]){
 	    	document.getElementById(currentQuestion+1).className = 'btn btn-warning';
 	    }
 	    else{
-	    	if(!attempted){
+	    	//if(!attempted){
+	    		if(!attempted[currentQuestion]){
 	    		document.getElementById(currentQuestion+1).className = 'btn btn-primary';  	
 	    	}
-	    	else
+	    	else{
 	    		document.getElementById(currentQuestion+1).className = 'btn btn-success';
+	    	}
 	    }
   }
-	    		
-	  
-  
+	    		  
   function reset() {
     //console.log("We are in reset function");
     // var radiobtn = document.getElementsByName('radio-group');
@@ -369,7 +408,7 @@
     var ele = document.getElementsByName("radio-group");
     for(var i=0;i<ele.length;i++)
        ele[i].checked = false;
-    answerList[currentQuestion-1] = 0;
+    answerList[currentQuestion] = 0;
   }
 </script>
 </head>

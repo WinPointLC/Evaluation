@@ -89,6 +89,40 @@ public class UserProfile {
 		this.createDate = createDate;
 	}
 
+	public UserProfile(Integer userId, String firstName, String lastName, String email, String mobileNumber,
+			String address, Date birthDate, String college, String degree, String branch, Date yearOfGraduation,
+			String photoLocation, String password, String gender, Integer securityQuestionId, String securityQuestion,
+			String securityAnswer, Integer userCategoryId, String occupation, String organisation, String designation,
+			String domain, String role, Integer experience) {//, Integer createdBy, Date createDate) {
+		super();
+		this.userId = userId;
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.email = email;
+		this.mobileNumber = mobileNumber;
+		this.address = address;
+		this.birthDate = birthDate;
+		this.college = college;
+		this.degree = degree;
+		this.branch = branch;
+		this.yearOfGraduation = yearOfGraduation;
+		this.photoLocation = photoLocation;
+		this.password = password;
+		this.gender = gender;
+		this.securityQuestionId = securityQuestionId;
+		this.securityQuestion = securityQuestion;
+		this.securityAnswer = securityAnswer;
+		this.userCategoryId = userCategoryId;
+		this.occupation = occupation;
+		this.organisation = organisation;
+		this.designation = designation;
+		this.domain = domain;
+		this.role = role;
+		this.experience = experience;
+		/*this.createdBy = createdBy;
+		this.createDate = createDate;*/
+	}
+
 	public UserProfile(String email, String password) {
 		// TODO Auto-generated constructor stub
 		this.email = email;

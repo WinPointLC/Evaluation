@@ -55,7 +55,7 @@ public class UserProfileServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		System.out.println("From TestSelectServlet");
+		System.out.println("From UserProfileServlet");
 		BufferedReader br = new BufferedReader(new InputStreamReader(request.getInputStream()));
 	    String json = "";
 	    if(br != null){
@@ -66,9 +66,9 @@ public class UserProfileServlet extends HttpServlet {
 		Gson gson = new Gson();
 		UserProfile userProfile = gson.fromJson(json, UserProfile.class);
 		boolean isUpdated = new UserProfileHelper().updateUserProfile(userProfile);
-		   String json1 = gson.toJson("{ 'success': 'true', 'location': '/OnlineEvaluationSystem/jsp/ClientDashboardPage.jsp'}");
-		  		   
-		   String jsonString = "[" + json1  +  "]";
+		   String json1 = gson.toJson("{ 'success': 'true', 'location': '/OnlineEvaluationSystem/jsp/User.jsp'}");//"?varid=" + userProfile + "}");
+		   String json2 = gson.toJson(userProfile);
+		   String jsonString = "[" + json1  + "," + json2 + "]";
 		   System.out.println("Json string is " + jsonString);
 		   PrintWriter writer = response.getWriter();
 		   writer.println(jsonString);

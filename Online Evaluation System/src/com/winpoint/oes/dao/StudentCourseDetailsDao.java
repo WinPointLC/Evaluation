@@ -116,7 +116,7 @@ public ArrayList<StudentCourseDetails> getStudentGACourseDetailsList(int userId)
 		try(Connection connection = ConnectionManager.getConnection()){
 			Statement statement = connection.createStatement();
 			
-			String query = "INSERT INTO STUDENT_COURSE_DETAILS (USER_ID, COURSE_ID) VALUES (" + userId + ","+ courseId + ")" ;
+			String query = "INSERT INTO STUDENT_COURSE_DETAILS (USER_ID, COURSE_ID, FEE_STATUS) VALUES (" + userId + ","+ courseId + ",'PAID')" ;
 			statement.executeUpdate(query);
 			
 		} catch (SQLServerException e) {

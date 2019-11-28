@@ -1,3 +1,4 @@
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -17,7 +18,11 @@
   <link href="../assets/css/material-dashboard.css?v=2.1.1" rel="stylesheet" />
   <link href="../MaterialKitHomePage/assets/css/material-kit.css?v=2.0.5" rel="stylesheet" />
   <link rel="stylesheet" href="../css/User.css">
-
+  
+  <script>
+     <c:import url="/SignUpServlet" />
+     <c:set var="securityQuestions" value="${requestScope.securityQuestionsList}" />
+  </script>
 </head>
 
 <body>
@@ -39,12 +44,12 @@
                 <div class="card-body">
                   <form>
                     <div class="row">
-                      <div class="col-md-3">
+                      <!-- <div class="col-md-3">
                         <div class="form-group">
-                          <label>Username</label>
-                          <input type="text" class="form-control" id="username">
+                          <label>User Name</label>
+                          <input type="text" class="form-control" id="userName">
                         </div>
-                      </div>
+                      </div> -->
                       <div class="col-md-4">
                         <div class="form-group">
                           <label>Email address</label>
@@ -104,6 +109,7 @@
                         </div>
                       </div>
                     </div>
+                    <!--  
                     <div class="row">
                       <div class="col-md-4">
                         <div class="form-group">
@@ -124,6 +130,7 @@
                         </div>
                       </div>
                     </div>
+                    -->
                     <div class="row">
                       <div class="col-md-4">
                         <div class="form-group">
@@ -132,10 +139,12 @@
                         </div>
                       </div>
                       <div class="col-md-4">
-                        <div class="form-group">
+                         <div class="form-group">
                           <label>Security Question</label>
-                          <input type="text" class="form-control" id="secquestion">
-                        </div>
+                			<select class="form-control" id="securityQuestion" required>
+                				<option value="">Security Question</option>
+              				</select>
+                		</div>
                       </div>
                       <div class="col-md-4">
                         <div class="form-group">
@@ -143,7 +152,7 @@
                           <input type="text" class="form-control" id="secanswer">
                         </div>
                       </div>
-                      <div class="col-md-12">
+                     <!--   <div class="col-md-12">
                         <div class="form-group">
                           <label>About Me</label>
                           <div class="form-group">
@@ -151,9 +160,9 @@
                             <textarea class="form-control" rows="5" id="aboutme"></textarea>
                           </div>
                         </div>
-                      </div>
+                      </div> -->
                     </div>
-                    <button type="submit" class="btn btn-primary pull-right">Save Profile</button>
+                    <button type="submit" class="btn btn-primary pull-right" onclick="saveUserProfile()">Save Profile</button>
                     <div class="clearfix"></div>
                   </form>
                 </div>
@@ -173,7 +182,7 @@
                    <h6 class="card-category text-gray">Student</h6>
                   <h4 class="card-title" id="studProfileName"></h4>
                   <p class="card-description" id="profileDesc"></p>
-                  <a href="#pablo" class="btn btn-primary btn-round">Save</a>
+                  <!--  <a href="#pablo" class="btn btn-primary btn-round">Save</a> -->
                 </div>
               </div>
             </div>
@@ -243,83 +252,93 @@
       }).replace(/\s+/g, '');
   }
   function saveUserProfile(){
+	  
 	  var userId = document.getElementById('hiddenUserId').value;
-	  var aboutMe = document.getElementById("aboutme").value;
-	  var photoLocation = document.getElementById('uploadPreview').src;
-      var userName = document.getElementById('username').value;
-      var email = document.getElementById('email').value;
-      var degree = document.getElementById('degree').value;
-      var yearOfGraduation = document.getElementById('yearOfGraduation').value;
-      var branch = document.getElementById('branch').value;
-      var address = document.getElementById('address').value;
-      /*** Following fields need to be removed from the form */
-      var city = document.getElementById('city').value;
-      var country = document.getElementById('country').value;
-      /*************************************/
-      var secquestion = document.getElementById('secquestion').value;
-      var secanswer = document.getElementById('secanswer').value;
-      var firstName = document.getElementById("firstName").value;
+	  
+	  var firstName = document.getElementById("firstName").value;
       var lastName = document.getElementById("lastName").value;
+      var email = document.getElementById('email').value;
       var mobileNumber = document.getElementById("mobileNumber").value;
+      var address = document.getElementById('address').value;
+	  var college = document.getElementById("college").value;
+	  var degree = document.getElementById('degree').value;
+      var yearOfGraduation = " ";//document.getElementById('yearOfGraduation').value;
+      var branch = document.getElementById('branch').value;
+      var photoLocation = document.getElementById('uploadPreview').src;
       var password = document.getElementById("password").value;
-      var college = document.getElementById("college").value;
+      var secquestionId = document.getElementById('securityQuestion').value;
+      alert("Changed seQuestId = " + secquestionId);
+      var secanswer = document.getElementById('secanswer').value; 
+      
+      /*** Following fields need to be removed from the form */
+      
+     /* var userName = document.getElementById('userName').value;  
+     var city = document.getElementById('city').value;
+      var country = document.getElementById('country').value;
+      var aboutMe = document.getElementById("aboutme").value; */
+      /*************************************/  
+      
       /*** Following fields need to be added in the form */
-      var birthDate = "12-Sep-1985";//document.getElementById("birthDate,").value;
+      var birthDate = " ";//document.getElementById("birthDate,").value;
       var userCategoryId = "1";//document.getElementById("userCategoryId,").value;
       var occupation = "Student";//document.getElementById("occupation").value;
-      var organisation = "";//document.getElementById("organisation").value;
-      var designation = "";//document.getElementById("designation").value;
-      var domain = "";//document.getElementById("domain").value;
-      var role = "";//document.getElementById("role").value;
-      var experience = "";//document.getElementById("experience").value;
+      var organisation = " ";//document.getElementById("organisation").value;
+      var designation = " ";//document.getElementById("designation").value;
+      var domain = " ";//document.getElementById("domain").value;
+      var role = " ";//document.getElementById("role").value;
+      var experience = "1";//document.getElementById("experience").value;
+      var gender = " ";
       /*************************************/
+      //alert("After setting variables");
+	       
       var userProfileData = {
     		  userId:userId,
-    		  userName: userName,
+    		 // userName: userName,
      		  firstName: firstName,
     		  lastName: lastName,
     		  email: email,
     		  mobileNumber: mobileNumber,
     		  address: address,
-    		  birthDate: birthDate,
+    		  //birthDate: birthDate,
     		  college: college,
     		  degree: degree,
     		  branch: branch,
-    		  yearOfGraduation: yearOfGraduation,
+    		  //yearOfGraduation: yearOfGraduation,
     		  photoLocation: photoLocation,
     		  password: password,
-    		  securityQuestionId: securityQuestionId,
-    		  secanswer: secanswer,
-    		  /************
+    		  gender:gender,
+    		  //securityQuestionId: securityQuestionId,
+    		  securityQuestionId:secquestionId,
+    		  securityAnswer: secanswer,
     		  userCategoryId: userCategoryId,
     		  occupation: occupation,
     		  organisation: organisation,
     		  designation: designation,
     		  domain: domain,
     		  role: role,
-    		  experience: experience,
-    		  *********/
-    		  gender:gender
-      }
+    		  experience: experience
+      };	 
+      //alert("UserProfileData = " + userProfileData);
       $.ajax({
   	 	type: 'POST',
           url: '/OnlineEvaluationSystem/CommonController?action=UserProfileServlet',
-          data: JSON.stringify(userProfile),
+          data: JSON.stringify(userProfileData),
           dataType: 'json',
           contentType: 'application/json; charset=utf-8',
           traditional: true,
-
           success: function (jsonObj) {
             //alert("Success");
             var responseJson1=jsonObj[0];
             var locationJson = eval('(' + responseJson1 + ')');
-            var userProfileJSON = JSON.stringify(userProfile)
+            var userProfileJSON = JSON.stringify(userProfileData);
+            //alert(userProfileJSON);
             window.location.href = locationJson.location + "?varid=" + encodeURIComponent(userProfileJSON) + "&username=" + "Anjali" +"&password=" + "Anjali";
           },
           error: function(){
             alert("Error");
           }
-        }); 
+        });
+      alert("Data Updated Successfully");
     }
     $(document).ready(function() {
     	var searchString = window.location.search.substring(1);
@@ -328,8 +347,8 @@
     	var userProfile = decodeURIComponent(data);
     	var userProfile1 =  eval('(' + userProfile + ')');
 	    //alert("Client is " + userProfile1.userId + ":" + userProfile1.photoLocation+ " " + userProfile1.lastName);
-	    
-        userId = userProfile1.userId;
+	    //alert(userProfile1);
+       userId = userProfile1.userId;
 	    var photoLocation = userProfile1.photoLocation;
 	    //document.getElementById("studProfileName").innerHTML = camelCase(userProfile1.firstName) + " " + camelCase(userProfile1.lastName);
 	    document.getElementById('hiddenUserId').value = userProfile1.userId;
@@ -337,14 +356,22 @@
 	    document.getElementById("profileDesc").innerHTML = "Hello, I am " + userProfile1.firstName.toUpperCase() + " " + userProfile1.lastName.toUpperCase() +
 	    													" from " + userProfile1.college;
 	    document.getElementById('uploadPreview').src = userProfile1.photoLocation;
-        document.getElementById('username').value=userProfile1.username;
+       // document.getElementById('userName').value=userProfile1.userName;
         document.getElementById('email').value=userProfile1.email;
         document.getElementById('degree').value=userProfile1.degree;
-        document.getElementById('yearOfGraduation').value=userProfile1.yearOfGraduation;
+        //document.getElementById('yearOfGraduation').value=userProfile1.yearOfGraduation;
         document.getElementById('branch').value=userProfile1.branch;
         document.getElementById('address').value=userProfile1.address;
-        document.getElementById('city').value=userProfile1.City;
-        document.getElementById('secquestion').value=userProfile1.securityQuestionId;
+        //document.getElementById('city').value=userProfile1.City;
+        
+        var selectVar = document.getElementById('securityQuestion');
+		<c:forEach var="securityQuestion" items= "${securityQuestions}" varStatus="i">
+			var option = document.createElement('option');
+   			option.textContent = "${securityQuestion.securityQuestion}";
+   			option.value=${securityQuestion.securityQuestionId};
+   			selectVar.appendChild(option);
+		</c:forEach>
+		document.getElementById('securityQuestion').value=userProfile1.securityQuestionId;
         document.getElementById('secanswer').value=userProfile1.securityAnswer;
 
 	    document.getElementById("firstName").value = userProfile1.firstName;

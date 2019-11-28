@@ -51,8 +51,8 @@
     //var recieved_json = $.parseJSON(student);
     // alert(received_json);
     //Set session variables
-    var username = arr[1].split('=')[1];
-    var password = arr[2].split('=')[1];
+    //var username = arr[1].split('=')[1];
+    //var password = arr[2].split('=')[1];
     //alert("username=" + username + "password = " + password);
     //document.getElementById('username').value = username;
     //document.getElementById('password').value = password;
@@ -104,7 +104,7 @@
 	$.ajax({
 	      type: 'POST',
 	      url: '/OnlineEvaluationSystem/CommonController?action=OnlineEvaluationServlet?isReg=1',
-	      data: JSON.stringify(userProfile1),
+	      data: JSON.stringify(1),
 	      dataType: 'json',
 	      contentType: 'application/json; charset=utf-8',
 	      traditional: true,
@@ -144,8 +144,8 @@
 	//window.location.href = "/OnlineEvaluationSystem/jsp/CourseRegistration.jsp?varid="+ data;
   }
   function sendToUserProfile(){
-	  alert("User Profile");
-    window.location.href = "/OnlineEvaluationSystem/jsp/User.jsp?varid="+ data;
+	//var userProfileJSON = JSON.stringify(userProfile);
+	window.location.href = "/OnlineEvaluationSystem/jsp/User.jsp?varid="+ encodeURIComponent(strResJSON);
     //encodeURIComponent(strResJSON);
   }
   function sendToUserAnalytics(){
@@ -212,7 +212,7 @@
 <body>
 	<c:forEach var="studentCourseDetail" items= "${studentCourseDetails}" varStatus="i">
 		<script>
-			alert(studentCourseDetail);
+			//alert(studentCourseDetail);
 		</script>
 	</c:forEach>
   <div class="wrapper ">
@@ -508,7 +508,7 @@
       <iframe src="Notifications.jsp" width="1100" height="1000" id="Notif-frame"></iframe>
       <iframe src="Settings.jsp" width="1100" height="1000" id="Settings-frame"></iframe>
       <iframe src="StudentResult.jsp" width="1100" height="1000" id="Result-frame"></iframe>
-      <iframe width="1100" height="1000" id="User-frame"></iframe>
+      <iframe width="1100" height="1000" id="User-frame" src="/OnlineEvaluationSystem/jsp/User.jsp"></iframe>
       <!-- <iframe src="Analytics.jsp" width="1050" height="1000" id="Analytics-frame"></iframe> -->
       <script type="text/javascript">
         // var source = "User.jsp?varid="+ data;
@@ -517,7 +517,7 @@
 
         //New Method
         function loaddata() {
-        document.getElementById('User-frame').src='User.jsp?varid='+ data;
+        document.getElementById('User-frame').src='/OnlineEvaluationSystem/jsp/User.jsp?varid='+ data;
         }
 
       </script>
@@ -585,6 +585,7 @@
   }
   function User_link() {
     loaddata();
+    
     document.getElementById('Tech-content').style.display="none";
     document.getElementById('GA-content').style.display="none";
     document.getElementById('Result-frame').style.display="none";
@@ -592,7 +593,7 @@
     document.getElementById('User-frame').style.display="block";
     // document.getElementById('Analytics-frame').style.display="none";
 
-    //sendToUserProfile();
+    sendToUserProfile();
   }
   function Analytics_link() {
     document.getElementById('Tech-content').style.display="none";

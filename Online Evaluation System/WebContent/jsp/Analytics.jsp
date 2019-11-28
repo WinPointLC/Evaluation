@@ -81,8 +81,8 @@
           value2 = data.getValue(selectedItem.row,1);
           // alert("The user has selected "+" "+value1);
           // alert("The user has selected "+" "+value2);
-          document.getElementById('clickedcontent1').textContent ="Subject:" + value1;
-          document.getElementById('clickedcontent2').textContent = "Marks:" + value2;
+          document.getElementById('clickedcontent1').textContent ="   Subject:   " + value1;
+          document.getElementById('clickedcontent2').textContent = "   Marks:   " + value2;
           for(var i=0; i<studentCourseDetailsList.length; i++){
         	  if(studentCourseDetailsList[i].courseName ==value1){
         		  courseId = studentCourseDetailsList[i].courseId;
@@ -195,16 +195,16 @@ else if (value1=='DB') {
    //   var GAData = '[["LR",30],["QA",26],["VR",39],["VA",32]]';
      // data.addRows(JSON.parse(GAData));
       
-      
+      if(studentGACourseDetailsList.length !=0){
       var generalAptitudeData = '[["';
 		for(var i=0; i<studentGACourseDetailsList.length; i++){
 			generalAptitudeData += studentGACourseDetailsList[i].courseName + '",' + studentGACourseDetailsList[i].courseAggr + '],["';
 		}
 		generalAptitudeData = generalAptitudeData.substring(0, generalAptitudeData.length-3) + ']';
 		
-    alert(generalAptitudeData);
-    data.addRows(JSON.parse(generalAptitudeData));
-
+        alert(generalAptitudeData);
+        data.addRows(JSON.parse(generalAptitudeData));
+      }
  
 
       var options = {
@@ -219,8 +219,8 @@ else if (value1=='DB') {
             value4 = data.getValue(selectedItem.row,1);
           //alert("The user has selected "+" "+value3);
           //alert("The user has selected "+" "+value4);
-          document.getElementById('clickedcontent3').textContent ="Subject:" + value3;
-          document.getElementById('clickedcontent4').textContent = "Marks:" + value4;
+          document.getElementById('clickedcontent3').textContent ="   Subject:  " + value3;
+          document.getElementById('clickedcontent4').textContent = "  Marks:  " + value4;
           
           for(var i=0; i<studentGACourseDetailsList.length; i++){
         	  if(studentGACourseDetailsList[i].courseName ==value1){
@@ -381,8 +381,8 @@ else if (value3=='VA') {
                                     <h3 id="graph-content"></h3>
                                     <div class="col-sm-5 col-md-5 col-lg-5 col-xl-5">
                                       <div class="right-side-inner-contents">
-                                        <h5 id="clickedcontent1"></h5>
-                                        <h5 id="clickedcontent2"></h5>
+                                        <h6 id="clickedcontent1"></h6>
+                                        <h6 id="clickedcontent2"></h6>
                                       </div>
                                       <div class="bar-graph">
                                         <div id="barchart"style="width: 300px;height:200px;"></div>
@@ -434,10 +434,10 @@ else if (value3=='VA') {
                                   <div class="row">
                                     <h3 id="graph-content"></h3>
                                     <div class="col-sm-5 col-md-5 col-lg-5 col-xl-5">
-                                      <div class="right-side-inner-contents">
-                                        <h5 id="clickedcontent3"></h5>
-                                        <h5 id="clickedcontent4"></h5>
-                                      </div>
+                                      <!-- <div class="right-side-inner-contents"> -->
+                                        <h6 id="clickedcontent3"></h6>
+                                        <h6 id="clickedcontent4"></h6>
+                                      <!--  </div> -->
                                       <div class="bar-graph">
                                         <div id="barchart2"style="width: 300px;height:200px;"></div>
                                       </div>

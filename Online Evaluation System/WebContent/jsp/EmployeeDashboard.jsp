@@ -980,7 +980,7 @@ function getTopicId(topic_id){
               traditional: true,
               success: function (jsonObj) {
                 diffLevelsList=jsonObj[1];
-               alert(diffLevelsList);
+               //alert(diffLevelsList);
                 /*elem = document.getElementById('coursetype-dropdown');
                 if(elem != null){
               	elem.parentNode.removeChild(elem);
@@ -1025,7 +1025,7 @@ function getDiffLevelId(diffLevel_id){
 }
 var optionArr = ['option1','option2','option3','option4'];
 function addQuestion(){
-	alert("Add Question");
+	//alert("Add Question");
 	var question = document.getElementById('question').value;
 	var option1 = document.getElementById(optionArr[0]).value;
 	//alert(option1);
@@ -1060,7 +1060,7 @@ function addQuestion(){
 			difficultyLevelId:diffLevelId,
 			inCrt:inCrt
 	};
-	alert(myData);
+	//alert(myData);
 	$.ajax({
         type: 'POST',
         url: '/OnlineEvaluationSystem/CommonController?action=AddQuestionServlet',
@@ -1069,8 +1069,10 @@ function addQuestion(){
         contentType: 'application/json; charset=utf-8',
         traditional: true,
         success: function (jsonObj) {
+        	//alert("FRom EMPDash");
         	var responseJson1=jsonObj[0], responseJson2=jsonObj[1], responseJson3=jsonObj[2];
 			var locationJson = eval('(' + responseJson1 + ')');
+			//alert("^^^^^^^" + locationJson);
 			if (locationJson.success) {
 				var strResJSON = JSON.stringify(responseJson2);
 				var streamJSON = JSON.stringify(responseJson3);
@@ -1085,6 +1087,7 @@ function addQuestion(){
         }
 
       });
+	alert("After AJAX");
 }
 //showing all-user content
 document.getElementById('all-user-link').onclick=function() {

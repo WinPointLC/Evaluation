@@ -85,7 +85,7 @@ public class ResultServlet extends HttpServlet {
 	    System.out.println(answerListStr);
 	    System.out.println(questionsListStr);
 	    System.out.println(isCorrectListStr);
-	    System.out.println(resultStr);
+	    System.out.println("resultStr = " + resultStr);
 	    
 	    Gson gson = new Gson();
 	    

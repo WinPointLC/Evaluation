@@ -62,6 +62,7 @@ public class ResultDao {
 			preparedStatement.setInt(3, totalMarks);
 			preparedStatement.setInt(4, userId);
 			preparedStatement.setInt(5, courseId);
+			System.out.println("" + preparedStatement);
 			preparedStatement.executeUpdate();
 			preparedStatement.close();
 			

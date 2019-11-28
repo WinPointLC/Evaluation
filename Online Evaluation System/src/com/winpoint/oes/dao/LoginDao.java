@@ -5,6 +5,7 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.Date;
 
 import javax.swing.ImageIcon;
 
@@ -27,7 +28,7 @@ public class LoginDao {
 		try(Connection connection = ConnectionManager.getConnection()){
 			Statement statement = connection.createStatement();
 			
-			String query = "SELECT	USER_PROFILE.USER_ID,\r\n" + 
+			/*String query = "SELECT	USER_PROFILE.USER_ID,\r\n" + 
 					"		FIRST_NAME, \r\n" + 
 					"		LAST_NAME, \r\n" + 
 					"		PHOTO_LOCATION, \r\n" + 
@@ -40,7 +41,15 @@ public class LoginDao {
 					"				LEFT OUTER JOIN EMPLOYEE_CATEGORY\r\n" + 
 					"				ON D.EMPLOYEE_CATEGORY_ID = EMPLOYEE_CATEGORY.EMPLOYEE_CATEGORY_ID\r\n" + 
 					"	WHERE USER_PROFILE.EMAIL_ID = '" + emailId + "' AND USER_PROFILE.PASSWORD = '" + password + "'";
-			
+			*/
+			String query = "SELECT	* \r\n" + 
+					"	FROM USER_PROFILE JOIN USER_CATEGORY \r\n" + 
+					"		ON USER_PROFILE.USER_CATEGORY_ID = USER_CATEGORY.USER_CATEGORY_ID\r\n" + 
+					"			LEFT OUTER JOIN EMPLOYEE_DETAILS D\r\n" + 
+					"			ON USER_PROFILE.USER_ID = D.USER_ID\r\n" + 
+					"				LEFT OUTER JOIN EMPLOYEE_CATEGORY\r\n" + 
+					"				ON D.EMPLOYEE_CATEGORY_ID = EMPLOYEE_CATEGORY.EMPLOYEE_CATEGORY_ID\r\n" + 
+					"	WHERE USER_PROFILE.EMAIL_ID = '" + emailId + "' AND USER_PROFILE.PASSWORD = '" + password + "'";
 			resultSet = statement.executeQuery(query);
 			while(resultSet.next()) {
 				int userId = resultSet.getInt("user_id");
@@ -48,18 +57,39 @@ public class LoginDao {
 				String lastName = resultSet.getString("last_name");
 				//String email = resultSet.getString("email");
 				int userCategoryId = resultSet.getInt("USER_CATEGORY_ID");
-				//String userCategoryName = resultSet.getString("USER_CATEGORY_NAME");
+				String userCategoryName = resultSet.getString("USER_CATEGORY_NAME");
 				String employeeCategoryId = resultSet.getString("EMPLOYEE_CATEGORY_ID");
 				String photoLocation = resultSet.getString("PHOTO_LOCATION");
-				//String photoLocation = "/OnlineEvaluationSystem/img/photos/client/Knitting Balls.jpg";
+				String mobileNumber = resultSet.getString("Mobile_NUMBER");
+				String address = resultSet.getString("ADDRESS");
+				java.util.Date birthDate = null;//resultSet.getDate("BIRTH-DATE");
+				String college = resultSet.getString("COLLEGE");
+				String degree = resultSet.getString("DEGREE");
+				String branch = resultSet.getString("BRANCH");
+				Date yearOfGraduation = null;//resultSet.getString("YEAR_OF_GRADUATION");
+				int securityQuestionId = resultSet.getInt("SECURITY_QUESTION_ID");
+				String securityQuestion = "Question";
+				String securityAnswer = resultSet.getString("SECURITY_ANSWER");
+				String occupation = resultSet.getString("OCCUPATION");
+				String organisation = resultSet.getString("ORGANIZATION");
+				String designation = resultSet.getString("DESIGNATION");
+				String domain = resultSet.getString("DOMAIN");
+				String role = resultSet.getString("ROLE");
+				int experience = resultSet.getInt("EXPERIENCE");
+				String gender = null;//resultSet.getString("GENDER");
 	            System.out.println(userId);
 	            System.out.println(firstName);
 	            System.out.println(userCategoryId);
 	            //System.out.println(userCategoryName);
 	            System.out.println(employeeCategoryId);
 	            
-	            userProfile = new UserProfile(userId, firstName, lastName, emailId, userCategoryId, photoLocation);
-				flag = true;
+	            //userProfile = new UserProfile(userId, firstName, lastName, emailId, userCategoryId, photoLocation);
+				userProfile = new UserProfile(userId, firstName, lastName, emailId, mobileNumber,
+						address,birthDate, college, degree, branch, yearOfGraduation,
+						photoLocation, password, gender, securityQuestionId, securityQuestion,
+						securityAnswer, userCategoryId, occupation, organisation, designation,
+						domain, role, experience);
+	            flag = true;
 			}
 		}
 		catch (Exception e) {

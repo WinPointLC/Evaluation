@@ -40,9 +40,14 @@
 					//var studentJson = eval('(' + responseJson2 + ')');
 					if (locationJson.success) {
 						var strResJSON = JSON.stringify(responseJson2);
-						var streamJSON = JSON.stringify(responseJson3);
-						//alert("studentEmail : " + responseJson2.email);
-						window.location.href = locationJson.location + "?varid=" + encodeURIComponent(strResJSON) + encodeURIComponent(streamJSON) +"&username=" + "Anjali" +"&password=" + "Anjali";
+						if(responseJson2.userCategoryId == 1){
+							window.location.href = locationJson.location + "?varid=" + encodeURIComponent(strResJSON);
+						}
+						else{
+						   var streamJSON = JSON.stringify(responseJson3);
+						   //alert("studentEmail : " + responseJson2.email);
+						   window.location.href = locationJson.location + "?varid=" + encodeURIComponent(strResJSON) + encodeURIComponent(streamJSON);// +"&username=" + "Anjali" +"&password=" + "Anjali";
+						}
 					} else {
 						$('#ajaxGetUserServletResponse').text(responseText);
 					}
