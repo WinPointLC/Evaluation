@@ -25,6 +25,7 @@
    <script>
    <c:import url="/ClientDashboardServlet" />
 	     <c:set var="studentCourseDetails" value="${requestScope.studentCourseDetailsList}" />
+	     <c:set var="studentGACourseDetails" value="${requestScope.studentGACourseDetailsList}" />
   var data;
   var userProfile1;
   var strResJSON;
@@ -50,8 +51,8 @@
     //var recieved_json = $.parseJSON(student);
     // alert(received_json);
     //Set session variables
-    var username = arr[1].split('=')[1];
-    var password = arr[2].split('=')[1];
+    //var username = arr[1].split('=')[1];
+    //var password = arr[2].split('=')[1];
     //alert("username=" + username + "password = " + password);
     //document.getElementById('username').value = username;
     //document.getElementById('password').value = password;
@@ -99,19 +100,66 @@
 
     	});
 */
+  function sendToCourseRegistrationPage(){
+	$.ajax({
+	      type: 'POST',
+	      url: '/OnlineEvaluationSystem/CommonController?action=OnlineEvaluationServlet?isReg=1',
+	      data: JSON.stringify(1),
+	      dataType: 'json',
+	      contentType: 'application/json; charset=utf-8',
+	      traditional: true,
+	      success: function (jsonObj) {
+	        //alert("Success from LoginForm");
+	        var responseJson1 = jsonObj[0];
+	        var responseJson2 = jsonObj[1];
+
+	        /* Start- Code for ArrayList from servlet */
+	        var streamList = responseJson2[0];
+	        var courseTypeList = responseJson2[1];
+	       /* for(i=0; i<streamList.length; i++){
+	           alert("streamList = " + streamList[i].streamName);
+	        }*/
+	        var streamJson=jsonObj[1];
+	        var courseTypeJson=jsonObj[2];
+	        var locationJson = eval('(' + responseJson1 + ')');
+	        if (locationJson.success) {
+	          var streamJSON = JSON.stringify(streamJson);
+	          //alert(streamJSON);
+	          var courseTypeJSON = JSON.stringify(courseTypeJson);
+	          //alert(courseTypeJSON);
+	          //alert("studentEmail : " + responseJson2.email);
+	          window.location.href = locationJson.location + "?varid=" + encodeURIComponent(streamJSON) + encodeURIComponent(courseTypeJSON)+ encodeURIComponent('${studentCourseDetails}') + encodeURIComponent('${studentGACourseDetails}') +"&username=" + "Anjali" +"&password=" + "Anjali";
+	          //window.location.href = locationJson.location + "?varid=" + streamJSON + courseTypeJSON +"&username=" + "Anjali" +"&password=" + "Anjali";
+	          //window.location.href = locationJson.location + "?varid=" + encodeURIComponent(streamJSON) +"&username=" + "Anjali" +"&password=" + "Anjali";
+	        } else {
+	          $('#ajaxGetUserServletResponse').text(responseText);
+	        }
+	      },
+	      error: function(){
+	        //alert("Error");
+	        document.getElementById("error").innerHTML = "Invalid email or password";
+	      }
+
+	    });
+	//window.location.href = "/OnlineEvaluationSystem/jsp/CourseRegistration.jsp?varid="+ data;
+  }
   function sendToUserProfile(){
-    window.location.href = "/OnlineEvaluationSystem/jsp/User.jsp?varid="+ data;
+	//var userProfileJSON = JSON.stringify(userProfile);
+	window.location.href = "/OnlineEvaluationSystem/jsp/User.jsp?varid="+ encodeURIComponent(strResJSON);
     //encodeURIComponent(strResJSON);
   }
   function sendToUserAnalytics(){
-	    window.location.href = "/OnlineEvaluationSystem/jsp/Analytics.jsp?varid="+ data;
-	   window.location.href = "/OnlineEvaluationSystem/jsp/Analytics.jsp?varid="+ encodeURIComponent('${studentCourseDetails}');
+	  //var studentCourseDetails = '<c:out value="${studentCourseDetails}"/>';
+	  
+	  //alert('${studentCourseDetails}');
+	  //alert('${studentGACourseDetails}');
+	   window.location.href = "/OnlineEvaluationSystem/jsp/Analytics.jsp?varid="+ encodeURIComponent('${studentCourseDetails}') + encodeURIComponent('${studentGACourseDetails}');
 	    //encodeURIComponent(strResJSON);
-	  }
+  }
   function sendToMainCoursePage(){
     $.ajax({
       type: 'POST',
-      url: '/OnlineEvaluationSystem/CommonController?action=OnlineEvaluationServlet',
+      url: '/OnlineEvaluationSystem/CommonController?action=OnlineEvaluationServlet?isReg=0',
       data: JSON.stringify(userProfile1),
       dataType: 'json',
       contentType: 'application/json; charset=utf-8',
@@ -164,7 +212,7 @@
 <body>
 	<c:forEach var="studentCourseDetail" items= "${studentCourseDetails}" varStatus="i">
 		<script>
-			//alert("${studentCourseDetail.courseAggr}");
+			//alert(studentCourseDetail);
 		</script>
 	</c:forEach>
   <div class="wrapper ">
@@ -184,7 +232,7 @@
         <li class="nav-item active  ">
           <a class="nav-link" href="ClientDashboard.jsp">
             <i class="material-icons">dashboard</i>
-            <p>Dashboard</p>
+            <p>User Dashboard</p>
           </a>
         </li>
         <!-- <a class="nav-link" href="javascript:sendToUserProfile()" onclick="User_link();"> -->
@@ -195,6 +243,12 @@
           </a>
         </li> -->
 
+		<li>
+          <a class="nav-link" href="javascript:sendToCourseRegistrationPage()">
+            <i class="material-icons">computer</i>
+            <p>Course Registration</p>
+          </a>
+        </li>
         <li>
           <a class="nav-link" href="javascript:sendToMainCoursePage()">
             <i class="material-icons">computer</i>
@@ -297,200 +351,6 @@
           </div>
 
           <div class="inner-Tech-content" id="Tech-cards">
-             <!--<div class="row tech-row-1">
-              <div class="col-lg-3 col-md-6 col-sm-6">
-                <div class="card card-stats">
-                  <div class="card-header card-header-icon">
-                    <div class="card-heading">
-                      <h6>C</h6>
-                    </div>
-                    <div class="card-icon" style="font-size:20px;" id="row1-card1">
-                      <i class="fa fa-copyright" style="font-size:70px;"></i>
-                    </div>
-                    <p class="card-category">Marks obtained</p>
-                    <h3 class="card-title">49/50
-                    </h3>
-                  </div>
-                  <div class="card-footer">
-                    <div class="stats">
-                      <div class="dropdown">
-                        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                          See More Marks
-                        </button>
-                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                          <a class="dropdown-item" href="#">MCQ</a>
-                          <a class="dropdown-item" href="#">Coding</a>
-                          <a class="dropdown-item" href="#">Descriptive</a>
-                        </div>
-                      </div>
-
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <div class="col-lg-3 col-md-6 col-sm-6">
-                <div class="card card-stats">
-                  <div class="card-header card-header-danger card-header-icon">
-                    <div class="card-heading">
-                      <h6>Java</h6>
-                    </div>
-                    <div class="card-icon">
-                      <img src="../assets/img/Dashboard-main-page-images/java-brands.svg" alt="java" style=" height: 60px; width: 60px; ">
-                    </div>
-                    <p class="card-category">Marks obtained</p>
-                    <h3 class="card-title">49/50
-                    </h3>
-                  </div>
-                  <div class="card-footer">
-                    <div class="stats">
-
-                      <div class="dropdown">
-                        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                          See More Marks
-                        </button>
-                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                          <a class="dropdown-item" href="#">MCQ</a>
-                          <a class="dropdown-item" href="#">Coding</a>
-                          <a class="dropdown-item" href="#">Descriptive</a>
-                        </div>
-                      </div>
-
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-            </div>
-
-            <div class="row tech-row-2">
-              <div class="col-lg-3 col-md-6 col-sm-6">
-                <div class="card card-stats">
-                  <div class="card-header card-header-icon" >
-                    <div class="card-heading">
-                      <h6>Data Structures</h6>
-                    </div>
-                    <div class="card-icon" style="font-size:20px;" id="card3">
-                      <img src="../assets/img/Dashboard-main-page-images/cubes.svg" alt="java" style=" height: 60px; width: 60px; ">
-                    </div>
-                    <p class="card-category">Marks obtained</p>
-                    <h3 class="card-title">49/50
-                    </h3>
-                  </div>
-                  <div class="card-footer">
-                    <div class="stats">
-                      <div class="dropdown">
-                        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                          See More Marks
-                        </button>
-                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                          <a class="dropdown-item" href="#">MCQ</a>
-                          <a class="dropdown-item" href="#">Coding</a>
-                          <a class="dropdown-item" href="#">Descriptive</a>
-                        </div>
-                      </div>
-
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="col-lg-3 col-md-6 col-sm-6">
-                <div class="card card-stats">
-                  <div class="card-header card-header-icon">
-                    <div class="card-heading">
-                      <h6>CPP</h6>
-                    </div>
-                    <div class="card-icon" style="font-size:20px; background-color:rgb(20, 122, 159);">
-                      <img src="../assets/img/Dashboard-main-page-images/cpp-icon-file-format.svg" alt="java" style=" height: 60px; width: 60px; ">
-                    </div>
-                    <p class="card-category">Marks obtained</p>
-                    <h3 class="card-title">49/50
-                    </h3>
-                  </div>
-                  <div class="card-footer">
-                    <div class="stats">
-
-                      <div class="dropdown">
-                        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                          See More Marks
-                        </button>
-                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                          <a class="dropdown-item" href="#">MCQ</a>
-                          <a class="dropdown-item" href="#">Coding</a>
-                          <a class="dropdown-item" href="#">Descriptive</a>
-                        </div>
-                      </div>
-
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div class=" row tech-row-3">
-              <div class="col-lg-3 col-md-6 col-sm-6">
-                <div class="card card-stats">
-                  <div class="card-header card-header-warning card-header-icon">
-                    <div class="card-heading">
-                      <h6>Database</h6>
-                    </div>
-                    <div class="card-icon" style="font-size:20px;">
-                      <i class="fa fa-database" style="font-size:70px;"></i>
-                    </div>
-                    <p class="card-category">Marks obtained</p>
-                    <h3 class="card-title">49/50
-                    </h3>
-                  </div>
-                  <div class="card-footer">
-                    <div class="stats">
-
-                      <div class="dropdown">
-                        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                          See More Marks
-                        </button>
-                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                          <a class="dropdown-item" href="#">MCQ</a>
-                          <a class="dropdown-item" href="#">Coding</a>
-                          <a class="dropdown-item" href="#">Descriptive</a>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="col-lg-3 col-md-6 col-sm-6">
-                <div class="card card-stats">
-                  <div class="card-header card-header-primary  card-header-icon">
-                    <div class="card-heading">
-                      <h6>JS</h6>
-                    </div>
-                    <div class="card-icon">
-                      <img src="../assets/img/Dashboard-main-page-images/js-brands.svg" alt="java" style=" height: 60px; width: 60px; ">
-                    </div>
-                    <p class="card-category">Marks obtained</p>
-                    <h3 class="card-title">49/50
-                    </h3>
-                  </div>
-                  <div class="card-footer">
-                    <div class="stats">
-
-                      <div class="dropdown">
-                        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                          See More Marks
-                        </button>
-                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                          <a class="dropdown-item" href="#">MCQ</a>
-                          <a class="dropdown-item" href="#">Coding</a>
-                          <a class="dropdown-item" href="#">Descriptive</a>
-                        </div>
-                      </div>
-
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-            </div> -->
             <!-- End Inner Tech Content -->
           </div>
 
@@ -508,8 +368,8 @@
             </div>
           </div>
 
-          <div class="inner-GA-content">
-            <div class="row GA-row-1">
+          <div class="inner-GA-content" id="GA-cards">
+          <!--  end at 450 <div class="row GA-row-1">
               <div class="col-lg-3 col-md-6 col-sm-6">
                 <div class="card card-stats">
                   <div class="card-header card-header-icon">
@@ -637,8 +497,8 @@
                 </div>
               </div>
             </div>
-          </div>
-
+          </div>   start at 322-->
+<!-- End Inner Tech Content -->
           <!-- Chart Ends here -->
 
         </div>
@@ -648,8 +508,8 @@
       <iframe src="Notifications.jsp" width="1100" height="1000" id="Notif-frame"></iframe>
       <iframe src="Settings.jsp" width="1100" height="1000" id="Settings-frame"></iframe>
       <iframe src="StudentResult.jsp" width="1100" height="1000" id="Result-frame"></iframe>
-      <iframe width="1100" height="1000" id="User-frame"></iframe>
-      <!-- <iframe src="Analytics.jsp" width="1050" height="1000" id="Result-frame"></iframe> -->
+      <iframe width="1100" height="1000" id="User-frame" src="/OnlineEvaluationSystem/jsp/User.jsp"></iframe>
+      <!-- <iframe src="Analytics.jsp" width="1050" height="1000" id="Analytics-frame"></iframe> -->
       <script type="text/javascript">
         // var source = "User.jsp?varid="+ data;
         // string Url = "User.jsp?varid=data";
@@ -657,7 +517,7 @@
 
         //New Method
         function loaddata() {
-        document.getElementById('User-frame').src='User.jsp?varid='+ data;
+        document.getElementById('User-frame').src='/OnlineEvaluationSystem/jsp/User.jsp?varid='+ data;
         }
 
       </script>
@@ -725,6 +585,7 @@
   }
   function User_link() {
     loaddata();
+    
     document.getElementById('Tech-content').style.display="none";
     document.getElementById('GA-content').style.display="none";
     document.getElementById('Result-frame').style.display="none";
@@ -732,7 +593,7 @@
     document.getElementById('User-frame').style.display="block";
     // document.getElementById('Analytics-frame').style.display="none";
 
-    //sendToUserProfile();
+    sendToUserProfile();
   }
   function Analytics_link() {
     document.getElementById('Tech-content').style.display="none";
@@ -792,9 +653,9 @@
 console.log("Creating Dynamic Elements");
   //Dynamic Cards
 
-
-<c:forEach var="studentCourseDetail" items= "${studentCourseDetails}" varStatus="i">
-
+var studentCourseDetailsList = eval('(' + '${studentCourseDetails}' + ')');
+//alert(studentCourseDetailsList.length);
+for(var i=0; i<studentCourseDetailsList.length; i++){
 	var row  =document.createElement('div');
 	row.className="row tech-row";
 	var col1 = document.createElement('div');
@@ -806,13 +667,13 @@ console.log("Creating Dynamic Elements");
 	  var cardHeading = document.createElement('div');
 	  cardHeading.className="card-heading";
 	  var h6 = document.createElement('h6');
-	  h6.textContent = "${studentCourseDetail.courseTypeName}" + " - " + "${studentCourseDetail.courseName}";
+	  h6.textContent = studentCourseDetailsList[i].courseTypeName + " - " + studentCourseDetailsList[i].courseName;
 	  cardHeading.appendChild(h6);
 	  var cardIcon = document.createElement('div');
 	  cardIcon.className="card-icon";
 	  var img = document.createElement('img');
 
-	      img.setAttribute('src',"${studentCourseDetail.logoLocation}");
+	      img.setAttribute('src',studentCourseDetailsList[i].logoLocation);
 	      img.setAttribute('style', "width:60px;height:60px;");
 	      cardIcon.appendChild(img);
 
@@ -822,7 +683,7 @@ console.log("Creating Dynamic Elements");
 	  p.textContent = 'Marks Obtained';
 	  var h3 = document.createElement('h3');
 	  h3.className="card-title";
-	  h3.textContent = "${studentCourseDetail.courseAggr}";
+	  h3.textContent = studentCourseDetailsList[i].courseAggr;
 	  // End Card Header
 	  var cardfooter = document.createElement('div');
   cardfooter.className="card-footer";
@@ -867,8 +728,87 @@ console.log("Creating Dynamic Elements");
 
 
   document.getElementById('Tech-cards').appendChild(row);
+}
 
-</c:forEach>
+
+var studentGACourseDetailsList = eval('(' + '${studentGACourseDetails}' + ')');
+//alert(studentGACourseDetailsList.length);
+for(var i=0; i<studentGACourseDetailsList.length; i++){
+	var row  =document.createElement('div');
+	row.className="row tech-row";
+	var col1 = document.createElement('div');
+	  col1.className="col-lg-3 col-md-6 col-sm-6";
+	  var card = document.createElement('div');
+	  card.className="card card-stats";
+	  var cardheader = document.createElement('div');
+	  cardheader.className="card-header  card-header-icon";
+	  var cardHeading = document.createElement('div');
+	  cardHeading.className="card-heading";
+	  var h6 = document.createElement('h6');
+	  h6.textContent = studentGACourseDetailsList[i].courseTypeName + " - " + studentGACourseDetailsList[i].courseName;
+	  cardHeading.appendChild(h6);
+	  var cardIcon = document.createElement('div');
+	  cardIcon.className="card-icon";
+	  var img = document.createElement('img');
+
+	      img.setAttribute('src',studentGACourseDetailsList[i].logoLocation);
+	      img.setAttribute('style', "width:60px;height:60px;");
+	      cardIcon.appendChild(img);
+
+
+	  var p = document.createElement('p');
+	  p.className="card-category";
+	  p.textContent = 'Marks Obtained';
+	  var h3 = document.createElement('h3');
+	  h3.className="card-title";
+	  h3.textContent = studentGACourseDetailsList[i].courseAggr;
+	  // End Card Header
+	  var cardfooter = document.createElement('div');
+  cardfooter.className="card-footer";
+  var stats =document.createElement('div');
+  stats.className="stats";
+  var dropdown = document.createElement('div');
+  dropdown.className="dropdown";
+  var button = document.createElement('button');
+  button.className="btn btn-secondary dropdown-toggle";
+  button.id="dropdownMenuButton";
+  button.setAttribute('data-toggle',"dropdown");
+  button.setAttribute('aria-haspopup', "true");
+  button.setAttribute('aria-expanded', "false");
+  button.textContent = 'See More Marks';
+
+  var dropdownmenu = document.createElement('div');
+  dropdownmenu.className="dropdown-menu";
+  dropdownmenu.setAttribute('aria-labelledby',"dropdownMenuButton");
+  var anchorsList = ['MCQ','Coding','Descriptive'];
+
+  for (var k = 0; k < anchorsList.length; k++) {
+    var anchor  = document.createElement('a');
+    anchor.className="dropdown-item";
+    anchor.textContent = anchorsList[k];
+    dropdownmenu.appendChild(anchor);
+    dropdown.appendChild(dropdownmenu);
+    dropdown.appendChild(button);
+  }
+  cardheader.appendChild(cardIcon);
+  cardheader.appendChild(p);
+  cardheader.appendChild(h3);
+  cardheader.appendChild(cardHeading);
+  card.appendChild(cardheader);
+
+  stats.appendChild(dropdown);
+  cardfooter.appendChild(stats);
+  card.appendChild(cardfooter);
+
+  col1.appendChild(card);
+  // console.log("Inner For Loop");
+  row.appendChild(col1);
+
+
+  document.getElementById('GA-cards').appendChild(row);
+}
+
+
 /*var TechArr = ['Java','Data Structures','CPP','JS'];
 var TechArr2 = ['Java','Data Structures','CPP','JS'];
 var Mixarr=['../assets/img/Dashboard-main-page-images/java-brands.svg','../assets/img/Dashboard-main-page-images/cubes.svg','../assets/img/Dashboard-main-page-images/cpp-icon-file-format.svg','../assets/img/Dashboard-main-page-images/js-brands.svg'];
