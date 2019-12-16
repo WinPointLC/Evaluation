@@ -25,7 +25,6 @@
    <script>
    <c:import url="/ClientDashboardServlet" />
 	     <c:set var="studentCourseDetails" value="${requestScope.studentCourseDetailsList}" />
-	     <c:set var="studentGACourseDetails" value="${requestScope.studentGACourseDetailsList}" />
   var data;
   var userProfile1;
   var strResJSON;
@@ -40,7 +39,6 @@
     //var studentJson = eval('(' + data + ')');
     //alert("Student Id = " + studentJson.id);
     var userProfile = decodeURIComponent(data);
-
     //alert("Client is " + userProfile);
     //var student1 = new Gson().fromJson(student, Student);
     userProfile1 =  eval('(' + userProfile + ')');
@@ -51,16 +49,13 @@
     //var recieved_json = $.parseJSON(student);
     // alert(received_json);
     //Set session variables
-    //var username = arr[1].split('=')[1];
-    //var password = arr[2].split('=')[1];
+    var username = arr[1].split('=')[1];
+    var password = arr[2].split('=')[1];
     //alert("username=" + username + "password = " + password);
     //document.getElementById('username').value = username;
     //document.getElementById('password').value = password;
     strResJSON = JSON.stringify(userProfile1);
-
-
       });
-
  /* var mydata = {
     		userId : userProfile1.userId
     	  };
@@ -75,7 +70,6 @@
     	      alert("Success from LoginForm");
     	      var responseJson1 = jsonObj[0];
     	      //var responseJson2 = jsonObj[1];
-
     	      /* Start- Code for ArrayList from servlet */
     	      /*var streamList = responseJson2[0];
     	      var courseTypeList = responseJson2[1];
@@ -86,7 +80,6 @@
     	    alert("courseTypeList = " + courseTypeList[i].courseTypeName);
     	  } */
     	  /* End- Code for ArrayList from servlet */
-
   /*  	      var studentcourseDetailsList=jsonObj[1];
     	  alert(studentcourseDetailsList);
     	      for(i=0; i<studentcourseDetailsList.length; i++){
@@ -97,69 +90,21 @@
     	  alert("Error");
     	  //document.getElementById("error").innerHTML = "Invalid email or password";
     	}
-
     	});
 */
-  function sendToCourseRegistrationPage(){
-	$.ajax({
-	      type: 'POST',
-	      url: '/OnlineEvaluationSystem/CommonController?action=OnlineEvaluationServlet?isReg=1',
-	      data: JSON.stringify(1),
-	      dataType: 'json',
-	      contentType: 'application/json; charset=utf-8',
-	      traditional: true,
-	      success: function (jsonObj) {
-	        //alert("Success from LoginForm");
-	        var responseJson1 = jsonObj[0];
-	        var responseJson2 = jsonObj[1];
-
-	        /* Start- Code for ArrayList from servlet */
-	        var streamList = responseJson2[0];
-	        var courseTypeList = responseJson2[1];
-	       /* for(i=0; i<streamList.length; i++){
-	           alert("streamList = " + streamList[i].streamName);
-	        }*/
-	        var streamJson=jsonObj[1];
-	        var courseTypeJson=jsonObj[2];
-	        var locationJson = eval('(' + responseJson1 + ')');
-	        if (locationJson.success) {
-	          var streamJSON = JSON.stringify(streamJson);
-	          //alert(streamJSON);
-	          var courseTypeJSON = JSON.stringify(courseTypeJson);
-	          //alert(courseTypeJSON);
-	          //alert("studentEmail : " + responseJson2.email);
-	          window.location.href = locationJson.location + "?varid=" + encodeURIComponent(streamJSON) + encodeURIComponent(courseTypeJSON)+ encodeURIComponent('${studentCourseDetails}') + encodeURIComponent('${studentGACourseDetails}') +"&username=" + "Anjali" +"&password=" + "Anjali";
-	          //window.location.href = locationJson.location + "?varid=" + streamJSON + courseTypeJSON +"&username=" + "Anjali" +"&password=" + "Anjali";
-	          //window.location.href = locationJson.location + "?varid=" + encodeURIComponent(streamJSON) +"&username=" + "Anjali" +"&password=" + "Anjali";
-	        } else {
-	          $('#ajaxGetUserServletResponse').text(responseText);
-	        }
-	      },
-	      error: function(){
-	        //alert("Error");
-	        document.getElementById("error").innerHTML = "Invalid email or password";
-	      }
-
-	    });
-	//window.location.href = "/OnlineEvaluationSystem/jsp/CourseRegistration.jsp?varid="+ data;
-  }
   function sendToUserProfile(){
-	//var userProfileJSON = JSON.stringify(userProfile);
-	window.location.href = "/OnlineEvaluationSystem/jsp/User.jsp?varid="+ encodeURIComponent(strResJSON);
+    window.location.href = "/OnlineEvaluationSystem/jsp/User.jsp?varid="+ data;
     //encodeURIComponent(strResJSON);
   }
   function sendToUserAnalytics(){
-	  //var studentCourseDetails = '<c:out value="${studentCourseDetails}"/>';
-	  
-	  //alert('${studentCourseDetails}');
-	  //alert('${studentGACourseDetails}');
-	   window.location.href = "/OnlineEvaluationSystem/jsp/Analytics.jsp?varid="+ encodeURIComponent('${studentCourseDetails}') + encodeURIComponent('${studentGACourseDetails}');
+	    window.location.href = "/OnlineEvaluationSystem/jsp/Analytics.jsp?varid="+ data;
+	   window.location.href = "/OnlineEvaluationSystem/jsp/Analytics.jsp?varid="+ encodeURIComponent('${studentCourseDetails}');
 	    //encodeURIComponent(strResJSON);
-  }
+	  }
   function sendToMainCoursePage(){
     $.ajax({
       type: 'POST',
-      url: '/OnlineEvaluationSystem/CommonController?action=OnlineEvaluationServlet?isReg=0',
+      url: '/OnlineEvaluationSystem/CommonController?action=OnlineEvaluationServlet',
       data: JSON.stringify(userProfile1),
       dataType: 'json',
       contentType: 'application/json; charset=utf-8',
@@ -168,7 +113,6 @@
         //alert("Success from LoginForm");
         var responseJson1 = jsonObj[0];
         var responseJson2 = jsonObj[1];
-
         /* Start- Code for ArrayList from servlet */
         /*var streamList = responseJson2[0];
         var courseTypeList = responseJson2[1];
@@ -179,7 +123,6 @@
       alert("courseTypeList = " + courseTypeList[i].courseTypeName);
     } */
     /* End- Code for ArrayList from servlet */
-
     var streamJson=jsonObj[1];
     var courseTypeJson=jsonObj[2];
     var locationJson = eval('(' + responseJson1 + ')');
@@ -192,8 +135,6 @@
       window.location.href = locationJson.location + "?varid=" + encodeURIComponent(streamJSON) + encodeURIComponent(courseTypeJSON) +"&username=" + "Anjali" +"&password=" + "Anjali";
       //window.location.href = locationJson.location + "?varid=" + streamJSON + courseTypeJSON +"&username=" + "Anjali" +"&password=" + "Anjali";
       //window.location.href = locationJson.location + "?varid=" + encodeURIComponent(streamJSON) +"&username=" + "Anjali" +"&password=" + "Anjali";
-
-
     } else {
       $('#ajaxGetUserServletResponse').text(responseText);
     }
@@ -202,7 +143,6 @@
     //alert("Error");
     document.getElementById("error").innerHTML = "Invalid email or password";
   }
-
 });
 //window.location.href = "/OnlineEvaluationSystem/jsp/MainCoursePage.jsp?varid="+ encodeURIComponent(strResJSON);
 }
@@ -212,14 +152,13 @@
 <body>
 	<c:forEach var="studentCourseDetail" items= "${studentCourseDetails}" varStatus="i">
 		<script>
-			//alert(studentCourseDetail);
+			//alert("${studentCourseDetail.courseAggr}");
 		</script>
 	</c:forEach>
   <div class="wrapper ">
     <div class="sidebar" data-color="purple" data-background-color="white">
       <!--
       Tip 1: You can change the color of the sidebar using: data-color="purple | azure | green | orange | danger"
-
       Tip 2: you can also add an image using data-image tag
     -->
     <div class="logo">
@@ -232,7 +171,7 @@
         <li class="nav-item active  ">
           <a class="nav-link" href="ClientDashboard.jsp">
             <i class="material-icons">dashboard</i>
-            <p>User Dashboard</p>
+            <p>Dashboard</p>
           </a>
         </li>
         <!-- <a class="nav-link" href="javascript:sendToUserProfile()" onclick="User_link();"> -->
@@ -243,12 +182,6 @@
           </a>
         </li> -->
 
-		<li>
-          <a class="nav-link" href="javascript:sendToCourseRegistrationPage()">
-            <i class="material-icons">computer</i>
-            <p>Course Registration</p>
-          </a>
-        </li>
         <li>
           <a class="nav-link" href="javascript:sendToMainCoursePage()">
             <i class="material-icons">computer</i>
@@ -351,6 +284,186 @@
           </div>
 
           <div class="inner-Tech-content" id="Tech-cards">
+             <!--<div class="row tech-row-1">
+              <div class="col-lg-3 col-md-6 col-sm-6">
+                <div class="card card-stats">
+                  <div class="card-header card-header-icon">
+                    <div class="card-heading">
+                      <h6>C</h6>
+                    </div>
+                    <div class="card-icon" style="font-size:20px;" id="row1-card1">
+                      <i class="fa fa-copyright" style="font-size:70px;"></i>
+                    </div>
+                    <p class="card-category">Marks obtained</p>
+                    <h3 class="card-title">49/50
+                    </h3>
+                  </div>
+                  <div class="card-footer">
+                    <div class="stats">
+                      <div class="dropdown">
+                        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                          See More Marks
+                        </button>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                          <a class="dropdown-item" href="#">MCQ</a>
+                          <a class="dropdown-item" href="#">Coding</a>
+                          <a class="dropdown-item" href="#">Descriptive</a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-3 col-md-6 col-sm-6">
+                <div class="card card-stats">
+                  <div class="card-header card-header-danger card-header-icon">
+                    <div class="card-heading">
+                      <h6>Java</h6>
+                    </div>
+                    <div class="card-icon">
+                      <img src="../assets/img/Dashboard-main-page-images/java-brands.svg" alt="java" style=" height: 60px; width: 60px; ">
+                    </div>
+                    <p class="card-category">Marks obtained</p>
+                    <h3 class="card-title">49/50
+                    </h3>
+                  </div>
+                  <div class="card-footer">
+                    <div class="stats">
+                      <div class="dropdown">
+                        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                          See More Marks
+                        </button>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                          <a class="dropdown-item" href="#">MCQ</a>
+                          <a class="dropdown-item" href="#">Coding</a>
+                          <a class="dropdown-item" href="#">Descriptive</a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row tech-row-2">
+              <div class="col-lg-3 col-md-6 col-sm-6">
+                <div class="card card-stats">
+                  <div class="card-header card-header-icon" >
+                    <div class="card-heading">
+                      <h6>Data Structures</h6>
+                    </div>
+                    <div class="card-icon" style="font-size:20px;" id="card3">
+                      <img src="../assets/img/Dashboard-main-page-images/cubes.svg" alt="java" style=" height: 60px; width: 60px; ">
+                    </div>
+                    <p class="card-category">Marks obtained</p>
+                    <h3 class="card-title">49/50
+                    </h3>
+                  </div>
+                  <div class="card-footer">
+                    <div class="stats">
+                      <div class="dropdown">
+                        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                          See More Marks
+                        </button>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                          <a class="dropdown-item" href="#">MCQ</a>
+                          <a class="dropdown-item" href="#">Coding</a>
+                          <a class="dropdown-item" href="#">Descriptive</a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-3 col-md-6 col-sm-6">
+                <div class="card card-stats">
+                  <div class="card-header card-header-icon">
+                    <div class="card-heading">
+                      <h6>CPP</h6>
+                    </div>
+                    <div class="card-icon" style="font-size:20px; background-color:rgb(20, 122, 159);">
+                      <img src="../assets/img/Dashboard-main-page-images/cpp-icon-file-format.svg" alt="java" style=" height: 60px; width: 60px; ">
+                    </div>
+                    <p class="card-category">Marks obtained</p>
+                    <h3 class="card-title">49/50
+                    </h3>
+                  </div>
+                  <div class="card-footer">
+                    <div class="stats">
+                      <div class="dropdown">
+                        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                          See More Marks
+                        </button>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                          <a class="dropdown-item" href="#">MCQ</a>
+                          <a class="dropdown-item" href="#">Coding</a>
+                          <a class="dropdown-item" href="#">Descriptive</a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class=" row tech-row-3">
+              <div class="col-lg-3 col-md-6 col-sm-6">
+                <div class="card card-stats">
+                  <div class="card-header card-header-warning card-header-icon">
+                    <div class="card-heading">
+                      <h6>Database</h6>
+                    </div>
+                    <div class="card-icon" style="font-size:20px;">
+                      <i class="fa fa-database" style="font-size:70px;"></i>
+                    </div>
+                    <p class="card-category">Marks obtained</p>
+                    <h3 class="card-title">49/50
+                    </h3>
+                  </div>
+                  <div class="card-footer">
+                    <div class="stats">
+                      <div class="dropdown">
+                        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                          See More Marks
+                        </button>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                          <a class="dropdown-item" href="#">MCQ</a>
+                          <a class="dropdown-item" href="#">Coding</a>
+                          <a class="dropdown-item" href="#">Descriptive</a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-3 col-md-6 col-sm-6">
+                <div class="card card-stats">
+                  <div class="card-header card-header-primary  card-header-icon">
+                    <div class="card-heading">
+                      <h6>JS</h6>
+                    </div>
+                    <div class="card-icon">
+                      <img src="../assets/img/Dashboard-main-page-images/js-brands.svg" alt="java" style=" height: 60px; width: 60px; ">
+                    </div>
+                    <p class="card-category">Marks obtained</p>
+                    <h3 class="card-title">49/50
+                    </h3>
+                  </div>
+                  <div class="card-footer">
+                    <div class="stats">
+                      <div class="dropdown">
+                        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                          See More Marks
+                        </button>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                          <a class="dropdown-item" href="#">MCQ</a>
+                          <a class="dropdown-item" href="#">Coding</a>
+                          <a class="dropdown-item" href="#">Descriptive</a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div> -->
             <!-- End Inner Tech Content -->
           </div>
 
@@ -368,8 +481,8 @@
             </div>
           </div>
 
-          <div class="inner-GA-content" id="GA-cards">
-          <!--  end at 450 <div class="row GA-row-1">
+          <div class="inner-GA-content">
+            <div class="row GA-row-1">
               <div class="col-lg-3 col-md-6 col-sm-6">
                 <div class="card card-stats">
                   <div class="card-header card-header-icon">
@@ -497,8 +610,8 @@
                 </div>
               </div>
             </div>
-          </div>   start at 322-->
-<!-- End Inner Tech Content -->
+          </div>
+
           <!-- Chart Ends here -->
 
         </div>
@@ -508,18 +621,16 @@
       <iframe src="Notifications.jsp" width="1100" height="1000" id="Notif-frame"></iframe>
       <iframe src="Settings.jsp" width="1100" height="1000" id="Settings-frame"></iframe>
       <iframe src="StudentResult.jsp" width="1100" height="1000" id="Result-frame"></iframe>
-      <iframe width="1100" height="1000" id="User-frame" src="/OnlineEvaluationSystem/jsp/User.jsp"></iframe>
-      <!-- <iframe src="Analytics.jsp" width="1050" height="1000" id="Analytics-frame"></iframe> -->
+      <iframe width="1100" height="1000" id="User-frame"></iframe>
+      <!-- <iframe src="Analytics.jsp" width="1050" height="1000" id="Result-frame"></iframe> -->
       <script type="text/javascript">
         // var source = "User.jsp?varid="+ data;
         // string Url = "User.jsp?varid=data";
         // User-frame.Attributes["src"] = Server.HtmlDecode(Url);
-
         //New Method
         function loaddata() {
-        document.getElementById('User-frame').src='/OnlineEvaluationSystem/jsp/User.jsp?varid='+ data;
+        document.getElementById('User-frame').src='User.jsp?varid='+ data;
         }
-
       </script>
       <!-- End of Iframes -->
       <!-- Footer -->
@@ -550,12 +661,10 @@
   //code to hide and show the iframes
   document.getElementById('Tech-content').style.display="block";
   document.getElementById('GA-content').style.display="block";
-
   document.getElementById('Notif-frame').style.display="none";
   document.getElementById('Settings-frame').style.display="none";
   document.getElementById('Result-frame').style.display="none";
   document.getElementById('User-frame').style.display="none";
-
   function Result_link() {
     document.getElementById('Tech-content').style.display="none";
     document.getElementById('GA-content').style.display="none";
@@ -585,15 +694,13 @@
   }
   function User_link() {
     loaddata();
-    
     document.getElementById('Tech-content').style.display="none";
     document.getElementById('GA-content').style.display="none";
     document.getElementById('Result-frame').style.display="none";
     document.getElementById('Settings-frame').style.display="none";
     document.getElementById('User-frame').style.display="block";
     // document.getElementById('Analytics-frame').style.display="none";
-
-    sendToUserProfile();
+    //sendToUserProfile();
   }
   function Analytics_link() {
     document.getElementById('Tech-content').style.display="none";
@@ -649,13 +756,9 @@
   <!-- Material Dashboard DEMO methods, don't include it in your project! -->
   <script src="../assets/demo/demo.js"></script>
   <script>
-
 console.log("Creating Dynamic Elements");
   //Dynamic Cards
-
-var studentCourseDetailsList = eval('(' + '${studentCourseDetails}' + ')');
-//alert(studentCourseDetailsList.length);
-for(var i=0; i<studentCourseDetailsList.length; i++){
+<c:forEach var="studentCourseDetail" items= "${studentCourseDetails}" varStatus="i">
 	var row  =document.createElement('div');
 	row.className="row tech-row";
 	var col1 = document.createElement('div');
@@ -667,23 +770,20 @@ for(var i=0; i<studentCourseDetailsList.length; i++){
 	  var cardHeading = document.createElement('div');
 	  cardHeading.className="card-heading";
 	  var h6 = document.createElement('h6');
-	  h6.textContent = studentCourseDetailsList[i].courseTypeName + " - " + studentCourseDetailsList[i].courseName;
+	  h6.textContent = "${studentCourseDetail.courseTypeName}" + " - " + "${studentCourseDetail.courseName}";
 	  cardHeading.appendChild(h6);
 	  var cardIcon = document.createElement('div');
 	  cardIcon.className="card-icon";
 	  var img = document.createElement('img');
-
-	      img.setAttribute('src',studentCourseDetailsList[i].logoLocation);
+	      img.setAttribute('src',"${studentCourseDetail.logoLocation}");
 	      img.setAttribute('style', "width:60px;height:60px;");
 	      cardIcon.appendChild(img);
-
-
 	  var p = document.createElement('p');
 	  p.className="card-category";
 	  p.textContent = 'Marks Obtained';
 	  var h3 = document.createElement('h3');
 	  h3.className="card-title";
-	  h3.textContent = studentCourseDetailsList[i].courseAggr;
+	  h3.textContent = "${studentCourseDetail.courseAggr}";
 	  // End Card Header
 	  var cardfooter = document.createElement('div');
   cardfooter.className="card-footer";
@@ -698,12 +798,10 @@ for(var i=0; i<studentCourseDetailsList.length; i++){
   button.setAttribute('aria-haspopup', "true");
   button.setAttribute('aria-expanded', "false");
   button.textContent = 'See More Marks';
-
   var dropdownmenu = document.createElement('div');
   dropdownmenu.className="dropdown-menu";
   dropdownmenu.setAttribute('aria-labelledby',"dropdownMenuButton");
   var anchorsList = ['MCQ','Coding','Descriptive'];
-
   for (var k = 0; k < anchorsList.length; k++) {
     var anchor  = document.createElement('a');
     anchor.className="dropdown-item";
@@ -717,98 +815,14 @@ for(var i=0; i<studentCourseDetailsList.length; i++){
   cardheader.appendChild(h3);
   cardheader.appendChild(cardHeading);
   card.appendChild(cardheader);
-
   stats.appendChild(dropdown);
   cardfooter.appendChild(stats);
   card.appendChild(cardfooter);
-
   col1.appendChild(card);
   // console.log("Inner For Loop");
   row.appendChild(col1);
-
-
   document.getElementById('Tech-cards').appendChild(row);
-}
-
-
-var studentGACourseDetailsList = eval('(' + '${studentGACourseDetails}' + ')');
-//alert(studentGACourseDetailsList.length);
-for(var i=0; i<studentGACourseDetailsList.length; i++){
-	var row  =document.createElement('div');
-	row.className="row tech-row";
-	var col1 = document.createElement('div');
-	  col1.className="col-lg-3 col-md-6 col-sm-6";
-	  var card = document.createElement('div');
-	  card.className="card card-stats";
-	  var cardheader = document.createElement('div');
-	  cardheader.className="card-header  card-header-icon";
-	  var cardHeading = document.createElement('div');
-	  cardHeading.className="card-heading";
-	  var h6 = document.createElement('h6');
-	  h6.textContent = studentGACourseDetailsList[i].courseTypeName + " - " + studentGACourseDetailsList[i].courseName;
-	  cardHeading.appendChild(h6);
-	  var cardIcon = document.createElement('div');
-	  cardIcon.className="card-icon";
-	  var img = document.createElement('img');
-
-	      img.setAttribute('src',studentGACourseDetailsList[i].logoLocation);
-	      img.setAttribute('style', "width:60px;height:60px;");
-	      cardIcon.appendChild(img);
-
-
-	  var p = document.createElement('p');
-	  p.className="card-category";
-	  p.textContent = 'Marks Obtained';
-	  var h3 = document.createElement('h3');
-	  h3.className="card-title";
-	  h3.textContent = studentGACourseDetailsList[i].courseAggr;
-	  // End Card Header
-	  var cardfooter = document.createElement('div');
-  cardfooter.className="card-footer";
-  var stats =document.createElement('div');
-  stats.className="stats";
-  var dropdown = document.createElement('div');
-  dropdown.className="dropdown";
-  var button = document.createElement('button');
-  button.className="btn btn-secondary dropdown-toggle";
-  button.id="dropdownMenuButton";
-  button.setAttribute('data-toggle',"dropdown");
-  button.setAttribute('aria-haspopup', "true");
-  button.setAttribute('aria-expanded', "false");
-  button.textContent = 'See More Marks';
-
-  var dropdownmenu = document.createElement('div');
-  dropdownmenu.className="dropdown-menu";
-  dropdownmenu.setAttribute('aria-labelledby',"dropdownMenuButton");
-  var anchorsList = ['MCQ','Coding','Descriptive'];
-
-  for (var k = 0; k < anchorsList.length; k++) {
-    var anchor  = document.createElement('a');
-    anchor.className="dropdown-item";
-    anchor.textContent = anchorsList[k];
-    dropdownmenu.appendChild(anchor);
-    dropdown.appendChild(dropdownmenu);
-    dropdown.appendChild(button);
-  }
-  cardheader.appendChild(cardIcon);
-  cardheader.appendChild(p);
-  cardheader.appendChild(h3);
-  cardheader.appendChild(cardHeading);
-  card.appendChild(cardheader);
-
-  stats.appendChild(dropdown);
-  cardfooter.appendChild(stats);
-  card.appendChild(cardfooter);
-
-  col1.appendChild(card);
-  // console.log("Inner For Loop");
-  row.appendChild(col1);
-
-
-  document.getElementById('GA-cards').appendChild(row);
-}
-
-
+</c:forEach>
 /*var TechArr = ['Java','Data Structures','CPP','JS'];
 var TechArr2 = ['Java','Data Structures','CPP','JS'];
 var Mixarr=['../assets/img/Dashboard-main-page-images/java-brands.svg','../assets/img/Dashboard-main-page-images/cubes.svg','../assets/img/Dashboard-main-page-images/cpp-icon-file-format.svg','../assets/img/Dashboard-main-page-images/js-brands.svg'];
@@ -832,12 +846,9 @@ for (var x = 0; x < TechArr.length; x++) {
   var cardIcon = document.createElement('div');
   cardIcon.className="card-icon";
   var img = document.createElement('img');
-
       img.setAttribute('src',Mixarr[x]);
       img.setAttribute('style', "width:60px;height:60px;");
       cardIcon.appendChild(img);
-
-
   var p = document.createElement('p');
   p.className="card-category";
   p.textContent = 'Marks Obtained';
@@ -858,12 +869,10 @@ for (var x = 0; x < TechArr.length; x++) {
   button.setAttribute('aria-haspopup', "true");
   button.setAttribute('aria-expanded', "false");
   button.textContent = 'See More Marks';
-
   var dropdownmenu = document.createElement('div');
   dropdownmenu.className="dropdown-menu";
   dropdownmenu.setAttribute('aria-labelledby',"dropdownMenuButton");
   var Anchors = ['MCQ','Coding','Descriptive'];
-
   for (var k = 0; k < Anchors.length; k++) {
     var anchor  = document.createElement('a');
     anchor.className="dropdown-item";
@@ -873,49 +882,35 @@ for (var x = 0; x < TechArr.length; x++) {
     dropdown.appendChild(button);
   }
   // inner card header elements
-
   cardheader.appendChild(cardIcon);
   cardheader.appendChild(p);
   cardheader.appendChild(h3);
   cardheader.appendChild(cardHeading);
   card.appendChild(cardheader);
-
   stats.appendChild(dropdown);
   cardfooter.appendChild(stats);
   card.appendChild(cardfooter);
-
   col1.appendChild(card);
   // console.log("Inner For Loop");
   row.appendChild(col1);
-
-
   document.getElementById('Tech-cards').appendChild(row);
 //  console.log("We are at te End of Loop");
   //}
 // }
-
 */
   $(document).ready(function() {
     $().ready(function() {
       $sidebar = $('.sidebar');
-
       $sidebar_img_container = $sidebar.find('.sidebar-background');
-
       $full_page = $('.full-page');
-
       $sidebar_responsive = $('body > .navbar-collapse');
-
       window_width = $(window).width();
-
       fixed_plugin_open = $('.sidebar .sidebar-wrapper .nav li.active a p').html();
-
       if (window_width > 767 && fixed_plugin_open == 'Dashboard') {
         if ($('.fixed-plugin .dropdown').hasClass('show-dropdown')) {
           $('.fixed-plugin .dropdown').addClass('open');
         }
-
       }
-
       $('.fixed-plugin a').click(function(event) {
         // Alex if we click on switch, stop propagation of the event, so the dropdown will not be hide, otherwise we set the  section active
         if ($(this).hasClass('switch-trigger')) {
@@ -926,141 +921,104 @@ for (var x = 0; x < TechArr.length; x++) {
           }
         }
       });
-
       $('.fixed-plugin .active-color span').click(function() {
         $full_page_background = $('.full-page-background');
-
         $(this).siblings().removeClass('active');
         $(this).addClass('active');
-
         var new_color = $(this).data('color');
-
         if ($sidebar.length != 0) {
           $sidebar.attr('data-color', new_color);
         }
-
         if ($full_page.length != 0) {
           $full_page.attr('filter-color', new_color);
         }
-
         if ($sidebar_responsive.length != 0) {
           $sidebar_responsive.attr('data-color', new_color);
         }
       });
-
       $('.fixed-plugin .background-color .badge').click(function() {
         $(this).siblings().removeClass('active');
         $(this).addClass('active');
-
         var new_color = $(this).data('background-color');
-
         if ($sidebar.length != 0) {
           $sidebar.attr('data-background-color', new_color);
         }
       });
-
       $('.fixed-plugin .img-holder').click(function() {
         $full_page_background = $('.full-page-background');
-
         $(this).parent('li').siblings().removeClass('active');
         $(this).parent('li').addClass('active');
-
-
         var new_image = $(this).find("img").attr('src');
-
         if ($sidebar_img_container.length != 0 && $('.switch-sidebar-image input:checked').length != 0) {
           $sidebar_img_container.fadeOut('fast', function() {
             $sidebar_img_container.css('background-image', 'url("' + new_image + '")');
             $sidebar_img_container.fadeIn('fast');
           });
         }
-
         if ($full_page_background.length != 0 && $('.switch-sidebar-image input:checked').length != 0) {
           var new_image_full_page = $('.fixed-plugin li.active .img-holder').find('img').data('src');
-
           $full_page_background.fadeOut('fast', function() {
             $full_page_background.css('background-image', 'url("' + new_image_full_page + '")');
             $full_page_background.fadeIn('fast');
           });
         }
-
         if ($('.switch-sidebar-image input:checked').length == 0) {
           var new_image = $('.fixed-plugin li.active .img-holder').find("img").attr('src');
           var new_image_full_page = $('.fixed-plugin li.active .img-holder').find('img').data('src');
-
           $sidebar_img_container.css('background-image', 'url("' + new_image + '")');
           $full_page_background.css('background-image', 'url("' + new_image_full_page + '")');
         }
-
         if ($sidebar_responsive.length != 0) {
           $sidebar_responsive.css('background-image', 'url("' + new_image + '")');
         }
       });
-
       $('.switch-sidebar-image input').change(function() {
         $full_page_background = $('.full-page-background');
-
         $input = $(this);
-
         if ($input.is(':checked')) {
           if ($sidebar_img_container.length != 0) {
             $sidebar_img_container.fadeIn('fast');
             $sidebar.attr('data-image', '#');
           }
-
           if ($full_page_background.length != 0) {
             $full_page_background.fadeIn('fast');
             $full_page.attr('data-image', '#');
           }
-
           background_image = true;
         } else {
           if ($sidebar_img_container.length != 0) {
             $sidebar.removeAttr('data-image');
             $sidebar_img_container.fadeOut('fast');
           }
-
           if ($full_page_background.length != 0) {
             $full_page.removeAttr('data-image', '#');
             $full_page_background.fadeOut('fast');
           }
-
           background_image = false;
         }
       });
-
       $('.switch-sidebar-mini input').change(function() {
         $body = $('body');
-
         $input = $(this);
-
         if (md.misc.sidebar_mini_active == true) {
           $('body').removeClass('sidebar-mini');
           md.misc.sidebar_mini_active = false;
-
           $('.sidebar .sidebar-wrapper, .main-panel').perfectScrollbar();
-
         } else {
-
           $('.sidebar .sidebar-wrapper, .main-panel').perfectScrollbar('destroy');
-
           setTimeout(function() {
             $('body').addClass('sidebar-mini');
-
             md.misc.sidebar_mini_active = true;
           }, 300);
         }
-
         // we simulate the window Resize so the charts will get updated in realtime.
         var simulateWindowResize = setInterval(function() {
           window.dispatchEvent(new Event('resize'));
         }, 180);
-
         // we stop the simulation of Window Resize after the animations are completed
         setTimeout(function() {
           clearInterval(simulateWindowResize);
         }, 1000);
-
       });
     });
   });
@@ -1070,7 +1028,6 @@ for (var x = 0; x < TechArr.length; x++) {
     // Javascript method's body can be found in assets/js/demos.js
     md.initDashboardPageCharts();
   });
-
   </script>
 </body>
 
