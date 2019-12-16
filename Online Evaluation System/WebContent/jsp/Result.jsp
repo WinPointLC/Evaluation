@@ -95,6 +95,10 @@
                       </div>
                     </div>
 
+                    <div class="back-to-dashboard">
+                      <a href="ClientDashboard.jsp"> Back to Dashboard </a>
+                    </div>
+
                   </div>
                 </div>
               </div>
@@ -142,7 +146,7 @@
     correctAns.textContent = correctAnswer;
     var wrongAns = document.getElementById('wrongAns');
     wrongAns.textContent =wrongAnswer ;
-    
+
     /* var searchString = window.location.search.substring(1);
     var arr = searchString.split('&');
     var data= arr[0].split('=')[1];

@@ -55,11 +55,11 @@ padding: 35px;
   border-bottom: 1px solid rgba(150, 158, 149, 0.5);
 }
 .question-frame2{
-  max-height: 150px;
-  padding: 10px;
-  padding-bottom: 5px;
+  padding:5%;
+	max-height:5%;
+	overflow-y: scroll;
   border-bottom: 1px solid rgba(150, 158, 149, 0.5);
-  overflow-y: scroll;
+
 }
 
 .question-frame3{
