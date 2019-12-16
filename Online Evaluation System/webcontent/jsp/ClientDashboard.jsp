@@ -39,6 +39,7 @@
     //var studentJson = eval('(' + data + ')');
     //alert("Student Id = " + studentJson.id);
     var userProfile = decodeURIComponent(data);
+
     //alert("Client is " + userProfile);
     //var student1 = new Gson().fromJson(student, Student);
     userProfile1 =  eval('(' + userProfile + ')');
@@ -55,7 +56,10 @@
     //document.getElementById('username').value = username;
     //document.getElementById('password').value = password;
     strResJSON = JSON.stringify(userProfile1);
+
+
       });
+
  /* var mydata = {
     		userId : userProfile1.userId
     	  };
@@ -70,6 +74,7 @@
     	      alert("Success from LoginForm");
     	      var responseJson1 = jsonObj[0];
     	      //var responseJson2 = jsonObj[1];
+
     	      /* Start- Code for ArrayList from servlet */
     	      /*var streamList = responseJson2[0];
     	      var courseTypeList = responseJson2[1];
@@ -80,6 +85,7 @@
     	    alert("courseTypeList = " + courseTypeList[i].courseTypeName);
     	  } */
     	  /* End- Code for ArrayList from servlet */
+
   /*  	      var studentcourseDetailsList=jsonObj[1];
     	  alert(studentcourseDetailsList);
     	      for(i=0; i<studentcourseDetailsList.length; i++){
@@ -90,6 +96,7 @@
     	  alert("Error");
     	  //document.getElementById("error").innerHTML = "Invalid email or password";
     	}
+
     	});
 */
   function sendToUserProfile(){
@@ -113,6 +120,7 @@
         //alert("Success from LoginForm");
         var responseJson1 = jsonObj[0];
         var responseJson2 = jsonObj[1];
+
         /* Start- Code for ArrayList from servlet */
         /*var streamList = responseJson2[0];
         var courseTypeList = responseJson2[1];
@@ -123,6 +131,7 @@
       alert("courseTypeList = " + courseTypeList[i].courseTypeName);
     } */
     /* End- Code for ArrayList from servlet */
+
     var streamJson=jsonObj[1];
     var courseTypeJson=jsonObj[2];
     var locationJson = eval('(' + responseJson1 + ')');
@@ -135,6 +144,8 @@
       window.location.href = locationJson.location + "?varid=" + encodeURIComponent(streamJSON) + encodeURIComponent(courseTypeJSON) +"&username=" + "Anjali" +"&password=" + "Anjali";
       //window.location.href = locationJson.location + "?varid=" + streamJSON + courseTypeJSON +"&username=" + "Anjali" +"&password=" + "Anjali";
       //window.location.href = locationJson.location + "?varid=" + encodeURIComponent(streamJSON) +"&username=" + "Anjali" +"&password=" + "Anjali";
+
+
     } else {
       $('#ajaxGetUserServletResponse').text(responseText);
     }
@@ -143,6 +154,7 @@
     //alert("Error");
     document.getElementById("error").innerHTML = "Invalid email or password";
   }
+
 });
 //window.location.href = "/OnlineEvaluationSystem/jsp/MainCoursePage.jsp?varid="+ encodeURIComponent(strResJSON);
 }
@@ -159,6 +171,7 @@
     <div class="sidebar" data-color="purple" data-background-color="white">
       <!--
       Tip 1: You can change the color of the sidebar using: data-color="purple | azure | green | orange | danger"
+
       Tip 2: you can also add an image using data-image tag
     -->
     <div class="logo">
@@ -310,10 +323,12 @@
                           <a class="dropdown-item" href="#">Descriptive</a>
                         </div>
                       </div>
+
                     </div>
                   </div>
                 </div>
               </div>
+
               <div class="col-lg-3 col-md-6 col-sm-6">
                 <div class="card card-stats">
                   <div class="card-header card-header-danger card-header-icon">
@@ -329,6 +344,7 @@
                   </div>
                   <div class="card-footer">
                     <div class="stats">
+
                       <div class="dropdown">
                         <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                           See More Marks
@@ -339,11 +355,14 @@
                           <a class="dropdown-item" href="#">Descriptive</a>
                         </div>
                       </div>
+
                     </div>
                   </div>
                 </div>
               </div>
+
             </div>
+
             <div class="row tech-row-2">
               <div class="col-lg-3 col-md-6 col-sm-6">
                 <div class="card card-stats">
@@ -370,6 +389,7 @@
                           <a class="dropdown-item" href="#">Descriptive</a>
                         </div>
                       </div>
+
                     </div>
                   </div>
                 </div>
@@ -389,6 +409,7 @@
                   </div>
                   <div class="card-footer">
                     <div class="stats">
+
                       <div class="dropdown">
                         <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                           See More Marks
@@ -399,11 +420,13 @@
                           <a class="dropdown-item" href="#">Descriptive</a>
                         </div>
                       </div>
+
                     </div>
                   </div>
                 </div>
               </div>
             </div>
+
             <div class=" row tech-row-3">
               <div class="col-lg-3 col-md-6 col-sm-6">
                 <div class="card card-stats">
@@ -420,6 +443,7 @@
                   </div>
                   <div class="card-footer">
                     <div class="stats">
+
                       <div class="dropdown">
                         <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                           See More Marks
@@ -449,6 +473,7 @@
                   </div>
                   <div class="card-footer">
                     <div class="stats">
+
                       <div class="dropdown">
                         <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                           See More Marks
@@ -459,10 +484,12 @@
                           <a class="dropdown-item" href="#">Descriptive</a>
                         </div>
                       </div>
+
                     </div>
                   </div>
                 </div>
               </div>
+
             </div> -->
             <!-- End Inner Tech Content -->
           </div>
@@ -627,10 +654,12 @@
         // var source = "User.jsp?varid="+ data;
         // string Url = "User.jsp?varid=data";
         // User-frame.Attributes["src"] = Server.HtmlDecode(Url);
+
         //New Method
         function loaddata() {
         document.getElementById('User-frame').src='User.jsp?varid='+ data;
         }
+
       </script>
       <!-- End of Iframes -->
       <!-- Footer -->
@@ -661,10 +690,12 @@
   //code to hide and show the iframes
   document.getElementById('Tech-content').style.display="block";
   document.getElementById('GA-content').style.display="block";
+
   document.getElementById('Notif-frame').style.display="none";
   document.getElementById('Settings-frame').style.display="none";
   document.getElementById('Result-frame').style.display="none";
   document.getElementById('User-frame').style.display="none";
+
   function Result_link() {
     document.getElementById('Tech-content').style.display="none";
     document.getElementById('GA-content').style.display="none";
@@ -700,6 +731,7 @@
     document.getElementById('Settings-frame').style.display="none";
     document.getElementById('User-frame').style.display="block";
     // document.getElementById('Analytics-frame').style.display="none";
+
     //sendToUserProfile();
   }
   function Analytics_link() {
@@ -756,9 +788,13 @@
   <!-- Material Dashboard DEMO methods, don't include it in your project! -->
   <script src="../assets/demo/demo.js"></script>
   <script>
+
 console.log("Creating Dynamic Elements");
   //Dynamic Cards
+
+
 <c:forEach var="studentCourseDetail" items= "${studentCourseDetails}" varStatus="i">
+
 	var row  =document.createElement('div');
 	row.className="row tech-row";
 	var col1 = document.createElement('div');
@@ -775,9 +811,12 @@ console.log("Creating Dynamic Elements");
 	  var cardIcon = document.createElement('div');
 	  cardIcon.className="card-icon";
 	  var img = document.createElement('img');
+
 	      img.setAttribute('src',"${studentCourseDetail.logoLocation}");
 	      img.setAttribute('style', "width:60px;height:60px;");
 	      cardIcon.appendChild(img);
+
+
 	  var p = document.createElement('p');
 	  p.className="card-category";
 	  p.textContent = 'Marks Obtained';
@@ -798,10 +837,12 @@ console.log("Creating Dynamic Elements");
   button.setAttribute('aria-haspopup', "true");
   button.setAttribute('aria-expanded', "false");
   button.textContent = 'See More Marks';
+
   var dropdownmenu = document.createElement('div');
   dropdownmenu.className="dropdown-menu";
   dropdownmenu.setAttribute('aria-labelledby',"dropdownMenuButton");
   var anchorsList = ['MCQ','Coding','Descriptive'];
+
   for (var k = 0; k < anchorsList.length; k++) {
     var anchor  = document.createElement('a');
     anchor.className="dropdown-item";
@@ -815,13 +856,18 @@ console.log("Creating Dynamic Elements");
   cardheader.appendChild(h3);
   cardheader.appendChild(cardHeading);
   card.appendChild(cardheader);
+
   stats.appendChild(dropdown);
   cardfooter.appendChild(stats);
   card.appendChild(cardfooter);
+
   col1.appendChild(card);
   // console.log("Inner For Loop");
   row.appendChild(col1);
+
+
   document.getElementById('Tech-cards').appendChild(row);
+
 </c:forEach>
 /*var TechArr = ['Java','Data Structures','CPP','JS'];
 var TechArr2 = ['Java','Data Structures','CPP','JS'];
@@ -846,9 +892,12 @@ for (var x = 0; x < TechArr.length; x++) {
   var cardIcon = document.createElement('div');
   cardIcon.className="card-icon";
   var img = document.createElement('img');
+
       img.setAttribute('src',Mixarr[x]);
       img.setAttribute('style', "width:60px;height:60px;");
       cardIcon.appendChild(img);
+
+
   var p = document.createElement('p');
   p.className="card-category";
   p.textContent = 'Marks Obtained';
@@ -869,10 +918,12 @@ for (var x = 0; x < TechArr.length; x++) {
   button.setAttribute('aria-haspopup', "true");
   button.setAttribute('aria-expanded', "false");
   button.textContent = 'See More Marks';
+
   var dropdownmenu = document.createElement('div');
   dropdownmenu.className="dropdown-menu";
   dropdownmenu.setAttribute('aria-labelledby',"dropdownMenuButton");
   var Anchors = ['MCQ','Coding','Descriptive'];
+
   for (var k = 0; k < Anchors.length; k++) {
     var anchor  = document.createElement('a');
     anchor.className="dropdown-item";
@@ -882,35 +933,49 @@ for (var x = 0; x < TechArr.length; x++) {
     dropdown.appendChild(button);
   }
   // inner card header elements
+
   cardheader.appendChild(cardIcon);
   cardheader.appendChild(p);
   cardheader.appendChild(h3);
   cardheader.appendChild(cardHeading);
   card.appendChild(cardheader);
+
   stats.appendChild(dropdown);
   cardfooter.appendChild(stats);
   card.appendChild(cardfooter);
+
   col1.appendChild(card);
   // console.log("Inner For Loop");
   row.appendChild(col1);
+
+
   document.getElementById('Tech-cards').appendChild(row);
 //  console.log("We are at te End of Loop");
   //}
 // }
+
 */
   $(document).ready(function() {
     $().ready(function() {
       $sidebar = $('.sidebar');
+
       $sidebar_img_container = $sidebar.find('.sidebar-background');
+
       $full_page = $('.full-page');
+
       $sidebar_responsive = $('body > .navbar-collapse');
+
       window_width = $(window).width();
+
       fixed_plugin_open = $('.sidebar .sidebar-wrapper .nav li.active a p').html();
+
       if (window_width > 767 && fixed_plugin_open == 'Dashboard') {
         if ($('.fixed-plugin .dropdown').hasClass('show-dropdown')) {
           $('.fixed-plugin .dropdown').addClass('open');
         }
+
       }
+
       $('.fixed-plugin a').click(function(event) {
         // Alex if we click on switch, stop propagation of the event, so the dropdown will not be hide, otherwise we set the  section active
         if ($(this).hasClass('switch-trigger')) {
@@ -921,104 +986,141 @@ for (var x = 0; x < TechArr.length; x++) {
           }
         }
       });
+
       $('.fixed-plugin .active-color span').click(function() {
         $full_page_background = $('.full-page-background');
+
         $(this).siblings().removeClass('active');
         $(this).addClass('active');
+
         var new_color = $(this).data('color');
+
         if ($sidebar.length != 0) {
           $sidebar.attr('data-color', new_color);
         }
+
         if ($full_page.length != 0) {
           $full_page.attr('filter-color', new_color);
         }
+
         if ($sidebar_responsive.length != 0) {
           $sidebar_responsive.attr('data-color', new_color);
         }
       });
+
       $('.fixed-plugin .background-color .badge').click(function() {
         $(this).siblings().removeClass('active');
         $(this).addClass('active');
+
         var new_color = $(this).data('background-color');
+
         if ($sidebar.length != 0) {
           $sidebar.attr('data-background-color', new_color);
         }
       });
+
       $('.fixed-plugin .img-holder').click(function() {
         $full_page_background = $('.full-page-background');
+
         $(this).parent('li').siblings().removeClass('active');
         $(this).parent('li').addClass('active');
+
+
         var new_image = $(this).find("img").attr('src');
+
         if ($sidebar_img_container.length != 0 && $('.switch-sidebar-image input:checked').length != 0) {
           $sidebar_img_container.fadeOut('fast', function() {
             $sidebar_img_container.css('background-image', 'url("' + new_image + '")');
             $sidebar_img_container.fadeIn('fast');
           });
         }
+
         if ($full_page_background.length != 0 && $('.switch-sidebar-image input:checked').length != 0) {
           var new_image_full_page = $('.fixed-plugin li.active .img-holder').find('img').data('src');
+
           $full_page_background.fadeOut('fast', function() {
             $full_page_background.css('background-image', 'url("' + new_image_full_page + '")');
             $full_page_background.fadeIn('fast');
           });
         }
+
         if ($('.switch-sidebar-image input:checked').length == 0) {
           var new_image = $('.fixed-plugin li.active .img-holder').find("img").attr('src');
           var new_image_full_page = $('.fixed-plugin li.active .img-holder').find('img').data('src');
+
           $sidebar_img_container.css('background-image', 'url("' + new_image + '")');
           $full_page_background.css('background-image', 'url("' + new_image_full_page + '")');
         }
+
         if ($sidebar_responsive.length != 0) {
           $sidebar_responsive.css('background-image', 'url("' + new_image + '")');
         }
       });
+
       $('.switch-sidebar-image input').change(function() {
         $full_page_background = $('.full-page-background');
+
         $input = $(this);
+
         if ($input.is(':checked')) {
           if ($sidebar_img_container.length != 0) {
             $sidebar_img_container.fadeIn('fast');
             $sidebar.attr('data-image', '#');
           }
+
           if ($full_page_background.length != 0) {
             $full_page_background.fadeIn('fast');
             $full_page.attr('data-image', '#');
           }
+
           background_image = true;
         } else {
           if ($sidebar_img_container.length != 0) {
             $sidebar.removeAttr('data-image');
             $sidebar_img_container.fadeOut('fast');
           }
+
           if ($full_page_background.length != 0) {
             $full_page.removeAttr('data-image', '#');
             $full_page_background.fadeOut('fast');
           }
+
           background_image = false;
         }
       });
+
       $('.switch-sidebar-mini input').change(function() {
         $body = $('body');
+
         $input = $(this);
+
         if (md.misc.sidebar_mini_active == true) {
           $('body').removeClass('sidebar-mini');
           md.misc.sidebar_mini_active = false;
+
           $('.sidebar .sidebar-wrapper, .main-panel').perfectScrollbar();
+
         } else {
+
           $('.sidebar .sidebar-wrapper, .main-panel').perfectScrollbar('destroy');
+
           setTimeout(function() {
             $('body').addClass('sidebar-mini');
+
             md.misc.sidebar_mini_active = true;
           }, 300);
         }
+
         // we simulate the window Resize so the charts will get updated in realtime.
         var simulateWindowResize = setInterval(function() {
           window.dispatchEvent(new Event('resize'));
         }, 180);
+
         // we stop the simulation of Window Resize after the animations are completed
         setTimeout(function() {
           clearInterval(simulateWindowResize);
         }, 1000);
+
       });
     });
   });
@@ -1028,6 +1130,7 @@ for (var x = 0; x < TechArr.length; x++) {
     // Javascript method's body can be found in assets/js/demos.js
     md.initDashboardPageCharts();
   });
+
   </script>
 </body>
 
