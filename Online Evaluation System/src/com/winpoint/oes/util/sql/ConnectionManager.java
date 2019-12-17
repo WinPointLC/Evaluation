@@ -13,8 +13,9 @@ public class ConnectionManager {
 		SQLServerDataSource dataSource = new SQLServerDataSource();
 		dataSource.setUser("sa");
 		dataSource.setPassword("winpoint");
-		dataSource.setServerName("SHRIRANGMHALGI\\SQLEXPRESS");
+//		dataSource.setServerName("SHRIRANGMHALGI\\SQLEXPRESS");
 //		dataSource.setServerName("DESKTOP-8PA8OIH");
+		dataSource.setServerName("DESKTOP-ARN90J1");
 		dataSource.setPortNumber(Integer.parseInt("1433"));
 		dataSource.setDatabaseName("OES_TESTING");
 		try {

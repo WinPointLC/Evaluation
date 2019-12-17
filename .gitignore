@@ -2,3 +2,4 @@
 /.recommenders/
 /*.class/
 /.classpath/
+/ConnectionManager.java/
