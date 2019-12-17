@@ -12,8 +12,19 @@
 	<script>
 	$(function () {
 		$('#log-btn').click(function() {
+			validator();
 			callServlet();
 		});
+		function validator() {
+			var email = document.getElementById('email').value;
+			var pass = document.getElementById('password').value;
+			if(email==""){
+				alert("Enter the Email");
+			}
+			else if(pass ==""){
+				alert("Enter the password");
+			}
+		}
 		function callServlet() {
 			//alert("From callServlet");
 			var emailVal = $("#email").val();
@@ -74,11 +85,11 @@
 				</div>
 				<div class="form-group">
 					<label for="email">Email Id</label>
-					<input class="form-control" id="email" type="text" placeholder="Type your Email ID" name="email" required>
+					<input class="form-control" id="email" type="text" placeholder="Type your Email ID" name="email" >
 				</div>
 				<div class="form-group">
 					<label for="password">Password</label>
-					<input class="form-control" id="password" type="password" placeholder="Type your Password" name="password" required >
+					<input class="form-control" id="password" type="password" placeholder="Type your Password" name="password"  >
 				</div>
 				<div class="form-group">
 					<input type="button" id="log-btn" class="login-btn" value="Login" name="login" >
