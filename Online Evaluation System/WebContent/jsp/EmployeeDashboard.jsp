@@ -63,18 +63,6 @@
         </li>
         <li>
           <a class="nav-link" href="#">
-            <i class="material-icons">assessment</i>
-            <p>Analytics of all users </p>
-          </a>
-        </li>
-        <li>
-          <a class="nav-link" href="#">
-            <i class="material-icons">subject</i>
-            <p>Result of all users</p>
-          </a>
-        </li>
-        <li>
-          <a class="nav-link" href="#">
             <i class="material-icons">notifications_none</i>
             <p>Edit Notifications for users</p>
           </a>
@@ -766,12 +754,12 @@ document.getElementById('add-question-link').onclick=function() {
     document.getElementById('main-content').style.display = "none";
     document.getElementById('all-user-content').style.display = "none";
   }
-	
+
 };
 var streamElem;
 function getStreamId(stream_id){
 	streamId = stream_id;
-    
+
     streamElem = document.getElementById(streamId);
     var elem;
     for(i=0; i<streamList.length; i++){
@@ -780,11 +768,11 @@ function getStreamId(stream_id){
     }
     streamElem.className = 'nav-link active';
     document.getElementById('dropdownMenuButtonStream').textContent = streamElem.textContent;
-   
+
     //elem = document.getElementById('dropdownMenuButtonCourseType');
     //START***********************************************
     var myData = {
-        	streamId: streamId	
+        	streamId: streamId
         };
         $.ajax({
             type: 'POST',
@@ -795,11 +783,11 @@ function getStreamId(stream_id){
             traditional: true,
             success: function (jsonObj) {
               courseTypesList=jsonObj[0];
-             
+
              /*  elem = document.getElementById('coursetype-dropdown');
               if(elem != null){
             	elem.parentNode.removeChild(elem);
-              } 
+              }
              */
               for (var i = 0; i < courseTypesList.length; i++) {
   				var anchor2 = document.createElement('a');
@@ -823,10 +811,10 @@ function getStreamId(stream_id){
     //END
 var courseTypeElem;
 var coursesList;
-    
+
 function getCourseTypeId(courseType_id){
 	courseTypeId = courseType_id.substring(0, courseType_id.length-2);
-    
+
     courseTypeElem = document.getElementById(courseType_id);
     var elem;
     for(i=0; i<courseTypesList.length; i++){
@@ -855,7 +843,7 @@ function getCourseTypeId(courseType_id){
               if(elem != null){
             	elem.parentNode.removeChild(elem);
               } */
-             
+
             /* var elem = document.getElementById('dropdownMenuButtonCourseType');
              elem.parentNode.removeChild(elem);
              */
@@ -891,13 +879,13 @@ function getCourseId(course_id){
     }
     courseElem.className = 'nav-link active';
     document.getElementById('dropdownMenuButtonCourse').textContent = courseElem.textContent;
-    
+
     //elem = document.getElementById('course-dropdown');
    // elem.length=0;
     /*if(elem != null){
   	elem.parentNode.removeChild(elem);
     } */
-    
+
     //Current system supports only MCQs.
     var Evaluationlist = ['MCQ'];
     //for (var i = 0; i < Evaluationlist.length; i++) {
@@ -911,7 +899,7 @@ function getCourseId(course_id){
       //evalElem = document.getElementById('1E');
       anchor3.className = 'nav-link active';
       document.getElementById('dropdownMenuButtonEvaluationType').textContent = Evaluationlist[0];
-      
+
       var myData = {
           	courseId:courseId//.substring(0, courseId.length - 1)
           };
@@ -929,7 +917,7 @@ function getCourseId(course_id){
                 if(elem != null){
               	elem.parentNode.removeChild(elem);
                 } */
-               
+
               /* var elem = document.getElementById('dropdownMenuButtonCourseType');
                elem.parentNode.removeChild(elem);
                */
@@ -942,7 +930,7 @@ function getCourseId(course_id){
     				anchor5.setAttribute('onclick', "getTopicId(this.id)");
     				document.getElementById('topic-dropdown').appendChild(anchor5);
   			  }
-               
+
                 /*var elem = document.getElementById('dropdownMenuButtonCourseType');
                   elem.parentNode.removeChild(elem);*/
               },
@@ -959,7 +947,7 @@ var diffLevelsList;
 var topicElem;
 function getTopicId(topic_id){
 	topicId = topic_id.substring(0, topic_id.length - 1);
-	
+
 	topicElem = document.getElementById(topic_id);
     var elem;
     for(i=0; i<topicsList.length; i++){
@@ -985,7 +973,7 @@ function getTopicId(topic_id){
                 if(elem != null){
               	elem.parentNode.removeChild(elem);
                 } */
-               
+
               /* var elem = document.getElementById('dropdownMenuButtonCourseType');
                elem.parentNode.removeChild(elem);
                */
@@ -1013,7 +1001,7 @@ var diffLevelId;
 var diffLvlElem;
 function getDiffLevelId(diffLevel_id){
 	diffLevelId = diffLevel_id.substring(0, diffLevel_id.length - 1);
-	
+
 	diffLvlElem = document.getElementById(diffLevel_id);
     var elem;
     for(i=0; i<diffLevelsList.length; i++){
@@ -1078,7 +1066,7 @@ function addQuestion(){
 				var streamJSON = JSON.stringify(responseJson3);
 				//alert("studentEmail : " + responseJson2.email);
 				window.location.href = locationJson.location + "?varid=" + encodeURIComponent(strResJSON) + encodeURIComponent(streamJSON) +"&username=" + "Anjali" +"&password=" + "Anjali";
-			} 
+			}
           //window.location.href=;
         },
         error: function(){
@@ -1111,18 +1099,18 @@ document.getElementById('all-user-link').onclick=function() {
   var table = document.createElement('table');
   table.className="table table-hover";
   var thead = document.createElement('thead');
-  var head = ['Sr.no','Username','Email','Address','Mobile No','Courses Done'];
+  var head = ['Sr.no','Username','Email','Address','Mobile No','Courses Done','Button1','Button2'];
   for (var i = 0; i < head.length; i++) {
     var th = document.createElement('th');
     th.textContent = head[i];
     thead.appendChild(th);
   }
   table.appendChild(thead);
-  var td0 = ['1','2']; var td1 = ['Sahil','Sanika']; var td2 = ['sahil@','sanika@'];
-  var td3 = ['M.G. Road','M.A.Road']; var td4=[12,23]; var td5 = ['c','cpp','java'];
+  // var td0 = ['1','2']; var td1 = ['Sahil','Sanika']; var td2 = ['sahil@','sanika@'];
+  // var td3 = ['M.G. Road','M.A.Road']; var td4=[12,23]; var td5 = ['c','cpp','java']; var td6=['Analytics'];
   // var students = {Srno:1, Username:"Sahil",Email:"sahi@",Address:"PICT",MobileNo:121,CoursesDone:"C,CPP"};
    var students = {
-     Srno:1, Username:"Sahil",Email:"sahi@",Address:"PICT",MobileNo:121,CoursesDone:"C,CPP"
+     Srno:1, Username:"Sahil",Email:"sahi@",Address:"PICT",MobileNo:121,CoursesDone:"C,CPP",Button1:"Analytics" , Button2:"Result"
    };
 
   //creating Tbody
@@ -1140,12 +1128,24 @@ document.getElementById('all-user-link').onclick=function() {
    td4.textContent = students.MobileNo;
    var td5 = document.createElement('td');
    td5.textContent = students.CoursesDone;
+   //creating Analytics and Result Button for all user.
+   var td6  = document.createElement('td');
+   var btn1 = document.createElement('button');
+   btn1.textContent =students.Button1;
+   td6.appendChild(btn1);
+   var td7  = document.createElement('td');
+   var btn2 = document.createElement('button');
+   btn2.textContent =students.Button2;
+   td7.appendChild(btn2);
+
    tr.appendChild(td0);
    tr.appendChild(td1);
    tr.appendChild(td2);
    tr.appendChild(td3);
    tr.appendChild(td4);
    tr.appendChild(td5);
+   tr.appendChild(td6);
+   tr.appendChild(td7);
 
 
   thead.appendChild(th);
