@@ -18,7 +18,7 @@
 				email: emailVal,
 				password: passwordVal
 			};
-			
+
 			$.ajax({
 				type: 'POST',
 				url: '/OnlineEvaluationSystem/CommonController?action=LoginServlet',
@@ -38,7 +38,7 @@
 						   var streamJSON = JSON.stringify(responseJson3);
 						   window.location.href = locationJson.location + "?varid=" + encodeURIComponent(strResJSON) + encodeURIComponent(streamJSON);
 						}
-					} 
+					}
 					else {
 						$('#ajaxGetUserServletResponse').text(responseText);
 					}
@@ -62,11 +62,11 @@
 				</div>
 				<div class="form-group">
 					<label for="email">Email Id</label>
-					<input class="form-control" id="email" type="text" placeholder="Type your Email ID" name="email" required>
+					<input class="form-control" id="email" type="text" placeholder="Type your Email ID" name="email" >
 				</div>
 				<div class="form-group">
 					<label for="password">Password</label>
-					<input class="form-control" id="password" type="password" placeholder="Type your Password" name="password" required >
+					<input class="form-control" id="password" type="password" placeholder="Type your Password" name="password"  >
 				</div>
 				<div class="form-group">
 					<input type="button" id="log-btn" class="login-btn" value="Login" name="login" >

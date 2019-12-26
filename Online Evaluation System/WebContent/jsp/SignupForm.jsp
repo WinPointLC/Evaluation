@@ -60,7 +60,8 @@
                 </select>
               </div>
               <div class="form-group">
-                <input type="text" id="mobileNumber" class="form-control" placeholder="Mobile Number" pattern="[0-9]{10}" title="You can enter 10 digits only">
+                <%-- <input type="text" id="mobileNumber" class="form-control" placeholder="Mobile Number" pattern="[0-9]{10}" title="You can enter 10 digits only"> --%>
+                  <input type="text" id="mobileNumber" class="form-control" placeholder="Mobile Number">
               </div>
               <div class="form-group">
                 <select class="form-control" id="securityQuestion" required>
@@ -187,7 +188,50 @@
          }
 
      });
+     validator();
   }
+
+  function validator() {
+    var ffname = document.getElementById('firstName').value;
+    var llname = document.getElementById('lastName').value;
+    var email = document.getElementById('email').value;
+    var uname = document.getElementById('userName').value;
+    var pass = document.getElementById('password').value;
+    var mobileNumber = document.getElementById('mobileNumber').value;
+
+    if (ffname == "") {
+      alert("Enter the firstName");
+    }
+    else if(llname==""){
+      alert("Enter the LastName");
+    }
+    else if(email==""){
+      alert("Enter the emailName");
+    }
+    else if(uname==""){
+      alert("Enter the UserName");
+    }
+    else if(pass==""){
+      alert("Enter the Password");
+    }
+    else if(mobileNumber==""){
+      alert("Enter the Mobile Number");
+    }
+    Mobilevalidator();
+  }
+  //code for Mobile Validation
+  function Mobilevalidator() {
+    alert("You are in Mobile Validation Function");
+       var mobile = document.getElementById("mobileNumber").value;
+       var pattern = /^[7-9][0-9]{9}$/;
+       if (pattern.test(mobile)) {
+           alert("Your mobile number : "+mobile);
+           return true;
+       }
+       alert("It is not valid mobile number");
+       return false;
+
+   }
   </script>
   <!--  End Modal -->
   <script src="../MaterialKitHomePage/assets/js/core/jquery.min.js" type="text/javascript"></script>

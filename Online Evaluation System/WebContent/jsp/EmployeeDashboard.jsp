@@ -43,15 +43,15 @@
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" id="add-funct-link">
+          <a class="nav-link" id="add-new-user-link">
             <i class="material-icons">person</i>
-            <p>Functionality for Admin</p>
+            <p>Add new User</p>
           </a>
         </li>
 
         <li class="nav-item">
           <a class="nav-link" id="all-user-link">
-            <i class="material-icons">person</i>
+            <i class="material-icons">group</i>
             <p>All User's</p>
           </a>
         </li>
@@ -62,21 +62,9 @@
           </a>
         </li>
         <li>
-          <a class="nav-link" href="#">
-            <i class="material-icons">assessment</i>
-            <p>Analytics of all users </p>
-          </a>
-        </li>
-        <li>
-          <a class="nav-link" href="#">
-            <i class="material-icons">subject</i>
-            <p>Result of all users</p>
-          </a>
-        </li>
-        <li>
-          <a class="nav-link" href="#">
-            <i class="material-icons">notifications_none</i>
-            <p>Edit Notifications for users</p>
+          <a class="nav-link" href="#" id="fee-register-link">
+            <i class="material-icons">attach_money</i>
+            <p>Fee Registeration Page</p>
           </a>
         </li>
         <li>
@@ -406,6 +394,8 @@
         </div>
       </div>
 
+
+
 <!-- Adding content of Admin Page -->
 <div class="container-fluid" id="admin-content">
 
@@ -566,6 +556,129 @@
   </div>
 </div>
 
+<!-- Add new user content -->
+<body>
+  <!-- Large modal -->
+  <div class="add-new-user-content" id="add-new-user-content">
+    <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-lg" id="modal-btn">Add a new user</button>
+
+      <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+          <div class="modal-content">
+            <div class="container-fluid">
+              <div class="col-sm-4 col-md-4 col-lg-12 text-left ml-auto mr-auto" id="form-outter">
+                <form name="form1">
+                  <h3 class="form-signup-heading text-center">SignUP Form</h3>
+                  <div class="form-group">
+                    <input class="form-control" type="text" id="firstName" placeholder="Enter first name" required>
+                  </div>
+                  <div class="form-group">
+                    <input class="form-control" type="text" id="lastName" placeholder="Enter last name" required>
+                  </div>
+
+                  <div class="form-group">
+                    <input class="form-control" type="email" id="email" placeholder="Enter email" required>
+                  </div>
+
+                  <div class="form-group">
+                    <input class="form-control form-control-sm" type="text" id="userName" placeholder="Enter user name" required>
+                  </div>
+
+                  <div class="form-group">
+                    <input  type="password" id="password" class="form-control" placeholder="Password" required>
+                  </div>
+                  <div class="form-group">
+                    <select class="form-control" id="gender" required>
+                      <option value="">Gender</option>
+                      <option>Male</option>
+                      <option>Female</option>
+                    </select>
+                  </div>
+                  <div class="form-group">
+                    <%-- <input type="text" id="mobileNumber" class="form-control" placeholder="Mobile Number" pattern="[0-9]{10}" title="You can enter 10 digits only"> --%>
+                      <input type="text" id="mobileNumber" class="form-control" placeholder="Mobile Number">
+                  </div>
+                  <div class="form-group">
+                    <select class="form-control" id="securityQuestion" required>
+                    <option value="">Security Question</option>
+                  </select>
+                    </div>
+                    <script> var selectVar = document.getElementById('securityQuestion');</script>
+                    <c:forEach var="securityQuestion" items= "${securityQuestions}" varStatus="i">
+                    <script>
+
+                       var option = document.createElement('option');
+                       option.textContent = "${securityQuestion.securityQuestion}";
+                       selectVar.appendChild(option);
+                       </script>
+                    </c:forEach>
+
+                  <%-- <div class="form-group">
+
+                      <!--  <div class="dropdown-menu" id = "secQuest" aria-labelledby="dropdownMenuButton"></div>-->
+                      <div id="drop11" class="dropdown drop1">
+                  <!-- <input type="button" class="btn btn-secondary dropdown-toggle" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" value="Security Question">
+                                --> </div>
+                                <script>
+                                var drop1 = document.getElementsByClassName('drop1');
+                                var btn = document.createElement('button');
+                                btn.className='btn btn-secondary dropdown-toggle';
+                                btn.id='dropdownMenuButton';
+                                btn.setAttribute('data-toggle', "dropdown");
+                                btn.setAttribute('aria-haspopup', "true");
+                                btn.setAttribute('aria-expanded',"false");
+                                btn.textContent="Security Question";
+                                document.getElementById('drop11').appendChild(btn);
+
+                                var dropdownMenu = document.createElement('div');
+                                dropdownMenu.className='dropdown-menu';
+                                dropdownMenu.setAttribute('aria-labelledby',"dropdownMenuButton");
+                                </script>
+
+          <c:forEach var="securityQuestion" items= "${securityQuestions}" varStatus="i">
+
+          <script>
+          //code to open a modal on click
+          window.onload=function(){
+            document.getElementById("modal-btn").click();
+          };
+
+            var dropanchor = document.createElement('a');
+            dropanchor.className='dropdown-item';
+            dropanchor.setAttribute('href',"#");
+            //dropanchor.id=courseTypesList[i].courseTypeId;
+            dropanchor.textContent="${securityQuestion}";
+            //dropanchor.setAttribute('onclick',"displayStreamCourses(this.id)");
+            dropdownMenu.appendChild(dropanchor);
+          </script>
+          </c:forEach>
+          <script>document.getElementById('drop11').appendChild(dropdownMenu);</script>
+
+                  </div>
+                <!--    <div class="form-group">
+                    <input class="form-control" type="text" id="securityQuestion" placeholder="Security Question" required>
+                  </div>-->
+
+           --%>        <div class="form-group">
+                    <input class="form-control" type="text" id="securityAnswer" placeholder="Security Answer" required>
+                  </div>
+                  <br>
+                  <a href="#" onclick="submitSignUpDetails()"><button class="Signbtn" type="button">Submit</button></a>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!--  End Modal -->
+      <%-- end add new user content --%>
+  </div>
+
+
+  <%-- <script src="../MaterialKitHomePage/assets/js/core/jquery.min.js" type="text/javascript"></script>
+  <script src="../MaterialKitHomePage/assets/js/core/bootstrap-material-design.min.js" type="text/javascript"></script> --%>
+<!-- End add new user content -->
+
 <!-- All USer content -->
 <div class="container-fluid" id="all-user-content">
   <div class="row">
@@ -694,6 +807,37 @@
 </div>
 
 <!-- End of All USer content  -->
+<!-- Fee Registration content -->
+<div class="container-fluid" id="fee-register-content">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card card-plain">
+        <div class="card-header card-header-primary">
+          <h4 class="card-title mt-0">FEE REGISTRATION FOR USER</h4>
+        </div><br><br>
+
+        <div class="dropdown-section2">
+          <div class="search-container">
+            <form>
+              <input type="text" placeholder="Search a user..." name="search">
+              <button type="submit"><i class="fa fa-search"></i></button>
+            </form>
+          </div>
+        </div><br><br>
+
+        <div class="card-body">
+          <div class="table-responsive" id="table2">
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- End of Fee REGISTRATION content  -->
+
 
 <!-- Footer -->
 <footer class="footer">
@@ -724,21 +868,6 @@
 // document.getElementById('main-content').style.display="none";
 document.getElementById('admin-content').style.display="none";
 document.getElementById('all-user-content').style.display="none";
-// document.getElementById('funct-section').style.display="none";
-
-// document.getElementById('add-funct-link').onclick=function() {
-//   if (document.getElementById('main-content').style.display === "block") {
-//     alert("We are in if block");
-//     document.getElementById('main-content').style.display = "none";
-//     document.getElementById('admin-content').style.display = "block";
-//   } else {
-//     alert("We are in else block");
-//     document.getElementById('funct-section').style.display = "block";
-//     document.getElementById('main-content').style.display = "none";
-//     document.getElementById('admin-content').style.display = "none";
-//   }
-// };
-//
 
 var streamId;
 var courseTypeId;
@@ -766,12 +895,12 @@ document.getElementById('add-question-link').onclick=function() {
     document.getElementById('main-content').style.display = "none";
     document.getElementById('all-user-content').style.display = "none";
   }
-	
+
 };
 var streamElem;
 function getStreamId(stream_id){
 	streamId = stream_id;
-    
+
     streamElem = document.getElementById(streamId);
     var elem;
     for(i=0; i<streamList.length; i++){
@@ -780,11 +909,11 @@ function getStreamId(stream_id){
     }
     streamElem.className = 'nav-link active';
     document.getElementById('dropdownMenuButtonStream').textContent = streamElem.textContent;
-   
+
     //elem = document.getElementById('dropdownMenuButtonCourseType');
     //START***********************************************
     var myData = {
-        	streamId: streamId	
+        	streamId: streamId
         };
         $.ajax({
             type: 'POST',
@@ -795,11 +924,11 @@ function getStreamId(stream_id){
             traditional: true,
             success: function (jsonObj) {
               courseTypesList=jsonObj[0];
-             
+
              /*  elem = document.getElementById('coursetype-dropdown');
               if(elem != null){
             	elem.parentNode.removeChild(elem);
-              } 
+              }
              */
               for (var i = 0; i < courseTypesList.length; i++) {
   				var anchor2 = document.createElement('a');
@@ -823,10 +952,10 @@ function getStreamId(stream_id){
     //END
 var courseTypeElem;
 var coursesList;
-    
+
 function getCourseTypeId(courseType_id){
 	courseTypeId = courseType_id.substring(0, courseType_id.length-2);
-    
+
     courseTypeElem = document.getElementById(courseType_id);
     var elem;
     for(i=0; i<courseTypesList.length; i++){
@@ -855,7 +984,7 @@ function getCourseTypeId(courseType_id){
               if(elem != null){
             	elem.parentNode.removeChild(elem);
               } */
-             
+
             /* var elem = document.getElementById('dropdownMenuButtonCourseType');
              elem.parentNode.removeChild(elem);
              */
@@ -891,13 +1020,13 @@ function getCourseId(course_id){
     }
     courseElem.className = 'nav-link active';
     document.getElementById('dropdownMenuButtonCourse').textContent = courseElem.textContent;
-    
+
     //elem = document.getElementById('course-dropdown');
    // elem.length=0;
     /*if(elem != null){
   	elem.parentNode.removeChild(elem);
     } */
-    
+
     //Current system supports only MCQs.
     var Evaluationlist = ['MCQ'];
     //for (var i = 0; i < Evaluationlist.length; i++) {
@@ -911,7 +1040,7 @@ function getCourseId(course_id){
       //evalElem = document.getElementById('1E');
       anchor3.className = 'nav-link active';
       document.getElementById('dropdownMenuButtonEvaluationType').textContent = Evaluationlist[0];
-      
+
       var myData = {
           	courseId:courseId//.substring(0, courseId.length - 1)
           };
@@ -929,7 +1058,7 @@ function getCourseId(course_id){
                 if(elem != null){
               	elem.parentNode.removeChild(elem);
                 } */
-               
+
               /* var elem = document.getElementById('dropdownMenuButtonCourseType');
                elem.parentNode.removeChild(elem);
                */
@@ -942,7 +1071,7 @@ function getCourseId(course_id){
     				anchor5.setAttribute('onclick', "getTopicId(this.id)");
     				document.getElementById('topic-dropdown').appendChild(anchor5);
   			  }
-               
+
                 /*var elem = document.getElementById('dropdownMenuButtonCourseType');
                   elem.parentNode.removeChild(elem);*/
               },
@@ -959,7 +1088,7 @@ var diffLevelsList;
 var topicElem;
 function getTopicId(topic_id){
 	topicId = topic_id.substring(0, topic_id.length - 1);
-	
+
 	topicElem = document.getElementById(topic_id);
     var elem;
     for(i=0; i<topicsList.length; i++){
@@ -985,7 +1114,7 @@ function getTopicId(topic_id){
                 if(elem != null){
               	elem.parentNode.removeChild(elem);
                 } */
-               
+
               /* var elem = document.getElementById('dropdownMenuButtonCourseType');
                elem.parentNode.removeChild(elem);
                */
@@ -1013,7 +1142,7 @@ var diffLevelId;
 var diffLvlElem;
 function getDiffLevelId(diffLevel_id){
 	diffLevelId = diffLevel_id.substring(0, diffLevel_id.length - 1);
-	
+
 	diffLvlElem = document.getElementById(diffLevel_id);
     var elem;
     for(i=0; i<diffLevelsList.length; i++){
@@ -1078,7 +1207,7 @@ function addQuestion(){
 				var streamJSON = JSON.stringify(responseJson3);
 				//alert("studentEmail : " + responseJson2.email);
 				window.location.href = locationJson.location + "?varid=" + encodeURIComponent(strResJSON) + encodeURIComponent(streamJSON) +"&username=" + "Anjali" +"&password=" + "Anjali";
-			} 
+			}
           //window.location.href=;
         },
         error: function(){
@@ -1089,6 +1218,8 @@ function addQuestion(){
       });
 	alert("After AJAX");
 }
+document.getElementById('add-new-user-content').style.display = "none";
+document.getElementById('fee-register-content').style.display = "none";
 //showing all-user content
 document.getElementById('all-user-link').onclick=function() {
   if (document.getElementById('main-content').style.display === "block") {
@@ -1100,9 +1231,38 @@ document.getElementById('all-user-link').onclick=function() {
     document.getElementById('all-user-content').style.display = "block";
     document.getElementById('main-content').style.display = "none";
     document.getElementById('admin-content').style.display="none";
+    document.getElementById('add-new-user-content').style.display = "none";
+    document.getElementById('fee-register-content').style.display = "none";
+  }
+};
+//showing add new user
+document.getElementById('add-new-user-link').onclick=function() {
+  if (document.getElementById('main-content').style.display === "block") {
+
+  } else {
+    document.getElementById('add-new-user-content').style.display = "block";
+    document.getElementById('fee-register-content').style.display = "none";
+    document.getElementById('main-content').style.display = "none";
+    document.getElementById('admin-content').style.display="none";
+    document.getElementById('all-user-content').style.display="none";
   }
 };
 
+//showing fee-register-content
+document.getElementById('fee-register-link').onclick=function() {
+  if (document.getElementById('main-content').style.display === "block") {
+    //alert("We are in if block");
+    //document.getElementById('main-content').style.display = "none";
+    //document.getElementById('admin-content').style.display = "block";
+  } else {
+    //alert("We are in else block");
+    document.getElementById('fee-register-content').style.display = "block";
+    document.getElementById('main-content').style.display = "none";
+    document.getElementById('admin-content').style.display="none";
+    document.getElementById('all-user-content').style.display="none";
+    document.getElementById('add-new-user-content').style.display = "none";
+  }
+};
 </script>
 
 <!-- Js for All user  -->
@@ -1111,18 +1271,18 @@ document.getElementById('all-user-link').onclick=function() {
   var table = document.createElement('table');
   table.className="table table-hover";
   var thead = document.createElement('thead');
-  var head = ['Sr.no','Username','Email','Address','Mobile No','Courses Done'];
+  var head = ['Sr.no','Username','Email','Address','Mobile No','Courses Done','Button1','Button2'];
   for (var i = 0; i < head.length; i++) {
     var th = document.createElement('th');
     th.textContent = head[i];
     thead.appendChild(th);
   }
   table.appendChild(thead);
-  var td0 = ['1','2']; var td1 = ['Sahil','Sanika']; var td2 = ['sahil@','sanika@'];
-  var td3 = ['M.G. Road','M.A.Road']; var td4=[12,23]; var td5 = ['c','cpp','java'];
+  // var td0 = ['1','2']; var td1 = ['Sahil','Sanika']; var td2 = ['sahil@','sanika@'];
+  // var td3 = ['M.G. Road','M.A.Road']; var td4=[12,23]; var td5 = ['c','cpp','java']; var td6=['Analytics'];
   // var students = {Srno:1, Username:"Sahil",Email:"sahi@",Address:"PICT",MobileNo:121,CoursesDone:"C,CPP"};
    var students = {
-     Srno:1, Username:"Sahil",Email:"sahi@",Address:"PICT",MobileNo:121,CoursesDone:"C,CPP"
+     Srno:1, Username:"Sahil",Email:"sahi@",Address:"PICT",MobileNo:121,CoursesDone:"C,CPP",Button1:"Analytics" , Button2:"Result"
    };
 
   //creating Tbody
@@ -1140,12 +1300,24 @@ document.getElementById('all-user-link').onclick=function() {
    td4.textContent = students.MobileNo;
    var td5 = document.createElement('td');
    td5.textContent = students.CoursesDone;
+   //creating Analytics and Result Button for all user.
+   var td6  = document.createElement('td');
+   var btn1 = document.createElement('button');
+   btn1.textContent =students.Button1;
+   td6.appendChild(btn1);
+   var td7  = document.createElement('td');
+   var btn2 = document.createElement('button');
+   btn2.textContent =students.Button2;
+   td7.appendChild(btn2);
+
    tr.appendChild(td0);
    tr.appendChild(td1);
    tr.appendChild(td2);
    tr.appendChild(td3);
    tr.appendChild(td4);
    tr.appendChild(td5);
+   tr.appendChild(td6);
+   tr.appendChild(td7);
 
 
   thead.appendChild(th);
@@ -1153,6 +1325,71 @@ document.getElementById('all-user-link').onclick=function() {
   table.appendChild(tbody);
 
   document.getElementById('table').appendChild(table);
+
+  //--------------------- start of Fee register script----------------------------
+  //creating table dynamically
+  var table2 = document.createElement('table');
+  table2.className="table table-hover";
+  var thead2 = document.createElement('thead');
+  // var head = ['Sr.no','Username','Email','Address','Mobile No','Courses Done','Button1','Button2'];
+  var head2 = ['Username','Course','Fee of Course','Remaining Fees','Paid','Unpaid','REGISTRATION'];
+  for (var i = 0; i < head2.length; i++) {
+    var th2 = document.createElement('th');
+    th2.textContent = head2[i];
+    thead2.appendChild(th2);
+  }
+  table2.appendChild(thead2);
+  // var td0 = ['1','2']; var td1 = ['Sahil','Sanika']; var td2 = ['sahil@','sanika@'];
+  // var td3 = ['M.G. Road','M.A.Road']; var td4=[12,23]; var td5 = ['c','cpp','java']; var td6=['Analytics'];
+  // var students = {Srno:1, Username:"Sahil",Email:"sahi@",Address:"PICT",MobileNo:121,CoursesDone:"C,CPP"};
+   var student = {
+      Username:"Sahil",Course:"C",Fee_Of_Course:4000,Remaining_Fees:0,Paid:"Paid",Unpaid:"Unpaid",Registeration:"register link"
+   };
+
+  //creating Tbody
+  var tbody2 = document.createElement('tbody');
+  var tr2 = document.createElement('tr');
+   var td02 = document.createElement('td');
+   td02.textContent = student.Username;
+   var td12 = document.createElement('td');
+   td12.textContent = student.Course;
+   var td22 = document.createElement('td');
+   td22.textContent = student.Fee_Of_Course;
+   var td32 = document.createElement('td');
+   td32.textContent = student.Remaining_Fees;
+   var td42 = document.createElement('td');
+   var paidbtn = document.createElement('button');
+   paidbtn.textContent = student.Paid;
+   // td4.textContent = students.Paid;
+   td42.appendChild(paidbtn);
+
+   var td52 = document.createElement('td');
+   var unpaidbtn = document.createElement('button');
+   unpaidbtn.textContent = student.Unpaid;
+   // td4.textContent = students.Paid;
+   td52.appendChild(unpaidbtn);
+   //creating Analytics and Result Button for all user.
+   var td62  = document.createElement('td');
+   var btn12 = document.createElement('button');
+   btn12.textContent =student.Registeration;
+   td62.appendChild(btn12);
+
+   tr2.appendChild(td02);
+   tr2.appendChild(td12);
+   tr2.appendChild(td22);
+   tr2.appendChild(td32);
+   tr2.appendChild(td42);
+   tr2.appendChild(td52);
+   tr2.appendChild(td62);
+
+
+
+  thead2.appendChild(th2);
+  tbody2.appendChild(tr2);
+  table2.appendChild(tbody2);
+
+  document.getElementById('table2').appendChild(table2);
+//--------------------- end of Fee register script----------------------------
 
 </script>
 
