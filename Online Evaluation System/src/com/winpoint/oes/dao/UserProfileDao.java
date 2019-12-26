@@ -9,6 +9,7 @@ import java.sql.Statement;
 import com.microsoft.sqlserver.jdbc.SQLServerException;
 import com.winpoint.oes.beans.UserProfile;
 import com.winpoint.oes.util.sql.ConnectionManager;
+import com.winpoint.oes.util.sql.DateConverter;
 
 public class UserProfileDao {
 	public boolean updateUserProfile(UserProfile userProfile){
@@ -27,17 +28,14 @@ public class UserProfileDao {
 			preparedStatement.setString(3, userProfile.getEmail());
 			preparedStatement.setString(4, userProfile.getMobileNumber());
 			preparedStatement.setString(5, userProfile.getAddress());
-			java.sql.Date birthDate = null;//new java.sql.Date(userProfile.getBirthDate().getTime());
-			preparedStatement.setDate(6, birthDate);
+			preparedStatement.setDate(6, DateConverter.convertUtilToSqlDate(userProfile.getBirthDate()));
 			preparedStatement.setString(7, userProfile.getCollege());
 			preparedStatement.setString(8, userProfile.getDegree());
 			preparedStatement.setString(9, userProfile.getBranch());
-			java.sql.Date yearOfGraduation = null;//new java.sql.Date(userProfile.getYearOfGraduation().getTime());
-			preparedStatement.setDate(10, yearOfGraduation);
+			preparedStatement.setInt(10, userProfile.getYearOfGraduation());
 			preparedStatement.setString(11, userProfile.getPhotoLocation());
 			preparedStatement.setString(12, userProfile.getPassword());
 			preparedStatement.setInt(13, userProfile.getSecurityQuestionId());
-			//preparedStatement.setInt(13, 1);
 			preparedStatement.setString(14, userProfile.getSecurityAnswer());
 			preparedStatement.setInt(15, userProfile.getUserCategoryId());
 			preparedStatement.setString(16, userProfile.getOccupation());
@@ -51,13 +49,11 @@ public class UserProfileDao {
 			preparedStatement.executeUpdate();
 			preparedStatement.close();
 			
-			System.out.println("User Profile updated successfully");
-			
-		} catch (SQLServerException e) {
-			// TODO Auto-generated catch block
+		} 
+		catch (SQLServerException e) {
 			e.printStackTrace();
-		} catch (SQLException e1) {
-			// TODO Auto-generated catch block
+		} 
+		catch (SQLException e1) {
 			e1.printStackTrace();
 		} 
 		

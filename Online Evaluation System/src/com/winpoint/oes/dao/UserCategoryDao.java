@@ -7,32 +7,30 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.microsoft.sqlserver.jdbc.SQLServerDataSource;
 import com.microsoft.sqlserver.jdbc.SQLServerException;
-import com.winpoint.oes.beans.Rules;
 import com.winpoint.oes.beans.SecurityQuestions;
-import com.winpoint.oes.beans.Stream;
+import com.winpoint.oes.beans.UserCategory;
 import com.winpoint.oes.util.sql.ConnectionManager;
 
-public class SecurityQuestionsDao {
-
-	public List<SecurityQuestions> getSecurityQuestionsList() {
+public class UserCategoryDao {
+	
+	public List<UserCategory> getUserCategoryList() {
 		
-		List<SecurityQuestions> securityQuestionsList = new ArrayList<SecurityQuestions>();
+		List<UserCategory> userCategoryList = new ArrayList<UserCategory>();
 		
 		ResultSet resultSet = null;
 		
 		try(Connection connection = ConnectionManager.getConnection()){
 			Statement statement = connection.createStatement();
 			
-			String query = "SELECT  * from SECURITY_QUESTIONS";
+			String query = "select USER_CATEGORY_ID, USER_CATEGORY_NAME from USER_CATEGORY";
 			resultSet = statement.executeQuery(query);
 			
 			while(resultSet.next()) {
-				int securityQuestionId = resultSet.getInt("SECURITY_QUESTION_ID");
-				String securityQuestion = resultSet.getString("SECURITY_QUESTION");
-				SecurityQuestions secQuest = new SecurityQuestions(securityQuestionId, securityQuestion);
-				securityQuestionsList.add(secQuest);
+				int userCategoryId = resultSet.getInt("USER_CATEGORY_ID");
+				String userCategoryName = resultSet.getString("USER_CATEGORY_NAME");
+				UserCategory userCategory = new UserCategory(userCategoryId, userCategoryName, null, null);
+				userCategoryList.add(userCategory);
 			}
 		} 
 		catch (SQLServerException e) {
@@ -41,7 +39,8 @@ public class SecurityQuestionsDao {
 		catch (SQLException e1) {
 			e1.printStackTrace();
 		} 
-		return securityQuestionsList;
-		
+		return userCategoryList;
+	
 	}
+
 }

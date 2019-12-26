@@ -30,17 +30,16 @@ public class DifficultyLevelDao {
 			resultSet = statement.executeQuery(query);
 			
 			while(resultSet.next()) {
-				//int ruleId = resultSet.getInt("rule_id");
 				int difficultyLevelId = resultSet.getInt("DIFFICULTY_LEVEL_ID");
 				String difficultyLevelName = resultSet.getString("DIFFICULTY_LEVEL_NAME");
 				DifficultyLevel difficultyLevel = new DifficultyLevel(difficultyLevelId, difficultyLevelName);
 				difficultyLevelsList.add(difficultyLevel);
 			}
-		} catch (SQLServerException e) {
-			// TODO Auto-generated catch block
+		} 
+		catch (SQLServerException e) {
 			e.printStackTrace();
-		} catch (SQLException e1) {
-			// TODO Auto-generated catch block
+		} 
+		catch (SQLException e1) {
 			e1.printStackTrace();
 		} 
 		return difficultyLevelsList;

@@ -12,20 +12,13 @@
 	<script>
 	$(function () {
 		$('#log-btn').click(function() {
-			callServlet();
-		});
-		function callServlet() {
-			//alert("From callServlet");
 			var emailVal = $("#email").val();
 			var passwordVal = $("#password").val();
-			//alert("email = " + emailVal + " : passwordVal = " + passwordVal);
 			var myData = {
-
 				email: emailVal,
 				password: passwordVal
 			};
-			//alert("*** " + JSON.stringify(myData));
-			//console.log(myData);
+			
 			$.ajax({
 				type: 'POST',
 				url: '/OnlineEvaluationSystem/CommonController?action=LoginServlet',
@@ -34,10 +27,8 @@
 				contentType: 'application/json; charset=utf-8',
 				traditional: true,
 				success: function (jsonObj) {
-					//alert("Success from LoginForm");
 					var responseJson1=jsonObj[0], responseJson2=jsonObj[1], responseJson3=jsonObj[2];
 					var locationJson = eval('(' + responseJson1 + ')');
-					//var studentJson = eval('(' + responseJson2 + ')');
 					if (locationJson.success) {
 						var strResJSON = JSON.stringify(responseJson2);
 						if(responseJson2.userCategoryId == 1){
@@ -45,20 +36,18 @@
 						}
 						else{
 						   var streamJSON = JSON.stringify(responseJson3);
-						   //alert("studentEmail : " + responseJson2.email);
-						   window.location.href = locationJson.location + "?varid=" + encodeURIComponent(strResJSON) + encodeURIComponent(streamJSON);// +"&username=" + "Anjali" +"&password=" + "Anjali";
+						   window.location.href = locationJson.location + "?varid=" + encodeURIComponent(strResJSON) + encodeURIComponent(streamJSON);
 						}
-					} else {
+					} 
+					else {
 						$('#ajaxGetUserServletResponse').text(responseText);
 					}
 				},
 				error: function(){
-					//alert("Error");
 					document.getElementById("error").innerHTML = "Invalid email or password";
 				}
-
 			});
-		}
+		});
 	});
 	</script>
 </head>
@@ -66,7 +55,6 @@
 <body>
 	<div class="container">
 		<div class="col-sm-4 col-md-4 col-lg-4 form-content ml-auto mr-auto">
-			<!--  <form class="form-outer" method="post" action="/OnlineEvaluationSystem/CommonController"> -->
 			<form class="form-outer" >
 				<h3 class="form-login-heading text-center">Login Form</h3>
 				<div>
@@ -94,16 +82,13 @@
 	</div>
 	<script type="text/javascript">
 	window.onload = function() {
-		document.getElementById("password")
-		.addEventListener("keyup", function(event) {
+		document.getElementById("password").addEventListener("keyup", function(event) {
 			event.preventDefault();
 			if (event.keyCode === 13) {
 				document.getElementById("log-btn").click();
-				console.log("You Pressed Enter");
 			}
 		});
 	}
 	</script>
 </body>
-
 </html>

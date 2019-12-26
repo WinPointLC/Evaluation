@@ -19,13 +19,7 @@ public class StreamDao {
 		List<Stream> streamList = new ArrayList<Stream>();
 		
 		ResultSet resultSet = null;
-		/*SQLServerDataSource dataSource = new SQLServerDataSource();
-		dataSource.setUser("sa");
-		dataSource.setPassword("winpoint");
-		//dataSource.setServerName("SHRIRANGMHALGI\\SQLEXPRESS");
-		dataSource.setPortNumber(Integer.parseInt("1433"));
-		dataSource.setDatabaseName("OES_TESTING");*/
-
+		
 		try(Connection connection = ConnectionManager.getConnection()){
 			Statement statement = connection.createStatement();
 			
@@ -38,11 +32,11 @@ public class StreamDao {
 				Stream stream = new Stream(streamId, streamName);
 				streamList.add(stream);
 			}
-		} catch (SQLServerException e) {
-			// TODO Auto-generated catch block
+		} 
+		catch (SQLServerException e) {
 			e.printStackTrace();
-		} catch (SQLException e1) {
-			// TODO Auto-generated catch block
+		} 
+		catch (SQLException e1) {
 			e1.printStackTrace();
 		} 
 		return streamList;

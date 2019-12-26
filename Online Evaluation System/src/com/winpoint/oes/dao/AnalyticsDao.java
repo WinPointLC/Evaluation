@@ -20,7 +20,7 @@ import com.winpoint.oes.util.sql.ConnectionManager;
 
 public class AnalyticsDao {
 	public ArrayList<TopicWisePerformance > getStudentTestAnalysis(int userId, int courseId){
-		ArrayList<TopicWisePerformance > topicPerfoList = new ArrayList<>();
+		ArrayList<TopicWisePerformance> topicPerfoList = new ArrayList<>();
 		try(Connection connection = ConnectionManager.getConnection()){
 			Statement statement = connection.createStatement();
 			
@@ -54,14 +54,6 @@ public class AnalyticsDao {
 			String topicName = "";
 			int topicwiseNumberOfCorrectAns;
 			
-			/*query = "SELECT topic_name,\r\n" + 
-					"    COUNT(*) topicwise_correct_answer_count\r\n" + 
-					"					FROM topics t, technical_question_bank tb \r\n" +
-					"INNER JOIN " + tableName  + " s \r\n" + 
-					"						ON s.question_id = tb.question_id \r\n" + 
-					"					WHERE t.course_id = " + courseId + " and s.IS_CORRECT = '1' and s.USER_TEST_ID = " + userTestId + " \r\n" +
-					"GROUP BY \r\n" + 
-					"    topic_name ";*/
 			query = "SELECT T.TOPIC_NAME,  \r\n" + 
 					"	   COUNT(s.QUESTION_ID) TOPIC_WISE_COUNT \r\n" + 
 					"FROM TOPICS T, " + tableName + " S \r\n" + 
@@ -77,16 +69,15 @@ public class AnalyticsDao {
 				TopicWisePerformance topicWisePerformance = new TopicWisePerformance(topicName, topicwiseNumberOfCorrectAns);
 				topicPerfoList.add(topicWisePerformance);
 			}
-		} catch (SQLServerException e) {
-			// TODO Auto-generated catch block
+		} 
+		catch (SQLServerException e) {
 			e.printStackTrace();
-		} catch (SQLException e1) {
-			// TODO Auto-generated catch block
+		} 
+		catch (SQLException e1) {
 			e1.printStackTrace();
 		} 
 		
 		return topicPerfoList;
-		
 	}
 	
 	public int getTestDetailID(int courseId) {
@@ -99,11 +90,11 @@ public class AnalyticsDao {
 			while(resultSet.next()) {
 			   testDetailId = resultSet.getInt("TEST_DETAIL_ID");
 			}
-		} catch (SQLServerException e) {
-			// TODO Auto-generated catch block
+		} 
+		catch (SQLServerException e) {
 			e.printStackTrace();
-		} catch (SQLException e1) {
-			// TODO Auto-generated catch block
+		} 
+		catch (SQLException e1) {
 			e1.printStackTrace();
 		} 
 		

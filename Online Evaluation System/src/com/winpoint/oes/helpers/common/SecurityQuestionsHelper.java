@@ -12,12 +12,6 @@ import com.winpoint.oes.dao.StreamDao;
 
 public class SecurityQuestionsHelper {
 	public List<SecurityQuestions> getSecurityQuestionsList(){
-		List<SecurityQuestions> securityQuestionsList = new SecurityQuestionsDao().getSecurityQuestionsList();
-		Iterator<SecurityQuestions> rulesIterator = securityQuestionsList.iterator();
-		while(rulesIterator.hasNext()) {
-			SecurityQuestions securityQuestions = (SecurityQuestions)rulesIterator.next();
-			System.out.println("SecurityQuestion = " + securityQuestions.getSecurityQuestion());
-		}
-		return securityQuestionsList;
+		return new SecurityQuestionsDao().getSecurityQuestionsList();
 	}
 }

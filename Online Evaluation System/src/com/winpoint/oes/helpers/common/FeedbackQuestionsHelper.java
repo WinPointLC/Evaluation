@@ -13,14 +13,6 @@ import com.winpoint.oes.dao.StreamDao;
 
 public class FeedbackQuestionsHelper {
 	public ArrayList<FeedbackQuestions> getFeedbackQuestions(){
-		ArrayList<FeedbackQuestions> feedbackQuestionsList = new FeedbackQuestionsDao().getFeedbackQuestions();
-		if(feedbackQuestionsList != null) {
-			Iterator<FeedbackQuestions> feedbackQuestionsIterator = feedbackQuestionsList.iterator();
-			while(feedbackQuestionsIterator.hasNext()) {
-				FeedbackQuestions feedbackQuestion = (FeedbackQuestions)feedbackQuestionsIterator.next();
-				System.out.println("Feedback Question Id = " + feedbackQuestion.getFeedbackQuestionId() + ": Feedback Question = " + feedbackQuestion.getFeedbackQuestion());
-			}
-		}
-		return feedbackQuestionsList;
+		return new FeedbackQuestionsDao().getFeedbackQuestions();
 	}
 }

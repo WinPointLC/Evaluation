@@ -22,7 +22,6 @@ import com.winpoint.oes.beans.DifficultyLevel;
 import com.winpoint.oes.beans.Stream;
 import com.winpoint.oes.beans.Test;
 import com.winpoint.oes.beans.UserProfile;
-import com.winpoint.oes.dao.Dummy;
 import com.winpoint.oes.helpers.common.CourseHelper;
 import com.winpoint.oes.helpers.common.DifficultyLevelHelper;
 import com.winpoint.oes.helpers.common.LoginHelper;
@@ -40,14 +39,12 @@ public class DifficultyLevelServlet extends HttpServlet {
      */
     public DifficultyLevelServlet() {
         super();
-        // TODO Auto-generated constructor stub
     }
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
 		response.getWriter().append("Served at: ").append(request.getContextPath());
 	}
 
@@ -62,20 +59,13 @@ public class DifficultyLevelServlet extends HttpServlet {
 	    if(br != null){
 	    	json = br.readLine();
 	    }
-	    System.out.println(json);
 	   
 		Gson gson = new Gson();
 		Course course = gson.fromJson(json, Course.class);
 		
 		List<DifficultyLevel> testsList = new DifficultyLevelHelper().getDifficultyLevelsList();
-		
-		/*List<Test> testsList = new ArrayList<Test>();
-		testsList.add(new Test(1, "C", "Objective", 1, 1000, true, 43));
-		testsList.add(new Test(2, "C", "Coding", 1, 2000, true, 0));
-		testsList.add(new Test(3, "C", "Descriptive", 1, 3000, false, 0));*/
 				
-		if(testsList != null) {
-		  
+		if(testsList != null) {		  
 		   String json1 = gson.toJson("{ 'success': 'true', 'location': '/OnlineEvaluationSystem/jsp/TestSelectPage.jsp'}");
 		   String json2 = gson.toJson(testsList);
 		  		   

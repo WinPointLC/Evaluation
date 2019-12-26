@@ -21,9 +21,7 @@ public class TestFeedbackDao {
 		ResultSet resultSet = null;
 		try(Connection connection = ConnectionManager.getConnection()){
 			Statement statement = connection.createStatement();
-			/* SELECT TEST_DETAIL_ID FROM TEST_DETAILS WHERE COURSE_ID=1 AND TEST_NUMBER = 1
-			    SELECT USER_TEST_ID FROM USER_TEST_DETAILS WHERE USER_ID = 1 AND TEST_DETAIL_ID = 1
-			 */
+			
 			int testDetailId = 0;
 			int userTestId = 0;
 			String query = "SELECT TEST_DETAIL_ID FROM TEST_DETAILS WHERE TEST_NUMBER =1 AND COURSE_ID = " + courseId;
@@ -50,11 +48,11 @@ public class TestFeedbackDao {
 				statement.executeUpdate(query);
 			}
 			
-		} catch (SQLServerException e) {
-			// TODO Auto-generated catch block
+		} 
+		catch (SQLServerException e) {
 			e.printStackTrace();
-		} catch (SQLException e1) {
-			// TODO Auto-generated catch block
+		} 
+		catch (SQLException e1) {
 			e1.printStackTrace();
 		} 
 		return true;

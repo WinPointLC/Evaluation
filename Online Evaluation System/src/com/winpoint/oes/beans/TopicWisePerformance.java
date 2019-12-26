@@ -13,14 +13,16 @@ public class TopicWisePerformance {
 	public String getTopicName() {
 		return topicName;
 	}
+	
 	public void setTopicName(String topicName) {
 		this.topicName = topicName;
 	}
+	
 	public int getTopicwiseNumberOfCorrectAns() {
 		return topicwiseNumberOfCorrectAns;
 	}
+	
 	public void setTopicwiseNumberOfCorrectAns(int topicwiseNumberOfCorrectAns) {
 		this.topicwiseNumberOfCorrectAns = topicwiseNumberOfCorrectAns;
 	}
-	
 }

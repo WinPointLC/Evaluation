@@ -25,8 +25,7 @@ public class BatchDetails {
 	 * @param createdBy
 	 * @param createdDate
 	 */
-	public BatchDetails(String batchId, Integer courseId, Integer facultyId, Date startDate, Date endDate,
-			Integer createdBy, Date createdDate) {
+	public BatchDetails(String batchId, Integer courseId, Integer facultyId, Date startDate, Date endDate, Integer createdBy, Date createdDate) {
 		this.batchId = batchId;
 		this.courseId = courseId;
 		this.facultyId = facultyId;

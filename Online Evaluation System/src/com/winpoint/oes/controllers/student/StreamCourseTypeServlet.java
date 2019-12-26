@@ -19,7 +19,6 @@ import com.winpoint.oes.beans.Course;
 import com.winpoint.oes.beans.CourseType;
 import com.winpoint.oes.beans.Stream;
 import com.winpoint.oes.beans.UserProfile;
-import com.winpoint.oes.dao.Dummy;
 import com.winpoint.oes.helpers.common.CourseHelper;
 import com.winpoint.oes.helpers.common.CourseTypeHelper;
 import com.winpoint.oes.helpers.common.LoginHelper;
@@ -37,14 +36,12 @@ public class StreamCourseTypeServlet extends HttpServlet {
      */
     public StreamCourseTypeServlet() {
         super();
-        // TODO Auto-generated constructor stub
     }
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
 		response.getWriter().append("Served at: ").append(request.getContextPath());
 	}
 
@@ -52,45 +49,28 @@ public class StreamCourseTypeServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		System.out.println("From StreamCourseTypeServlet");
 		BufferedReader br = new BufferedReader(new InputStreamReader(request.getInputStream()));
 	    String json = "";
 	    if(br != null){
 	    	json = br.readLine();
 	    }
-	    System.out.println(json);
 	   
 		Gson gson = new Gson();
 		Stream stream = gson.fromJson(json, Stream.class);
 		int streamId =  stream.getStreamId();
 		
-		System.out.println("StreamId = " + streamId);
 		List<CourseType> courseTypeList = new CourseTypeHelper().getCourseTypeList(streamId);
-		/*List<Course> courseList = new ArrayList<Course>();
-		courseList.add(new Course(1, "JS1", streamId, courseTypeId, "/OnlineEvaluationSystem/assets/img/Dashboard-main-page-images/java-brands.svg"));
-		courseList.add(new Course(2, "OS1", streamId, courseTypeId, "/OnlineEvaluationSystem/assets/img/Dashboard-main-page-images/java-brands.svg"));
-		courseList.add(new Course(3, "JAVA 8 1", streamId, courseTypeId, "/OnlineEvaluationSystem/assets/img/Dashboard-main-page-images/java-brands.svg"));
-		courseList.add(new Course(1, "JS2", streamId, courseTypeId, "/OnlineEvaluationSystem/assets/img/Dashboard-main-page-images/java-brands.svg"));
-		courseList.add(new Course(2, "OS2", streamId, courseTypeId, "/OnlineEvaluationSystem/assets/img/Dashboard-main-page-images/java-brands.svg"));
-		courseList.add(new Course(3, "JAVA 8 2", streamId, courseTypeId, "/OnlineEvaluationSystem/assets/img/Dashboard-main-page-images/java-brands.svg"));
-		courseList.add(new Course(1, "JS3", streamId, courseTypeId, "/OnlineEvaluationSystem/assets/img/Dashboard-main-page-images/java-brands.svg"));
-		courseList.add(new Course(2, "OS3", streamId, courseTypeId, "/OnlineEvaluationSystem/assets/img/Dashboard-main-page-images/java-brands.svg"));
-		courseList.add(new Course(3, "JAVA 8 3", streamId, courseTypeId, "/OnlineEvaluationSystem/assets/img/Dashboard-main-page-images/java-brands.svg"));*/
-		//Gson gson = new Gson();
 		if(courseTypeList != null) {
 			System.out.println(courseTypeList);
 			String json1 = null;
-		   json1 = gson.toJson("{ 'success': 'true', 'location': '/OnlineEvaluationSystem/jsp/MainCoursePage.jsp'}");
-		   String json2 = gson.toJson(courseTypeList);
+		    json1 = gson.toJson("{ 'success': 'true', 'location': '/OnlineEvaluationSystem/jsp/MainCoursePage.jsp'}");
+		    String json2 = gson.toJson(courseTypeList);
 		  		   
-		   String jsonString = "[" + json2  + "]";
-		   System.out.println("Json string is " + jsonString);
-		   PrintWriter writer = response.getWriter();
-		   writer.println(jsonString);
-		   writer.flush();
-		   
-		   
+		    String jsonString = "[" + json2  + "]";
+		    System.out.println("Json string is " + jsonString);
+		    PrintWriter writer = response.getWriter();
+		    writer.println(jsonString);
+		    writer.flush();
 		}
 	}
 }

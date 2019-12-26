@@ -26,15 +26,15 @@ public class CommonController extends HttpServlet {
      */
     public CommonController() {
         super();
-        // TODO Auto-generated constructor stub
     }
 
     /**
 	 * @see Servlet#init(ServletConfig)
 	 */
 	public void init(ServletConfig config) throws ServletException {
-		// TODO Auto-generated method stub
+		
 	}
+	
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
@@ -46,16 +46,11 @@ public class CommonController extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		System.out.println("success");
 		String action = request.getParameter("action");
-		System.out.println(action);
 		
 		RequestDispatcher rd = request.getRequestDispatcher("/" + action);
 		rd.forward(request, response);
 		
 	}
-
-
 }
  

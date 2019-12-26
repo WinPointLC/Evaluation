@@ -10,14 +10,6 @@ import com.winpoint.oes.dao.StreamDao;
 
 public class QuestionBankHelper {
 	public List<QuestionBank> getQuestionsList(int testDetailId){
-		List<QuestionBank> questionsList = new QuestionBankDao().getQuestionsList(testDetailId);
-		if(questionsList != null) {
-			Iterator<QuestionBank> questionsIterator = questionsList.iterator();
-			while(questionsIterator.hasNext()) {
-				QuestionBank stream = (QuestionBank)questionsIterator.next();
-				System.out.println("Question Id = " + stream.getQuestionId() + ": Question = " + stream.getQuestion());
-			}
-		}
-		return questionsList;
+		return new QuestionBankDao().getQuestionsList(testDetailId);
 	}
 }

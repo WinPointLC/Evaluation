@@ -28,7 +28,6 @@ public class SecurityQuestions {
 	}
 	
 	public SecurityQuestions(int securityQuestionId, String securityQuestion) {
-		// TODO Auto-generated constructor stub
 		this.securityQuestionId = securityQuestionId;
 		this.securityQuestion = securityQuestion;
 	}

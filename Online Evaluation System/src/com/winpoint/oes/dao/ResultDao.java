@@ -51,7 +51,6 @@ public class ResultDao {
 				courseTypeName = resultSet.getString("COURSE_TYPE_NAME");
 			}
 			
-		// Update STUDENT_COURSE_DETAILS
 			int totalMarks = result.getMarks();
 			PreparedStatement preparedStatement = connection.prepareStatement("UPDATE STUDENT_COURSE_DETAILS SET COURSE_AGGR=?, " + 
 					"	   GRADE_ID=(SELECT GRADE_ID FROM GRADING_SYSTEM \r\n" + 
@@ -114,11 +113,11 @@ public class ResultDao {
 			while(resultSet.next()) {
 			   testDetailId = resultSet.getInt("TEST_DETAIL_ID");
 			}
-		} catch (SQLServerException e) {
-			// TODO Auto-generated catch block
+		} 
+		catch (SQLServerException e) {
 			e.printStackTrace();
-		} catch (SQLException e1) {
-			// TODO Auto-generated catch block
+		} 
+		catch (SQLException e1) {
 			e1.printStackTrace();
 		} 
 		return testDetailId;

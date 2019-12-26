@@ -17,11 +17,9 @@ import com.winpoint.oes.util.sql.ConnectionManager;
 public class QuestionBankDao {
 
 	public void createQuestion(QuestionBank questionObj) {
-		// TODO Auto-generated method stub
 		try(Connection connection = ConnectionManager.getConnection()){
 			Statement statement = connection.createStatement();
-			String question = questionObj.getQuestion();//.replace("<br />", "\r\n");
-					//ReplaceNewLines(questionText, True);
+			String question = questionObj.getQuestion();
 			
 			String query = "INSERT INTO [dbo].[TECHNICAL_QUESTION_BANK]\r\n" + 
 					"           ([COURSE_ID]\r\n" + 
@@ -51,14 +49,13 @@ public class QuestionBankDao {
 					"           ,'" + questionObj.getInCrt() + "')";
 			System.out.println("Insert query is: \n" + query);
 			statement.executeUpdate(query);
-			} catch (SQLException e) {
-			// TODO Auto-generated catch block
+		} 
+		catch (SQLException e) {
 			e.printStackTrace();
-			}
+		}
 	}
 
 	public List<QuestionBank> getQuestionsList(int testdetailId) {
-		// TODO Auto-generated method stub
 		int currentCourseId = 0;
 		List<QuestionBank> questionsList = new ArrayList<QuestionBank>();
 		
@@ -71,33 +68,6 @@ public class QuestionBankDao {
 			while(resultSet.next()) {
 				currentCourseId = resultSet.getInt("course_id");
 			}
-			//select sum(NUMBER_OF_QUESTIONS) from TEST_DIFFICULTY where TEST_DETAIL_ID = " + testdetailId + "
-			/*query = "select \r\n" + 
-					"		distinct top (5 ) QUESTION_ID,\r\n" + 
-					"		QUESTION, \r\n" + 
-					"		OPTION_1, \r\n" + 
-					"		OPTION_2, \r\n" + 
-					"		OPTION_3, \r\n" + 
-					"		OPTION_4, \r\n" + 
-					"		CORRECT_OPTION, \r\n" + 
-					"		MARKS,\r\n" + 
-					"		crs.COURSE_ID,\r\n" +
-					"		COURSE_NAME,\r\n" +
-					"		marks,\r\n" + 
-					"		tqb.TOPIC_ID,\r\n" + 
-					"		TOPIC_NAME,\r\n" + 
-					"		tqb.DIFFICULTY_LEVEL_ID\r\n" + 
-					"		DIFFICULTY_LEVEL_NAME\r\n" + 
-					"	from TECHNICAL_QUESTION_BANK tqb JOIN COURSES crs\r\n" + 
-					"	ON tqb.COURSE_ID = crs.COURSE_ID\r\n" + 
-					"		JOIN TOPICS tp\r\n" + 
-					"		ON tqb.TOPIC_ID = tp.TOPIC_ID\r\n" + 
-					"			JOIN DIFFICULTY_LEVEL dl\r\n" + 
-					"			ON tqb.DIFFICULTY_LEVEL_ID = dl.DIFFICULTY_LEVEL_ID\r\n" + 
-					"				JOIN TEST_DIFFICULTY td\r\n" + 
-					"				ON tqb.topic_id = td.topic_id\r\n" + 
-					"\r\n" + "where tqb.course_id = " + currentCourseId + " " +
-					"order by question_id";*/
 			query = "select question_id, \r\n" + 
 					"		QUESTION,\r\n" + 
 					"		OPTION_1, \r\n" + 
@@ -144,22 +114,23 @@ public class QuestionBankDao {
 				String correctOption = resultSet.getString("CORRECT_OPTION");
 				int difficultyLevelId = 1;//resultSet.getInt("DIFFICULTY_LEVEL_ID");
 				QuestionBank question = new QuestionBank(questionId, courseId, topicId, questionDesc, option1, option2, option3, option4, correctOption, marks, difficultyLevelId);
-				//System.out.println(question);
 				questionsList.add(question);
 			}
-		} catch (SQLServerException e) {
-			// TODO Auto-generated catch block
+		} 
+		catch (SQLServerException e) {
 			e.printStackTrace();
-		} catch (SQLException e1) {
-			// TODO Auto-generated catch block
+		} 
+		catch (SQLException e1) {
 			e1.printStackTrace();
 		} 
 		return questionsList;
 	}
+	
 	 public static String lineBreakCharsToHTMLBreak(String sourceString){
 	        Pattern p =  Pattern.compile("[\\n\\r]");
 	        return p.matcher(sourceString).replaceAll("<br>");
 	 }
+	 
 	 public static String spacesToHTMLSpaces(String sourceString){
 	        Pattern p =  Pattern.compile("[\\t\\ ]");
 	        return p.matcher(sourceString).replaceAll("&nbsp");

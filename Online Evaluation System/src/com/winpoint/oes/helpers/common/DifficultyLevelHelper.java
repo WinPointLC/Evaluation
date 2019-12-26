@@ -8,7 +8,6 @@ import com.winpoint.oes.dao.DifficultyLevelDao;
 public class DifficultyLevelHelper {
 
 	public List<DifficultyLevel> getDifficultyLevelsList() {
-		// TODO Auto-generated method stub
 		return new DifficultyLevelDao().getDifficultyLevelsList();
 	}
 

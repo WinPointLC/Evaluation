@@ -29,7 +29,6 @@ public class UserTestDetailsDao {
 			int hrs = 0-result.getHours();
 			int mins = 59-result.getMinutes();
 			int secs = 60-result.getSeconds();
-			System.out.println("************ ?????" + hrs + " " + mins + " " + secs );
 			Time timeTaken = new Time((hrs*3600 + mins*60 + secs)*1000);
 			PreparedStatement preparedStatement = connection.prepareStatement(
 					"UPDATE USER_TEST_DETAILS SET MARKS_RECEIVED = ?, TIME_TAKEN = ?, ATTEMPTED=1"
@@ -38,14 +37,13 @@ public class UserTestDetailsDao {
 			preparedStatement.setTime(2, timeTaken);
 			preparedStatement.setInt(3, userId);
 			preparedStatement.setInt(4, testDetailId);
-			System.out.println("************" + result.getMarks() + " " + timeTaken + " " + userId + " " + testDetailId);
 			preparedStatement.executeUpdate();
 			preparedStatement.close();
-		}catch (SQLServerException e) {
-			// TODO Auto-generated catch block
+		}
+		catch (SQLServerException e) {
 			e.printStackTrace();
-		} catch (SQLException e1) {
-			// TODO Auto-generated catch block
+		} 
+		catch (SQLException e1) {
 			e1.printStackTrace();
 		} 
 		return true;
@@ -62,11 +60,11 @@ public class UserTestDetailsDao {
 			while(resultSet.next()) {
 			   testDetailId = resultSet.getInt("TEST_DETAIL_ID");
 			}
-		} catch (SQLServerException e) {
-			// TODO Auto-generated catch block
+		} 
+		catch (SQLServerException e) {
 			e.printStackTrace();
-		} catch (SQLException e1) {
-			// TODO Auto-generated catch block
+		} 
+		catch (SQLException e1) {
 			e1.printStackTrace();
 		} 
 		
@@ -74,17 +72,16 @@ public class UserTestDetailsDao {
 	}
 
 	public void createUserTestDetails(int userId, int courseId) {
-		// TODO Auto-generated method stub
 		try(Connection connection = ConnectionManager.getConnection()){
 			Statement statement = connection.createStatement();
 			int testDetailId = getTestDetailID(courseId);
 			String query = "INSERT INTO USER_TEST_DETAILS (USER_ID, TEST_DETAIL_ID, FEE_STATUS) VALUES (" + userId + ","+ testDetailId + ",'True')" ;
 			statement.executeUpdate(query);
-		} catch (SQLServerException e) {
-			// TODO Auto-generated catch block
+		} 
+		catch (SQLServerException e) {
 			e.printStackTrace();
-		} catch (SQLException e1) {
-			// TODO Auto-generated catch block
+		} 
+		catch (SQLException e1) {
 			e1.printStackTrace();
 		} 
 	}

@@ -15,7 +15,6 @@ import javax.servlet.http.HttpSession;
 
 import com.google.gson.Gson;
 import com.winpoint.oes.beans.UserProfile;
-import com.winpoint.oes.dao.Dummy;
 import com.winpoint.oes.helpers.common.LoginHelper;
 
 /**
@@ -30,14 +29,12 @@ public class ChangePasswordServlet extends HttpServlet {
      */
     public ChangePasswordServlet() {
         super();
-        // TODO Auto-generated constructor stub
     }
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
 		response.getWriter().append("Served at: ").append(request.getContextPath());
 	}
 
@@ -51,18 +48,17 @@ public class ChangePasswordServlet extends HttpServlet {
 	    if(br != null){
 	    	json = br.readLine();
 	    }
-	    System.out.println(json);
+	    
 		Gson gson = new Gson();
 		UserProfile userProfile = gson.fromJson(json, UserProfile.class);
 		if(userProfile != null) {
 			int userId = userProfile.getUserId();
 			String password = userProfile.getPassword();
-			System.out.println("password = " + password);
 		
 			boolean changed = new LoginHelper().changePassword(userId, password);
 			String json1 = null;
 			PrintWriter writer = response.getWriter();
-			//json1 = gson.toJson("{ 'success': 'true', 'location': '/OnlineEvaluationSystem/jsp/ForgotPassword.jsp'}");
+			
 			json1 = gson.toJson("{ 'success': '" + changed + "', 'location': '/OnlineEvaluationSystem/jsp/ForgotPassword.jsp'}");
 			String jsonString = "[" + json1 + "]";
 			System.out.println("Json string is " + jsonString);
@@ -70,5 +66,4 @@ public class ChangePasswordServlet extends HttpServlet {
 			writer.flush();
 		}
 	}
-
 }

@@ -47,7 +47,6 @@ public class Course {
 	}
 	
 	public Course(int courseId, String courseName, int streamId, int courseTypeId, String iconLocation) {
-		// TODO Auto-generated constructor stub
 		this.courseId = courseId;
 		this.courseName = courseName;
 		this.streamId = streamId;

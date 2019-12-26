@@ -21,13 +21,7 @@ public class CourseDao {
 		List<Course> courseList = new ArrayList<Course>();
 		
 		ResultSet resultSet = null;
-		/*SQLServerDataSource dataSource = new SQLServerDataSource();
-		dataSource.setUser("sa");
-		dataSource.setPassword("winpoint");
-		//dataSource.setServerName("SHRIRANGMHALGI\\SQLEXPRESS");
-		dataSource.setPortNumber(Integer.parseInt("1433"));
-		dataSource.setDatabaseName("OES_TESTING");*/
-
+		
 		try(Connection connection = ConnectionManager.getConnection()){
 			Statement statement = connection.createStatement();
 
@@ -55,11 +49,11 @@ public class CourseDao {
 				Course course = new Course(courseId, courseName, streamId, courseTypeId, logoLocation);
 				courseList.add(course);
 			}
-		} catch (SQLServerException e) {
-			// TODO Auto-generated catch block
+		} 
+		catch (SQLServerException e) {	
 			e.printStackTrace();
-		} catch (SQLException e1) {
-			// TODO Auto-generated catch block
+		} 
+		catch (SQLException e1) {
 			e1.printStackTrace();
 		} 
 		return courseList;
@@ -67,17 +61,10 @@ public class CourseDao {
 	}
 
 	public List<Test> getTestList(int userId, int courseId) {
-		// TODO Auto-generated method stub
 		List<Test> testList = new ArrayList<Test>();
 		
 		ResultSet resultSet = null;
-		/*SQLServerDataSource dataSource = new SQLServerDataSource();
-		dataSource.setUser("sa");
-		dataSource.setPassword("winpoint");
-		dataSource.setServerName("SHRIRANGMHALGI\\SQLEXPRESS");
-		dataSource.setPortNumber(Integer.parseInt("1433"));
-		dataSource.setDatabaseName("OES_TESTING");*/
-System.out.println("USERID = " + userId);
+
 		try(Connection connection = ConnectionManager.getConnection()){
 			Statement statement = connection.createStatement();
 
@@ -101,24 +88,21 @@ System.out.println("USERID = " + userId);
 			resultSet = statement.executeQuery(query);
 			
 			while(resultSet.next()) {
-				//int userId = resultSet.getInt("user_id");
 				String courseName = resultSet.getString("COURSE_NAME");
 				String evaluationTypeName = resultSet.getString("EVALUATION_TYPE_NAME");
 				int testDetailId = resultSet.getInt("TEST_DETAIL_ID");
 				int testFees = resultSet.getInt("TEST_FEES");
 				int fee_status = resultSet.getInt("FEE_STATUS");
-				System.out.println("<<<<<<<<<<<<< fee status = " + fee_status + ">>>>>>>>>>>>>>>>>>>>>>>>>");
-				//Boolean feeStatus = true;
 				int marksRceived = resultSet.getInt("MARKS_RECEIVED");
 				int attempted = resultSet.getInt("ATTEMPTED");
 				Test test = new Test(userId, courseName, evaluationTypeName, testDetailId, testFees, fee_status, marksRceived, attempted);
 				testList.add(test);
 			}
-		} catch (SQLServerException e) {
-			// TODO Auto-generated catch block
+		}
+		catch (SQLServerException e) {
 			e.printStackTrace();
-		} catch (SQLException e1) {
-			// TODO Auto-generated catch block
+		} 
+		catch (SQLException e1) {
 			e1.printStackTrace();
 		} 
 		return testList;

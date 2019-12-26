@@ -24,9 +24,9 @@ public class FeedbackQuestions {
 	}
 	
 	public FeedbackQuestions() {
-		// TODO Auto-generated constructor stub
+		
 	}
-
+	
 	/**
 	 * @return the feedbackQuestionId
 	 */

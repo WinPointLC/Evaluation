@@ -23,6 +23,11 @@
      <c:import url="/SignUpServlet" />
      <c:set var="securityQuestions" value="${requestScope.securityQuestionsList}" />
   </script>
+  
+  <script>
+     <c:import url="/SignUpServlet" />
+     <c:set var="userCategories" value="${requestScope.userCategoryList}" />
+  </script>
 </head>
 
 <body>
@@ -262,12 +267,11 @@
       var address = document.getElementById('address').value;
 	  var college = document.getElementById("college").value;
 	  var degree = document.getElementById('degree').value;
-      var yearOfGraduation = " ";//document.getElementById('yearOfGraduation').value;
+      var yearOfGraduation = document.getElementById('yearOfGraduation').value//new Date(document.getElementById('yearOfGraduation').value);
       var branch = document.getElementById('branch').value;
       var photoLocation = document.getElementById('uploadPreview').src;
       var password = document.getElementById("password").value;
       var secquestionId = document.getElementById('securityQuestion').value;
-      alert("Changed seQuestId = " + secquestionId);
       var secanswer = document.getElementById('secanswer').value; 
       
       /*** Following fields need to be removed from the form */
@@ -303,11 +307,10 @@
     		  college: college,
     		  degree: degree,
     		  branch: branch,
-    		  //yearOfGraduation: yearOfGraduation,
+    		  yearOfGraduation: yearOfGraduation,
     		  photoLocation: photoLocation,
     		  password: password,
     		  gender:gender,
-    		  //securityQuestionId: securityQuestionId,
     		  securityQuestionId:secquestionId,
     		  securityAnswer: secanswer,
     		  userCategoryId: userCategoryId,
@@ -327,7 +330,7 @@
           contentType: 'application/json; charset=utf-8',
           traditional: true,
           success: function (jsonObj) {
-            //alert("Success");
+            alert("Successfully updated");
             var responseJson1=jsonObj[0];
             var locationJson = eval('(' + responseJson1 + ')');
             var userProfileJSON = JSON.stringify(userProfileData);
@@ -338,7 +341,6 @@
             alert("Error");
           }
         });
-      alert("Data Updated Successfully");
     }
     $(document).ready(function() {
     	var searchString = window.location.search.substring(1);
@@ -359,7 +361,7 @@
        // document.getElementById('userName').value=userProfile1.userName;
         document.getElementById('email').value=userProfile1.email;
         document.getElementById('degree').value=userProfile1.degree;
-        //document.getElementById('yearOfGraduation').value=userProfile1.yearOfGraduation;
+        document.getElementById('yearOfGraduation').value=userProfile1.yearOfGraduation;
         document.getElementById('branch').value=userProfile1.branch;
         document.getElementById('address').value=userProfile1.address;
         //document.getElementById('city').value=userProfile1.City;

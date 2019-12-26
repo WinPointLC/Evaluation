@@ -20,7 +20,6 @@ import com.winpoint.oes.beans.CourseType;
 import com.winpoint.oes.beans.QuestionBank;
 import com.winpoint.oes.beans.Stream;
 import com.winpoint.oes.beans.UserProfile;
-import com.winpoint.oes.dao.Dummy;
 import com.winpoint.oes.helpers.common.AddQuestionHelper;
 import com.winpoint.oes.helpers.common.CourseHelper;
 import com.winpoint.oes.helpers.common.CourseTypeHelper;
@@ -39,14 +38,12 @@ public class AddQuestionServlet extends HttpServlet {
      */
     public AddQuestionServlet() {
         super();
-        // TODO Auto-generated constructor stub
     }
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
 		response.getWriter().append("Served at: ").append(request.getContextPath());
 	}
 
@@ -54,42 +51,35 @@ public class AddQuestionServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		System.out.println("From AddQuestionServlet");
 		BufferedReader br = new BufferedReader(new InputStreamReader(request.getInputStream()));
 	    String json = "";
 	    if(br != null){
 	    	json = br.readLine();
 	    }
-	    System.out.println(json);
 		Gson gson = new Gson();
 		QuestionBank questionObj = gson.fromJson(json, QuestionBank.class);
 		if(questionObj != null) {
-		
-		new AddQuestionHelper().createQuestion(questionObj);
-		
-		UserProfile userProfile = new UserProfile();
-		HttpSession session = request.getSession(false);
-		userProfile.setUserId((Integer)session.getAttribute("userId"));
-		userProfile.setFirstName((String)session.getAttribute("firstName"));
-		userProfile.setLastName((String)session.getAttribute("lastName"));
-		
-		String json1 = gson.toJson("{ 'success': 'true', 'location': '/OnlineEvaluationSystem/jsp/EmployeeDashboard.jsp'}");
-		String json2 = gson.toJson(userProfile);
+			new AddQuestionHelper().createQuestion(questionObj);
 			
-		List<Stream> streamList = new StreamHelper().getStreamList();
-		System.out.println(streamList);
-		String json3 = gson.toJson(streamList);
-		
-		
-		String jsonString = "[" + json1 + "," + json2 + "," + json3 + "]";
-					
-		System.out.println("Json string is " + jsonString);
-		PrintWriter writer = response.getWriter();
-		writer.println(jsonString);
-		writer.flush();
-		
+			UserProfile userProfile = new UserProfile();
+			HttpSession session = request.getSession(false);
+			userProfile.setUserId((Integer)session.getAttribute("userId"));
+			userProfile.setFirstName((String)session.getAttribute("firstName"));
+			userProfile.setLastName((String)session.getAttribute("lastName"));
+			
+			String json1 = gson.toJson("{ 'success': 'true', 'location': '/OnlineEvaluationSystem/jsp/EmployeeDashboard.jsp'}");
+			String json2 = gson.toJson(userProfile);
+				
+			List<Stream> streamList = new StreamHelper().getStreamList();
+			System.out.println(streamList);
+			String json3 = gson.toJson(streamList);
+			
+			String jsonString = "[" + json1 + "," + json2 + "," + json3 + "]";
+						
+			System.out.println("Json string is " + jsonString);
+			PrintWriter writer = response.getWriter();
+			writer.println(jsonString);
+			writer.flush();
 		}
 	}
-
 }

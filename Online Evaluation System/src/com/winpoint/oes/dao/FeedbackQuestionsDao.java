@@ -21,13 +21,7 @@ public class FeedbackQuestionsDao {
 		ArrayList<FeedbackQuestions> feedbackQuestionsList = new ArrayList<FeedbackQuestions>();
 		
 		ResultSet resultSet = null;
-		/*SQLServerDataSource dataSource = new SQLServerDataSource();
-		dataSource.setUser("sa");
-		dataSource.setPassword("winpoint");
-		//dataSource.setServerName("SHRIRANGMHALGI\\SQLEXPRESS");
-		dataSource.setPortNumber(Integer.parseInt("1433"));
-		dataSource.setDatabaseName("OES_TESTING");*/
-
+		
 		try(Connection connection = ConnectionManager.getConnection()){
 			Statement statement = connection.createStatement();
 			
@@ -35,7 +29,6 @@ public class FeedbackQuestionsDao {
 			resultSet = statement.executeQuery(query);
 			
 			while(resultSet.next()) {
-				//int ruleId = resultSet.getInt("rule_id");
 				int feedbackQuestionId = resultSet.getInt("FEEDBACK_QUESTION_ID");
 				String feedbackQuestion = resultSet.getString("FEEDBACK_QUESTION");
 				String feedbackQuestionType = resultSet.getString("FEEDBACK_QUESTION_TYPE");
@@ -45,11 +38,11 @@ public class FeedbackQuestionsDao {
 				feedbackQuestions.setFeedbackQuestionType(feedbackQuestionType);
 				feedbackQuestionsList.add(feedbackQuestions);
 			}
-		} catch (SQLServerException e) {
-			// TODO Auto-generated catch block
+		} 
+		catch (SQLServerException e) {
 			e.printStackTrace();
-		} catch (SQLException e1) {
-			// TODO Auto-generated catch block
+		} 
+		catch (SQLException e1) {
 			e1.printStackTrace();
 		} 
 		return feedbackQuestionsList;

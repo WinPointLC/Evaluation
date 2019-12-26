@@ -12,6 +12,5 @@ import com.winpoint.oes.dao.TestFeedbackDao;
 public class TestFeedbackHelper {
 	public boolean insertTestFeedback(int userId, int courseId, List<TestFeedback> testFeedbackList){
 		return new TestFeedbackDao().insertTestFeedback(userId, courseId, testFeedbackList);
-		
 	}
 }

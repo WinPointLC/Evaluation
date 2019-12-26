@@ -45,7 +45,6 @@ public class StudentCourseDetails {
 	}
 	
 	public StudentCourseDetails(int userId, int courseId, int courseAggr) {
-		// TODO Auto-generated constructor stub
 		this.userId = userId;
 		this.courseId = courseId;
 		this.courseAggr = courseAggr;
@@ -53,7 +52,6 @@ public class StudentCourseDetails {
 
 	public StudentCourseDetails(int userId, int courseId, String courseName, String logoLocation, String courseTypeName,
 			String streamName, int courseAggr) {
-		// TODO Auto-generated constructor stub
 		this.userId = userId;
 		this.courseId = courseId;
 		this.courseName = courseName;
@@ -228,5 +226,4 @@ public class StudentCourseDetails {
 	public void setStreamName(String streamName) {
 		this.streamName = streamName;
 	}
-	
 }

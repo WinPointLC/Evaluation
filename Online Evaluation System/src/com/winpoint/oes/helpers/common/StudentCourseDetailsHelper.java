@@ -10,26 +10,14 @@ import com.winpoint.oes.dao.StudentCourseDetailsDao;
 
 public class StudentCourseDetailsHelper {
 	public ArrayList<StudentCourseDetails> getStudentCourseDetailsList(int userId){
-		ArrayList<StudentCourseDetails> studentCourseDetailsList = new StudentCourseDetailsDao().getStudentCourseDetailsList(userId);
-		Iterator<StudentCourseDetails> studentCourseDetailsIterator = studentCourseDetailsList.iterator();
-		while(studentCourseDetailsIterator.hasNext()) {
-			StudentCourseDetails studentCourseDetails = (StudentCourseDetails)studentCourseDetailsIterator.next();
-		}
-		return studentCourseDetailsList;
+		return new StudentCourseDetailsDao().getStudentCourseDetailsList(userId);
 	}
 	
 	public ArrayList<StudentCourseDetails> getStudentGACourseDetailsList(int userId){
-		ArrayList<StudentCourseDetails> studentGACourseDetailsList = new StudentCourseDetailsDao().getStudentGACourseDetailsList(userId);
-		Iterator<StudentCourseDetails> studentGACourseDetailsIterator = studentGACourseDetailsList.iterator();
-		while(studentGACourseDetailsIterator.hasNext()) {
-			StudentCourseDetails studentGACourseDetails = (StudentCourseDetails)studentGACourseDetailsIterator.next();
-		}
-		return studentGACourseDetailsList;
+		return new StudentCourseDetailsDao().getStudentGACourseDetailsList(userId);
 	}
 
-	public void createStudentCourseDetails(int userId, int courseId, String courseName, int streamId,
-			int courseTypeId) {
-		// TODO Auto-generated method stub
+	public void createStudentCourseDetails(int userId, int courseId, String courseName, int streamId, int courseTypeId) {
 		new StudentCourseDetailsDao().createStudentCourseDetails(userId, courseId, courseName, streamId);
 	}
 }

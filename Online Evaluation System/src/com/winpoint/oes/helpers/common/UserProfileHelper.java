@@ -14,6 +14,5 @@ import com.winpoint.oes.dao.UserProfileDao;
 public class UserProfileHelper {
 	public boolean updateUserProfile(UserProfile userProfile){
 		return new UserProfileDao().updateUserProfile(userProfile);
-		
 	}
 }

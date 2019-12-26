@@ -20,13 +20,6 @@ public class RulesDao {
 		List<Rules> rulesList = new ArrayList<Rules>();
 		
 		ResultSet resultSet = null;
-		/*SQLServerDataSource dataSource = new SQLServerDataSource();
-		dataSource.setUser("sa");
-		dataSource.setPassword("winpoint");
-		//dataSource.setServerName("SHRIRANGMHALGI\\SQLEXPRESS");
-		dataSource.setPortNumber(Integer.parseInt("1433"));
-		dataSource.setDatabaseName("OES_TESTING");*/
-
 		try(Connection connection = ConnectionManager.getConnection()){
 			Statement statement = connection.createStatement();
 			
@@ -38,16 +31,15 @@ public class RulesDao {
 			resultSet = statement.executeQuery(query);
 			
 			while(resultSet.next()) {
-				//int ruleId = resultSet.getInt("rule_id");
 				String ruleDescription = resultSet.getString("rule_description");
 				Rules rule = new Rules(ruleDescription);
 				rulesList.add(rule);
 			}
-		} catch (SQLServerException e) {
-			// TODO Auto-generated catch block
+		} 
+		catch (SQLServerException e) {
 			e.printStackTrace();
-		} catch (SQLException e1) {
-			// TODO Auto-generated catch block
+		} 
+		catch (SQLException e1) {
 			e1.printStackTrace();
 		} 
 		return rulesList;

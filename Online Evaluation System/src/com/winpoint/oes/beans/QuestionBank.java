@@ -62,7 +62,6 @@ public class QuestionBank {
 	
 	public QuestionBank(int questionId, int courseId, int topicId, String question, String option1,
 			String option2, String option3, String option4, String correctOption, int totalMarks, int difficultyLevelId) {
-		// TODO Auto-generated constructor stub
 		this.questionId = questionId;
 		this.question = question;
 		this.courseId = courseId;

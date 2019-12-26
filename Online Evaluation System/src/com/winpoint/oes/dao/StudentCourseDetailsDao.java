@@ -41,7 +41,6 @@ public class StudentCourseDetailsDao {
 			resultSet = statement.executeQuery(query);
 			int i = 1;
 			while(resultSet.next()) {
-				//int ruleId = resultSet.getInt("rule_id");
 				int courseId = resultSet.getInt("COURSE_ID");
 				String courseName = resultSet.getString("COURSE_NAME");
 				String logoLocation = resultSet.getString("LOGO_LOCATION"); 
@@ -53,11 +52,11 @@ public class StudentCourseDetailsDao {
 				i++;
 				studentCourseDetailsList.add(secQuest);
 			}
-		} catch (SQLServerException e) {
-			// TODO Auto-generated catch block
+		} 
+		catch (SQLServerException e) {
 			e.printStackTrace();
-		} catch (SQLException e1) {
-			// TODO Auto-generated catch block
+		} 
+		catch (SQLException e1) {
 			e1.printStackTrace();
 		} 
 		return studentCourseDetailsList;
@@ -88,7 +87,6 @@ public ArrayList<StudentCourseDetails> getStudentGACourseDetailsList(int userId)
 			resultSet = statement.executeQuery(query);
 			int i = 1;
 			while(resultSet.next()) {
-				//int ruleId = resultSet.getInt("rule_id");
 				int courseId = resultSet.getInt("COURSE_ID");
 				String courseName = resultSet.getString("COURSE_NAME");
 				String logoLocation = resultSet.getString("LOGO_LOCATION"); 
@@ -96,15 +94,14 @@ public ArrayList<StudentCourseDetails> getStudentGACourseDetailsList(int userId)
 				String streamName = resultSet.getString("STREAM_NAME");
 				int courseAggr = resultSet.getInt("COURSE_AGGR");
 				StudentCourseDetails secQuest = new StudentCourseDetails(userId, courseId, courseName, logoLocation, courseTypeName, streamName, courseAggr);
-				System.out.println(i + ". " +courseName);
 				i++;
 				studentGACourseDetailsList.add(secQuest);
 			}
-		} catch (SQLServerException e) {
-			// TODO Auto-generated catch block
+		} 
+		catch (SQLServerException e) {
 			e.printStackTrace();
-		} catch (SQLException e1) {
-			// TODO Auto-generated catch block
+		} 
+		catch (SQLException e1) {
 			e1.printStackTrace();
 		} 
 		return studentGACourseDetailsList;
@@ -112,20 +109,18 @@ public ArrayList<StudentCourseDetails> getStudentGACourseDetailsList(int userId)
 	}
 
 	public void createStudentCourseDetails(int userId, int courseId, String courseName, int streamId) {
-	// TODO Auto-generated method stub
 		try(Connection connection = ConnectionManager.getConnection()){
 			Statement statement = connection.createStatement();
 			
 			String query = "INSERT INTO STUDENT_COURSE_DETAILS (USER_ID, COURSE_ID, FEE_STATUS) VALUES (" + userId + ","+ courseId + ",'PAID')" ;
 			statement.executeUpdate(query);
 			
-		} catch (SQLServerException e) {
-			// TODO Auto-generated catch block
+		} 
+		catch (SQLServerException e) {
 			e.printStackTrace();
-		} catch (SQLException e1) {
-			// TODO Auto-generated catch block
+		} 
+		catch (SQLException e1) {
 			e1.printStackTrace();
 		} 
-
 	}
 }

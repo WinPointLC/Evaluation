@@ -73,7 +73,4 @@ public class TestFeedback {
 	public void setCreatedDate(Date createdDate) {
 		this.createdDate = createdDate;
 	}
-
-	
-	
 }

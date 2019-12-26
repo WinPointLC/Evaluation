@@ -29,7 +29,6 @@ import com.winpoint.oes.beans.Result;
 import com.winpoint.oes.beans.Stream;
 import com.winpoint.oes.beans.Test;
 import com.winpoint.oes.beans.UserProfile;
-import com.winpoint.oes.dao.Dummy;
 import com.winpoint.oes.helpers.common.AnalyticsHelper;
 import com.winpoint.oes.helpers.common.CourseHelper;
 import com.winpoint.oes.helpers.common.FeedbackQuestionsHelper;
@@ -49,14 +48,12 @@ public class AnalyticsServlet extends HttpServlet {
      */
     public AnalyticsServlet() {
         super();
-        // TODO Auto-generated constructor stub
     }
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
 		response.getWriter().append("Served at: ").append(request.getContextPath());
 	}
 
@@ -64,8 +61,6 @@ public class AnalyticsServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		System.out.println("From AnalyticsServlet");
 		BufferedReader br = new BufferedReader(new InputStreamReader(request.getInputStream()));
 	    String json = "";
 	    if(br != null){
@@ -94,6 +89,5 @@ public class AnalyticsServlet extends HttpServlet {
 	    PrintWriter writer = response.getWriter();
 		writer.println(jsonString);
 		writer.flush();
-		
 	}
 }

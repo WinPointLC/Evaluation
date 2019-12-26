@@ -106,6 +106,4 @@ public class Result {
 	public void setSeconds(int seconds) {
 		this.seconds = seconds;
 	}	
-	
-	
 }

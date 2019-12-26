@@ -13,18 +13,10 @@ import com.winpoint.oes.dao.StreamDao;
 
 public class CourseTypeHelper {
 	public List<CourseType> getCourseTypeList(int streamId){
-		List<CourseType> courseTypeList = new CourseTypeDao().getCourseTypeList(streamId);
-		Iterator<CourseType> courseTypeIterator = courseTypeList.iterator();
-		while(courseTypeIterator.hasNext()) {
-			CourseType courseType = (CourseType)courseTypeIterator.next();
-			System.out.println("CourseType Id = " + courseType.getCourseTypeId() + ": CourseType Name = " + courseType.getCourseTypeName());
-		}
-		return courseTypeList;
+		return new CourseTypeDao().getCourseTypeList(streamId);
 	}
 
 	public List<Test> getTestsList(int userId, int streamId, int courseTypeId, int courseId) {
-		// TODO Auto-generated method stub
-		List<Test> testList = new CourseDao().getTestList(streamId, courseTypeId);
-		return testList;
+		return new CourseDao().getTestList(streamId, courseTypeId);
 	}
 }

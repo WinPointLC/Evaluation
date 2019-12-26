@@ -19,14 +19,13 @@ import com.winpoint.oes.beans.Course;
 import com.winpoint.oes.beans.CourseType;
 import com.winpoint.oes.beans.Stream;
 import com.winpoint.oes.beans.UserProfile;
-import com.winpoint.oes.dao.Dummy;
 import com.winpoint.oes.helpers.common.CourseHelper;
 import com.winpoint.oes.helpers.common.CourseTypeHelper;
 import com.winpoint.oes.helpers.common.LoginHelper;
 import com.winpoint.oes.helpers.common.StreamHelper;
 
 /**
- * Servlet implementation class LoginServ
+ * Servlet implementation class LoginServlet
  */
 @WebServlet("/LoginServlet")
 public class LoginServlet extends HttpServlet {
@@ -37,14 +36,12 @@ public class LoginServlet extends HttpServlet {
      */
     public LoginServlet() {
         super();
-        // TODO Auto-generated constructor stub
     }
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
 		response.getWriter().append("Served at: ").append(request.getContextPath());
 	}
 
@@ -58,47 +55,44 @@ public class LoginServlet extends HttpServlet {
 	    if(br != null){
 	    	json = br.readLine();
 	    }
-	    System.out.println(json);
+
 		Gson gson = new Gson();
 		UserProfile userProfile = gson.fromJson(json, UserProfile.class);
 		if(userProfile != null) {
-		String email = userProfile.getEmail();
-		String password = userProfile.getPassword();
-		System.out.println("email = " + email + "   password = " + password);
-		
-		UserProfile userProfileRecd =  new LoginHelper().validateLogin(email, password);
-		
-		if(userProfileRecd != null) {
-			HttpSession session = request.getSession();
-			session.setAttribute("userId", userProfileRecd.getUserId());
-			session.setAttribute("firstName", userProfileRecd.getFirstName());
-			session.setAttribute("lastName", userProfileRecd.getLastName());
-			String json1 = null;
-			String json2 = null;
-			String json3 = null;
-			String jsonString = null;
-			json2 = gson.toJson(userProfileRecd);
+			String email = userProfile.getEmail();
+			String password = userProfile.getPassword();
 			
-			int userCategoryId;
-		
-			PrintWriter writer = response.getWriter();
-			userCategoryId =  userProfileRecd.getUserCategoryId();
-			if (userCategoryId == 1) {
-			   json1 = gson.toJson("{ 'success': 'true', 'location': '/OnlineEvaluationSystem/jsp/ClientDashboard.jsp'}");
-			   jsonString = "[" + json1 + "," + json2 + "]";
-			}
-			else if(userCategoryId == 2) {
-				List<Stream> streamList = new StreamHelper().getStreamList();
-				System.out.println(streamList);
-				json3 = gson.toJson(streamList);
-				json1 = gson.toJson("{ 'success': 'true', 'location': '/OnlineEvaluationSystem/jsp/EmployeeDashboard.jsp'}");
-				jsonString = "[" + json1 + "," + json2 + "," + json3 + "]";
-			}
+			UserProfile userProfileRecd = new LoginHelper().validateLogin(email, password);			
+			if(userProfileRecd != null) {
+				HttpSession session = request.getSession();
+				session.setAttribute("userId", userProfileRecd.getUserId());
+				session.setAttribute("firstName", userProfileRecd.getFirstName());
+				session.setAttribute("lastName", userProfileRecd.getLastName());
+				String json1 = null;
+				String json2 = null;
+				String json3 = null;
+				String jsonString = null;
+				json2 = gson.toJson(userProfileRecd);
+				
+				int userCategoryId;
 			
-			System.out.println("Json string is " + jsonString);
-			writer.println(jsonString);
-			writer.flush();
-		}
+				PrintWriter writer = response.getWriter();
+				userCategoryId =  userProfileRecd.getUserCategoryId();
+				if (userCategoryId == 1) {
+				   json1 = gson.toJson("{ 'success': 'true', 'location': '/OnlineEvaluationSystem/jsp/ClientDashboard.jsp'}");
+				   jsonString = "[" + json1 + "," + json2 + "]";
+				}
+				else if(userCategoryId == 2) {
+					List<Stream> streamList = new StreamHelper().getStreamList();
+					System.out.println(streamList);
+					json3 = gson.toJson(streamList);
+					json1 = gson.toJson("{ 'success': 'true', 'location': '/OnlineEvaluationSystem/jsp/EmployeeDashboard.jsp'}");
+					jsonString = "[" + json1 + "," + json2 + "," + json3 + "]";
+				}
+				
+				writer.println(jsonString);
+				writer.flush();
+			}
 		}
 	}
 

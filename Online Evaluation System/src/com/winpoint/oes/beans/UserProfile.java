@@ -14,7 +14,7 @@ public class UserProfile {
 	private String college;
 	private String degree;
 	private String branch;
-	private Date yearOfGraduation;
+	private Integer yearOfGraduation;
 	private String photoLocation;
 	private String password;
 	private String gender;
@@ -44,6 +44,7 @@ public class UserProfile {
 	 * @param yearOfGraduation
 	 * @param photoLocation
 	 * @param password
+	 * @param gender
 	 * @param securityQuestionId
 	 * @param securityAnswer
 	 * @param userCategoryId
@@ -58,7 +59,7 @@ public class UserProfile {
 	 * @param photoLocation 
 	 */
 	public UserProfile(Integer userId, String firstName, String lastName, String email, String mobileNumber,
-			String address, Date birthDate, String college, String degree, String branch, Date yearOfGraduation,
+			String address, Date birthDate, String college, String degree, String branch, Integer yearOfGraduation,
 			String photoLocation, String password, Integer securityQuestionId, String securityAnswer, Integer userCategoryId,
 			String occupation, String organisation, String designation, String domain, String role, Integer experience,
 			Integer createdBy, Date createDate) {
@@ -90,7 +91,7 @@ public class UserProfile {
 	}
 
 	public UserProfile(Integer userId, String firstName, String lastName, String email, String mobileNumber,
-			String address, Date birthDate, String college, String degree, String branch, Date yearOfGraduation,
+			String address, Date birthDate, String college, String degree, String branch, Integer yearOfGraduation,
 			String photoLocation, String password, String gender, Integer securityQuestionId, String securityQuestion,
 			String securityAnswer, Integer userCategoryId, String occupation, String organisation, String designation,
 			String domain, String role, Integer experience) {//, Integer createdBy, Date createDate) {
@@ -286,14 +287,14 @@ public class UserProfile {
 	/**
 	 * @return the yearOfGraduation
 	 */
-	public Date getYearOfGraduation() {
+	public Integer getYearOfGraduation() {
 		return yearOfGraduation;
 	}
 
 	/**
 	 * @param yearOfGraduation the yearOfGraduation to set
 	 */
-	public void setYearOfGraduation(Date yearOfGraduation) {
+	public void setYearOfGraduation(Integer yearOfGraduation) {
 		this.yearOfGraduation = yearOfGraduation;
 	}
 

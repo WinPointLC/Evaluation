@@ -15,7 +15,6 @@ import com.winpoint.oes.util.sql.ConnectionManager;
 public class TopicsDao {
 
 	public List<Topic> getTopicsList(int courseId) {
-		// TODO Auto-generated method stub
 		List<Topic> topicsList = new ArrayList<Topic>();
 		
 		ResultSet resultSet = null;
@@ -33,14 +32,13 @@ public class TopicsDao {
 				Topic topic = new Topic(topicId, courseId, topicName, minQues);
 				topicsList.add(topic);
 			}
-		} catch (SQLServerException e) {
-			// TODO Auto-generated catch block
+		} 
+		catch (SQLServerException e) {
 			e.printStackTrace();
-		} catch (SQLException e1) {
-			// TODO Auto-generated catch block
+		} 
+		catch (SQLException e1) {
 			e1.printStackTrace();
 		} 
 		return topicsList;
 	}
-
 }

@@ -22,53 +22,68 @@ public class Test {
 		this.marksReceived = marksReceived;
 		this.attempted = attempted;
 	}
+	
 	public Integer getUserId() {
 		return userId;
 	}
+	
 	public void setUserId(Integer userId) {
 		this.userId = userId;
 	}
+	
 	public String getCourseName() {
 		return courseName;
 	}
+	
 	public void setCourseName(String courseName) {
 		this.courseName = courseName;
 	}
+	
 	public String getEvaluationTypeName() {
 		return evaluationTypeName;
 	}
+	
 	public void setEvaluationTypeName(String evaluationTypeName) {
 		this.evaluationTypeName = evaluationTypeName;
 	}
+	
 	public Integer getTestDetailId() {
 		return testDetailId;
 	}
+	
 	public void setTestDetailId(Integer testDetailId) {
 		this.testDetailId = testDetailId;
 	}
+	
 	public Integer getTestFees() {
 		return testFees;
 	}
+	
 	public void setTestFees(Integer testFees) {
 		this.testFees = testFees;
 	}
+	
 	public int getFeeStatus() {
 		return feeStatus;
 	}
+	
 	public void setFeeStatus(int feeStatus) {
 		this.feeStatus = feeStatus;
 	}
+	
 	public Integer getMarksReceived() {
 		return marksReceived;
 	}
+	
 	public void setMarksReceived(Integer marksReceived) {
 		this.marksReceived = marksReceived;
 	}
+	
 	public Integer getAttempted() {
 		return attempted;
 	}
+	
 	public void setAttempted(Integer attempted) {
 		this.attempted = attempted;
-	}	
-	
+	}
 }

@@ -21,7 +21,6 @@ import com.winpoint.oes.beans.CourseType;
 import com.winpoint.oes.beans.Stream;
 import com.winpoint.oes.beans.StudentCourseDetails;
 import com.winpoint.oes.beans.UserProfile;
-import com.winpoint.oes.dao.Dummy;
 import com.winpoint.oes.dao.UserTestDetailsDao;
 import com.winpoint.oes.helpers.common.CourseTypeHelper;
 import com.winpoint.oes.helpers.common.LoginHelper;
@@ -40,14 +39,12 @@ public class CourseRegistrationServlet extends HttpServlet {
      */
     public CourseRegistrationServlet() {
         super();
-        // TODO Auto-generated constructor stub
     }
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
 		response.getWriter().append("Served at: ").append(request.getContextPath());
 	}
 
@@ -62,7 +59,7 @@ public class CourseRegistrationServlet extends HttpServlet {
 	    if(br != null){
 	    	json = br.readLine();
 	    }
-	    System.out.println(json);
+	    
 		Gson gson = new Gson();
 		Course course = gson.fromJson(json, Course.class);
 		
@@ -72,8 +69,7 @@ public class CourseRegistrationServlet extends HttpServlet {
 		int courseTypeId = course.getCourseTypeId();
 		HttpSession session = request.getSession(false);
 		int userId = (int) session.getAttribute("userId");
-		System.out.println("courseName = " + courseName + "   courseTypeId = " + courseTypeId);
-		//Update Student_Course_Details table here
+		
 		new StudentCourseDetailsHelper().createStudentCourseDetails(userId, courseId, courseName, streamId, courseTypeId);
 		new UserTestDetailsDao().createUserTestDetails(userId, courseId);
 		ArrayList <StudentCourseDetails>studentCourseDetailsList =  new StudentCourseDetailsHelper().getStudentCourseDetailsList(userId);
@@ -88,7 +84,6 @@ public class CourseRegistrationServlet extends HttpServlet {
 		String jsonString = "[" + json1 + "," + json2 + "," + json3 + "]";
 		System.out.println("Json string is " + jsonString);
 		writer.println(jsonString);
-		writer.flush();
-		   
+		writer.flush();		   
 	}
 }
