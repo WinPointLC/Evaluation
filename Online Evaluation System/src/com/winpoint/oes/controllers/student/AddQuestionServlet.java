@@ -71,7 +71,6 @@ public class AddQuestionServlet extends HttpServlet {
 			String json2 = gson.toJson(userProfile);
 				
 			List<Stream> streamList = new StreamHelper().getStreamList();
-			System.out.println(streamList);
 			String json3 = gson.toJson(streamList);
 			
 			String jsonString = "[" + json1 + "," + json2 + "," + json3 + "]";

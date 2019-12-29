@@ -108,11 +108,11 @@ public ArrayList<StudentCourseDetails> getStudentGACourseDetailsList(int userId)
 		
 	}
 
-	public void createStudentCourseDetails(int userId, int courseId, String courseName, int streamId) {
+	public void createStudentCourseDetails(int userId, int courseId, String courseName, int streamId, String feeStatus) {
 		try(Connection connection = ConnectionManager.getConnection()){
-			Statement statement = connection.createStatement();
-			
-			String query = "INSERT INTO STUDENT_COURSE_DETAILS (USER_ID, COURSE_ID, FEE_STATUS) VALUES (" + userId + ","+ courseId + ",'PAID')" ;
+			Statement statement = connection.createStatement();			
+			String query = "INSERT INTO STUDENT_COURSE_DETAILS (USER_ID, COURSE_ID, FEE_STATUS) VALUES (" + userId + ","+ courseId + ",'" + feeStatus + "')" ;
+			System.out.println(query);
 			statement.executeUpdate(query);
 			
 		} 
@@ -122,5 +122,20 @@ public ArrayList<StudentCourseDetails> getStudentGACourseDetailsList(int userId)
 		catch (SQLException e1) {
 			e1.printStackTrace();
 		} 
+	}
+	
+	public void updateStudentCourseDetails(int userId, int courseId) {
+		try(Connection connection = ConnectionManager.getConnection()){
+			Statement statement = connection.createStatement();			
+			String query = "UPDATE STUDENT_COURSE_DETAILS SET FEE_STATUS = 'PAID' WHERE USER_ID = " + userId + " AND COURSE_ID = " + courseId;
+			System.out.println(query);
+			statement.executeUpdate(query);
+		} 
+		catch (SQLServerException e) {
+			e.printStackTrace();
+		} 
+		catch (SQLException e1) {
+			e1.printStackTrace();
+		}
 	}
 }

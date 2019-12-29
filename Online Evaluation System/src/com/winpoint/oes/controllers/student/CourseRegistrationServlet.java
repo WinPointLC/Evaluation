@@ -70,7 +70,10 @@ public class CourseRegistrationServlet extends HttpServlet {
 		HttpSession session = request.getSession(false);
 		int userId = (int) session.getAttribute("userId");
 		
-		new StudentCourseDetailsHelper().createStudentCourseDetails(userId, courseId, courseName, streamId, courseTypeId);
+		String feeStatus = request.getParameter("feeStatus");
+		System.out.println("feeStatus = " + feeStatus);
+		
+		new StudentCourseDetailsHelper().createStudentCourseDetails(userId, courseId, courseName, streamId, courseTypeId, feeStatus);
 		new UserTestDetailsDao().createUserTestDetails(userId, courseId);
 		ArrayList <StudentCourseDetails>studentCourseDetailsList =  new StudentCourseDetailsHelper().getStudentCourseDetailsList(userId);
 		ArrayList <StudentCourseDetails>studentGACourseDetailsList =  new StudentCourseDetailsHelper().getStudentGACourseDetailsList(userId);
@@ -82,7 +85,6 @@ public class CourseRegistrationServlet extends HttpServlet {
 		PrintWriter writer = response.getWriter();
 				
 		String jsonString = "[" + json1 + "," + json2 + "," + json3 + "]";
-		System.out.println("Json string is " + jsonString);
 		writer.println(jsonString);
 		writer.flush();		   
 	}

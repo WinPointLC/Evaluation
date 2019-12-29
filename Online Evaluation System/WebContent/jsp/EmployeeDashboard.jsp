@@ -1,3 +1,4 @@
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!doctype html>
 <html lang="en">
 
@@ -19,6 +20,10 @@
   <!-- own CSS -->
   <link rel="stylesheet" href="../css/Dashboard.css">
   <link rel="stylesheet" href="../css/EmployeeDashboard.css">
+  <script>
+     <c:import url="/FeeDetailsServlet" />
+     <c:set var="unpaidStudentsList" value="${requestScope.unpaidStudentsList}" />
+  </script>
 </head>
 
 <body>
@@ -1281,6 +1286,8 @@ document.getElementById('fee-register-link').onclick=function() {
   // var td0 = ['1','2']; var td1 = ['Sahil','Sanika']; var td2 = ['sahil@','sanika@'];
   // var td3 = ['M.G. Road','M.A.Road']; var td4=[12,23]; var td5 = ['c','cpp','java']; var td6=['Analytics'];
   // var students = {Srno:1, Username:"Sahil",Email:"sahi@",Address:"PICT",MobileNo:121,CoursesDone:"C,CPP"};
+  
+  
    var students = {
      Srno:1, Username:"Sahil",Email:"sahi@",Address:"PICT",MobileNo:121,CoursesDone:"C,CPP",Button1:"Analytics" , Button2:"Result"
    };
@@ -1328,70 +1335,113 @@ document.getElementById('fee-register-link').onclick=function() {
 
   //--------------------- start of Fee register script----------------------------
   //creating table dynamically
-  var table2 = document.createElement('table');
-  table2.className="table table-hover";
-  var thead2 = document.createElement('thead');
-  // var head = ['Sr.no','Username','Email','Address','Mobile No','Courses Done','Button1','Button2'];
-  var head2 = ['Username','Course','Fee of Course','Remaining Fees','Paid','Unpaid','REGISTRATION'];
-  for (var i = 0; i < head2.length; i++) {
-    var th2 = document.createElement('th');
-    th2.textContent = head2[i];
-    thead2.appendChild(th2);
-  }
-  table2.appendChild(thead2);
-  // var td0 = ['1','2']; var td1 = ['Sahil','Sanika']; var td2 = ['sahil@','sanika@'];
-  // var td3 = ['M.G. Road','M.A.Road']; var td4=[12,23]; var td5 = ['c','cpp','java']; var td6=['Analytics'];
-  // var students = {Srno:1, Username:"Sahil",Email:"sahi@",Address:"PICT",MobileNo:121,CoursesDone:"C,CPP"};
-   var student = {
-      Username:"Sahil",Course:"C",Fee_Of_Course:4000,Remaining_Fees:0,Paid:"Paid",Unpaid:"Unpaid",Registeration:"register link"
-   };
+  
+  //function getFeeRegistrationPage(){
+	  var table2 = document.createElement('table');
+	  table2.className="table table-hover";
+	  var thead2 = document.createElement('thead');
+	  // var head = ['Sr.no','Username','Email','Address','Mobile No','Courses Done','Button1','Button2'];
+	  var head2 = ['Username','Course','Fee of Course','Remaining Fees','Paid','REGISTRATION'];
+	  for (var i = 0; i < head2.length; i++) {
+	    var th2 = document.createElement('th');
+	    th2.textContent = head2[i];
+	    thead2.appendChild(th2);
+	  }
+	  table2.appendChild(thead2);
+	  // var td0 = ['1','2']; var td1 = ['Sahil','Sanika']; var td2 = ['sahil@','sanika@'];
+	  // var td3 = ['M.G. Road','M.A.Road']; var td4=[12,23]; var td5 = ['c','cpp','java']; var td6=['Analytics'];
+	  // var students = {Srno:1, Username:"Sahil",Email:"sahi@",Address:"PICT",MobileNo:121,CoursesDone:"C,CPP"};
+	  
+	  //------
+  	  // after the ajax call the data will be dumped here and then put the data in the html table (servlet call is GetFeeDetailsServlet)
+  	  //------
+  	  
 
-  //creating Tbody
-  var tbody2 = document.createElement('tbody');
-  var tr2 = document.createElement('tr');
-   var td02 = document.createElement('td');
-   td02.textContent = student.Username;
-   var td12 = document.createElement('td');
-   td12.textContent = student.Course;
-   var td22 = document.createElement('td');
-   td22.textContent = student.Fee_Of_Course;
-   var td32 = document.createElement('td');
-   td32.textContent = student.Remaining_Fees;
-   var td42 = document.createElement('td');
-   var paidbtn = document.createElement('button');
-   paidbtn.textContent = student.Paid;
-   // td4.textContent = students.Paid;
-   td42.appendChild(paidbtn);
+  	  
+	   //var student = {
+	   //   Username:"Sahil",Course:"C",Fee_Of_Course:4000,Remaining_Fees:0,Paid:"Paid",Registeration:"register link"
+	   //};
+	  
+	  </script>
+	  
+	  <c:forEach var="unpaidStudent" items= "${unpaidStudentsList}" varStatus="i">
+         <script>
 
-   var td52 = document.createElement('td');
-   var unpaidbtn = document.createElement('button');
-   unpaidbtn.textContent = student.Unpaid;
-   // td4.textContent = students.Paid;
-   td52.appendChild(unpaidbtn);
-   //creating Analytics and Result Button for all user.
-   var td62  = document.createElement('td');
-   var btn12 = document.createElement('button');
-   btn12.textContent =student.Registeration;
-   td62.appendChild(btn12);
+	  //creating Tbody
+	  var tbody2 = document.createElement('tbody');
+	  tbody2.setAttribute('id', "${unpaidStudent.userId}${unpaidStudent.courseId}");
+	  var tr2 = document.createElement('tr');
+	   var td02 = document.createElement('td');
+	   td02.textContent = "${unpaidStudent.fisrtName}" + " " + "${unpaidStudent.lastName}"
+	   var td12 = document.createElement('td');
+	   td12.textContent = "${unpaidStudent.courseName}";
+	   var td22 = document.createElement('td');
+	   td22.textContent = "${unpaidStudent.fees}";
+	   var td32 = document.createElement('td');
+	   //Remove Hard coding
+	   td32.textContent = 0;
+	   var td42 = document.createElement('td');
+	   var paidbtn = document.createElement('button');
+	   paidbtn.textContent = "Paid";
+	   paidbtn.setAttribute('onclick', "updateFeeStatus(${unpaidStudent.userId}, ${unpaidStudent.courseId})");
+	   // td4.textContent = students.Paid;
+	   td42.appendChild(paidbtn);
 
-   tr2.appendChild(td02);
-   tr2.appendChild(td12);
-   tr2.appendChild(td22);
-   tr2.appendChild(td32);
-   tr2.appendChild(td42);
-   tr2.appendChild(td52);
-   tr2.appendChild(td62);
+	   //creating Analytics and Result Button for all user.
+	   var td62  = document.createElement('td');
+	   var btn12 = document.createElement('button');
+	   btn12.textContent ="Register";
+	   td62.appendChild(btn12);
+
+	   tr2.appendChild(td02);
+	   tr2.appendChild(td12);
+	   tr2.appendChild(td22);
+	   tr2.appendChild(td32);
+	   tr2.appendChild(td42);
+	   tr2.appendChild(td62);
 
 
 
-  thead2.appendChild(th2);
-  tbody2.appendChild(tr2);
-  table2.appendChild(tbody2);
+	  thead2.appendChild(th2);
+	  tbody2.appendChild(tr2);
+	  table2.appendChild(tbody2);
 
-  document.getElementById('table2').appendChild(table2);
-//--------------------- end of Fee register script----------------------------
+	  </script>
+      </c:forEach>
+      <script type="text/javascript">
+      
+	  document.getElementById('table2').appendChild(table2);
+	  
+
+  //}
+  //--------------------- end of Fee register script----------------------------
 
 </script>
+<script type="text/javascript">
+	function updateFeeStatus(userId, courseId){
+		var myData = {
+				userId: userId,
+				courseId: courseId
+			};
+		
+		$.ajax({
+			type: 'POST',
+			url: '/OnlineEvaluationSystem/CommonController?action=FeeDetailsServlet',
+			data: JSON.stringify(myData),
+			dataType: 'json',
+			contentType: 'application/json; charset=utf-8',
+			traditional: true,
+			success: function (jsonObj) {
+				alert("success in updating the values");
+				document.getElementById(userId + '' + courseId).remove();
+			},
+			error: function(){
+				alert("Error in updating the fees");
+			}
+		});
+	}
+</script>
+
 
 <!--   Core JS Files   -->
 <script src="../assets/js/core/jquery.min.js"></script>

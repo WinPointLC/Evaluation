@@ -17,7 +17,11 @@ public class StudentCourseDetailsHelper {
 		return new StudentCourseDetailsDao().getStudentGACourseDetailsList(userId);
 	}
 
-	public void createStudentCourseDetails(int userId, int courseId, String courseName, int streamId, int courseTypeId) {
-		new StudentCourseDetailsDao().createStudentCourseDetails(userId, courseId, courseName, streamId);
+	public void createStudentCourseDetails(int userId, int courseId, String courseName, int streamId, int courseTypeId, String feeStatus) {
+		new StudentCourseDetailsDao().createStudentCourseDetails(userId, courseId, courseName, streamId, feeStatus);
+	}
+	
+	public void updateStudentCourseDetails(int userId, int courseId) {
+		new StudentCourseDetailsDao().updateStudentCourseDetails(userId, courseId);
 	}
 }

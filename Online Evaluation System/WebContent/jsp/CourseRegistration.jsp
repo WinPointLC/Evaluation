@@ -553,10 +553,12 @@
     	          courseId: courseId,
     	          courseName: courseName
     	        };
-
+				
+    	  var feeStatus = 'PAID'; 
+    		  
     	        $.ajax({
     	          type: 'POST',
-    	          url: '/OnlineEvaluationSystem/CommonController?action=CourseRegistrationServlet',
+    	          url: '/OnlineEvaluationSystem/CommonController?action=CourseRegistrationServlet&feeStatus=' + feeStatus,
     	          data: JSON.stringify(myData),
     	          dataType: 'json',
     	          contentType: 'application/json; charset=utf-8',
