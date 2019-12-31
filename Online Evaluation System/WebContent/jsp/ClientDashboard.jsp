@@ -150,7 +150,7 @@
   }
   function sendToUserAnalytics(){
 	  //var studentCourseDetails = '<c:out value="${studentCourseDetails}"/>';
-	  
+
 	  //alert('${studentCourseDetails}');
 	  //alert('${studentGACourseDetails}');
 	   window.location.href = "/OnlineEvaluationSystem/jsp/Analytics.jsp?varid="+ encodeURIComponent('${studentCourseDetails}') + encodeURIComponent('${studentGACourseDetails}');
@@ -205,6 +205,26 @@
 
 });
 //window.location.href = "/OnlineEvaluationSystem/jsp/MainCoursePage.jsp?varid="+ encodeURIComponent(strResJSON);
+}
+function LogoutSession() {
+    $.$.ajax({
+      url: '//OnlineEvaluationSystem/CommonController?action=LogoutServlet',
+      type: 'POST',
+      dataType: 'json',
+      data: ,
+      contentType: 'application/json; charset=utf-8',
+      traditional: true,
+      success: function (jsonObj) {
+        alert("You are in Success function of LogoutAjax call ");
+        var responseJson1=jsonObj[0];
+        var locationJson = eval('(' + responseJson1 + ')');
+        window.location.href = locationJson.location; //+ "?varid=" + encodeURIComponent(strResJSON);
+      }
+      error: function () {
+        alert("You are in error function of LogoutAjax call ");
+      }
+    });
+
 }
 </script>
 </head>
@@ -327,7 +347,8 @@
                 <a class="dropdown-item" href="#" onclick="User_link();">Profile</a>
                 <a class="dropdown-item" href="#" onclick="Settings_link();">Settings</a>
                 <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="#">Log out</a>
+                <!-- giving ajax call to Logout Link -->
+                <a class="dropdown-item" onclick="LogoutSession();">Log out</a>
               </div>
               <!-- your navbar here -->
             </ul>
@@ -585,7 +606,7 @@
   }
   function User_link() {
     loaddata();
-    
+
     document.getElementById('Tech-content').style.display="none";
     document.getElementById('GA-content').style.display="none";
     document.getElementById('Result-frame').style.display="none";
