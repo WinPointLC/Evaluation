@@ -24,6 +24,10 @@
      <c:import url="/FeeDetailsServlet" />
      <c:set var="unpaidStudentsList" value="${requestScope.unpaidStudentsList}" />
   </script>
+  <script>
+     <c:import url="/FeeDetailsServlet" />
+     <c:set var="unpaidStudentsList" value="${requestScope.unpaidStudentsList}" />
+  </script>
 </head>
 
 <body>
@@ -1276,20 +1280,16 @@ document.getElementById('fee-register-link').onclick=function() {
   var table = document.createElement('table');
   table.className="table table-hover";
   var thead = document.createElement('thead');
-  var head = ['Sr.no','Username','Email','Address','Mobile No','Courses Done','Button1','Button2'];
+  var head = ['Sr.no','Username','Email','Address','Mobile No','Courses Done','Analytics'];
   for (var i = 0; i < head.length; i++) {
     var th = document.createElement('th');
     th.textContent = head[i];
     thead.appendChild(th);
   }
   table.appendChild(thead);
-  // var td0 = ['1','2']; var td1 = ['Sahil','Sanika']; var td2 = ['sahil@','sanika@'];
-  // var td3 = ['M.G. Road','M.A.Road']; var td4=[12,23]; var td5 = ['c','cpp','java']; var td6=['Analytics'];
-  // var students = {Srno:1, Username:"Sahil",Email:"sahi@",Address:"PICT",MobileNo:121,CoursesDone:"C,CPP"};
-  
   
    var students = {
-     Srno:1, Username:"Sahil",Email:"sahi@",Address:"PICT",MobileNo:121,CoursesDone:"C,CPP",Button1:"Analytics" , Button2:"Result"
+     Srno:1, Username:"Sahil",Email:"sahi@",Address:"PICT",MobileNo:121,CoursesDone:"C,CPP",Button1:"Go to analytics"
    };
 
   //creating Tbody
@@ -1312,11 +1312,7 @@ document.getElementById('fee-register-link').onclick=function() {
    var btn1 = document.createElement('button');
    btn1.textContent =students.Button1;
    td6.appendChild(btn1);
-   var td7  = document.createElement('td');
-   var btn2 = document.createElement('button');
-   btn2.textContent =students.Button2;
-   td7.appendChild(btn2);
-
+   
    tr.appendChild(td0);
    tr.appendChild(td1);
    tr.appendChild(td2);
@@ -1324,7 +1320,6 @@ document.getElementById('fee-register-link').onclick=function() {
    tr.appendChild(td4);
    tr.appendChild(td5);
    tr.appendChild(td6);
-   tr.appendChild(td7);
 
 
   thead.appendChild(th);
@@ -1365,7 +1360,8 @@ document.getElementById('fee-register-link').onclick=function() {
 	  </script>
 	  
 	  <c:forEach var="unpaidStudent" items= "${unpaidStudentsList}" varStatus="i">
-         <script>
+      
+      <script>
 
 	  //creating Tbody
 	  var tbody2 = document.createElement('tbody');
