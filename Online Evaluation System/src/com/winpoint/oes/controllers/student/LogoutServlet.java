@@ -12,31 +12,18 @@ import javax.servlet.http.HttpSession;
 
 import com.google.gson.Gson;
 
-/**
- * Servlet implementation class LogoutServlet
- */
 @WebServlet("/LogoutServlet")
 public class LogoutServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
     public LogoutServlet() {
         super();
-        // TODO Auto-generated constructor stub
     }
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 	}
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		System.out.println("In LogoutServlet");
 		
@@ -53,5 +40,4 @@ public class LogoutServlet extends HttpServlet {
 		writer.println(jsonString);
 		writer.flush();
 	}
-
 }

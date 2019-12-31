@@ -207,19 +207,17 @@
 //window.location.href = "/OnlineEvaluationSystem/jsp/MainCoursePage.jsp?varid="+ encodeURIComponent(strResJSON);
 }
 function LogoutSession() {
-    $.$.ajax({
-      url: '//OnlineEvaluationSystem/CommonController?action=LogoutServlet',
+    $.ajax({
+      url: '/OnlineEvaluationSystem/CommonController?action=LogoutServlet',
       type: 'POST',
       dataType: 'json',
-      data: ,
       contentType: 'application/json; charset=utf-8',
       traditional: true,
       success: function (jsonObj) {
-        alert("You are in Success function of LogoutAjax call ");
         var responseJson1=jsonObj[0];
         var locationJson = eval('(' + responseJson1 + ')');
-        window.location.href = locationJson.location; //+ "?varid=" + encodeURIComponent(strResJSON);
-      }
+        window.location.href = locationJson.location;
+      },
       error: function () {
         alert("You are in error function of LogoutAjax call ");
       }
