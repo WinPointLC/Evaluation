@@ -30,6 +30,7 @@ public class UserProfile {
 	private Integer experience;
 	private Integer createdBy;
 	private Date createDate;
+	
 	/**
 	 * @param userId
 	 * @param firstName
@@ -138,6 +139,19 @@ public class UserProfile {
 		this.email = email;
 		this.userCategoryId = userCategoryId;
 		this.photoLocation = photoLocation;
+	}
+	
+	
+
+	public UserProfile(Integer userId, String firstName, String lastName, String email, String mobileNumber,
+			String college) {
+		super();
+		this.userId = userId;
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.email = email;
+		this.mobileNumber = mobileNumber;
+		this.college = college;
 	}
 
 	public UserProfile() {

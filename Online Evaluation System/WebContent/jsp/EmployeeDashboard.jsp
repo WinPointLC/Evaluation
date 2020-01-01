@@ -25,8 +25,8 @@
      <c:set var="unpaidStudentsList" value="${requestScope.unpaidStudentsList}" />
   </script>
   <script>
-     <c:import url="/FeeDetailsServlet" />
-     <c:set var="unpaidStudentsList" value="${requestScope.unpaidStudentsList}" />
+     <c:import url="/GetUsers" />
+     <c:set var="allUsersList" value="${requestScope.allUsersList}" />
   </script>
 </head>
 
