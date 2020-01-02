@@ -16,6 +16,7 @@
           <link rel="stylesheet" href="../assets/css/fontawesome.min.css">
             <!-- Material Kit CSS -->
             <link href="../assets/css/material-dashboard.css?v=2.1.1" rel="stylesheet"/>
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
             <!-- own CSS -->
             <link rel="stylesheet" href="../css/Dashboard.css">
             <link rel="stylesheet" href="../css/EmployeeDashboard.css">
@@ -235,13 +236,11 @@
               contentType: 'application/json; charset=utf-8',
               traditional: true,
               success: function (jsonObj) {
-                alert(jsonObj);
                 var responseJson1=jsonObj[0];
 				var coursesString = eval('(' + responseJson1 + ')');
-				if(coursesString.success){
-					var courseAnchor = document.getElementById('userId');
-					courseAnchor.textContent = coursesString;
-				}
+				var courseAnchor = document.getElementById(userId);
+				alert(coursesString.coursesString);
+				courseAnchor.innerHTML = coursesString.coursesString;
 				
               },
               error: function(){
