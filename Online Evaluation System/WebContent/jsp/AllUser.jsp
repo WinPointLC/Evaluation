@@ -223,7 +223,33 @@
       document.getElementById('table').appendChild(table);
       
       function getCoursesName(userId){
-    	  alert(userId);
+    	  var myData = {
+    		userId : userId	  
+    	  };
+    	  
+          $.ajax({
+              type: 'POST',
+              url: '/OnlineEvaluationSystem/CommonController?action=GetUsersServlet',
+              data: JSON.stringify(myData),
+              dataType: 'json',
+              contentType: 'application/json; charset=utf-8',
+              traditional: true,
+              success: function (jsonObj) {
+                alert(jsonObj);
+                var responseJson1=jsonObj[0];
+				var coursesString = eval('(' + responseJson1 + ')');
+				if(coursesString.success){
+					var courseAnchor = document.getElementById('userId');
+					courseAnchor.textContent = coursesString;
+				}
+				
+              },
+              error: function(){
+                alert("Error");
+                //document.getElementById("error").innerHTML = "Invalid email or password";
+              }
+
+            });
       }
 </script>
   </body>

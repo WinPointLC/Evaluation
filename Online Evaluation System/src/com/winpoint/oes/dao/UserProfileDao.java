@@ -141,4 +141,37 @@ public ArrayList<UserProfile> getUsers() {
 		
 		return allUsersList;
 	}
+
+	public String getCoursesList(Integer userId) {
+		StringBuilder coursesString = new StringBuilder("");		
+		try(Connection connection = ConnectionManager.getConnection()){
+			Statement statement = connection.createStatement();
+			
+			String query = "select COURSE_NAME\r\n" + 
+					"from STUDENT_COURSE_DETAILS join COURSES on COURSES.COURSE_ID = STUDENT_COURSE_DETAILS.COURSE_ID\r\n" + 
+					"where USER_ID = " + userId;
+			
+			ResultSet rs = statement.executeQuery(query);
+
+
+			while(rs.next()) {
+				coursesString.append(rs.getString("COURSE_NAME") + ", ");
+			}
+			
+			if(coursesString.toString().equals("")) {
+				coursesString.append("None");
+			}
+			else {
+				coursesString.replace(coursesString.length() - 2, coursesString.length(), " ");
+			}
+			
+			
+			
+		} 
+		catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return coursesString.toString();
+	}
 }

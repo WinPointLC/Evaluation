@@ -19,4 +19,8 @@ public class UserProfileHelper {
 	public ArrayList<UserProfile> getUsers(){
 		return new UserProfileDao().getUsers();
 	}
+	
+	public String getCoursesList(Integer userId) {
+		return new UserProfileDao().getCoursesList(userId);
+	}
 }
