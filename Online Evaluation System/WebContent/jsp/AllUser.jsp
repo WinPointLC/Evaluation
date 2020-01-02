@@ -170,17 +170,18 @@
     //var students = {
       //Srno:1, Username:"Sahil",Email:"sahi@",Address:"PICT",MobileNo:121,CoursesDone:"C,CPP",Button1:"Go to analytics"
     //};
-   
+   	var counter = 0;
       </script>   
       
       <c:forEach var="user" items= "${allUsersList}" varStatus="i">
       <script>
-      alert("${user.userId}");
+      
       //creating Tbody
+      counter++;
       var tbody = document.createElement('tbody');
       var tr = document.createElement('tr');
        var td0 = document.createElement('td');
-       td0.textContent = i; 
+       td0.textContent = counter; 
        var td1 = document.createElement('td');
        td1.textContent = "${user.firstName}" + " " + "${user.lastName}";
        var td2 = document.createElement('td');
@@ -192,8 +193,9 @@
        var td5 = document.createElement('td');
        //td5.textContent = students.CoursesDone;
        var courseAnchor = document.createElement('a');
-       courseAnchor.setAttribute("onclick", "getCoursesName(this.userId)");
+       courseAnchor.setAttribute("onclick", "getCoursesName(this.id)");
        courseAnchor.textContent = "Get Courses list";
+       courseAnchor.setAttribute("id", "${user.userId}");
        td5.appendChild(courseAnchor);
        //creating Analytics and Result Button for all user.
        var td6  = document.createElement('td');
