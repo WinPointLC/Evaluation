@@ -167,22 +167,22 @@
         thead.appendChild(th);
       }
       table.appendChild(thead);
-
-       //var students = {
-         //Srno:1, Username:"Sahil",Email:"sahi@",Address:"PICT",MobileNo:121,CoursesDone:"C,CPP",Button1:"Go to analytics"
-       //};
-       </script>
+    //var students = {
+      //Srno:1, Username:"Sahil",Email:"sahi@",Address:"PICT",MobileNo:121,CoursesDone:"C,CPP",Button1:"Go to analytics"
+    //};
+   
+      </script>   
       
       <c:forEach var="user" items= "${allUsersList}" varStatus="i">
       <script>
-
+      alert("${user.userId}");
       //creating Tbody
       var tbody = document.createElement('tbody');
       var tr = document.createElement('tr');
        var td0 = document.createElement('td');
        td0.textContent = i; 
        var td1 = document.createElement('td');
-       td1.textContent = "${user.fisrtName}" + " " + "${user.lastName}";
+       td1.textContent = "${user.firstName}" + " " + "${user.lastName}";
        var td2 = document.createElement('td');
        td2.textContent = "${user.email}";
        var td3 = document.createElement('td');
@@ -192,7 +192,7 @@
        var td5 = document.createElement('td');
        //td5.textContent = students.CoursesDone;
        var courseAnchor = document.createElement('a');
-       courseAnchor.setAttribute("onclick", getCoursesName());
+       courseAnchor.setAttribute("onclick", "getCoursesName(this.userId)");
        courseAnchor.textContent = "Get Courses list";
        td5.appendChild(courseAnchor);
        //creating Analytics and Result Button for all user.
@@ -220,8 +220,8 @@
 
       document.getElementById('table').appendChild(table);
       
-      function getCoursesName(){
-    	  alert("In getCoursesName");
+      function getCoursesName(userId){
+    	  alert(userId);
       }
 </script>
   </body>
