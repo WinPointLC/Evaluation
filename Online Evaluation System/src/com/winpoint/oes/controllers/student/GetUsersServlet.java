@@ -10,19 +10,21 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.winpoint.oes.beans.StudentCourseFeesBean;
+import com.winpoint.oes.beans.UserProfile;
 import com.winpoint.oes.helpers.common.FeeDetailsHelper;
+import com.winpoint.oes.helpers.common.UserProfileHelper;
 
 /**
  * Servlet implementation class GetUsers
  */
 @WebServlet("/GetUsers")
-public class GetUsers extends HttpServlet {
+public class GetUsersServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public GetUsers() {
+    public GetUsersServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -32,7 +34,7 @@ public class GetUsers extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		//Get all users here
-//		ArrayList<StudentCourseFeesBean> allUsersList = new FeeDetailsHelper().getFeeDetails();
+		ArrayList<UserProfile> allUsersList = new UserProfileHelper().getUsers();
 		request.setAttribute("allUsersList", allUsersList);
 	}
 

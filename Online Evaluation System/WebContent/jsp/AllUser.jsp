@@ -19,6 +19,10 @@
             <!-- own CSS -->
             <link rel="stylesheet" href="../css/Dashboard.css">
             <link rel="stylesheet" href="../css/EmployeeDashboard.css">
+     <script>
+     <c:import url="/GetUsersServlet" />
+     <c:set var="allUsersList" value="${requestScope.allUsersList}" />
+  </script>
   </head>
 
   <body>
@@ -156,7 +160,7 @@
       var table = document.createElement('table');
       table.className="table table-hover";
       var thead = document.createElement('thead');
-      var head = ['Sr.no','Username','Email','Address','Mobile No','Courses Done','Analytics'];
+      var head = ['Sr.no','Username','Email','College','Mobile No','Courses Done','Analytics'];
       for (var i = 0; i < head.length; i++) {
         var th = document.createElement('th');
         th.textContent = head[i];
@@ -164,30 +168,38 @@
       }
       table.appendChild(thead);
 
-       var students = {
-         Srno:1, Username:"Sahil",Email:"sahi@",Address:"PICT",MobileNo:121,CoursesDone:"C,CPP",Button1:"Go to analytics"
-       };
+       //var students = {
+         //Srno:1, Username:"Sahil",Email:"sahi@",Address:"PICT",MobileNo:121,CoursesDone:"C,CPP",Button1:"Go to analytics"
+       //};
+       </script>
+      
+      <c:forEach var="user" items= "${allUsersList}" varStatus="i">
+      <script>
 
       //creating Tbody
       var tbody = document.createElement('tbody');
       var tr = document.createElement('tr');
        var td0 = document.createElement('td');
-       td0.textContent = students.Srno;
+       td0.textContent = i; 
        var td1 = document.createElement('td');
-       td1.textContent = students.Username;
+       td1.textContent = "${user.fisrtName}" + " " + "${user.lastName}";
        var td2 = document.createElement('td');
-       td2.textContent = students.Email;
+       td2.textContent = "${user.email}";
        var td3 = document.createElement('td');
-       td3.textContent = students.Address;
+       td3.textContent = "${user.college}";
        var td4 = document.createElement('td');
-       td4.textContent = students.MobileNo;
+       td4.textContent = "${user.mobileNumber}";
        var td5 = document.createElement('td');
-       td5.textContent = students.CoursesDone;
+       //td5.textContent = students.CoursesDone;
+       var courseAnchor = document.createElement('a');
+       courseAnchor.setAttribute("onclick", getCoursesName());
+       courseAnchor.textContent = "Get Courses list";
+       td5.appendChild(courseAnchor);
        //creating Analytics and Result Button for all user.
        var td6  = document.createElement('td');
-       var btn1 = document.createElement('button');
-       btn1.textContent =students.Button1;
-       td6.appendChild(btn1);
+       var analyticsLink = document.createElement('a');
+       analyticsLink.textContent = "Go to Analytics";
+       td6.appendChild(analyticsLink);
 
        tr.appendChild(td0);
        tr.appendChild(td1);
@@ -201,7 +213,15 @@
       thead.appendChild(th);
       tbody.appendChild(tr);
       table.appendChild(tbody);
+      </script>
+      </c:forEach>
+
+	<script type="text/javascript">
 
       document.getElementById('table').appendChild(table);
+      
+      function getCoursesName(){
+    	  alert("In getCoursesName");
+      }
 </script>
   </body>

@@ -15,4 +15,8 @@ public class UserProfileHelper {
 	public boolean updateUserProfile(UserProfile userProfile){
 		return new UserProfileDao().updateUserProfile(userProfile);
 	}
+	
+	public ArrayList<UserProfile> getUsers(){
+		return new UserProfileDao().getUsers();
+	}
 }
