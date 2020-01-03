@@ -102,14 +102,16 @@
                   var userFeedback = [];
                   for(var i=0; i<feedbackQuestionsList.length; i++){
                 	    console.log(i);
-                	    var curStarRateElemVal = i+2;//document.getElementById(feedbackQuestionsList[i].feedbackQuestionId).value;
+                	    var curStarRateElemVal = 0;//document.getElementById(feedbackQuestionsList[i].feedbackQuestionId).value;
                 	    var feedback = { 
                 	    		feedbackQuestionId : feedbackQuestionsList[i].feedbackQuestionId,
                 	    		response : curStarRateElemVal
                 	    };
                 	    userFeedback.push(feedback);
                 	}
-                  //alert(userFeedback);
+                  
+                  //alert(userFeedback[0].feedbackQuestionId + " " + userFeedback[0].response);
+                  
                   $.ajax({
                     type: 'POST',
                     url: '/OnlineEvaluationSystem/CommonController?action=FeedbackServlet',

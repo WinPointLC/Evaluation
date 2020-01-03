@@ -36,15 +36,15 @@ public class TestFeedbackDao {
 			   userTestId = resultSet.getInt("USER_TEST_ID");
 			}
 			
-			for(TestFeedback testFeedbak : testFeedbackList){
+			for(TestFeedback testFeedback : testFeedbackList){
 				query = "INSERT INTO [dbo].[TEST_FEEDBACK]\r\n" + 
 						"           ([USER_TEST_ID]\r\n" + 
 						"           ,[FEEDBACK_QUESTION_ID]\r\n" + 
 						"           ,[RESPONSE]\r\n" +  ")" +
 						"     VALUES\r\n" + 
 						"           (" + userTestId + "\r\n" + 
-						"           ," + testFeedbak.getFeedbackQuestionId() + "\r\n" + 
-						"           ," + testFeedbak.getResponse() + ")";
+						"           ," + testFeedback.getFeedbackQuestionId() + "\r\n" + 
+						"           ," + testFeedback.getResponse() + ")";
 				statement.executeUpdate(query);
 			}
 			
