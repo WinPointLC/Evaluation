@@ -24,6 +24,10 @@
      <c:import url="/FeeDetailsServlet" />
      <c:set var="unpaidStudentsList" value="${requestScope.unpaidStudentsList}" />
   </script>
+  <%-- <script>
+     <c:import url="/GetUsers" />
+     <c:set var="allUsersList" value="${requestScope.allUsersList}" />
+  </script> --%>
 </head>
 
 <body>
@@ -398,451 +402,12 @@
           <!-- Chart Ends here -->
         </div>
       </div>
-
-
-
-<!-- Adding content of Admin Page -->
-<div class="container-fluid" id="admin-content">
-
-  <div class="row">
-    <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
-      <div class="card card-plain">
-        <div class="card card-header card-header-primary main-head">
-          <h3 class="text-align mr-auto ml-auto">Add Question</h3>
-        </div>
+      <!-- including all the jsp's  -->
+      <div class="Include-jsp">
+      <iframe src="FeeRegistrationPage.jsp" width="1000" height="700" id="Fee-jsp"></iframe>
+      <iframe src="AllUser.jsp" width="1000" height="700" id="AllUser-jsp"></iframe>
+      <iframe src="AddNewUser.jsp" width="1000" height="700" id="AddNewUser-jsp"></iframe>
       </div>
-    </div>
-  </div>
-
-  <div class="card-body">
-    <form>
-      <div class="row">
-        <div class="col-md-3">
-          <div class="stats">
-            <div class="dropdown">
-              <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButtonStream" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Select Stream
-              </button>
-              <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" id="stream-dropdown">
-
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-md-3">
-          <div class="stats">
-            <div class="dropdown" id='drop11'>
-              <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButtonCourseType" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Select Course Type
-              </button>
-              <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" id="coursetype-dropdown">
-
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-md-3">
-          <div class="stats">
-            <div class="dropdown">
-              <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButtonCourse" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Select Course
-              </button>
-              <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" id="course-dropdown">
-
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-md-3">
-          <div class="stats">
-            <div class="dropdown">
-              <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButtonEvaluationType" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Select Evaluation Type
-              </button>
-              <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" id="Evaluation-dropdown">
-
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="row">
-        <div class="col-md-3">
-          <div class="stats">
-            <div class="dropdown">
-              <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButtonTopics" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Select Topics
-              </button>
-              <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" id="topic-dropdown">
-
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-md-3">
-          <div class="form-group">
-            <label class="bmd-label-floating">Enter Total Marks</label>
-            <input type="number" class="form-control" id="totalMarks">
-          </div>
-        </div>
-        <div class="col-md-3">
-          <div class="stats">
-            <div class="dropdown">
-              <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButtonDiffLvl" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Select Difficulty level
-              </button>
-              <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" id="diff-dropdown">
-
-              </div>
-            </div>
-          </div>
-        </div>
-
-      </div>
-      <div class="row">
-        <div class="col-md-12">
-          <div class="form-group">
-            <label>Add a Question</label>
-            <div class="form-group">
-              <label></label>
-              <textarea class="form-control" rows="3" id="question"></textarea>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-4">
-          <h4>Add Options</h4>
-        </div>
-      </div>
-      <div class="inner-option" id="inner-opt-content">
-
-      </div>
-
-      <div class="row">
-        <div class="col-md-4">
-          <h4>Correct Options</h4>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-4">
-          <div class="form-group">
-            <label class="bmd-label-floating">Enter the Correct Option Number</label>
-            <input type="number" class="form-control" id="correctOptions">
-          </div>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-4">
-          <h4>Explanation for Answer</h4>
-        </div>
-      </div>
-
-      <div class="row">
-        <div class="col-md-12">
-          <div class="form-group">
-            <label>Add Explanation</label>
-            <div class="form-group">
-              <label></label>
-              <textarea name="name" class="form-control" rows="3" id="explanation"></textarea>
-            </div>
-
-          </div>
-        </div>
-      </div>
-      <button type="submit" class="btn btn-primary pull-right" onclick="addQuestion()">Save</button>
-      <div class="clearfix"></div>
-    </form>
-  </div>
-</div>
-
-<!-- Add new user content -->
-<body>
-  <!-- Large modal -->
-  <div class="add-new-user-content" id="add-new-user-content">
-    <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-lg" id="modal-btn">Add a new user</button>
-
-      <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-lg">
-          <div class="modal-content">
-            <div class="container-fluid">
-              <div class="col-sm-4 col-md-4 col-lg-12 text-left ml-auto mr-auto" id="form-outter">
-                <form name="form1">
-                  <h3 class="form-signup-heading text-center">SignUP Form</h3>
-                  <div class="form-group">
-                    <input class="form-control" type="text" id="firstName" placeholder="Enter first name" required>
-                  </div>
-                  <div class="form-group">
-                    <input class="form-control" type="text" id="lastName" placeholder="Enter last name" required>
-                  </div>
-
-                  <div class="form-group">
-                    <input class="form-control" type="email" id="email" placeholder="Enter email" required>
-                  </div>
-
-                  <div class="form-group">
-                    <input class="form-control form-control-sm" type="text" id="userName" placeholder="Enter user name" required>
-                  </div>
-
-                  <div class="form-group">
-                    <input  type="password" id="password" class="form-control" placeholder="Password" required>
-                  </div>
-                  <div class="form-group">
-                    <select class="form-control" id="gender" required>
-                      <option value="">Gender</option>
-                      <option>Male</option>
-                      <option>Female</option>
-                    </select>
-                  </div>
-                  <div class="form-group">
-                    <%-- <input type="text" id="mobileNumber" class="form-control" placeholder="Mobile Number" pattern="[0-9]{10}" title="You can enter 10 digits only"> --%>
-                      <input type="text" id="mobileNumber" class="form-control" placeholder="Mobile Number">
-                  </div>
-                  <div class="form-group">
-                    <select class="form-control" id="securityQuestion" required>
-                    <option value="">Security Question</option>
-                  </select>
-                    </div>
-                    <script> var selectVar = document.getElementById('securityQuestion');</script>
-                    <c:forEach var="securityQuestion" items= "${securityQuestions}" varStatus="i">
-                    <script>
-
-                       var option = document.createElement('option');
-                       option.textContent = "${securityQuestion.securityQuestion}";
-                       selectVar.appendChild(option);
-                       </script>
-                    </c:forEach>
-
-                  <%-- <div class="form-group">
-
-                      <!--  <div class="dropdown-menu" id = "secQuest" aria-labelledby="dropdownMenuButton"></div>-->
-                      <div id="drop11" class="dropdown drop1">
-                  <!-- <input type="button" class="btn btn-secondary dropdown-toggle" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" value="Security Question">
-                                --> </div>
-                                <script>
-                                var drop1 = document.getElementsByClassName('drop1');
-                                var btn = document.createElement('button');
-                                btn.className='btn btn-secondary dropdown-toggle';
-                                btn.id='dropdownMenuButton';
-                                btn.setAttribute('data-toggle', "dropdown");
-                                btn.setAttribute('aria-haspopup', "true");
-                                btn.setAttribute('aria-expanded',"false");
-                                btn.textContent="Security Question";
-                                document.getElementById('drop11').appendChild(btn);
-
-                                var dropdownMenu = document.createElement('div');
-                                dropdownMenu.className='dropdown-menu';
-                                dropdownMenu.setAttribute('aria-labelledby',"dropdownMenuButton");
-                                </script>
-
-          <c:forEach var="securityQuestion" items= "${securityQuestions}" varStatus="i">
-
-          <script>
-          //code to open a modal on click
-          window.onload=function(){
-            document.getElementById("modal-btn").click();
-          };
-
-            var dropanchor = document.createElement('a');
-            dropanchor.className='dropdown-item';
-            dropanchor.setAttribute('href',"#");
-            //dropanchor.id=courseTypesList[i].courseTypeId;
-            dropanchor.textContent="${securityQuestion}";
-            //dropanchor.setAttribute('onclick',"displayStreamCourses(this.id)");
-            dropdownMenu.appendChild(dropanchor);
-          </script>
-          </c:forEach>
-          <script>document.getElementById('drop11').appendChild(dropdownMenu);</script>
-
-                  </div>
-                <!--    <div class="form-group">
-                    <input class="form-control" type="text" id="securityQuestion" placeholder="Security Question" required>
-                  </div>-->
-
-           --%>        <div class="form-group">
-                    <input class="form-control" type="text" id="securityAnswer" placeholder="Security Answer" required>
-                  </div>
-                  <br>
-                  <a href="#" onclick="submitSignUpDetails()"><button class="Signbtn" type="button">Submit</button></a>
-                </form>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <!--  End Modal -->
-      <%-- end add new user content --%>
-  </div>
-
-
-  <%-- <script src="../MaterialKitHomePage/assets/js/core/jquery.min.js" type="text/javascript"></script>
-  <script src="../MaterialKitHomePage/assets/js/core/bootstrap-material-design.min.js" type="text/javascript"></script> --%>
-<!-- End add new user content -->
-
-<!-- All USer content -->
-<div class="container-fluid" id="all-user-content">
-  <div class="row">
-    <div class="col-md-12">
-      <div class="card card-plain">
-        <div class="card-header card-header-primary">
-          <h4 class="card-title mt-0">List of all user </h4>
-        </div><br><br>
-        <div class="dropdown-section">
-          <select class="dropdown" onchange="dropfunct(this);">
-            <option id="11">Modular</option>
-            <option id="22">TBC</option>
-            <option id="33">CRT</option>
-          </select>
-        </div><br><br>
-        <div class="dropdown-section2">
-          <select class="dropdown2" onchange="dropfunct(this);" id="dropdown2">
-
-          </select>
-        </div><br><br>
-
-        <div class="card-body">
-          <div class="table-responsive" id="table">
-            <!-- <table class="table table-hover">
-              <thead>
-                <th>Sr.no:</th>
-                <th>
-                  Username
-                </th>
-                <th>
-                  Email
-                </th>
-                <th>
-                  Address
-                </th>
-                <th>
-                  Mobile No:
-                </th>
-                <th>
-                  Courses Done
-                </th>
-                <th>
-                  Click here for Scores
-                </th>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>
-                    1
-                  </td>
-                  <td>
-                    Sahil Naphade
-                  </td>
-                  <td>
-                    sahil@gmail.com
-                  </td>
-                  <td>
-                    Katraj
-                  </td>
-                  <td>
-                    9850896993
-                  </td>
-                  <td>
-                    C,CPP,JS
-                  </td>
-                  <td>
-                    <button class="btn btn-primary" type="button">See Scores</button>
-                  </td>
-                </tr>
-                <tr>
-                  <td>
-                    2
-                  </td>
-                  <td>
-                    Sanika Gandhe
-                  </td>
-                  <td>
-                    SanikaG@gmail.com
-                  </td>
-                  <td>
-                    Sinhgad Road
-                  </td>
-                  <td>
-                    9850896993
-                  </td>
-                  <td>
-                    C,CPP,JAVA
-                  </td>
-                  <td>
-                    <button class="btn btn-primary" type="button">See Scores</button>
-                  </td>
-                </tr>
-                <tr>
-                  <td>
-                    6
-                  </td>
-                  <td>
-                    Shrirang Mhalgi
-                  </td>
-                  <td>
-                    Shri@gmail.com
-                  </td>
-
-                  <td>
-                    BibeWadi
-                  </td>
-                  <td>
-                    9850896993
-                  </td>
-                  <td>
-                    C,CPP,DS,JAVA
-                  </td>
-                  <td>
-                    <button class="btn btn-primary" type="button">See Scores</button>
-                  </td>
-                </tr>
-              </tbody>
-            </table>-->
-
-          </div>
-        </div>
-      </div>
-    </div>
-
-  </div>
-</div>
-
-<!-- End of All USer content  -->
-<!-- Fee Registration content -->
-<div class="container-fluid" id="fee-register-content">
-  <div class="row">
-    <div class="col-md-12">
-      <div class="card card-plain">
-        <div class="card-header card-header-primary">
-          <h4 class="card-title mt-0">FEE REGISTRATION FOR USER</h4>
-        </div><br><br>
-
-        <div class="dropdown-section2">
-          <div class="search-container">
-            <form>
-              <input type="text" placeholder="Search a user..." name="search">
-              <button type="submit"><i class="fa fa-search"></i></button>
-            </form>
-          </div>
-        </div><br><br>
-
-        <div class="card-body">
-          <div class="table-responsive" id="table2">
-
-          </div>
-        </div>
-      </div>
-    </div>
-
-  </div>
-</div>
-
-<!-- End of Fee REGISTRATION content  -->
-
 
 <!-- Footer -->
 <footer class="footer">
@@ -868,12 +433,52 @@
 </footer>
 </div>
 </div>
+<!-- Script for showing and hiding Jsp  -->
 <script type="text/javascript">
+  document.getElementById('Fee-jsp').style.display="none";
+  document.getElementById('AllUser-jsp').style.display="none";
+  document.getElementById('AddNewUser-jsp').style.display="none";
 
-// document.getElementById('main-content').style.display="none";
-document.getElementById('admin-content').style.display="none";
-document.getElementById('all-user-content').style.display="none";
 
+  document.getElementById('all-user-link').onclick=function() {
+  if (document.getElementById('main-content').style.display === "block") {
+
+  } else {
+
+    document.getElementById('AllUser-jsp').style.display = "block";
+    document.getElementById('main-content').style.display = "none";
+    // document.getElementById('admin-content').style.display="none";
+    document.getElementById('AddNewUser-jsp').style.display = "none";
+    document.getElementById('Fee-jsp').style.display = "none";
+  }
+};
+
+document.getElementById('add-new-user-link').onclick=function() {
+if (document.getElementById('main-content').style.display === "block") {
+
+} else {
+
+  document.getElementById('AddNewUser-jsp').style.display = "block";
+  document.getElementById('AllUser-jsp').style.display = "none";
+  document.getElementById('main-content').style.display = "none";
+  // document.getElementById('admin-content').style.display="none";
+  document.getElementById('Fee-jsp').style.display = "none";
+}
+};
+document.getElementById('fee-register-link').onclick=function() {
+if (document.getElementById('main-content').style.display === "block") {
+
+} else {
+
+  document.getElementById('Fee-jsp').style.display = "block";
+  document.getElementById('AddNewUser-jsp').style.display = "none";
+  document.getElementById('AllUser-jsp').style.display = "none";
+  document.getElementById('main-content').style.display = "none";
+  // document.getElementById('admin-content').style.display="none";
+}
+};
+</script>
+<script type="text/javascript">
 var streamId;
 var courseTypeId;
 var courseId;
@@ -889,17 +494,6 @@ document.getElementById('add-question-link').onclick=function() {
 		  anchor.setAttribute('onclick', "getStreamId(this.id)");
 		  document.getElementById('stream-dropdown').appendChild(anchor);
 	}
-
-	if (document.getElementById('main-content').style.display === "block") {
-    //alert("We are in if block");
-    document.getElementById('main-content').style.display = "none";
-    document.getElementById('admin-content').style.display = "block";
-  	} else {
-    //alert("We are in else block");
-    document.getElementById('admin-content').style.display = "block";
-    document.getElementById('main-content').style.display = "none";
-    document.getElementById('all-user-content').style.display = "none";
-  }
 
 };
 var streamElem;
@@ -1223,216 +817,9 @@ function addQuestion(){
       });
 	alert("After AJAX");
 }
-document.getElementById('add-new-user-content').style.display = "none";
-document.getElementById('fee-register-content').style.display = "none";
-//showing all-user content
-document.getElementById('all-user-link').onclick=function() {
-  if (document.getElementById('main-content').style.display === "block") {
-    //alert("We are in if block");
-    //document.getElementById('main-content').style.display = "none";
-    //document.getElementById('admin-content').style.display = "block";
-  } else {
-    //alert("We are in else block");
-    document.getElementById('all-user-content').style.display = "block";
-    document.getElementById('main-content').style.display = "none";
-    document.getElementById('admin-content').style.display="none";
-    document.getElementById('add-new-user-content').style.display = "none";
-    document.getElementById('fee-register-content').style.display = "none";
-  }
-};
-//showing add new user
-document.getElementById('add-new-user-link').onclick=function() {
-  if (document.getElementById('main-content').style.display === "block") {
-
-  } else {
-    document.getElementById('add-new-user-content').style.display = "block";
-    document.getElementById('fee-register-content').style.display = "none";
-    document.getElementById('main-content').style.display = "none";
-    document.getElementById('admin-content').style.display="none";
-    document.getElementById('all-user-content').style.display="none";
-  }
-};
-
-//showing fee-register-content
-document.getElementById('fee-register-link').onclick=function() {
-  if (document.getElementById('main-content').style.display === "block") {
-    //alert("We are in if block");
-    //document.getElementById('main-content').style.display = "none";
-    //document.getElementById('admin-content').style.display = "block";
-  } else {
-    //alert("We are in else block");
-    document.getElementById('fee-register-content').style.display = "block";
-    document.getElementById('main-content').style.display = "none";
-    document.getElementById('admin-content').style.display="none";
-    document.getElementById('all-user-content').style.display="none";
-    document.getElementById('add-new-user-content').style.display = "none";
-  }
-};
-</script>
-
-<!-- Js for All user  -->
-<script type="text/javascript">
-  //creating table dynamically
-  var table = document.createElement('table');
-  table.className="table table-hover";
-  var thead = document.createElement('thead');
-  var head = ['Sr.no','Username','Email','Address','Mobile No','Courses Done','Analytics'];
-  for (var i = 0; i < head.length; i++) {
-    var th = document.createElement('th');
-    th.textContent = head[i];
-    thead.appendChild(th);
-  }
-  table.appendChild(thead);
-  
-   var students = {
-     Srno:1, Username:"Sahil",Email:"sahi@",Address:"PICT",MobileNo:121,CoursesDone:"C,CPP",Button1:"Go to analytics"
-   };
-
-  //creating Tbody
-  var tbody = document.createElement('tbody');
-  var tr = document.createElement('tr');
-   var td0 = document.createElement('td');
-   td0.textContent = students.Srno;
-   var td1 = document.createElement('td');
-   td1.textContent = students.Username;
-   var td2 = document.createElement('td');
-   td2.textContent = students.Email;
-   var td3 = document.createElement('td');
-   td3.textContent = students.Address;
-   var td4 = document.createElement('td');
-   td4.textContent = students.MobileNo;
-   var td5 = document.createElement('td');
-   td5.textContent = students.CoursesDone;
-   //creating Analytics and Result Button for all user.
-   var td6  = document.createElement('td');
-   var btn1 = document.createElement('button');
-   btn1.textContent =students.Button1;
-   td6.appendChild(btn1);
-   
-   tr.appendChild(td0);
-   tr.appendChild(td1);
-   tr.appendChild(td2);
-   tr.appendChild(td3);
-   tr.appendChild(td4);
-   tr.appendChild(td5);
-   tr.appendChild(td6);
-
-
-  thead.appendChild(th);
-  tbody.appendChild(tr);
-  table.appendChild(tbody);
-
-  document.getElementById('table').appendChild(table);
-
-  //--------------------- start of Fee register script----------------------------
-  //creating table dynamically
-  
-  //function getFeeRegistrationPage(){
-	  var table2 = document.createElement('table');
-	  table2.className="table table-hover";
-	  var thead2 = document.createElement('thead');
-	  // var head = ['Sr.no','Username','Email','Address','Mobile No','Courses Done','Button1','Button2'];
-	  var head2 = ['Username','Course','Fee of Course','Remaining Fees','Paid','REGISTRATION'];
-	  for (var i = 0; i < head2.length; i++) {
-	    var th2 = document.createElement('th');
-	    th2.textContent = head2[i];
-	    thead2.appendChild(th2);
-	  }
-	  table2.appendChild(thead2);
-	  // var td0 = ['1','2']; var td1 = ['Sahil','Sanika']; var td2 = ['sahil@','sanika@'];
-	  // var td3 = ['M.G. Road','M.A.Road']; var td4=[12,23]; var td5 = ['c','cpp','java']; var td6=['Analytics'];
-	  // var students = {Srno:1, Username:"Sahil",Email:"sahi@",Address:"PICT",MobileNo:121,CoursesDone:"C,CPP"};
-	  
-	  //------
-  	  // after the ajax call the data will be dumped here and then put the data in the html table (servlet call is GetFeeDetailsServlet)
-  	  //------
-  	  
-
-  	  
-	   //var student = {
-	   //   Username:"Sahil",Course:"C",Fee_Of_Course:4000,Remaining_Fees:0,Paid:"Paid",Registeration:"register link"
-	   //};
-	  
-	  </script>
-	  
-	  <c:forEach var="unpaidStudent" items= "${unpaidStudentsList}" varStatus="i">
-      
-      <script>
-
-	  //creating Tbody
-	  var tbody2 = document.createElement('tbody');
-	  tbody2.setAttribute('id', "${unpaidStudent.userId}${unpaidStudent.courseId}");
-	  var tr2 = document.createElement('tr');
-	   var td02 = document.createElement('td');
-	   td02.textContent = "${unpaidStudent.fisrtName}" + " " + "${unpaidStudent.lastName}"
-	   var td12 = document.createElement('td');
-	   td12.textContent = "${unpaidStudent.courseName}";
-	   var td22 = document.createElement('td');
-	   td22.textContent = "${unpaidStudent.fees}";
-	   var td32 = document.createElement('td');
-	   //Remove Hard coding
-	   td32.textContent = 0;
-	   var td42 = document.createElement('td');
-	   var paidbtn = document.createElement('button');
-	   paidbtn.textContent = "Paid";
-	   paidbtn.setAttribute('onclick', "updateFeeStatus(${unpaidStudent.userId}, ${unpaidStudent.courseId})");
-	   // td4.textContent = students.Paid;
-	   td42.appendChild(paidbtn);
-
-	   //creating Analytics and Result Button for all user.
-	   var td62  = document.createElement('td');
-	   var btn12 = document.createElement('button');
-	   btn12.textContent ="Register";
-	   td62.appendChild(btn12);
-
-	   tr2.appendChild(td02);
-	   tr2.appendChild(td12);
-	   tr2.appendChild(td22);
-	   tr2.appendChild(td32);
-	   tr2.appendChild(td42);
-	   tr2.appendChild(td62);
-
-
-
-	  thead2.appendChild(th2);
-	  tbody2.appendChild(tr2);
-	  table2.appendChild(tbody2);
-
-	  </script>
-      </c:forEach>
-      <script type="text/javascript">
-      
-	  document.getElementById('table2').appendChild(table2);
-	  
-
-  //}
-  //--------------------- end of Fee register script----------------------------
 
 </script>
-<script type="text/javascript">
-	function updateFeeStatus(userId, courseId){
-		var myData = {
-				userId: userId,
-				courseId: courseId
-			};
-		
-		$.ajax({
-			type: 'POST',
-			url: '/OnlineEvaluationSystem/CommonController?action=FeeDetailsServlet',
-			data: JSON.stringify(myData),
-			dataType: 'json',
-			contentType: 'application/json; charset=utf-8',
-			traditional: true,
-			success: function (jsonObj) {
-				alert("success in updating the values");
-				document.getElementById(userId + '' + courseId).remove();
-			},
-			error: function(){
-				alert("Error in updating the fees");
-			}
-		});
-	}
-</script>
+
 
 
 <!--   Core JS Files   -->
@@ -1673,119 +1060,7 @@ $(document).ready(function() {
 });
 
 </script>
-<script type="text/javascript">
-// adding code for all components of dropdown
-// first for select Stream
-//var Streamlist = ['Technical','SoftSkills','General Aptitude'];
-/* for (var i = 0; i < streamlist.length; i++) {
-  var anchor = document.createElement('a');
-  anchor.className="dropdown-item";
-  anchor.setAttribute('href', "#");
-  anchor.textContent = streamlist[i];
-  document.getElementById('stream-dropdown').appendChild(anchor);
-}
- */
-//Second For Course List
-/* var Coursetypelist = ['Modular','TBC','CRT'];
-for (var i = 0; i < Coursetypelist.length; i++) {
-  var anchor2 = document.createElement('a');
-  anchor2.className="dropdown-item";
-  anchor2.setAttribute('href', "#");
-  anchor2.textContent = Coursetypelist[i];
-  document.getElementById('coursetype-dropdown').appendChild(anchor2);
-} */
 
-//Third for Evaluation type
-/* var Evaluationlist = ['MCQ','Coding','Descriptive'];
-for (var i = 0; i < Evaluationlist.length; i++) {
-  var anchor3 = document.createElement('a');
-  anchor3.className="dropdown-item";
-  anchor3.setAttribute('href', "#");
-  anchor3.textContent = Evaluationlist[i];
-  document.getElementById('Evaluation-dropdown').appendChild(anchor3);
-}
- */
-//Fourth for Course list
-//var Courselist = ['C','C++','Java','JavaScript','Database','DataStructures'];
-/* for (var i = 0; i < Courselist.length; i++) {
-  var anchor4 = document.createElement('a');
-  anchor4.className="dropdown-item";
-  anchor4.setAttribute('href', "#");
-  anchor4.textContent = Courselist[i];
-  document.getElementById('course-dropdown').appendChild(anchor4);
-} */
-
-//Fifth for Topics
-/* var TopicList = ['Basics','Functions','Operators','Input/output','pointers','FileHandling'];
-for (var i = 0; i < TopicList.length; i++) {
-  var anchor5 = document.createElement('a');
-  anchor5.className="dropdown-item";
-  anchor5.setAttribute('href', "#");
-  anchor5.textContent = TopicList[i];
-  document.getElementById('topic-dropdown').appendChild(anchor5);
-} */
-
-// Sixth for Difficulty level
-/* var DiffList = ['Easy ','Medium','Hard'];
-for (var i = 0; i < DiffList.length; i++) {
-  var anchor6 = document.createElement('a');
-  anchor6.className="dropdown-item";
-  anchor6.setAttribute('href', "#");
-  anchor6.textContent = DiffList[i];
-  document.getElementById('diff-dropdown').appendChild(anchor6);
-} */
-
-//Adding Dynamic Option content
-
-//var optionArr = ['option1','option2','option3','option4'];
-for (var i = 0; i < optionArr.length; i++) {
-  var row = document.createElement('div');
-  row.className="row";
-  var col = document.createElement('div');
-  col.className="col-md-4";
-  var formcheck = document.createElement('div');
-  formcheck.className="form-check";
-  var label = document.createElement('label');
-  label.className="form-check-label";
-  label.textContent = optionArr[i];
-  var input1 =  document.createElement('input');
-  input1.className="form-check-input";
-  input1.setAttribute('type',"radio");
-  input1.setAttribute('name', "exampleRadios");
-  input1.id="exampleRadios2";
-  input1.setAttribute('value',optionArr[i]);
-  //input1.innerHTML= optionArr[i];
-  // input1.setAttribute('style', "color:#000;");
-  formcheck.appendChild(input1);
-  formcheck.appendChild(label);
-  var span = document.createElement('span');
-  span.className="circle";
-  var span2 = document.createElement('span');
-  span2.className="check";
-  span.appendChild(span2);
-
-  label.appendChild(span);
-  formcheck.appendChild(label);
-  col.appendChild(formcheck);
-  row.appendChild(col);
-  var col2 = document.createElement('div');
-  col2.className="col-md-4";
-  var formgroup = document.createElement('div');
-  formgroup.className="form-group";
-  var label2 = document.createElement('label');
-  label2.className="bmd-label-floating";
-  label2.textContent = 'Enter the option content';
-  var input2 = document.createElement('input');
-  input2.setAttribute('type',"text");
-  input2.className="form-control";
-  input2.id=optionArr[i];
-  formgroup.appendChild(input2);
-  formgroup.appendChild(label2);
-  col2.appendChild(formgroup);
-  row.appendChild(col2);
-  document.getElementById('inner-opt-content').appendChild(row);
-}
-</script>
 </body>
 
 </html>
