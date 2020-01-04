@@ -127,10 +127,17 @@
 	          //alert(streamJSON);
 	          var courseTypeJSON = JSON.stringify(courseTypeJson);
 	          //alert(courseTypeJSON);
-	          //alert("studentEmail : " + responseJson2.email);
-	          window.location.href = locationJson.location + "?varid=" + encodeURIComponent(streamJSON) + encodeURIComponent(courseTypeJSON)+ encodeURIComponent('${studentCourseDetails}') + encodeURIComponent('${studentGACourseDetails}') +"&username=" + "Anjali" +"&password=" + "Anjali";
-	          //window.location.href = locationJson.location + "?varid=" + streamJSON + courseTypeJSON +"&username=" + "Anjali" +"&password=" + "Anjali";
+	          // alert("studentEmail : " + responseJson2.email);
+            // alert(locationJson.location);
+
+	          // window.location.href = locationJson.location + "?varid=" + encodeURIComponent(streamJSON) + encodeURIComponent(courseTypeJSON)+ encodeURIComponent('${studentCourseDetails}') + encodeURIComponent('${studentGACourseDetails}') +"&username=" + "Anjali" +"&password=" + "Anjali";
+
+	          // window.location.href = locationJson.location + "?varid=" + streamJSON + courseTypeJSON +"&username=" + "Anjali" +"&password=" + "Anjali";
 	          //window.location.href = locationJson.location + "?varid=" + encodeURIComponent(streamJSON) +"&username=" + "Anjali" +"&password=" + "Anjali";
+           var source2 = encodeURIComponent(streamJSON) + encodeURIComponent(courseTypeJSON)+ encodeURIComponent('${studentCourseDetails}') + encodeURIComponent('${studentGACourseDetails}') +"&username=" + "Anjali" +"&password=" + "Anjali";
+         	 alert("source2 = " + source2);
+         	 var iframe_ele2 = document.getElementById("CourseRegistration-frame");
+         	 iframe_ele2.src = iframe_ele2.src + source2;
 	        } else {
 	          $('#ajaxGetUserServletResponse').text(responseText);
 	        }
@@ -189,7 +196,12 @@
       var courseTypeJSON = JSON.stringify(courseTypeJson);
       //alert(courseTypeJSON);
       //alert("studentEmail : " + responseJson2.email);
-      window.location.href = locationJson.location + "?varid=" + encodeURIComponent(streamJSON) + encodeURIComponent(courseTypeJSON) +"&username=" + "Anjali" +"&password=" + "Anjali";
+      // window.location.href = locationJson.location + "?varid=" + encodeURIComponent(streamJSON) + encodeURIComponent(courseTypeJSON) +"&username=" + "Anjali" +"&password=" + "Anjali";
+      var source3 = encodeURIComponent(streamJSON) + encodeURIComponent(courseTypeJSON) +"&username=" + "Anjali" +"&password=" + "Anjali";
+      alert("source3 = " + source3);
+      var iframe_ele3 = document.getElementById("MainCoursePage-frame");
+      iframe_ele3.src = iframe_ele3.src + source3;
+
       //window.location.href = locationJson.location + "?varid=" + streamJSON + courseTypeJSON +"&username=" + "Anjali" +"&password=" + "Anjali";
       //window.location.href = locationJson.location + "?varid=" + encodeURIComponent(streamJSON) +"&username=" + "Anjali" +"&password=" + "Anjali";
 
@@ -262,19 +274,22 @@ function LogoutSession() {
         </li> -->
 
 		<li>
-          <a class="nav-link" href="javascript:sendToCourseRegistrationPage()">
+          <%-- <a class="nav-link" href="javascript:sendToCourseRegistrationPage()"> --%>
+            <a class="nav-link" href="#" onclick="CourseRegistration_link();">
             <i class="material-icons">computer</i>
             <p>Course Registration</p>
           </a>
         </li>
         <li>
-          <a class="nav-link" href="javascript:sendToMainCoursePage()">
+          <%-- <a class="nav-link" href="javascript:sendToMainCoursePage()"> --%>
+            <a class="nav-link" href="#" onclick="MainCourse_link();">
             <i class="material-icons">computer</i>
             <p>Online Evaluation System</p>
           </a>
         </li>
         <li>
-          <a class="nav-link" href="javascript:sendToUserAnalytics()">
+          <%-- <a class="nav-link" href="javascript:sendToUserAnalytics()"> --%>
+            <a class="nav-link" href="#" onclick="Analytics_link();">
             <i class="material-icons">assessment</i>
             <p>Analytics</p>
           </a>
@@ -285,12 +300,7 @@ function LogoutSession() {
             <p>Result</p>
           </a>
         </li>
-        <li>
-          <a class="nav-link" href="#" onclick="Notif_link();">
-            <i class="material-icons">notifications_none</i>
-            <p>Notifications</p>
-          </a>
-        </li>
+
         <%-- <li>
           <a class="nav-link" href="#" onclick="Settings_link();">
             <i class="material-icons">settings</i>
@@ -522,13 +532,32 @@ function LogoutSession() {
 
         </div>
       </div>
+      </div>
       <!-- Adding Iframes here  -->
 
-      <iframe src="Notifications.jsp" width="1100" height="1000" id="Notif-frame"></iframe>
-      <iframe src="Settings.jsp" width="1100" height="1000" id="Settings-frame"></iframe>
       <iframe src="StudentResult.jsp" width="1100" height="1000" id="Result-frame"></iframe>
       <iframe width="1100" height="1000" id="User-frame" src="/OnlineEvaluationSystem/jsp/User.jsp"></iframe>
-      <!-- <iframe src="Analytics.jsp" width="1050" height="1000" id="Analytics-frame"></iframe> -->
+
+      <iframe src='/OnlineEvaluationSystem/jsp/MainCoursePage.jsp?varid='  width="1100" height="1000" id="MainCoursePage-frame" style="margin-top:10%;"></iframe>
+      <script type="text/javascript">
+        sendToMainCoursePage();
+     </script>
+
+      <iframe src='/OnlineEvaluationSystem/jsp/CourseRegistration.jsp?varid='  width="1100" height="1000" id="CourseRegistration-frame" style="margin-top:10%;"></iframe>
+      <script type="text/javascript">
+        sendToCourseRegistrationPage();
+     </script>
+
+
+      <iframe src='/OnlineEvaluationSystem/jsp/Analytics.jsp?varid=' width="1100" height="1000" id="Analytics-frame" style="margin-top:10%;"></iframe>
+      <script type="text/javascript">
+         var source = encodeURIComponent('${studentCourseDetails}') + encodeURIComponent('${studentGACourseDetails}');
+      	 // alert("source = " + source);
+      	 var iframe_ele = document.getElementById("Analytics-frame");
+      	 iframe_ele.src = iframe_ele.src + source;
+     </script>
+
+
       <script type="text/javascript">
         // var source = "User.jsp?varid="+ data;
         // string Url = "User.jsp?varid=data";
@@ -538,6 +567,10 @@ function LogoutSession() {
         function loaddata() {
         document.getElementById('User-frame').src='/OnlineEvaluationSystem/jsp/User.jsp?varid='+ data;
         }
+
+        // function loaddataAnalytics() {
+        // document.getElementById('Analytics-frame').src='/OnlineEvaluationSystem/jsp/Analytics.jsp?varid='+ data;
+        // }
 
       </script>
       <!-- End of Iframes -->
@@ -563,65 +596,67 @@ function LogoutSession() {
           <!-- your footer here -->
         </div>
       </footer>
-    </div>
+
   </div>
 <script type="text/javascript">
-  //code to hide and show the iframes
-  document.getElementById('Tech-content').style.display="block";
-  document.getElementById('GA-content').style.display="block";
 
-  document.getElementById('Notif-frame').style.display="none";
-  document.getElementById('Settings-frame').style.display="none";
-  document.getElementById('Result-frame').style.display="none";
   document.getElementById('User-frame').style.display="none";
+  document.getElementById('Result-frame').style.display="none";
+  document.getElementById('Analytics-frame').style.display="none";
+  document.getElementById('CourseRegistration-frame').style.display="none";
+  document.getElementById('MainCoursePage-frame').style.display="none";
 
-  function Result_link() {
-    document.getElementById('Tech-content').style.display="none";
-    document.getElementById('GA-content').style.display="none";
-    document.getElementById('Notif-frame').style.display="none";
-    document.getElementById('Settings-frame').style.display="none";
-    document.getElementById('User-frame').style.display="none";
-    // document.getElementById('Analytics-frame').style.display="none";
-    document.getElementById('Result-frame').style.display="block";
-  }
-  function Settings_link() {
-    document.getElementById('Tech-content').style.display="none";
-    document.getElementById('GA-content').style.display="none";
-    document.getElementById('Notif-frame').style.display="none";
-    document.getElementById('Result-frame').style.display="none";
-    document.getElementById('User-frame').style.display="none";
-    // document.getElementById('Analytics-frame').style.display="none";
-    document.getElementById('Settings-frame').style.display="block";
-  }
-  function Notif_link() {
-    document.getElementById('Tech-content').style.display="none";
-    document.getElementById('GA-content').style.display="none";
-    document.getElementById('Result-frame').style.display="none";
-    document.getElementById('Settings-frame').style.display="none";
-    document.getElementById('User-frame').style.display="none";
-    // document.getElementById('Analytics-frame').style.display="none";
-    document.getElementById('Notif-frame').style.display="block";
-  }
-  function User_link() {
-    loaddata();
-
-    document.getElementById('Tech-content').style.display="none";
-    document.getElementById('GA-content').style.display="none";
-    document.getElementById('Result-frame').style.display="none";
-    document.getElementById('Settings-frame').style.display="none";
-    document.getElementById('User-frame').style.display="block";
-    // document.getElementById('Analytics-frame').style.display="none";
-
-    sendToUserProfile();
-  }
   function Analytics_link() {
     document.getElementById('Tech-content').style.display="none";
     document.getElementById('GA-content').style.display="none";
-    document.getElementById('Result-frame').style.display="none";
-    document.getElementById('Settings-frame').style.display="none";
-    document.getElementById('User-frame').style.display="none";
-    // document.getElementById('Analytics-frame').style.display="block";
+    document.getElementById('Analytics-frame').style.display="block";
+    // document.getElementById('Result-frame').style.display="block";
+
+    // sendToUserAnalytics();
   }
+
+
+  function User_link() {
+    loaddata();
+
+    document.getElementById('User-frame').style.display="block";
+    document.getElementById('Tech-content').style.display="none";
+    document.getElementById('GA-content').style.display="none";
+    document.getElementById('Result-frame').style.display="none";
+    document.getElementById('Analytics-frame').style.display="none";
+
+    sendToUserProfile();
+  }
+  function Result_link() {
+    document.getElementById('Tech-content').style.display="none";
+    document.getElementById('GA-content').style.display="none";
+    document.getElementById('Analytics-frame').style.display="none";
+    document.getElementById('Result-frame').style.display="block";
+  }
+  function CourseRegistration_link() {
+    document.getElementById('Tech-content').style.display="none";
+    document.getElementById('GA-content').style.display="none";
+    document.getElementById('Analytics-frame').style.display="none";
+    document.getElementById('Result-frame').style.display="none";
+    document.getElementById('CourseRegistration-frame').style.display="block";
+  }
+  function CourseRegistration_link() {
+    document.getElementById('Tech-content').style.display="none";
+    document.getElementById('GA-content').style.display="none";
+    document.getElementById('Analytics-frame').style.display="none";
+    document.getElementById('Result-frame').style.display="none";
+    document.getElementById('CourseRegistration-frame').style.display="block";
+  }
+
+  function MainCourse_link() {
+    document.getElementById('Tech-content').style.display="none";
+    document.getElementById('GA-content').style.display="none";
+    document.getElementById('Analytics-frame').style.display="none";
+    document.getElementById('Result-frame').style.display="none";
+    document.getElementById('CourseRegistration-frame').style.display="none"
+    document.getElementById('MainCoursePage-frame').style.display="block";
+  }
+
 </script>
 
   <!--   Core JS Files   -->
