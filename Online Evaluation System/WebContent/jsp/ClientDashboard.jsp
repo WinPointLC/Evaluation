@@ -150,11 +150,11 @@
 	    });
 	//window.location.href = "/OnlineEvaluationSystem/jsp/CourseRegistration.jsp?varid="+ data;
   }
-  function sendToUserProfile(){
-	//var userProfileJSON = JSON.stringify(userProfile);
-	window.location.href = "/OnlineEvaluationSystem/jsp/User.jsp?varid="+ encodeURIComponent(strResJSON);
-    //encodeURIComponent(strResJSON);
-  }
+  // function sendToUserProfile(){
+	// //var userProfileJSON = JSON.stringify(userProfile);
+	// window.location.href = "/OnlineEvaluationSystem/jsp/User.jsp?varid="+ encodeURIComponent(strResJSON);
+  //   //encodeURIComponent(strResJSON);
+  // }
   function sendToUserAnalytics(){
 	  //var studentCourseDetails = '<c:out value="${studentCourseDetails}"/>';
 
@@ -536,7 +536,7 @@ function LogoutSession() {
       <!-- Adding Iframes here  -->
 
       <iframe src="StudentResult.jsp" width="1100" height="1000" id="Result-frame"></iframe>
-      <iframe width="1100" height="1000" id="User-frame" src="/OnlineEvaluationSystem/jsp/User.jsp"></iframe>
+      <%-- <iframe width="1100" height="1000" id="User-frame" src="/OnlineEvaluationSystem/jsp/User.jsp"></iframe> --%>
 
       <iframe src='/OnlineEvaluationSystem/jsp/MainCoursePage.jsp?varid='  width="1100" height="1000" id="MainCoursePage-frame" style="margin-top:10%;"></iframe>
       <script type="text/javascript">
@@ -557,6 +557,14 @@ function LogoutSession() {
       	 iframe_ele.src = iframe_ele.src + source;
      </script>
 
+     <iframe src='/OnlineEvaluationSystem/jsp/User.jsp?varid=' width="1100" height="1000" id="User-frame" style="margin-top:10%;"></iframe>
+     <script type="text/javascript">
+        var source2 = encodeURIComponent(strResJSON);
+       // alert("source = " + source);
+       var iframe_ele2 = document.getElementById("User-frame");
+       iframe_ele2.src = iframe_ele2.src + source2;
+    </script>
+
 
       <script type="text/javascript">
         // var source = "User.jsp?varid="+ data;
@@ -564,9 +572,9 @@ function LogoutSession() {
         // User-frame.Attributes["src"] = Server.HtmlDecode(Url);
 
         //New Method
-        function loaddata() {
-        document.getElementById('User-frame').src='/OnlineEvaluationSystem/jsp/User.jsp?varid='+ data;
-        }
+        // function loaddata() {
+        // document.getElementById('User-frame').src='/OnlineEvaluationSystem/jsp/User.jsp?varid='+ data;
+        // }
 
         // function loaddataAnalytics() {
         // document.getElementById('Analytics-frame').src='/OnlineEvaluationSystem/jsp/Analytics.jsp?varid='+ data;
@@ -600,7 +608,7 @@ function LogoutSession() {
   </div>
 <script type="text/javascript">
 
-  document.getElementById('User-frame').style.display="none";
+  // document.getElementById('User-frame').style.display="none";
   document.getElementById('Result-frame').style.display="none";
   document.getElementById('Analytics-frame').style.display="none";
   document.getElementById('CourseRegistration-frame').style.display="none";
@@ -617,7 +625,7 @@ function LogoutSession() {
 
 
   function User_link() {
-    loaddata();
+    // loaddata();
 
     document.getElementById('User-frame').style.display="block";
     document.getElementById('Tech-content').style.display="none";
@@ -625,7 +633,7 @@ function LogoutSession() {
     document.getElementById('Result-frame').style.display="none";
     document.getElementById('Analytics-frame').style.display="none";
 
-    sendToUserProfile();
+    // sendToUserProfile();
   }
   function Result_link() {
     document.getElementById('Tech-content').style.display="none";
