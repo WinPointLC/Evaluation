@@ -134,8 +134,8 @@
 
 	          // window.location.href = locationJson.location + "?varid=" + streamJSON + courseTypeJSON +"&username=" + "Anjali" +"&password=" + "Anjali";
 	          //window.location.href = locationJson.location + "?varid=" + encodeURIComponent(streamJSON) +"&username=" + "Anjali" +"&password=" + "Anjali";
-           var source2 = encodeURIComponent(streamJSON) + encodeURIComponent(courseTypeJSON)+ encodeURIComponent('${studentCourseDetails}') + encodeURIComponent('${studentGACourseDetails}') +"&username=" + "Anjali" +"&password=" + "Anjali";
-         	 alert("source2 = " + source2);
+           var source2 = encodeURIComponent(streamJSON) + encodeURIComponent(courseTypeJSON)+ encodeURIComponent('${studentCourseDetails}') + encodeURIComponent('${studentGACourseDetails}');
+         	 //alert("source2 = " + source2);
          	 var iframe_ele2 = document.getElementById("CourseRegistration-frame");
          	 iframe_ele2.src = iframe_ele2.src + source2;
 	        } else {
@@ -144,7 +144,7 @@
 	      },
 	      error: function(){
 	        //alert("Error");
-	        document.getElementById("error").innerHTML = "Invalid email or password";
+	        document.getElementById("error").innerHTML = "Cannot load client dashboard";
 	      }
 
 	    });
@@ -245,7 +245,7 @@ function LogoutSession() {
 			//alert(studentCourseDetail);
 		</script>
 	</c:forEach>
-  <div class="wrapper ">
+  
     <div class="sidebar" data-color="purple" data-background-color="white">
       <!--
       Tip 1: You can change the color of the sidebar using: data-color="purple | azure | green | orange | danger"
@@ -565,7 +565,7 @@ function LogoutSession() {
 
         //New Method
         function loaddata() {
-        document.getElementById('User-frame').src='/OnlineEvaluationSystem/jsp/User.jsp?varid='+ data;
+        	document.getElementById('User-frame').src='/OnlineEvaluationSystem/jsp/User.jsp?varid='+ data;
         }
 
         // function loaddataAnalytics() {
@@ -591,7 +591,7 @@ function LogoutSession() {
             <script>
             document.write(new Date().getFullYear())
             </script>, made with <i class="material-icons">favorite</i> by
-            <a href="https://www.winpointlc.com" target="_blank">WinPoint Team</a> for a better education.
+            <a href="http://www.winpointlc.com" target="_blank">WinPoint Team</a> for a better education.
           </div>
           <!-- your footer here -->
         </div>
@@ -627,12 +627,14 @@ function LogoutSession() {
 
     sendToUserProfile();
   }
+  
   function Result_link() {
     document.getElementById('Tech-content').style.display="none";
     document.getElementById('GA-content').style.display="none";
     document.getElementById('Analytics-frame').style.display="none";
     document.getElementById('Result-frame').style.display="block";
   }
+  
   function CourseRegistration_link() {
     document.getElementById('Tech-content').style.display="none";
     document.getElementById('GA-content').style.display="none";
@@ -640,6 +642,7 @@ function LogoutSession() {
     document.getElementById('Result-frame').style.display="none";
     document.getElementById('CourseRegistration-frame').style.display="block";
   }
+  
   function CourseRegistration_link() {
     document.getElementById('Tech-content').style.display="none";
     document.getElementById('GA-content').style.display="none";

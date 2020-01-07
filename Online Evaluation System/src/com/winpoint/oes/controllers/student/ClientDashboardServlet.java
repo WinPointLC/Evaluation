@@ -39,6 +39,7 @@ public class ClientDashboardServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		System.out.println("From ClientDashboardServlet");
 		HttpSession session = request.getSession(false);
 		int userId = (int) session.getAttribute("userId");
 		
