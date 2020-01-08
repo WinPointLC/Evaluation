@@ -71,7 +71,6 @@ public class CourseRegistrationServlet extends HttpServlet {
 		int userId = (int) session.getAttribute("userId");
 		
 		String feeStatus = request.getParameter("feeStatus");
-		System.out.println("feeStatus = " + feeStatus);
 		
 		new StudentCourseDetailsHelper().createStudentCourseDetails(userId, courseId, courseName, streamId, courseTypeId, feeStatus);
 		new UserTestDetailsDao().createUserTestDetails(userId, courseId);

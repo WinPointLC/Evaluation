@@ -50,7 +50,6 @@ public class CommonController extends HttpServlet {
 		
 		RequestDispatcher rd = request.getRequestDispatcher("/" + action);
 		rd.forward(request, response);
-		
 	}
 }
  
