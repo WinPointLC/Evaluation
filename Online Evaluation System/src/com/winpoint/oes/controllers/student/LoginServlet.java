@@ -42,14 +42,14 @@ public class LoginServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		
 	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+		System.out.println("From LoginServlet");
 		BufferedReader br = new BufferedReader(new InputStreamReader(request.getInputStream()));
 	    String json = "";
 	    if(br != null){
@@ -68,11 +68,11 @@ public class LoginServlet extends HttpServlet {
 				session.setAttribute("userId", userProfileRecd.getUserId());
 				session.setAttribute("firstName", userProfileRecd.getFirstName());
 				session.setAttribute("lastName", userProfileRecd.getLastName());
+				
 				String json1 = null;
-				String json2 = null;
-				String json3 = null;
 				String jsonString = null;
-				json2 = gson.toJson(userProfileRecd);
+				
+				String json2 = gson.toJson(userProfileRecd);
 				
 				int userCategoryId;
 			
@@ -84,8 +84,7 @@ public class LoginServlet extends HttpServlet {
 				}
 				else if(userCategoryId == 2) {
 					List<Stream> streamList = new StreamHelper().getStreamList();
-					System.out.println(streamList);
-					json3 = gson.toJson(streamList);
+					String json3 = gson.toJson(streamList);
 					json1 = gson.toJson("{ 'success': 'true', 'location': '/OnlineEvaluationSystem/jsp/EmployeeDashboard.jsp'}");
 					jsonString = "[" + json1 + "," + json2 + "," + json3 + "]";
 				}

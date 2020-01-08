@@ -546,7 +546,7 @@
     	  document.getElementById('registration').style.display = "block";
       }
       function submitCourseRegistration(){
-    	  alert("" + courseId + " " + streamId + " " + courseName + " " + courseTypeId );
+    	  //alert("" + courseId + " " + streamId + " " + courseName + " " + courseTypeId );
     	  var myData = {
     	          streamId: streamId,
     	          courseTypeId: courseTypeId,

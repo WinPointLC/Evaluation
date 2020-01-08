@@ -599,7 +599,7 @@
               //alert("Test : " + responseJson2[i].evaluationTypeName + "," + responseJson2[i].courseName);
             }
             //window.location.href = locationJson.location;
-            window.location.href = locationJson.location + "?varid=" + encodeURIComponent(strResJSON) + "&username=" + "Anjali" +"&password=" + "Anjali";
+            window.location.href = locationJson.location + "?varid=" + encodeURIComponent(strResJSON);
           },
           error: function(){
             alert("Error");
