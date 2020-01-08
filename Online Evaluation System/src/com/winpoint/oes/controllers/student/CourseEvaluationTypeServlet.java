@@ -68,7 +68,6 @@ public class CourseEvaluationTypeServlet extends HttpServlet {
 		    String json2 = gson.toJson(courseTypeList);
 		  		   
 		    String jsonString = "[" + json2  + "]";
-		    System.out.println("Json string is " + jsonString);
 		    PrintWriter writer = response.getWriter();
 		    writer.println(jsonString);
 		    writer.flush();

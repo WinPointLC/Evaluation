@@ -1,5 +1,8 @@
 package _testing;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.Date;
 import java.util.Hashtable;
 import java.util.List;
@@ -15,7 +18,7 @@ import com.winpoint.oes.dao.UserCategoryDao;
 import com.winpoint.oes.helpers.common.FeedbackQuestionsHelper;
 
 public class Stub {
-	public static void main(String[] args) {
+	public static void main(String[] args) throws IOException {
 		int userId = 1;
 		int courseId = 1;
 		Hashtable<Integer, String> studentResponses = new Hashtable<Integer, String>();
@@ -26,7 +29,6 @@ public class Stub {
 		studentResponses.put(4, "2");
 		
 		FeedbackQuestionsHelper dao = new FeedbackQuestionsHelper();
-		dao.recordFeedback(userId, courseId, studentResponses);
-		
+		//dao.recordFeedback(userId, courseId, studentResponses);   
 	}
 }
