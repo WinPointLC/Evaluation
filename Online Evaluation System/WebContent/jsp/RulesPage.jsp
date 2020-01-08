@@ -32,8 +32,8 @@
         <div class="col-sm-12 col-md-12 col-lg-12">
           <div class="Rule-content-2">
 			<div class="card-body" id="rules-content">
-			
-			</div>	
+
+			</div>
           </div>
         </div>
       </div>
@@ -55,9 +55,9 @@
 	//alert("decodedData RulesPage = " + decodedData);
     //Start- Extract Rules List
     var rules = decodedData.substring(0, decodedData.indexOf(']')+1);
-    
+
     var rulesList = eval('(' + rules + ')');
-	//alert("Rules List = " + rulesList);
+	// alert("Rules List = " + rulesList);
     for(i=0; i<rulesList.length; i++){
     	//alert("Rules : " + rulesList[i].rulesId + "," + rulesList[i].rulesDescription);
     	var par = document.createElement('p');
@@ -68,13 +68,15 @@
   	var questionsList = eval('(' + questions + ')');
     /* for(i=0; i<questionsList.length; i++){
     	alert("Question : " + questionsList[i].questionId + "," + questionsList[i].question);
-    	
+
     } */
     var testDetail = decodedData.substring(decodedData.lastIndexOf(']')+1, decodedData.length);
     var testDetail = eval('(' + testDetail + ')');
     //alert("*******" + testDetail.testDetailId);
     // var arr2 = ['Modular','TBC','CRT'];
 	var courseName = arr[1].split('=')[1];
+  courseName= eval('(' + courseName + ')');
+  
 	document.getElementById("rules").textContent = "Rules: " + courseName;
     function displayQuestionPage(){
     	/* var emailVal = $("#email").val();
@@ -102,7 +104,7 @@
                	if (locationJson.success) {
             		var strResJSON = JSON.stringify(responseJson2);
             		//alert("studentEmail : " + responseJson2.email); */
-            		
+
                 	//window.location.href = locationJson.location + "?varid=" + encodeURIComponent(strResJSON) +"&username=" + "Anjali" +"&password=" + "Anjali";
             	/* } else {
                     $('#ajaxGetUserServletResponse').text(responseText);
