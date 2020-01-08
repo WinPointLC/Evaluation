@@ -75,8 +75,9 @@
     //alert("*******" + testDetail.testDetailId);
     // var arr2 = ['Modular','TBC','CRT'];
 	var courseName = arr[1].split('=')[1];
-  courseName= eval('(' + courseName + ')');
-  
+	courseName = courseName.replace("%20", " ");
+	//courseName= eval('(' + courseName + ')');
+  	
 	document.getElementById("rules").textContent = "Rules: " + courseName;
     function displayQuestionPage(){
     	/* var emailVal = $("#email").val();

@@ -29,6 +29,6 @@ public class Stub {
 		studentResponses.put(4, "2");
 		
 		FeedbackQuestionsHelper dao = new FeedbackQuestionsHelper();
-		//dao.recordFeedback(userId, courseId, studentResponses);   
+		//dao.recordFeedback(userId, courseId, studentResponses);
 	}
 }
