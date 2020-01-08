@@ -376,13 +376,13 @@ else if (value3=='VA') {
                             <div class="col-md-4" >
                               <div class="right-side-contents">
                                 <div class="hover-content" >
-                                <h2 align="center">Contents</h2>
+                                <h2 align="center" style="margin-left:80%;">Contents</h2>
                                   <div class="row">
                                     <h3 id="graph-content"></h3>
                                     <div class="col-sm-5 col-md-5 col-lg-5 col-xl-5">
                                       <div class="right-side-inner-contents">
-                                        <h6 id="clickedcontent1"></h6>
-                                        <h6 id="clickedcontent2"></h6>
+                                        <h6 id="clickedcontent1" style="margin-left:60%;"></h6>
+                                        <h6 id="clickedcontent2" style="margin-left:60%;"></h6>
                                       </div>
                                       <div class="bar-graph">
                                         <div id="barchart"style="width: 300px;height:200px;"></div>
@@ -435,8 +435,8 @@ else if (value3=='VA') {
                                     <h3 id="graph-content"></h3>
                                     <div class="col-sm-5 col-md-5 col-lg-5 col-xl-5">
                                       <!-- <div class="right-side-inner-contents"> -->
-                                        <h6 id="clickedcontent3"></h6>
-                                        <h6 id="clickedcontent4"></h6>
+                                        <h6 id="clickedcontent3" style="margin-left:60%;"></h6>
+                                        <h6 id="clickedcontent4" style="margin-left:60%;"></h6>
                                       <!--  </div> -->
                                       <div class="bar-graph">
                                         <div id="barchart2"style="width: 300px;height:200px;"></div>
