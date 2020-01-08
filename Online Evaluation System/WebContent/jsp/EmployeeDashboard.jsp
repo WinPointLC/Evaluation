@@ -65,7 +65,7 @@
           </a>
         </li>
         <li>
-          <a class="nav-link" id="add-question-link" onclick="showPage();">
+          <a class="nav-link" id="add-new-question-link">
             <i class="material-icons">computer</i>
             <p>Add Questions</p>
           </a>
@@ -74,12 +74,6 @@
           <a class="nav-link" href="#" id="fee-register-link">
             <i class="material-icons">attach_money</i>
             <p>Fee Registeration Page</p>
-          </a>
-        </li>
-        <li>
-          <a class="nav-link" href="#">
-            <i class="material-icons">settings</i>
-            <p>Settings</p>
           </a>
         </li>
         <!-- your sidebar here -->
@@ -130,7 +124,7 @@
                 <a class="dropdown-item" href="#">Profile</a>
                 <a class="dropdown-item" href="#">Settings</a>
                 <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="#">Log out</a>
+                <a class="dropdown-item" href="#" onclick="LogoutSession()">Log out</a>
               </div>
               <!-- your navbar here -->
             </ul>
@@ -407,6 +401,7 @@
       <iframe src="FeeRegistrationPage.jsp" width="1000" height="700" id="Fee-jsp"></iframe>
       <iframe src="AllUser.jsp" width="1000" height="700" id="AllUser-jsp"></iframe>
       <iframe src="AddNewUser.jsp" width="1000" height="700" id="AddNewUser-jsp"></iframe>
+      <iframe src="AddNewQuestion.jsp" width="1000" height="700" id="AddQuestion-jsp"></iframe>
       </div>
 
 <!-- Footer -->
@@ -439,6 +434,13 @@
   document.getElementById('AllUser-jsp').style.display="none";
   document.getElementById('AddNewUser-jsp').style.display="none";
 
+  document.getElementById('add-new-question-link').onclick=function () {
+    document.getElementById('AddNewQuestion-jsp').style.display = "block";
+    document.getElementById('AddNewUser-jsp').style.display = "none";
+    document.getElementById('AllUser-jsp').style.display = "none";
+    document.getElementById('main-content').style.display = "none";
+    document.getElementById('Fee-jsp').style.display = "none";
+  };
 
   document.getElementById('all-user-link').onclick=function() {
   if (document.getElementById('main-content').style.display === "block") {
@@ -483,7 +485,7 @@ var streamId;
 var courseTypeId;
 var courseId;
 var courseTypesList;
-document.getElementById('add-question-link').onclick=function() {
+document.getElementById('add-new-question-link').onclick=function() {
 	//alert("streamList.length = "+streamList.length);
 	for (var i = 0; i < streamList.length; i++) {
 		  var anchor = document.createElement('a');
@@ -1035,6 +1037,27 @@ $(document).ready(function() {
     });
   });
 });
+</script>
+<script type="text/javascript">
+function LogoutSession() {
+    $.ajax({
+      url: '/OnlineEvaluationSystem/CommonController?action=LogoutServlet',
+      type: 'POST',
+      dataType: 'json',
+      contentType: 'application/json; charset=utf-8',
+      traditional: true,
+      success: function (jsonObj) {
+        var responseJson1=jsonObj[0];
+        var locationJson = eval('(' + responseJson1 + ')');
+        window.location.href = locationJson.location;
+      },
+      error: function () {
+        alert("You are in error function of LogoutAjax call ");
+      }
+    });
+
+}
+
 </script>
 <script>
 var data;
