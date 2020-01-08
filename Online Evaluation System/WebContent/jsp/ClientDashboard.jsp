@@ -30,7 +30,6 @@
   var userProfile1;
   var strResJSON;
   $(document).ready(function(){
-    //alert("Hello");
     var searchString = window.location.search.substring(1);
     //alert("SearchString = " + searchString);
     var arr = searchString.split('&');
@@ -198,7 +197,7 @@
       //alert("studentEmail : " + responseJson2.email);
       // window.location.href = locationJson.location + "?varid=" + encodeURIComponent(streamJSON) + encodeURIComponent(courseTypeJSON) +"&username=" + "Anjali" +"&password=" + "Anjali";
       var source3 = encodeURIComponent(streamJSON) + encodeURIComponent(courseTypeJSON) +"&username=" + "Anjali" +"&password=" + "Anjali";
-      alert("source3 = " + source3);
+      // alert("source3 = " + source3);
       var iframe_ele3 = document.getElementById("MainCoursePage-frame");
       iframe_ele3.src = iframe_ele3.src + source3;
 
@@ -608,7 +607,7 @@ function LogoutSession() {
   </div>
 <script type="text/javascript">
 
-  // document.getElementById('User-frame').style.display="none";
+  document.getElementById('User-frame').style.display="none";
   document.getElementById('Result-frame').style.display="none";
   document.getElementById('Analytics-frame').style.display="none";
   document.getElementById('CourseRegistration-frame').style.display="none";
@@ -618,8 +617,10 @@ function LogoutSession() {
     document.getElementById('Tech-content').style.display="none";
     document.getElementById('GA-content').style.display="none";
     document.getElementById('Analytics-frame').style.display="block";
-    // document.getElementById('Result-frame').style.display="block";
-
+    document.getElementById('Result-frame').style.display="none";
+    document.getElementById('CourseRegistration-frame').style.display="none";
+    document.getElementById('MainCoursePage-frame').style.display="none";
+    document.getElementById('User-frame').style.display="none";
     // sendToUserAnalytics();
   }
 
@@ -632,40 +633,39 @@ function LogoutSession() {
     document.getElementById('GA-content').style.display="none";
     document.getElementById('Result-frame').style.display="none";
     document.getElementById('Analytics-frame').style.display="none";
-
+    document.getElementById('CourseRegistration-frame').style.display="none";
+    document.getElementById('MainCoursePage-frame').style.display="none";
     // sendToUserProfile();
   }
 
   function Result_link() {
-    document.getElementById('Tech-content').style.display="none";
-    document.getElementById('GA-content').style.display="none";
-    document.getElementById('Analytics-frame').style.display="none";
     document.getElementById('Result-frame').style.display="block";
+    document.getElementById('Tech-content').style.display="none";
+    document.getElementById('GA-content').style.display="none";
+    document.getElementById('Analytics-frame').style.display="none";
+    document.getElementById('CourseRegistration-frame').style.display="none";
+    document.getElementById('MainCoursePage-frame').style.display="none";
+    document.getElementById('User-frame').style.display="none";
   }
 
   function CourseRegistration_link() {
+    document.getElementById('CourseRegistration-frame').style.display="block";
     document.getElementById('Tech-content').style.display="none";
     document.getElementById('GA-content').style.display="none";
     document.getElementById('Analytics-frame').style.display="none";
     document.getElementById('Result-frame').style.display="none";
-    document.getElementById('CourseRegistration-frame').style.display="block";
-  }
-
-  function CourseRegistration_link() {
-    document.getElementById('Tech-content').style.display="none";
-    document.getElementById('GA-content').style.display="none";
-    document.getElementById('Analytics-frame').style.display="none";
-    document.getElementById('Result-frame').style.display="none";
-    document.getElementById('CourseRegistration-frame').style.display="block";
+    document.getElementById('MainCoursePage-frame').style.display="none";
+    document.getElementById('User-frame').style.display="none";
   }
 
   function MainCourse_link() {
+    document.getElementById('MainCoursePage-frame').style.display="block";
     document.getElementById('Tech-content').style.display="none";
     document.getElementById('GA-content').style.display="none";
     document.getElementById('Analytics-frame').style.display="none";
     document.getElementById('Result-frame').style.display="none";
     document.getElementById('CourseRegistration-frame').style.display="none"
-    document.getElementById('MainCoursePage-frame').style.display="block";
+    document.getElementById('User-frame').style.display="none";
   }
 
 </script>

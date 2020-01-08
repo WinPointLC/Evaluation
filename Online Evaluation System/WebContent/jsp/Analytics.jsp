@@ -22,7 +22,7 @@
   <script type="text/javascript">
   var studentCourseDetailsList;
   var studentGACourseDetailsList;
-  
+
   $(document).ready(function(){
 	 //alert("Hello");
 	 var searchString = window.location.search.substring(1);
@@ -30,18 +30,18 @@
 	 var arr = searchString.split('&');
 	 //alert("arra = " + arr);
 	 data= arr[0].split('=')[1];
-	 
+
 	 var decodedData = decodeURIComponent(data);
-	 alert("****" + decodedData);
+	 //alert("****" + decodedData);
 	 var studentCourseDetailsListJSON = decodedData.substring(0, decodedData.indexOf(']')+1);
-	 alert(studentCourseDetailsListJSON);
+	 //alert(studentCourseDetailsListJSON);
 	 studentCourseDetailsList =  eval('(' + studentCourseDetailsListJSON + ')');
 	 //alert(studentCourseDetailsList + " " + studentCourseDetailsList.length + " **** "+ studentCourseDetailsList[0].courseTypeName);
-	 
+
 	 var decodedNextData = decodedData.substring(decodedData.indexOf(']')+1, decodedData.length);
-	 alert(decodedNextData);
+	 // alert(decodedNextData);
 	 var studentGACourseDetailsListJSON = decodedNextData.substring(0, decodedNextData.indexOf(']')+1);
-	 alert(studentGACourseDetailsListJSON);
+	 // alert(studentGACourseDetailsListJSON);
 	 studentGACourseDetailsList =  eval('(' + studentGACourseDetailsListJSON + ')');
   });
     google.charts.load('current', {'packages':['corechart']});
@@ -64,8 +64,8 @@
 			technicalData += studentCourseDetailsList[i].courseName + '",' + studentCourseDetailsList[i].courseAggr + '],["';
 		}
 		technicalData = technicalData.substring(0, technicalData.length-3) + ']';
-		
-      alert(technicalData);
+
+      // alert(technicalData);
       data.addRows(JSON.parse(technicalData));
 
       var options = {
@@ -105,7 +105,7 @@ function drawChart2() {
 	data.addColumn('string', 'Topics');
 	data.addColumn('number', 'Marks');
 	/*
-	 * Make an AJAX call for the following 
+	 * Make an AJAX call for the following
 	 *
 	 * Create the two dimentional array named topicDetails which would contain topic name, marks obtained for the topic for--
 	 * this userId, testId, and course i.e. courseId of value1
@@ -166,7 +166,7 @@ else if (value1=='JS') {
 else if (value1=='DB') {
  data.addRows(JSON.parse(stringDataDB));
 }
- 
+
   var options = {
     title: 'Your Topicwise score in Evaluations',
      width: 400,
@@ -194,18 +194,18 @@ else if (value1=='DB') {
 
    //   var GAData = '[["LR",30],["QA",26],["VR",39],["VA",32]]';
      // data.addRows(JSON.parse(GAData));
-      
+
       if(studentGACourseDetailsList.length !=0){
       var generalAptitudeData = '[["';
 		for(var i=0; i<studentGACourseDetailsList.length; i++){
 			generalAptitudeData += studentGACourseDetailsList[i].courseName + '",' + studentGACourseDetailsList[i].courseAggr + '],["';
 		}
 		generalAptitudeData = generalAptitudeData.substring(0, generalAptitudeData.length-3) + ']';
-		
-        alert(generalAptitudeData);
+
+        //alert(generalAptitudeData);
         data.addRows(JSON.parse(generalAptitudeData));
       }
- 
+
 
       var options = {
         title: 'My Evaluation Scores'
@@ -221,7 +221,7 @@ else if (value1=='DB') {
           //alert("The user has selected "+" "+value4);
           document.getElementById('clickedcontent3').textContent ="   Subject:  " + value3;
           document.getElementById('clickedcontent4').textContent = "  Marks:  " + value4;
-          
+
           for(var i=0; i<studentGACourseDetailsList.length; i++){
         	  if(studentGACourseDetailsList[i].courseName ==value1){
         		  courseId = studentGACourseDetailsList[i].courseId;

@@ -172,17 +172,17 @@
       //Srno:1, Username:"Sahil",Email:"sahi@",Address:"PICT",MobileNo:121,CoursesDone:"C,CPP",Button1:"Go to analytics"
     //};
    	var counter = 0;
-      </script>   
-      
+      </script>
+
       <c:forEach var="user" items= "${allUsersList}" varStatus="i">
       <script>
-      
+
       //creating Tbody
       counter++;
       var tbody = document.createElement('tbody');
       var tr = document.createElement('tr');
        var td0 = document.createElement('td');
-       td0.textContent = counter; 
+       td0.textContent = counter;
        var td1 = document.createElement('td');
        td1.textContent = "${user.firstName}" + " " + "${user.lastName}";
        var td2 = document.createElement('td');
@@ -222,12 +222,12 @@
 	<script type="text/javascript">
 
       document.getElementById('table').appendChild(table);
-      
+
       function getCoursesName(userId){
     	  var myData = {
-    		userId : userId	  
+    		userId : userId
     	  };
-    	  
+
           $.ajax({
               type: 'POST',
               url: '/OnlineEvaluationSystem/CommonController?action=GetUsersServlet',
@@ -239,9 +239,9 @@
                 var responseJson1=jsonObj[0];
 				var coursesString = eval('(' + responseJson1 + ')');
 				var courseAnchor = document.getElementById(userId);
-				alert(coursesString.coursesString);
+				// alert(coursesString.coursesString);
 				courseAnchor.innerHTML = coursesString.coursesString;
-				
+
               },
               error: function(){
                 alert("Error");
