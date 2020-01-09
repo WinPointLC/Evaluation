@@ -140,63 +140,88 @@ public class LoginDao {
 		return userProfile;
 	}
 	
-	public UserProfile createLogin(UserProfile userProfile) {
+	public int checkDuplicateEmail(String email) {
+		int count = -1;
+		
 		try(Connection connection = ConnectionManager.getConnection()){
 			Statement statement = connection.createStatement();
-			String email = userProfile.getEmail();
-			String password = userProfile.getPassword();
-			String query = "INSERT INTO [USER_PROFILE]\r\n" + 
-					"           ([FIRST_NAME]\r\n" + 
-					"           ,[LAST_NAME]\r\n" + 
-					"           ,[EMAIL_ID]\r\n" + 
-					"           ,[MOBILE_NUMBER]\r\n" + 
-					"           ,[ADDRESS]\r\n" + 
-					"           ,[BIRTHDATE]\r\n" + 
-					"           ,[COLLEGE]\r\n" + 
-					"           ,[DEGREE]\r\n" + 
-					"           ,[BRANCH]\r\n" + 
-					"           ,[YEAR_OF_GRADUATION]\r\n" + 
-					"           ,[PHOTO_LOCATION]\r\n" + 
-					"           ,[PASSWORD]\r\n" + 
-					"           ,[SECURITY_QUESTION_ID]\r\n" + 
-					"           ,[SECURITY_ANSWER]\r\n" + 
-					"           ,[USER_CATEGORY_ID]\r\n" + 
-					"           ,[OCCUPATION]\r\n" + 
-					"           ,[ORGANIZATION]\r\n" + 
-					"           ,[DESIGNATION]\r\n" + 
-					"           ,[DOMAIN]\r\n" + 
-					"           ,[ROLE]\r\n" + 
-					"           ,[EXPERIENCE]\r\n" + 
-					"           ,[CREATED_BY]\r\n" + 
-					"           ,[CREATED_DATE])\r\n" + 
-					"     VALUES\r\n" + 
-					"           ('" + userProfile.getFirstName() + "'\r\n" + 
-					"           ,'" + userProfile.getLastName() + "'\r\n" + 
-					"           ,'" + email + "'\r\n" + 
-					"           ," + userProfile.getMobileNumber() + "\r\n" + 
-					"           ," + null + "\r\n" + 
-					"           ," + null + "\r\n" + 
-					"           ," + null + "\r\n" + 
-					"           ," + null + "\r\n" + 
-					"           ," + null + "\r\n" + 
-					"           ," + null + "\r\n" + 
-					"           ," + null + "\r\n" + 
-					"           ,'" + password + "'\r\n" + 
-					"           ," + userProfile.getSecurityQuestionId() + "\r\n" + 
-					"           ,'" + userProfile.getSecurityAnswer() + "'\r\n" + 
-					"           ," + userProfile.getUserCategoryId() + "\r\n" + 
-					"           ," + null + "\r\n" + 
-					"           ," + null + "\r\n" + 
-					"           ," + null + "\r\n" + 
-					"           ," + null + "\r\n" + 
-					"           ," + null + "\r\n" + 
-					"           ," + null + "\r\n" + 
-					"           ," + 1 + "\r\n" + 
-					"           ," + null + ")";
-			statement.executeUpdate(query);
-			} catch (SQLException e) {
+			String query = "select count(0) from USER_PROFILE where EMAIL_ID = '" + email + "'";
+			ResultSet rs = statement.executeQuery(query);
+			
+			while(rs.next()) {
+				count = rs.getInt(1);
+			}			
+		}
+		catch (Exception e) {
 			e.printStackTrace();
 		}
-		return validateLogin(userProfile.getEmail(), userProfile.getPassword());
+		
+		return count;
+	}
+	
+	public UserProfile createLogin(UserProfile userProfile) {
+		//System.out.println(!checkDuplicateEmail(userProfile.getEmail()));
+		if(checkDuplicateEmail(userProfile.getEmail()) == 0) {
+			try(Connection connection = ConnectionManager.getConnection()){
+				Statement statement = connection.createStatement();
+				String email = userProfile.getEmail();
+				String password = userProfile.getPassword();			
+				String query = "INSERT INTO [USER_PROFILE]\r\n" + 
+						"           ([FIRST_NAME]\r\n" + 
+						"           ,[LAST_NAME]\r\n" + 
+						"           ,[EMAIL_ID]\r\n" + 
+						"           ,[MOBILE_NUMBER]\r\n" + 
+						"           ,[ADDRESS]\r\n" + 
+						"           ,[BIRTHDATE]\r\n" + 
+						"           ,[COLLEGE]\r\n" + 
+						"           ,[DEGREE]\r\n" + 
+						"           ,[BRANCH]\r\n" + 
+						"           ,[YEAR_OF_GRADUATION]\r\n" + 
+						"           ,[PHOTO_LOCATION]\r\n" + 
+						"           ,[PASSWORD]\r\n" + 
+						"           ,[SECURITY_QUESTION_ID]\r\n" + 
+						"           ,[SECURITY_ANSWER]\r\n" + 
+						"           ,[USER_CATEGORY_ID]\r\n" + 
+						"           ,[OCCUPATION]\r\n" + 
+						"           ,[ORGANIZATION]\r\n" + 
+						"           ,[DESIGNATION]\r\n" + 
+						"           ,[DOMAIN]\r\n" + 
+						"           ,[ROLE]\r\n" + 
+						"           ,[EXPERIENCE]\r\n" + 
+						"           ,[CREATED_BY]\r\n" + 
+						"           ,[CREATED_DATE])\r\n" + 
+						"     VALUES\r\n" + 
+						"           ('" + userProfile.getFirstName() + "'\r\n" + 
+						"           ,'" + userProfile.getLastName() + "'\r\n" + 
+						"           ,'" + email + "'\r\n" + 
+						"           ," + userProfile.getMobileNumber() + "\r\n" + 
+						"           ," + null + "\r\n" + 
+						"           ," + null + "\r\n" + 
+						"           ," + null + "\r\n" + 
+						"           ," + null + "\r\n" + 
+						"           ," + null + "\r\n" + 
+						"           ," + null + "\r\n" + 
+						"           ," + null + "\r\n" + 
+						"           ,'" + password + "'\r\n" + 
+						"           ," + userProfile.getSecurityQuestionId() + "\r\n" + 
+						"           ,'" + userProfile.getSecurityAnswer() + "'\r\n" + 
+						"           ," + userProfile.getUserCategoryId() + "\r\n" + 
+						"           ," + null + "\r\n" + 
+						"           ," + null + "\r\n" + 
+						"           ," + null + "\r\n" + 
+						"           ," + null + "\r\n" + 
+						"           ," + null + "\r\n" + 
+						"           ," + null + "\r\n" + 
+						"           ," + 1 + "\r\n" + 
+						"           ," + null + ")";
+				statement.executeUpdate(query);
+				} catch (SQLException e) {
+				e.printStackTrace();
+			}
+			return validateLogin(userProfile.getEmail(), userProfile.getPassword());
+		}
+		else {
+			return null;
+		}
 	}
 }

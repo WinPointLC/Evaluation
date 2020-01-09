@@ -69,6 +69,7 @@ public class RulesServlet extends HttpServlet {
 		List<Rules> rulesList = new RulesHelper().getRulesList(testDetailId);
 		
 		List<QuestionBank> questionsList = new QuestionBankHelper().getQuestionsList(testDetailId);
+		System.out.println("Question List size =  " + questionsList.size());
 
 		if(rulesList != null && questionsList != null) {
 		   String json1 = gson.toJson("{ 'success': 'true', 'location': '/OnlineEvaluationSystem/jsp/RulesPage.jsp'}");
@@ -77,6 +78,8 @@ public class RulesServlet extends HttpServlet {
 		   String json4 = gson.toJson(testDetails);		
 		   
 		   String jsonString = "[" + json1  + "," + json2 + "," + json3 + "," + json4 +"]";
+		   //String jsonString = "[" + json3 +"]";
+		   System.out.println(jsonString);
 		   PrintWriter writer = response.getWriter();
 		   writer.println(jsonString);
 		   writer.flush();

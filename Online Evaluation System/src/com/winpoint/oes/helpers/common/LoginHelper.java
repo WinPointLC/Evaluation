@@ -25,7 +25,7 @@ public class LoginHelper {
 		return new LoginDao().getSecurityQuesAns(email);
 	}
 	
-	public UserProfile createLogin(UserProfile userProfile) {
+	public UserProfile createLogin(UserProfile userProfile) {		
 		return new LoginDao().createLogin(userProfile);
 	}
 }

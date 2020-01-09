@@ -118,6 +118,7 @@
 
         }); */
         var strResJSON = JSON.stringify(questionsList);
+        alert(strResJSON);
     	window.location.href = "OesQuestionPage.jsp" + "?varid=" + encodeURIComponent(strResJSON) + "&courseName=" + courseName + "&username=" + "Anjali" +"&password=" + "Anjali";
     }
 

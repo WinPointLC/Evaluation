@@ -183,7 +183,7 @@
           }
          },
          error: function(){
-          alert("Error");
+          alert("Error: Emailid already exists");
           //document.getElementById("error").innerHTML = "Invalid email or password";
          }
 
@@ -221,14 +221,12 @@
   }
   //code for Mobile Validation
   function Mobilevalidator() {
-    alert("You are in Mobile Validation Function");
+
        var mobile = document.getElementById("mobileNumber").value;
        var pattern = /^[7-9][0-9]{9}$/;
        if (pattern.test(mobile)) {
-           alert("Your mobile number : "+mobile);
            return true;
        }
-       alert("It is not valid mobile number");
        return false;
 
    }

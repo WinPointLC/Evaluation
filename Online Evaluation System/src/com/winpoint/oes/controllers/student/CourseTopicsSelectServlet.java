@@ -64,8 +64,8 @@ public class CourseTopicsSelectServlet extends HttpServlet {
 		List<Topic> courseList = new TopicsHelper().getTopicsList(courseId);
 				
 		if(courseList != null) {
-			String json1 = null;
-		    json1 = gson.toJson("{ 'success': 'true', 'location': '/OnlineEvaluationSystem/jsp/MainCoursePage.jsp'}");
+//			String json1 = null;
+//		    json1 = gson.toJson("{ 'success': 'true', 'location': '/OnlineEvaluationSystem/jsp/MainCoursePage.jsp'}");
 		    String json2 = gson.toJson(courseList);
 		  		   
 		    String jsonString = "[" + json2  + "]";
