@@ -401,7 +401,7 @@
       <iframe src="FeeRegistrationPage.jsp" width="1000" height="700" id="Fee-jsp"></iframe>
       <iframe src="AllUser.jsp" width="1000" height="700" id="AllUser-jsp"></iframe>
       <iframe src="AddNewUser.jsp" width="1000" height="700" id="AddNewUser-jsp"></iframe>
-      <iframe src="AddNewQuestion.jsp" width="1000" height="700" id="AddQuestion-jsp"></iframe>
+      <iframe src="AddNewQuestion.jsp" width="1000" height="700" id="AddNewQuestion-jsp"></iframe>
       </div>
 
 <!-- Footer -->
@@ -433,6 +433,7 @@
   document.getElementById('Fee-jsp').style.display="none";
   document.getElementById('AllUser-jsp').style.display="none";
   document.getElementById('AddNewUser-jsp').style.display="none";
+  document.getElementById('AddNewQuestion-jsp').style.display="none";
 
   document.getElementById('add-new-question-link').onclick=function () {
     document.getElementById('AddNewQuestion-jsp').style.display = "block";
@@ -449,7 +450,7 @@
 
     document.getElementById('AllUser-jsp').style.display = "block";
     document.getElementById('main-content').style.display = "none";
-    // document.getElementById('admin-content').style.display="none";
+    document.getElementById('AddNewQuestion-jsp').style.display="none";
     document.getElementById('AddNewUser-jsp').style.display = "none";
     document.getElementById('Fee-jsp').style.display = "none";
   }
@@ -463,8 +464,19 @@ if (document.getElementById('main-content').style.display === "block") {
   document.getElementById('AddNewUser-jsp').style.display = "block";
   document.getElementById('AllUser-jsp').style.display = "none";
   document.getElementById('main-content').style.display = "none";
-  // document.getElementById('admin-content').style.display="none";
+    document.getElementById('AddNewQuestion-jsp').style.display="none";
   document.getElementById('Fee-jsp').style.display = "none";
+}
+};
+document.getElementById('add-new-question-link').onclick=function() {
+if (document.getElementById('main-content').style.display === "block") {
+
+} else {
+  document.getElementById('AddNewQuestion-jsp').style.display="block";
+  document.getElementById('Fee-jsp').style.display = "none";
+  document.getElementById('AddNewUser-jsp').style.display = "none";
+  document.getElementById('AllUser-jsp').style.display = "none";
+  document.getElementById('main-content').style.display = "none";
 }
 };
 document.getElementById('fee-register-link').onclick=function() {
@@ -476,7 +488,7 @@ if (document.getElementById('main-content').style.display === "block") {
   document.getElementById('AddNewUser-jsp').style.display = "none";
   document.getElementById('AllUser-jsp').style.display = "none";
   document.getElementById('main-content').style.display = "none";
-  // document.getElementById('admin-content').style.display="none";
+  document.getElementById('AddNewQuestion-jsp').style.display="none";
 }
 };
 </script>
