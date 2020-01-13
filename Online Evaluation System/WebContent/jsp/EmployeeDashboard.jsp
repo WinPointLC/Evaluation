@@ -401,7 +401,170 @@
       <iframe src="FeeRegistrationPage.jsp" width="1000" height="700" id="Fee-jsp"></iframe>
       <iframe src="AllUser.jsp" width="1000" height="700" id="AllUser-jsp"></iframe>
       <iframe src="AddNewUser.jsp" width="1000" height="700" id="AddNewUser-jsp"></iframe>
-      <iframe src="AddNewQuestion.jsp" width="1000" height="700" id="AddNewQuestion-jsp"></iframe>
+      <%-- Adding the Add New Question Jsp content  --%>
+      <div class="AddNewUser-class" id="AddNewQuestion-jsp">
+        <div class="row">
+          <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
+            <div class="card card-plain">
+              <div class="card card-header card-header-primary main-head">
+                <h3 class="text-align mr-auto ml-auto">Add Question</h3>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card-body">
+          <form>
+            <div class="row">
+              <div class="col-md-3">
+                <div class="stats">
+                  <div class="dropdown">
+                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButtonStream" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      Select Stream
+                    </button>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" id="stream-dropdown">
+
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-md-3">
+                <div class="stats">
+                  <div class="dropdown" id='drop11'>
+                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButtonCourseType" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      Select Course Type
+                    </button>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" id="coursetype-dropdown">
+
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-md-3">
+                <div class="stats">
+                  <div class="dropdown">
+                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButtonCourse" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      Select Course
+                    </button>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" id="course-dropdown">
+
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-md-3">
+                <div class="stats">
+                  <div class="dropdown">
+                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButtonEvaluationType" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      Select Evaluation Type
+                    </button>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" id="Evaluation-dropdown">
+
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-md-3">
+                <div class="stats">
+                  <div class="dropdown">
+                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButtonTopics" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      Select Topics
+                    </button>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" id="topic-dropdown">
+
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-md-3">
+                <div class="form-group">
+                  <label class="bmd-label-floating">Enter Total Marks</label>
+                  <input type="number" class="form-control" id="totalMarks">
+                </div>
+              </div>
+              <div class="col-md-3">
+                <div class="stats">
+                  <div class="dropdown">
+                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButtonDiffLvl" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      Select Difficulty level
+                    </button>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" id="diff-dropdown">
+
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+            <div class="row">
+              <div class="col-md-12">
+                <div class="form-group">
+                  <label>Add a Question</label>
+                  <div class="form-group">
+                    <label></label>
+                    <textarea class="form-control" rows="3" id="question"></textarea>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-4">
+                <h4>Add Options</h4>
+              </div>
+            </div>
+            <div class="inner-option" id="inner-opt-content">
+
+            </div>
+
+            <div class="row">
+              <div class="col-md-4">
+                <h4>Correct Options</h4>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-4">
+                <div class="form-group">
+                  <label class="bmd-label-floating">Enter the Correct Option Number</label>
+                  <input type="number" class="form-control" id="correctOptions">
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-4">
+                <h4>Explanation for Answer</h4>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-md-12">
+                <div class="form-group">
+                  <label>Add Explanation</label>
+                  <div class="form-group">
+                    <label></label>
+                    <textarea name="name" class="form-control" rows="3" id="explanation"></textarea>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+            <button type="submit" class="btn btn-primary pull-right" onclick="addQuestion()">Save</button>
+            <div class="clearfix"></div>
+          </form>
+        </div>
+      </div>
+      </div>
+      <%-- End of Add New Question jsp  --%>
+      <div class="">
+
+      </div>
+      <%-- <iframe src="AddNewQuestion.jsp" width="1000" height="700" id="AddNewQuestion-jsp"></iframe> --%>
       </div>
 
 <!-- Footer -->
@@ -468,7 +631,7 @@ if (document.getElementById('main-content').style.display === "block") {
   document.getElementById('Fee-jsp').style.display = "none";
 }
 };
-document.getElementById('add-new-question-link').onclick=function() {
+function AddNewQuestionCall() {
 if (document.getElementById('main-content').style.display === "block") {
 
 } else {
@@ -498,15 +661,22 @@ var courseTypeId;
 var courseId;
 var courseTypesList;
 document.getElementById('add-new-question-link').onclick=function() {
-	//alert("streamList.length = "+streamList.length);
+    AddNewQuestionCall();
+	alert("streamList.length = "+streamList.length);
 	for (var i = 0; i < streamList.length; i++) {
 		  var anchor = document.createElement('a');
 		  anchor.className="dropdown-item";
 		  anchor.setAttribute('href', "#");
 		  anchor.id = streamList[i].streamId;
+      alert(streamList[i]);
 		  anchor.textContent = streamList[i].streamName;
+      alert(streamList[i].streamName);
 		  anchor.setAttribute('onclick', "getStreamId(this.id)");
+
+      //here there was an error that appendChild was not working for aptitude so I hardcoded it as if technical then append child will work
+      // if(getStreamId(this.id) == 1){
 		  document.getElementById('stream-dropdown').appendChild(anchor);
+    // }
 	}
 
 };
@@ -834,7 +1004,59 @@ function addQuestion(){
 
 </script>
 
+<script type="text/javascript">
 
+//Adding Dynamic Option content
+
+//var optionArr = ['option1','option2','option3','option4'];
+for (var i = 0; i < optionArr.length; i++) {
+  var row = document.createElement('div');
+  row.className="row";
+  var col = document.createElement('div');
+  col.className="col-md-4";
+  var formcheck = document.createElement('div');
+  formcheck.className="form-check";
+  var label = document.createElement('label');
+  label.className="form-check-label";
+  label.textContent = optionArr[i];
+  var input1 =  document.createElement('input');
+  input1.className="form-check-input";
+  input1.setAttribute('type',"radio");
+  input1.setAttribute('name', "exampleRadios");
+  input1.id="exampleRadios2";
+  input1.setAttribute('value',optionArr[i]);
+  //input1.innerHTML= optionArr[i];
+  // input1.setAttribute('style', "color:#000;");
+  formcheck.appendChild(input1);
+  formcheck.appendChild(label);
+  var span = document.createElement('span');
+  span.className="circle";
+  var span2 = document.createElement('span');
+  span2.className="check";
+  span.appendChild(span2);
+
+  label.appendChild(span);
+  formcheck.appendChild(label);
+  col.appendChild(formcheck);
+  row.appendChild(col);
+  var col2 = document.createElement('div');
+  col2.className="col-md-4";
+  var formgroup = document.createElement('div');
+  formgroup.className="form-group";
+  var label2 = document.createElement('label');
+  label2.className="bmd-label-floating";
+  label2.textContent = 'Enter the option content';
+  var input2 = document.createElement('input');
+  input2.setAttribute('type',"text");
+  input2.className="form-control";
+  input2.id=optionArr[i];
+  formgroup.appendChild(input2);
+  formgroup.appendChild(label2);
+  col2.appendChild(formgroup);
+  row.appendChild(col2);
+  document.getElementById('inner-opt-content').appendChild(row);
+}
+</script>
 
 <!--   Core JS Files   -->
 <script src="../assets/js/core/jquery.min.js"></script>
