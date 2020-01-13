@@ -13,7 +13,7 @@
           <!-- CSS Files -->
           <link href="../assets/css/material-dashboard.css?v=2.1.1" rel="stylesheet" />
           <!-- CSS Just for demo purpose, don't include it in your project -->
-          <link href="../assets/demo/demo.css" rel="stylesheet" />
+          <%-- <link href="../assets/demo/demo.css" rel="stylesheet" /> --%>
           <!-- For Star Rating -->
           <link rel="stylesheet" href="//code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
             <link rel="stylesheet" href="../css/StarRating.css">
@@ -96,22 +96,22 @@
 
 
                 <script type="text/javascript">
-                                
+
                 function saveFeedback() {
-                  
+
                   var userFeedback = [];
                   for(var i=0; i<feedbackQuestionsList.length; i++){
                 	    console.log(i);
                 	    var curStarRateElemVal = 0;//document.getElementById(feedbackQuestionsList[i].feedbackQuestionId).value;
-                	    var feedback = { 
+                	    var feedback = {
                 	    		feedbackQuestionId : feedbackQuestionsList[i].feedbackQuestionId,
                 	    		response : curStarRateElemVal
                 	    };
                 	    userFeedback.push(feedback);
                 	}
-                  
+
                   //alert(userFeedback[0].feedbackQuestionId + " " + userFeedback[0].response);
-                  
+
                   $.ajax({
                     type: 'POST',
                     url: '/OnlineEvaluationSystem/CommonController?action=FeedbackServlet',
@@ -147,13 +147,13 @@
                 //alert(decodedData);
                 //var stream_id = 0;
 
-                //Start- Extract Resut 
+                //Start- Extract Resut
                 var resultJson = decodedData.substring(0, decodedData.indexOf('}')+1);
                 //alert(streams);
                 var result = eval('(' + resultJson + ')');
                 //alert("CourseId from FB Form " + result.courseId);
                 //alert("result **** = " + result.numberOfCorrectAnswers + ' ' + result.numberOfAttempedQuestions + ' ' + result.numberOfTotalQuestions);
-                
+
                 var feedbackQuestionsListJson = decodedData.substring(decodedData.indexOf('}')+1, decodedData.length);
                 var feedbackQuestionsList = eval('(' + feedbackQuestionsListJson + ')');
                 //alert(feedbackQuestionsList);
@@ -219,7 +219,7 @@
                 document.getElementById('card-body').appendChild(btn);
 
 				function getStarRateValue(starRateId){
-					
+
 				}
             </script>
             <script src="../js/StarRating.js"></script>

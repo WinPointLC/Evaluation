@@ -90,6 +90,9 @@ class StarRating extends HTMLElement {
 
             this.value = starIndex + 1;
 
+            var clickedValue=starIndex+1;
+            alert("You gave"+" "+clickedValue+" "+"Star Rating");
+
             let rateEvent = new Event('rate');
             this.dispatchEvent(rateEvent);
         });
