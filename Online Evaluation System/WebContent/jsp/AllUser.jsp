@@ -193,11 +193,15 @@
        td4.textContent = "${user.mobileNumber}";
        var td5 = document.createElement('td');
        //td5.textContent = students.CoursesDone;
+       var div = document.createElement('div');
+       div.setAttribute('id', "courseAnchorList");
+       div.setAttribute('style',"overflow:auto;height:90px;width:200px;");
        var courseAnchor = document.createElement('a');
        courseAnchor.setAttribute("onclick", "getCoursesName(this.id)");
        courseAnchor.textContent = "Get Courses list";
        courseAnchor.setAttribute("id", "${user.userId}");
-       td5.appendChild(courseAnchor);
+       div.appendChild(courseAnchor);
+       td5.appendChild(div);
        //creating Analytics and Result Button for all user.
        var td6  = document.createElement('td');
        var analyticsLink = document.createElement('a');
@@ -223,11 +227,12 @@
 
       document.getElementById('table').appendChild(table);
 
+
+
       function getCoursesName(userId){
     	  var myData = {
     		userId : userId
     	  };
-
           $.ajax({
               type: 'POST',
               url: '/OnlineEvaluationSystem/CommonController?action=GetUsersServlet',
@@ -239,6 +244,7 @@
                 var responseJson1=jsonObj[0];
 				var coursesString = eval('(' + responseJson1 + ')');
 				var courseAnchor = document.getElementById(userId);
+        
 				// alert(coursesString.coursesString);
 				courseAnchor.innerHTML = coursesString.coursesString;
 
@@ -250,5 +256,6 @@
 
             });
       }
+
 </script>
   </body>
