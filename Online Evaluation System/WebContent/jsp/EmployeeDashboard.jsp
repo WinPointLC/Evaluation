@@ -46,7 +46,7 @@
     <div class="sidebar-wrapper">
       <ul class="nav">
         <li class="nav-item active  ">
-          <a class="nav-link" href="EmployeeDashboard.jsp">
+          <a class="nav-link" id="Employee-link">
             <i class="material-icons">dashboard</i>
             <p> Employee Dashboard</p>
           </a>
@@ -97,22 +97,6 @@
         </button>
         <div class="collapse navbar-collapse justify-content-end">
           <ul class="navbar-nav">
-            <li class="nav-item dropdown">
-              <a class="nav-link" href="http://example.com" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <i class="material-icons">notifications</i>
-                <span class="notification">5</span>
-                <p class="d-lg-none d-md-block">
-                  Some Actions
-                </p>
-              </a>
-              <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
-                <a class="dropdown-item" href="#">Mike John responded to your email</a>
-                <a class="dropdown-item" href="#">You have 5 new tasks</a>
-                <a class="dropdown-item" href="#">You're now friend with Andrew</a>
-                <a class="dropdown-item" href="#">Another Notification</a>
-                <a class="dropdown-item" href="#">Another One</a>
-              </div>
-            </li>
             <li class="nav-item dropdown">
               <a class="nav-link" href="#pablo" id="navbarDropdownProfile" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <i class="material-icons">person</i>
@@ -598,49 +582,34 @@
   document.getElementById('AddNewUser-jsp').style.display="none";
   document.getElementById('AddNewQuestion-jsp').style.display="none";
 
-  document.getElementById('add-new-question-link').onclick=function () {
-    document.getElementById('AddNewQuestion-jsp').style.display = "block";
+  document.getElementById('Employee-link').onclick=function () {
+    document.getElementById('main-content').style.display = "block";
+    document.getElementById('AddNewQuestion-jsp').style.display = "none";
     document.getElementById('AddNewUser-jsp').style.display = "none";
     document.getElementById('AllUser-jsp').style.display = "none";
-    document.getElementById('main-content').style.display = "none";
     document.getElementById('Fee-jsp').style.display = "none";
   };
-
   document.getElementById('all-user-link').onclick=function() {
-  if (document.getElementById('main-content').style.display === "block") {
-
-  } else {
-
     document.getElementById('AllUser-jsp').style.display = "block";
     document.getElementById('main-content').style.display = "none";
     document.getElementById('AddNewQuestion-jsp').style.display="none";
     document.getElementById('AddNewUser-jsp').style.display = "none";
     document.getElementById('Fee-jsp').style.display = "none";
-  }
 };
 
 document.getElementById('add-new-user-link').onclick=function() {
-if (document.getElementById('main-content').style.display === "block") {
-
-} else {
-
   document.getElementById('AddNewUser-jsp').style.display = "block";
   document.getElementById('AllUser-jsp').style.display = "none";
   document.getElementById('main-content').style.display = "none";
     document.getElementById('AddNewQuestion-jsp').style.display="none";
   document.getElementById('Fee-jsp').style.display = "none";
-}
 };
 function AddNewQuestionCall() {
-if (document.getElementById('main-content').style.display === "block") {
-
-} else {
   document.getElementById('AddNewQuestion-jsp').style.display="block";
   document.getElementById('Fee-jsp').style.display = "none";
   document.getElementById('AddNewUser-jsp').style.display = "none";
   document.getElementById('AllUser-jsp').style.display = "none";
   document.getElementById('main-content').style.display = "none";
-}
 };
 document.getElementById('fee-register-link').onclick=function() {
 if (document.getElementById('main-content').style.display === "block") {
