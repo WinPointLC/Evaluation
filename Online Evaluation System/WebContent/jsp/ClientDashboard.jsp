@@ -259,7 +259,7 @@ function LogoutSession() {
     <div class="sidebar-wrapper">
       <ul class="nav">
         <li class="nav-item active  ">
-          <a class="nav-link" href="ClientDashboard.jsp">
+          <a class="nav-link" id="client-link">
             <i class="material-icons">dashboard</i>
             <p>User Dashboard</p>
           </a>
@@ -327,22 +327,7 @@ function LogoutSession() {
         </button>
         <div class="collapse navbar-collapse justify-content-end">
           <ul class="navbar-nav">
-            <li class="nav-item dropdown">
-              <a class="nav-link" href="http://example.com" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <i class="material-icons">notifications</i>
-                <span class="notification">5</span>
-                <p class="d-lg-none d-md-block">
-                  Some Actions
-                </p>
-              </a>
-              <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
-                <a class="dropdown-item" href="#">Mike John responded to your email</a>
-                <a class="dropdown-item" href="#">You have 5 new tasks</a>
-                <a class="dropdown-item" href="#">You're now friend with Andrew</a>
-                <a class="dropdown-item" href="#">Another Notification</a>
-                <a class="dropdown-item" href="#">Another One</a>
-              </div>
-            </li>
+
             <li class="nav-item dropdown">
               <a class="nav-link" href="#pablo" id="navbarDropdownProfile" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <i class="material-icons">person</i>
@@ -612,6 +597,17 @@ function LogoutSession() {
   document.getElementById('Analytics-frame').style.display="none";
   document.getElementById('CourseRegistration-frame').style.display="none";
   document.getElementById('MainCoursePage-frame').style.display="none";
+
+  document.getElementById('client-link').onclick=function () {
+    document.getElementById('Tech-content').style.display="block";
+    document.getElementById('GA-content').style.display="block";
+    document.getElementById('User-frame').style.display="none";
+    document.getElementById('Result-frame').style.display="none";
+    document.getElementById('Analytics-frame').style.display="none";
+    document.getElementById('CourseRegistration-frame').style.display="none";
+    document.getElementById('MainCoursePage-frame').style.display="none";
+
+  };
 
   function Analytics_link() {
     document.getElementById('Tech-content').style.display="none";
