@@ -9,11 +9,7 @@
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 	<link rel="stylesheet" href="../css/ForgotPassword.css">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-	<script>
-	
-	</script>
 </head>
-
 <body>
 	<div class="container">
 	  <div class="col-sm-6 col-md-4 col-lg-4 form-content ml-auto mr-auto">
@@ -85,13 +81,13 @@ if(urlparameter == "1"){
 	var secQuest = document.getElementById('secQuestion');
 	if(window.location.href.indexOf("varid") > -1){
 	    var urlVarid = getUrlVars()["varid"];
-		studentJSON = JSON.parse(decodeURIComponent(urlVarid)); 
+		studentJSON = JSON.parse(decodeURIComponent(urlVarid));
 		secQuest.value = studentJSON.securityQuestion;
 	}
 	else{}
 	var secAnswer = document.getElementById('secAns');
 	secAnswer.value = null;
-	
+
 }
 function validateEmailId() {
 	var emailVal = document.getElementById('email').value;
@@ -116,7 +112,7 @@ function validateEmailId() {
              var locationJson = eval('(' + responseJson1 + ')');
              //alert(locationJson.success);
              //var strJson = eval('(' + responseJson2 + ')');
-             
+
             if (locationJson.success) {
          		var studentJson = JSON.stringify(responseJson2);
          		/*alert(studentJson);
@@ -153,7 +149,7 @@ function savepass() {
 	var userId = studentJSON.userId;
 	var myData = {
 		userId: userId,
-		password: newPassword	
+		password: newPassword
 	};
 	$.ajax({
         type: 'POST',
@@ -168,7 +164,7 @@ function savepass() {
         	document.getElementById('success-content').style.display="block";
         }
 	});
-	
+
 }
 </script>
 </body>
