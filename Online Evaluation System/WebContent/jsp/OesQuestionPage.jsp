@@ -1,4 +1,6 @@
 <%@ page language="java" contentType="text/html;charset=UTF-8" %>
+<%-- <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+                    "http://www.w3.org/TR/html4/loose.dtd"> --%>
 <!DOCTYPE html>
 <head>
   <meta charset="utf-8">
@@ -15,8 +17,26 @@
   <link rel="stylesheet" href="../css/OesQuestionPage.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
   <script>
+  $(document).ready(function(){
 
+   var out = false;
+   $("body").mouseover(function(){
+     out=false;
+   }).mouseout(function(){
+     out=true;
+   });
+
+
+   $(window).bind('beforeunload', function(e){
+   if(out)
+       {
+         return "Do you really want to leave this page now?"
+       }
+   });
+
+  });
   </script>
+
   <script language="javascript">
     var questionsList = null;
     var currentQuestion;
@@ -411,6 +431,7 @@
     answerList[currentQuestion] = 0;
   }
 </script>
+
 </head>
 <body onload="startTimer();">
   <jsp : useBean id="" class=" ">
@@ -555,5 +576,6 @@ function startTimer() {
 }
 
 </script>
+
 </body>
 </html>
