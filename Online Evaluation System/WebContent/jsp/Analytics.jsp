@@ -16,7 +16,7 @@
   <link href="../MaterialKitHomePage/assets/css/material-kit.css?v=2.0.5" rel="stylesheet" />
   <link rel="stylesheet" href="../css/Analytics.css">
   <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-  <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 
   <script type="text/javascript">
@@ -32,11 +32,11 @@
 	 data= arr[0].split('=')[1];
 
 	 var decodedData = decodeURIComponent(data);
-	 //alert("****" + decodedData);
+	 // alert("****" + decodedData);
 	 var studentCourseDetailsListJSON = decodedData.substring(0, decodedData.indexOf(']')+1);
-	 //alert(studentCourseDetailsListJSON);
+	 // alert(studentCourseDetailsListJSON);
 	 studentCourseDetailsList =  eval('(' + studentCourseDetailsListJSON + ')');
-	 //alert(studentCourseDetailsList + " " + studentCourseDetailsList.length + " **** "+ studentCourseDetailsList[0].courseTypeName);
+	 // alert(studentCourseDetailsList + " " + studentCourseDetailsList.length + " **** "+ studentCourseDetailsList[0].courseTypeName);
 
 	 var decodedNextData = decodedData.substring(decodedData.indexOf(']')+1, decodedData.length);
 	 // alert(decodedNextData);
@@ -50,23 +50,36 @@
     var value2;
     var courseId = 0;
     function drawChart1() {
-      var data = new google.visualization.DataTable();
-      data.addColumn('string', 'Subject');
-      data.addColumn('number', 'Marks');
+      //var data = new google.visualization.DataTable();
+      //data.addColumn('string', 'Subject');
+      //data.addColumn('number', 'Marks');
 
       //var technicalData = '[["C",21],["C++",25],["DS",19],["JS",32],["DB",40]]';
       /*var technicalData = '[["' + studentCourseDetailsList[0].courseName + '",' + studentCourseDetailsList[0].courseAggr + '],["' +
     	  						 studentCourseDetailsList[1].courseName + '",' + studentCourseDetailsList[1].courseAggr + '],["' +
     	  						 studentCourseDetailsList[2].courseName + '",' + studentCourseDetailsList[2].courseAggr + ']]';
       */
-      var technicalData = '[["';
-		for(var i=0; i<studentCourseDetailsList.length; i++){
-			technicalData += studentCourseDetailsList[i].courseName + '",' + studentCourseDetailsList[i].courseAggr + '],["';
-		}
-		technicalData = technicalData.substring(0, technicalData.length-3) + ']';
 
-      // alert(technicalData);
-      data.addRows(JSON.parse(technicalData));
+    //   var technicalData = '[["';
+		// for(var i=0; i<studentCourseDetailsList.length; i++){
+		// 	technicalData += studentCourseDetailsList[i].courseName + '",' + studentCourseDetailsList[i].courseAggr + '],["';
+		// }
+		// technicalData = technicalData.substring(0, technicalData.length-3) + ']';
+    //
+    //   alert(technicalData);
+
+      var techArray = [];// = [['Course', 'Marks'],['C', 10],['DS', 40],['Java', 70]];
+      var header = ['Course', 'Marks'];
+      techArray.push(header);
+      for(var i=0; i<studentCourseDetailsList.length; i++){
+            // alert(studentCourseDetailsList.courseName);
+        var techData = [studentCourseDetailsList[i].courseName, studentCourseDetailsList[i].courseAggr];
+        techArray.push(techData);
+      }
+      // alert("Techarray: "+  techArray);
+      var data = new google.visualization.arrayToDataTable(techArray);
+
+      //data.addRows(JSON.parse(technicalData));
 
       var options = {
         title: 'My Evaluation Scores'
@@ -101,9 +114,9 @@
 google.charts.load("current",{'packages':['corechart']});
 //google.charts.setOnLoadCallback(drawChart2);
 function drawChart2() {
-	var data = new google.visualization.DataTable();
-	data.addColumn('string', 'Topics');
-	data.addColumn('number', 'Marks');
+	// var data = new google.visualization.DataTable();
+	// data.addColumn('string', 'Topics');
+	// data.addColumn('number', 'Marks');
 	/*
 	 * Make an AJAX call for the following
 	 *
@@ -124,13 +137,28 @@ function drawChart2() {
 				success: function (jsonObj) {
 					//alert("Success from AnalyticsForm");
 					var responseJson1=jsonObj[0], responseJson2=jsonObj[1];
-					var topicArray = '[["';
-					for(var i=0; i<responseJson2.length; i++){
-						topicArray += responseJson2[i].topicName + '",' + responseJson2[i].topicwiseNumberOfCorrectAns + '],["';
-					}
-					topicArray = topicArray.substring(0, topicArray.length-3) + ']';
-					//alert("******* " + topicArray);
-					data.addRows(JSON.parse(topicArray));
+
+					// var topicArray = '[["';
+					// for(var i=0; i<responseJson2.length; i++){
+					// 	topicArray += responseJson2[i].topicName + '",' + responseJson2[i].topicwiseNumberOfCorrectAns + '],["';
+					// }
+					// topicArray = topicArray.substring(0, topicArray.length-3) + ']';
+					// //alert("******* " + topicArray);
+					// data.addRows(JSON.parse(topicArray));
+
+
+          var topicArray = [];// = [['Course', 'Marks'],['C', 10],['DS', 40],['Java', 70]];
+          var topicHeader = ['TopicName', 'TopicwiseMarks'];
+          topicArray.push(topicHeader);
+          for(var i=0; i<responseJson2.length; i++){
+            // alert(studentCourseDetailsList.courseName);
+            var topicData = [responseJson2[i].topicName , responseJson2[i].topicwiseNumberOfCorrectAns];
+            topicArray.push(topicData);
+          }
+
+          // alert("topicArray: "+  topicArray);
+          var data = new google.visualization.arrayToDataTable(topicArray);
+
 					var options = {
 						    title: 'Your Topicwise score in Evaluations',
 						     width: 400,
