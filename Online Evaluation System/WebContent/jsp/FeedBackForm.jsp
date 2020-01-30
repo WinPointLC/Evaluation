@@ -102,7 +102,7 @@
                   var userFeedback = [];
                   for(var i=0; i<feedbackQuestionsList.length; i++){
                 	    console.log(i);
-                	    var curStarRateElemVal = 0;//document.getElementById(feedbackQuestionsList[i].feedbackQuestionId).value;
+                	    var curStarRateElemVal = document.getElementById(feedbackQuestionsList[i].feedbackQuestionId).value;
                 	    var feedback = {
                 	    		feedbackQuestionId : feedbackQuestionsList[i].feedbackQuestionId,
                 	    		response : curStarRateElemVal
@@ -157,8 +157,7 @@
                 var feedbackQuestionsListJson = decodedData.substring(decodedData.indexOf('}')+1, decodedData.length);
                 var feedbackQuestionsList = eval('(' + feedbackQuestionsListJson + ')');
                 //alert(feedbackQuestionsList);
-
-              var form = document.createElement('form');
+                var form = document.createElement('form');
               for (var i = 0; i < feedbackQuestionsList.length; i++) {
                 var row = document.createElement('div');
                 row.className="row";
@@ -180,7 +179,7 @@
                 var starrate =document.createElement('x-star-rating');
                 starrate.setAttribute('value', 0);
                 starrate.setAttribute('number', 5);
-                starrate.setAttribute('id', 'feedbackQuestionsList[i].feedbackQuestionId');
+                starrate.id = feedbackQuestionsList[i].feedbackQuestionId;
                 starrate.setAttribute('onclick', 'getStarRateValue(this.id)');
                 star.appendChild(starrate);
                 col2.appendChild(star);
@@ -219,7 +218,6 @@
                 document.getElementById('card-body').appendChild(btn);
 
 				function getStarRateValue(starRateId){
-
 				}
             </script>
             <script src="../js/StarRating.js"></script>

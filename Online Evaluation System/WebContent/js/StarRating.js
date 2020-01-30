@@ -61,7 +61,7 @@ class StarRating extends HTMLElement {
 
         this.value = this.value;
     }
-
+    
     highlight (index) {
         this.stars.forEach((star, i) => {
             star.classList.toggle('full', i <= index);
@@ -87,12 +87,10 @@ class StarRating extends HTMLElement {
         this.addEventListener('click', e => {
             let box = this.getBoundingClientRect(),
                 starIndex = Math.floor((e.pageX - box.left) / box.width * this.stars.length);
-
-            this.value = starIndex + 1;
-
-            var clickedValue=starIndex+1;
-            alert("You gave"+" "+clickedValue+" "+"Star Rating");
-
+            if(starIndex == 5)
+               this.value = starIndex;
+            else
+            	this.value = starIndex + 1;        
             let rateEvent = new Event('rate');
             this.dispatchEvent(rateEvent);
         });
