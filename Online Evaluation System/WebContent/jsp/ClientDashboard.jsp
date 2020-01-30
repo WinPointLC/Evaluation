@@ -22,7 +22,9 @@
   <!-- <link href="../MaterialKitHomePage/assets/css/material-kit.css?v=2.0.5" rel="stylesheet" /> -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 
+
    <script>
+
    <c:import url="/ClientDashboardServlet" />
 	     <c:set var="studentCourseDetails" value="${requestScope.studentCourseDetailsList}" />
 	     <c:set var="studentGACourseDetails" value="${requestScope.studentGACourseDetailsList}" />
@@ -518,38 +520,38 @@ function LogoutSession() {
       </div>
       </div>
       <!-- Adding Iframes here  -->
+      <div class="iframes" id="iframediv">
 
-      <iframe src="StudentResult.jsp" width="1100" height="1000" id="Result-frame"></iframe>
+      <%-- <iframe src="StudentResult.jsp" width="1100" height="1000" id="Result-frame"></iframe> --%>
       <%-- <iframe width="1100" height="1000" id="User-frame" src="/OnlineEvaluationSystem/jsp/User.jsp"></iframe> --%>
 
-      <iframe src='/OnlineEvaluationSystem/jsp/MainCoursePage.jsp?varid='  width="1100" height="1000" id="MainCoursePage-frame" style="margin-top:10%;"></iframe>
-      <script type="text/javascript">
-        sendToMainCoursePage();
-     </script>
 
-      <iframe src='/OnlineEvaluationSystem/jsp/CourseRegistration.jsp?varid='  width="1100" height="1000" id="CourseRegistration-frame" style="margin-top:10%;"></iframe>
+      <%-- <iframe src='/OnlineEvaluationSystem/jsp/MainCoursePage.jsp?varid='  width="1100" height="1000" id="MainCoursePage-frame" style="margin-top:10%;"></iframe>
+      <script type="text/javascript">
+      sendToMainCoursePage();
+    </script> --%>
+      <%-- <iframe src='/OnlineEvaluationSystem/jsp/CourseRegistration.jsp?varid='  width="1100" height="1000" id="CourseRegistration-frame" style="margin-top:10%;"></iframe>
       <script type="text/javascript">
         sendToCourseRegistrationPage();
-     </script>
+     </script> --%>
 
 
-      <iframe src='/OnlineEvaluationSystem/jsp/Analytics.jsp?varid=' width="1100" height="1000" id="Analytics-frame" style="margin-top:10%;"></iframe>
+      <%-- <iframe src='/OnlineEvaluationSystem/jsp/Analytics.jsp?varid=' width="1100" height="1000" id="Analytics-frame" style="margin-top:10%;"></iframe>
       <script type="text/javascript">
          var source = encodeURIComponent('${studentCourseDetails}') + encodeURIComponent('${studentGACourseDetails}');
       	 // alert("source = " + source);
       	 var iframe_ele = document.getElementById("Analytics-frame");
       	 iframe_ele.src = iframe_ele.src + source;
-     </script>
+     </script> --%>
 
-     <iframe src='/OnlineEvaluationSystem/jsp/User.jsp?varid=' width="1100" height="1000" id="User-frame" style="margin-top:10%;"></iframe>
+     <%-- <iframe src='/OnlineEvaluationSystem/jsp/User.jsp?varid=' width="1100" height="1000" id="User-frame" style="margin-top:10%;"></iframe>
      <script type="text/javascript">
         var source2 = encodeURIComponent(strResJSON);
        // alert("source = " + source);
        var iframe_ele2 = document.getElementById("User-frame");
        iframe_ele2.src = iframe_ele2.src + source2;
-    </script>
-
-
+    </script> --%>
+</div>
       <script type="text/javascript">
         // var source = "User.jsp?varid="+ data;
         // string Url = "User.jsp?varid=data";
@@ -590,81 +592,230 @@ function LogoutSession() {
       </footer>
 
   </div>
-<script type="text/javascript">
+  <script type="text/javascript">
+  var frame;
+  var Analyticsframe;
+  var userframe;
+  var resultframe;
+  var courseframe;
 
-  document.getElementById('User-frame').style.display="none";
-  document.getElementById('Result-frame').style.display="none";
-  document.getElementById('Analytics-frame').style.display="none";
-  document.getElementById('CourseRegistration-frame').style.display="none";
-  document.getElementById('MainCoursePage-frame').style.display="none";
 
-  document.getElementById('client-link').onclick=function () {
-    document.getElementById('Tech-content').style.display="block";
-    document.getElementById('GA-content').style.display="block";
-    document.getElementById('User-frame').style.display="none";
-    document.getElementById('Result-frame').style.display="none";
-    document.getElementById('Analytics-frame').style.display="none";
-    document.getElementById('CourseRegistration-frame').style.display="none";
-    document.getElementById('MainCoursePage-frame').style.display="none";
 
-  };
-
-  function Analytics_link() {
-    document.getElementById('Tech-content').style.display="none";
-    document.getElementById('GA-content').style.display="none";
-    document.getElementById('Analytics-frame').style.display="block";
-    document.getElementById('Result-frame').style.display="none";
-    document.getElementById('CourseRegistration-frame').style.display="none";
-    document.getElementById('MainCoursePage-frame').style.display="none";
-    document.getElementById('User-frame').style.display="none";
-    // sendToUserAnalytics();
+  function Removeframes() {
+    if (Analyticsframe!=null) {
+      Analyticsframe.parentNode.removeChild(Analyticsframe);
+      Analyticsframe=null;
+    }
+     if (userframe!=null) {
+      userframe.parentNode.removeChild(userframe);
+      userframe=null;
+    }
+       if (resultframe!=null) {
+        resultframe.parentNode.removeChild(resultframe);
+        resultframe=null;
+      }
+     if (courseframe!=null) {
+      courseframe.parentNode.removeChild(courseframe);
+      courseframe=null;
+    }
+     if (frame!=null) {
+      frame.parentNode.removeChild(frame);
+      frame=null;
+    }
   }
 
+    document.getElementById('client-link').onclick=function () {
+      document.getElementById('Tech-content').style.display="block";
+      document.getElementById('GA-content').style.display="block";
 
-  function User_link() {
-    // loaddata();
+      if(resultframe!=null){
+        document.getElementById('Result-frame').style.display="none";
+      }
+      else if(courseframe!=null){
+        document.getElementById('CourseRegistration-frame').style.display="none";
+      }
+      else if(frame!=null){
+        document.getElementById('MainCoursePage-frame').style.display="none";
+      }
+      else if(Analyticsframe!=null){
+        document.getElementById('Analytics-frame').style.display="none";
+      }
+      else if(userframe!=null){
+        document.getElementById('User-frame').style.display="none";
+      }
+      else{
+      }
 
-    document.getElementById('User-frame').style.display="block";
-    document.getElementById('Tech-content').style.display="none";
-    document.getElementById('GA-content').style.display="none";
-    document.getElementById('Result-frame').style.display="none";
-    document.getElementById('Analytics-frame').style.display="none";
-    document.getElementById('CourseRegistration-frame').style.display="none";
-    document.getElementById('MainCoursePage-frame').style.display="none";
-    // sendToUserProfile();
-  }
+    };
 
-  function Result_link() {
-    document.getElementById('Result-frame').style.display="block";
-    document.getElementById('Tech-content').style.display="none";
-    document.getElementById('GA-content').style.display="none";
-    document.getElementById('Analytics-frame').style.display="none";
-    document.getElementById('CourseRegistration-frame').style.display="none";
-    document.getElementById('MainCoursePage-frame').style.display="none";
-    document.getElementById('User-frame').style.display="none";
-  }
+    function Analytics_link() {
+      Removeframes();
 
-  function CourseRegistration_link() {
-    document.getElementById('CourseRegistration-frame').style.display="block";
-    document.getElementById('Tech-content').style.display="none";
-    document.getElementById('GA-content').style.display="none";
-    document.getElementById('Analytics-frame').style.display="none";
-    document.getElementById('Result-frame').style.display="none";
-    document.getElementById('MainCoursePage-frame').style.display="none";
-    document.getElementById('User-frame').style.display="none";
-  }
+      Analyticsframe = document.createElement('iframe');
+      Analyticsframe.setAttribute('src','/OnlineEvaluationSystem/jsp/Analytics.jsp?varid=');
+      Analyticsframe.setAttribute('width', 1100);
+      Analyticsframe.setAttribute('height', 1000);
+      Analyticsframe.id = 'Analytics-frame';
+      Analyticsframe.setAttribute('style',"margin-top:10%;");
+      document.getElementById('iframediv').appendChild(Analyticsframe);
 
-  function MainCourse_link() {
-    document.getElementById('MainCoursePage-frame').style.display="block";
-    document.getElementById('Tech-content').style.display="none";
-    document.getElementById('GA-content').style.display="none";
-    document.getElementById('Analytics-frame').style.display="none";
-    document.getElementById('Result-frame').style.display="none";
-    document.getElementById('CourseRegistration-frame').style.display="none"
-    document.getElementById('User-frame').style.display="none";
-  }
+      var source = encodeURIComponent('${studentCourseDetails}') + encodeURIComponent('${studentGACourseDetails}');
+      var iframe_ele = document.getElementById("Analytics-frame");
+      iframe_ele.src = iframe_ele.src + source;
+      ShowHideAnalytics();
+    }
+    function ShowHideAnalytics() {
 
-</script>
+      document.getElementById('Tech-content').style.display="none";
+      document.getElementById('GA-content').style.display="none";
+      document.getElementById('Analytics-frame').style.display="block";
+      if(document.getElementById('Result-frame')!=null){
+        document.getElementById('Result-frame').style.display="none";
+      }
+       if(document.getElementById('CourseRegistration-frame')!=null){
+        document.getElementById('CourseRegistration-frame').style.display="none";
+      }
+       if(document.getElementById('MainCoursePage-frame')!=null){
+        document.getElementById('MainCoursePage-frame').style.display="none";
+      }
+       if(document.getElementById('User-frame')!=null){
+        document.getElementById('User-frame').style.display="none";
+      }
+
+    }
+
+
+    function User_link() {
+      Removeframes();
+      userframe = document.createElement('iframe');
+     userframe.setAttribute('src','/OnlineEvaluationSystem/jsp/User.jsp?varid=');
+     userframe.setAttribute('width', 1100);
+     userframe.setAttribute('height', 1000);
+     userframe.id = 'User-frame';
+     userframe.setAttribute('style',"margin-top:10%;");
+     document.getElementById('iframediv').appendChild(userframe);
+
+     var source2 = encodeURIComponent(strResJSON);
+     var iframe_ele2 = document.getElementById("User-frame");
+     iframe_ele2.src = iframe_ele2.src + source2;
+     ShowHideUser();
+    }
+    function ShowHideUser() {
+      document.getElementById('Tech-content').style.display="none";
+      document.getElementById('GA-content').style.display="none";
+      document.getElementById('User-frame').style.display="block";
+      if(document.getElementById('Result-frame')!=null){
+        document.getElementById('Result-frame').style.display="none";
+      }
+       if(document.getElementById('CourseRegistration-frame')!=null){
+        document.getElementById('CourseRegistration-frame').style.display="none";
+      }
+       if(document.getElementById('MainCoursePage-frame')!=null){
+        document.getElementById('MainCoursePage-frame').style.display="none";
+      }
+       if(document.getElementById('Analytics-frame')!=null){
+        document.getElementById('Analytics-frame').style.display="none";
+      }
+
+    }
+
+
+    function Result_link() {
+      Removeframes();
+      resultframe = document.createElement('iframe');
+      resultframe.setAttribute('src','StudentResult.jsp');
+      resultframe.setAttribute('width', 1100);
+      resultframe.setAttribute('height', 1000);
+      resultframe.id = 'Result-frame';
+      // resultframe.setAttribute('style',"margin-top:10%;");
+      document.getElementById('iframediv').appendChild(resultframe);
+      ShowHideResult();
+
+    }
+    function ShowHideResult() {
+      document.getElementById('Tech-content').style.display="none";
+      document.getElementById('GA-content').style.display="none";
+      document.getElementById('Result-frame').style.display="block";
+      if(document.getElementById('Analytics-frame')!=null){
+        document.getElementById('Analytics-frame').style.display="none";
+      }
+       if(document.getElementById('CourseRegistration-frame')!=null){
+        document.getElementById('CourseRegistration-frame').style.display="none";
+      }
+       if(document.getElementById('MainCoursePage-frame')!=null){
+        document.getElementById('MainCoursePage-frame').style.display="none";
+      }
+       if(document.getElementById('User-frame')!=null){
+        document.getElementById('User-frame').style.display="none";
+      }
+
+    }
+
+
+    function CourseRegistration_link() {
+      Removeframes();
+      courseframe = document.createElement('iframe');
+      courseframe.setAttribute('src','/OnlineEvaluationSystem/jsp/CourseRegistration.jsp?varid=');
+      courseframe.setAttribute('width', 1100);
+      courseframe.setAttribute('height', 1000);
+      courseframe.id = 'CourseRegistration-frame';
+      courseframe.setAttribute('style',"margin-top:10%;");
+      document.getElementById('iframediv').appendChild(courseframe);
+      sendToCourseRegistrationPage();
+      ShowHideCourse();
+    }
+    function ShowHideCourse() {
+      document.getElementById('Tech-content').style.display="none";
+      document.getElementById('GA-content').style.display="none";
+      document.getElementById('CourseRegistration-frame').style.display="block";
+      if(document.getElementById('Result-frame')!=null){
+        document.getElementById('Result-frame').style.display="none";
+      }
+       if(document.getElementById('Analytics-frame')!=null){
+        document.getElementById('Analytics-frame').style.display="none";
+      }
+       if(document.getElementById('MainCoursePage-frame')!=null){
+        document.getElementById('MainCoursePage-frame').style.display="none";
+      }
+       if(document.getElementById('User-frame')!=null){
+        document.getElementById('User-frame').style.display="none";
+      }
+
+    }
+
+    function MainCourse_link() {
+      Removeframes();
+      frame  = document.createElement('iframe');
+      frame.setAttribute('src','/OnlineEvaluationSystem/jsp/MainCoursePage.jsp?varid=');
+      frame.setAttribute('width', 1100);
+      frame.setAttribute('height', 1000);
+      frame.id = 'MainCoursePage-frame';
+      frame.setAttribute('style',"margin-top:10%;");
+      document.getElementById('iframediv').appendChild(frame);
+      sendToMainCoursePage();
+      ShowHideMain();
+      }
+
+      function ShowHideMain() {
+        document.getElementById('Tech-content').style.display="none";
+        document.getElementById('GA-content').style.display="none";
+        document.getElementById('MainCoursePage-frame').style.display="block";
+        if(document.getElementById('Result-frame')!=null){
+          document.getElementById('Result-frame').style.display="none";
+        }
+         if(document.getElementById('CourseRegistration-frame')!=null){
+          document.getElementById('CourseRegistration-frame').style.display="none";
+        }
+         if(document.getElementById('Analytics-frame')!=null){
+          document.getElementById('Analytics-frame').style.display="none";
+        }
+         if(document.getElementById('User-frame')!=null){
+          document.getElementById('User-frame').style.display="none";
+        }
+
+      }
+
+  </script>
 
   <!--   Core JS Files   -->
   <script src="../assets/js/core/jquery.min.js"></script>
