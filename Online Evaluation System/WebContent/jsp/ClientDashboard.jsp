@@ -296,7 +296,8 @@ function LogoutSession() {
           </a>
         </li>
         <li>
-          <a class="nav-link" href="#" onclick="Result_link();">
+          <%-- <a class="nav-link"  disabled="disabled" onclick="Result_link();"> --%>
+              <a class="nav-link" >
             <i class="material-icons">subject</i>
             <p>Result</p>
           </a>
