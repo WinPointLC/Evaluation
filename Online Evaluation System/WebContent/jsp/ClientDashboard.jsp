@@ -653,7 +653,7 @@ function LogoutSession() {
 
       Analyticsframe = document.createElement('iframe');
       Analyticsframe.setAttribute('src','/OnlineEvaluationSystem/jsp/Analytics.jsp?varid=');
-      Analyticsframe.setAttribute('width', 1100);
+      Analyticsframe.setAttribute('width', 1080);
       Analyticsframe.setAttribute('height', 1000);
       Analyticsframe.id = 'Analytics-frame';
       Analyticsframe.setAttribute('style',"margin-top:10%;");
